@@ -8,10 +8,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class AsociadosController extends Controller
 {
     /**
-     * @Route("/admin/asociados")
+     * @Route("/Admin/asociados",name="asociados")
      */
-    public function indexAction($name)
+    public function indexAction()
     {
-        return $this->render('', array('name' => $name));
+        return $this->render('default/index.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+        ]);
     }
 }
