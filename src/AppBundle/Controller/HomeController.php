@@ -8,11 +8,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class HomeController extends Controller
 {
     /**
-     * @Route("/", name="")
+     * @Route("/{languaje}", name="index")
      */
-    public function indexAction()
+    public function indexAction($languaje='es')
     {
-        print_r("holas");die;
-        return $this->render('', array('name' => $name));
+        return $this->render('Cecofersa/encabezado.html.twig',
+            ['languaje' => $languaje
+        ]);
+
     }
 }
