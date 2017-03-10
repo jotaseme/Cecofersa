@@ -8,12 +8,18 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class AsociadosController extends Controller
 {
     /**
-     * @Route("/Admin/asociados",name="asociados")
+     * @Route("/Admin/asociados/{filter}",name="asociados")
      */
-    public function indexAction()
+    public function indexAction($filter=null)
     {
-        return $this->render('Backoffice/default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+        $asociados = $this->getDoctrine()
+            ->getRepository('BackBundle:Asociados')
+            ->findAllOrderedByName($filter);
+
+        return $this->render('Backoffice/Asociados/index.html.twig', [
+            'asociados'=>$asociados,
+            'filter'=>$filter
+
         ]);
     }
 }

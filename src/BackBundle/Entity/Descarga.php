@@ -49,5 +49,86 @@ class Descarga
     private $usuarioUsuario;
 
 
-}
 
+    /**
+     * Get idDescarga
+     *
+     * @return integer
+     */
+    public function getIdDescarga()
+    {
+        return $this->idDescarga;
+    }
+
+    /**
+     * Set fecha
+     *
+     * @param \DateTime $fecha
+     *
+     * @return Descarga
+     */
+    public function setFecha($fecha)
+    {
+        $this->fecha = $fecha;
+
+        return $this;
+    }
+
+    /**
+     * Get fecha
+     *
+     * @return \DateTime
+     */
+    public function getFecha()
+    {
+        return $this->fecha;
+    }
+
+    /**
+     * Set ficheroFichero
+     *
+     * @param \BackBundle\Entity\Fichero $ficheroFichero
+     *
+     * @return Descarga
+     */
+    public function setFicheroFichero(\BackBundle\Entity\Fichero $ficheroFichero = null)
+    {
+        $this->ficheroFichero = $ficheroFichero;
+
+        return $this;
+    }
+
+    /**
+     * Get ficheroFichero
+     *
+     * @return \BackBundle\Entity\Fichero
+     */
+    public function getFicheroFichero()
+    {
+        return $this->ficheroFichero;
+    }
+
+    /**
+     * Set usuarioUsuario
+     *
+     * @param \BackBundle\Entity\Usuario $usuarioUsuario
+     *
+     * @return Descarga
+     */
+    public function setUsuarioUsuario(\BackBundle\Entity\Usuario $usuarioUsuario = null)
+    {
+        $this->usuarioUsuario = $usuarioUsuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuarioUsuario
+     *
+     * @return \BackBundle\Entity\Usuario
+     */
+    public function getUsuarioUsuario()
+    {
+        return $this->usuarioUsuario;
+    }
+}
