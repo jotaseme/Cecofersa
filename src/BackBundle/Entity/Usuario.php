@@ -113,16 +113,6 @@ class Usuario
     private $acceso;
 
     /**
-     * @var \Proveedores
-     *
-     * @ORM\ManyToOne(targetEntity="Proveedores")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="ID_PROVEEDOR", referencedColumnName="ID_PROVEEDOR")
-     * })
-     */
-    private $idProveedor;
-
-    /**
      * @var \Asociados
      *
      * @ORM\ManyToOne(targetEntity="Asociados")
@@ -131,6 +121,16 @@ class Usuario
      * })
      */
     private $idAsociado;
+
+    /**
+     * @var \Proveedores
+     *
+     * @ORM\ManyToOne(targetEntity="Proveedores")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_PROVEEDOR", referencedColumnName="ID_PROVEEDOR")
+     * })
+     */
+    private $idProveedor;
 
 
 }

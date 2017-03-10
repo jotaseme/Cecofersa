@@ -131,14 +131,14 @@ class Asociados
      *
      * @ORM\Column(name="SOLO_PEDIR_CITAS", type="boolean", nullable=true)
      */
-    private $soloPedirCitas;
+    private $soloPedirCitas = '0';
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="LOGOTIPO", type="boolean", nullable=true)
      */
-    private $logotipo;
+    private $logotipo = '0';
 
     /**
      * @var string
@@ -180,7 +180,21 @@ class Asociados
      *
      * @ORM\Column(name="ACC_FERIA", type="integer", nullable=true)
      */
-    private $accFeria;
+    private $accFeria = '1';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ACTIVO_FERIA", type="integer", nullable=true)
+     */
+    private $activoFeria = '1';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ACTIVO", type="integer", nullable=true)
+     */
+    private $activo = '1';
 
 
 }
