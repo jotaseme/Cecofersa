@@ -29,5 +29,38 @@ class Familias
     private $nombreFamilia;
 
 
-}
 
+    /**
+     * Get idFamilias
+     *
+     * @return integer
+     */
+    public function getIdFamilias()
+    {
+        return $this->idFamilias;
+    }
+
+    /**
+     * Set nombreFamilia
+     *
+     * @param string $nombreFamilia
+     *
+     * @return Familias
+     */
+    public function setNombreFamilia($nombreFamilia)
+    {
+        $this->nombreFamilia = $nombreFamilia;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreFamilia
+     *
+     * @return string
+     */
+    public function getNombreFamilia()
+    {
+        return $this->nombreFamilia;
+    }
+}
