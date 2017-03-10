@@ -12,8 +12,14 @@ class AsociadosController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('Backoffice/default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+        $asociados = $this->getDoctrine()
+            ->getRepository('BackBundle:Asociados')
+            ->findAllOrderedByName();
+
+
+        return $this->render('Backoffice/Asociados/index.html.twig', [
+            'asociados'=>$asociados
+
         ]);
     }
 }
