@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class AsociadosController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/admin/asociados")
      */
     public function indexAction($name)
     {
