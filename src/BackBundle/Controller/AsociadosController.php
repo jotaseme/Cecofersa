@@ -22,4 +22,24 @@ class AsociadosController extends Controller
 
         ]);
     }
+
+    /**
+     * @Route("/Admin/asociados/{id_asociado}",name="detalle_asociado", requirements={"id_asociado": "\d+"})
+     */
+    public function detalleAction($id_asociado)
+    {
+        $asociado = $this->getDoctrine()
+            ->getRepository('BackBundle:Asociados')
+            ->find($id_asociado);
+        var_dump($asociado);die;
+        if(!$asociado){
+            throw $this->createNotFoundException(
+                'Error en la busqueda del asociado '
+            );
+        }
+        return $this->render('default/asociado.html.twig', [
+            'asociado'=>$asociado
+        ]);
+
+    }
 }
