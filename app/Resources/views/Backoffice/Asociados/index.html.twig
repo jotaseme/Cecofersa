@@ -1,0 +1,92 @@
+{% extends 'Backoffice/base.html.twig' %}
+{% block body %}
+    <body class="skin-red-light">
+    <div class="wrapper">
+        {% block header %}
+            {% include 'Backoffice/header.html.twig' %}
+        {% endblock %}
+
+        {% block sidebar %}
+            {% include 'Backoffice/sidebar.html.twig' %}
+        {% endblock %}
+    </div>
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                Administraci&oacute;n de asociados
+                <small>Preview</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="#">Asociados</a></li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Actualizar asociados</h3>
+                </div>
+                <div class="box-body">
+                    <div class="box-body">
+                        <label class="btn btn-default btn-file">
+                            Fichero de asociados <input type="file" hidden>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Listado de asociados de Cecofersa</h3>
+                        </div>
+                        <div class="box-body">
+                            <table id="asociados" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Nombre asociado</th>
+                                    <th>Usuarios</th>
+                                    <th>Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for asociado in asociados %}
+                                    <tr>
+                                        <td><a href=""> {{asociado.nombre }}</a></td>
+                                        <td><span class="badge"></span></td>
+                                        <td><span class="label label-success">Approved</span></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th>Nombre asociado</th>
+                                    <th>Usuarios</th>
+                                    <th>Status</th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    </body>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+    $(document).ready(function() {
+       $('#asociados').DataTable({
+            "ordering": false,
+            "pageLength":20,
+            "lengthChange": false,
+            "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+            }
+       });
+    });
+    </script>
+
+{% endblock %}
