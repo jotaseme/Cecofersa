@@ -196,6 +196,16 @@ class Asociados
      */
     private $activo = '1';
 
+    /**
+     * @ORM\OneToMany(targetEntity="Usuario", mappedBy="idAsociado")
+     */
+    protected $usuarios;
+
+    function __construct()
+    {
+        $this->usuarios = new ArrayCollection();
+    }
+
 
 
     /**
@@ -806,5 +816,16 @@ class Asociados
     public function getActivo()
     {
         return $this->activo;
+    }
+
+
+    /**
+     * Get usuarios
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsuarios()
+    {
+        return $this->usuarios;
     }
 }

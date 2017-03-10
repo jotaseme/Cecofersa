@@ -115,12 +115,12 @@ class Usuario
     /**
      * @var \Asociados
      *
-     * @ORM\ManyToOne(targetEntity="Asociados")
+     * @ORM\ManyToOne(targetEntity="Asociados",inversedBy="usuarios")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="ID_ASOCIADO", referencedColumnName="ID_ASOCIADO")
+     * @ORM\JoinColumn(name="ID_ASOCIADO", referencedColumnName="ID_ASOCIADO")
      * })
      */
-    private $idAsociado;
+    protected $idAsociado;
 
     /**
      * @var \Proveedores
@@ -502,5 +502,15 @@ class Usuario
     public function getIdProveedor()
     {
         return $this->idProveedor;
+    }
+
+    /**
+     * Get usuarios
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsuarios()
+    {
+        return $this->usuarios;
     }
 }
