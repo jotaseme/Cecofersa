@@ -42,8 +42,23 @@
                         </div>
                         <div class="box-body">
                             <table id="asociados" class="table table-bordered table-striped">
+
+                                <div class="clearfix"></div>
                                 <thead>
+                                <div class="col-sm-4">
+                                    <a href="{{ path('asociados') }}"><button type="button" class="btn btn-block btn-primary {% if filter is null %} disabled{% endif %}">Todos</button></a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a href="{{ path('asociados',{'filter':'activos'}) }}"><button type="button" class="btn btn-block btn-primary {% if filter == 'activos' %} disabled{% endif %}">Activos</button></a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a href="{{ path('asociados',{'filter':'inactivos'}) }}"><button type="button" class="btn btn-block btn-primary {% if filter == 'inactivos' %} disabled{% endif %}">Inactivos</button></a>
+                                </div>
+                                <hr/>
+                                <br/>
                                 <tr>
+                                    <th>NIF</th>
+                                    <th>C&oacute;digo Cecofersa</th>
                                     <th>Nombre asociado</th>
                                     <th>Usuarios</th>
                                     <th>Status</th>
@@ -52,14 +67,18 @@
                                 <tbody>
                                 {% for asociado in asociados %}
                                     <tr>
+                                        <td>{{ asociado.nif }}</td>
+                                        <td>{{ '%04d'|format(asociado.codigoAsociado) }}</td>
                                         <td><a href=""> {{asociado.nombre }}</a></td>
-                                        <td><span class="badge"></span></td>
-                                        <td><span class="label label-success">Approved</span></td>
+                                        <td><span class="badge">{{ asociado.usuarios|length }}</span></td>
+                                        <td>{% if (asociado.activo) %}<span class="label label-success">Activo</span>{% else %}<span class="label label-warning">Inactivo</span>{% endif %}</td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
                                 <tfoot>
                                 <tr>
+                                    <th>NIF</th>
+                                    <th>C&oacute;digo Cecofersa</th>
                                     <th>Nombre asociado</th>
                                     <th>Usuarios</th>
                                     <th>Status</th>
