@@ -12,7 +12,7 @@ class AsociadosController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('default/index.html.twig', [
+        return $this->render('Backoffice/default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
         ]);
     }
