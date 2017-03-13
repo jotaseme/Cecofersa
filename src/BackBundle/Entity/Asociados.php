@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Asociados
  *
  * @ORM\Table(name="asociados")
- * @ORM\Entity(repositoryClass="BackBundle\Entity\AsociadosRepository")
+ * @ORM\Entity
  */
 class Asociados
 {
@@ -197,16 +197,6 @@ class Asociados
     private $activo = '1';
 
     /**
-     * @ORM\OneToMany(targetEntity="Usuario", mappedBy="idAsociado")
-     */
-    protected $usuarios;
-
-    function __construct()
-    {
-        $this->usuarios = new ArrayCollection();
-    }
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_alta", type="datetime", nullable=true)
@@ -220,6 +210,22 @@ class Asociados
      */
     private $fechaBaja;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_edicion", type="datetime", nullable=true)
+     */
+    private $fechaEdicion;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Usuario", mappedBy="idAsociado")
+     */
+    protected $usuarios;
+
+    function __construct()
+    {
+        $this->usuarios = new ArrayCollection();
+    }
 
 
     /**
@@ -878,6 +884,30 @@ class Asociados
     public function getFechaBaja()
     {
         return $this->fechaBaja;
+    }
+
+    /**
+     * Set fechaEdicion
+     *
+     * @param \DateTime $fechaEdicion
+     *
+     * @return Asociados
+     */
+    public function setFechaEdicion($fechaEdicion)
+    {
+        $this->fechaEdicion = $fechaEdicion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaEdicion
+     *
+     * @return \DateTime
+     */
+    public function getFechaEdicion()
+    {
+        return $this->fechaEdicion;
     }
 
     /**
