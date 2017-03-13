@@ -120,7 +120,7 @@ class Usuario
      * @ORM\JoinColumn(name="ID_ASOCIADO", referencedColumnName="ID_ASOCIADO")
      * })
      */
-    protected $idAsociado;
+    private $idAsociado;
 
     /**
      * @var \Proveedores
@@ -502,15 +502,5 @@ class Usuario
     public function getIdProveedor()
     {
         return $this->idProveedor;
-    }
-
-    /**
-     * Get usuarios
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getUsuarios()
-    {
-        return $this->usuarios;
     }
 }
