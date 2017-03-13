@@ -8,10 +8,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class AsociadosController extends Controller
 {
     /**
-     * @Route("/Admin/asociados/{filter}",name="asociados")
+     * @Route("/Admin/asociados/")
+     * @Route("/Admin/asociados/{filter}", name="asociados", defaults={"filter" = null})
      */
     public function indexAction($filter=null)
     {
+        if(is_numeric($filter)){
+            $response = $this->forward('BackBundle:Asociados:detalle', array(
+                'id_asociado'  => $filter,
+            ));
+            return $response;
+        }
         $asociados = $this->getDoctrine()
             ->getRepository('BackBundle:Asociados')
             ->findAllOrderedByName($filter);
@@ -19,7 +26,6 @@ class AsociadosController extends Controller
         return $this->render('Backoffice/Asociados/index.html.twig', [
             'asociados'=>$asociados,
             'filter'=>$filter
-
         ]);
     }
 
