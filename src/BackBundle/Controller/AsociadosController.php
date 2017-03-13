@@ -37,13 +37,12 @@ class AsociadosController extends Controller
         $asociado = $this->getDoctrine()
             ->getRepository('BackBundle:Asociados')
             ->find($id_asociado);
-        var_dump($asociado);die;
         if(!$asociado){
             throw $this->createNotFoundException(
                 'Error en la busqueda del asociado '
             );
         }
-        return $this->render('default/asociado.html.twig', [
+        return $this->render('Backoffice/Asociados/detalle_asociado.html.twig', [
             'asociado'=>$asociado
         ]);
 
