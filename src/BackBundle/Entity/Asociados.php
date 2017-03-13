@@ -206,6 +206,20 @@ class Asociados
         $this->usuarios = new ArrayCollection();
     }
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_alta", type="datetime", nullable=true)
+     */
+    private $fechaAlta;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_baja", type="datetime", nullable=true)
+     */
+    private $fechaBaja;
+
 
 
     /**
@@ -818,6 +832,53 @@ class Asociados
         return $this->activo;
     }
 
+    /**
+     * Set fechaAlta
+     *
+     * @param \DateTime $fechaAlta
+     *
+     * @return Asociados
+     */
+    public function setFechaAlta($fechaAlta)
+    {
+        $this->fechaAlta = $fechaAlta;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaAlta
+     *
+     * @return \DateTime
+     */
+    public function getFechaAlta()
+    {
+        return $this->fechaAlta;
+    }
+
+    /**
+     * Set fechaBaja
+     *
+     * @param \DateTime $fechaBaja
+     *
+     * @return Asociados
+     */
+    public function setFechaBaja($fechaBaja)
+    {
+        $this->fechaBaja = $fechaBaja;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaBaja
+     *
+     * @return \DateTime
+     */
+    public function getFechaBaja()
+    {
+        return $this->fechaBaja;
+    }
 
     /**
      * Get usuarios
