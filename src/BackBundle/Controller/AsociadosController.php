@@ -10,8 +10,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Response;
 
+
 class AsociadosController extends Controller
 {
+    private $user_session;
+
+    public function __construct()
+    {
+        $this->user_session = new Session();
+    }
     /**
      * @Route("/Admin/asociados/")
      * @Route("/Admin/asociados/{filter}", name="asociados", defaults={"filter" = null})
@@ -52,7 +59,6 @@ class AsociadosController extends Controller
         ]);
     }
 
-
     /**
      * @Route("/Admin/asociados/{id_asociado}/edit",name="edit_asociado", requirements={"id_asociado": "\d+"})
      * @Method({"GET"})
@@ -82,9 +88,45 @@ class AsociadosController extends Controller
      * @Route("/Admin/asociados/{id_asociado}/edit",name="edit_post_asociado", requirements={"id_asociado": "\d+"})
      * @Method({"POST"})
      */
-    public function editPOSTAsociadoAction(Request $request)
+    public function editPOSTAsociadoAction(Request $request,$id_asociado)
     {
-        die;
+        $asociado = $this->getDoctrine()
+            ->getRepository('BackBundle:Asociados')
+            ->find($id_asociado);
+        $form = $this->createForm(AsociadosType::class, $asociado);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                /* Datos del formulario */
+                $asociado->setFechaEdicion(new \DateTime("now"));
+                $this->getDoctrine()->getManager()->persist($asociado);
+                $this->getDoctrine()->getManager()->flush();
+                $status = '¡Asociado actualizado correctamente!';
+            } else {
+                $status = '¡Ha ocurrido un error! ¡Formulario invalido!';
+            }
+        } else {
+            $status = '¡Ha ocurrido un error! ¡Formulario no enviado!';
+        }
+        $this->user_session->getFlashBag()
+            ->add('status', $status);
+        return $this->render('Backoffice/Asociados/detalle_asociado.html.twig', [
+            'asociado'=>$asociado
+        ]);
+    }
 
+    /**
+     * @Route("/Admin/upload_image",options = { "expose" = true }, name="upload_image_asociado")
+     * @Method({"POST"})
+     */
+    public function uploadImageAsociado(Request $request)
+    {
+        $id_asociado = $request->query->get('id');
+        $file = $request->files;
+        $file = $file->get('kartik-input-705')[0];
+        if(!empty($file) && $file != null) {
+            $file_name = "1".'_'.time().'.'."jpg";
+            $file->move('img/Back/logos/',$file_name);
+        }
     }
 }
