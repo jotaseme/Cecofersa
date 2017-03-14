@@ -2,6 +2,7 @@
 
 namespace BackBundle\Controller;
 
+use BackBundle\Entity\Usuario;
 use BackBundle\Form\AsociadosType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -9,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Response;
+use Ddeboer\DataImport\Reader\CsvReader;
 
 
 class AsociadosController extends Controller
@@ -81,7 +83,6 @@ class AsociadosController extends Controller
             'asociado'=>$asociado,
             'form'=>$form_asociado->createView()
         ]);
-
     }
 
     /**
@@ -121,12 +122,58 @@ class AsociadosController extends Controller
      */
     public function uploadImageAsociado(Request $request)
     {
+        //TODO: poner el id del asociado al nombre de la foto para pisar la existente si la hubiera
         $id_asociado = $request->query->get('id');
         $file = $request->files;
         $file = $file->get('kartik-input-705')[0];
+        $ext = $file->guessExtension();
         if(!empty($file) && $file != null) {
-            $file_name = "1".'_'.time().'.'."jpg";
+            $file_name = $id_asociado.'.'.$ext;
             $file->move('img/Back/logos/',$file_name);
         }
+        echo json_encode(['msg'=>'¡Success!']);
+
+        return new Response();
+    }
+
+    /**
+     * @Route("/Admin/leerFichero", name="leer_fichero")
+     * @Method({"GET"})
+     */
+    public function leerAsociadosAction(){
+        $file = new \SplFileObject('../web/ficheroCSV/asociados.csv');
+        $reader = new CsvReader($file, ';');
+        $reader->setHeaderRowNumber(0);
+        foreach ($reader as $row) {
+            $id_asociado = $row['ID_ASOCIADO'];
+            if($id_asociado != null){
+                $asociado = $this->getDoctrine()
+                    ->getRepository('BackBundle:Asociados')
+                    ->find($id_asociado);
+                if($asociado!=null){
+                    $usuario = new Usuario();
+                    $usuario->setIdUsuario($row['ID_USUARIO']);
+                    $usuario->setLogin($row['LOGIN']);
+                    $usuario->setPassw($row['PASSW']);
+                    $usuario->setIdCliente($row['ID_CLIENTE']);
+                    $usuario->setEMail($row['E_MAIL']);
+                    $usuario->setAccWebPrivada($row['ACC_WEB_PRIVADA']);
+                    $usuario->setAccWebExpoVirtual($row['ACC_WEB_EXPO_VIRTUAL']);
+                    $usuario->setAccWebExpoReal($row['ACC_WEB_EXPO_REAL']);
+                    $usuario->setEstadoBloqueo($row['ESTADO_BLOQUEO']);
+
+                    if($row['TS_BLOQUEO']!="NULL" && $row['TS_BLOQUEO'] != null){
+                        $usuario->setTsBloqueo(new \DateTime($row['TS_BLOQUEO']));
+                    }
+                    if($row['RENOVACION_PASS'] != "NULL" && $row['RENOVACION_PASS'] != null){
+                        $usuario->setRenovacionPass(new \DateTime($row['RENOVACION_PASS']));
+                    }
+                    $usuario->setIdAsociado($asociado);
+                    $this->getDoctrine()->getManager()->persist($usuario);
+                    $this->getDoctrine()->getManager()->flush();
+                }
+            }
+        }
+        die;
     }
 }

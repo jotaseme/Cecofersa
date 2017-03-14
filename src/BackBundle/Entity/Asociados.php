@@ -218,7 +218,7 @@ class Asociados
     private $fechaEdicion;
 
     /**
-     * @ORM\OneToMany(targetEntity="Usuario", mappedBy="idAsociado")
+     * @ORM\OneToMany(targetEntity="UsuarioAsociado", mappedBy="idAsociado")
      */
     protected $usuarios;
 

@@ -50,6 +50,7 @@ doctrine:
         user: '%database_user%'
         password: '%database_password%'
         charset: UTF8
+        schema_filter: /^usuario/
         mapping_types:
                     enum: string
                     set: string
