@@ -2,6 +2,8 @@
 
 namespace BackBundle\Controller;
 
+use BackBundle\Entity\UsuarioAsociado;
+use BackBundle\Form\UsuarioAsociadoType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -11,6 +13,14 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UsuarioAsociadoController extends Controller
 {
+
+    private $user_session;
+
+    public function __construct()
+    {
+        $this->user_session = new Session();
+    }
+
     /**
      *
      * @Route("/Admin/asociados/{id_asociado}/{id_usuario}/edit", name="update_usuario_asociado")
@@ -70,6 +80,59 @@ class UsuarioAsociadoController extends Controller
             $response = array("status" => "error", "msg"=>"¡Ha ocurrido un error!");
             return new Response(json_encode($response));
         }
+    }
+
+    /**
+     * @Route("/Admin/asociados/{id_asociado}/usuario/create", name="create_usuario_asociado",
+     *     options = { "expose" = true },
+     *  )
+     * @Method({"POST"})
+     */
+    public function createUsuarioAction(Request $request, $id_asociado)
+    {
+        $usuario = new UsuarioAsociado();
+        $form = $this->createForm(UsuarioAsociadoType::class, $usuario);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()){
+            if ($form->isValid()){
+                $em = $this->getDoctrine()->getManager();
+                $asociado = $em->getRepository('BackBundle:Asociados')->find($id_asociado);
+                $usuarioByEmail = $em->getRepository('BackBundle:UsuarioAsociado')->findBy(array('eMail'=>$usuario->getEMail()));
+                $usuarioByLogin = $em->getRepository('BackBundle:UsuarioAsociado')->findBy(array('login'=>$usuario->getLogin()));
+                if($usuarioByEmail){
+                    $status = '¡Ya existe un usuario con ese email!';
+                    $this->user_session->getFlashBag()
+                        ->add('status', $status);
+                    return $this->redirect("/Admin/asociados/$id_asociado");
+                }
+                if($usuarioByLogin){
+                    $status = '¡Ya existe un usuario con ese Login!';
+                    $this->user_session->getFlashBag()
+                        ->add('status', $status);
+                    return $this->redirect("/Admin/asociados/$id_asociado");
+                }
+                if(!isset($asociado)){
+                    $status = '¡Ha ocurrido un error!';
+                }else{
+                    $usuario->setIdCliente($asociado->getCodigoAsociado());
+                    $usuario->setEstadoBloqueo('Normal');
+                    $usuario->setCreatedAt(new \DateTime('now'));
+                    $usuario->setIdAsociado($asociado);
+                    $em->persist($usuario);
+                    $em->flush();
+                    $status = '¡El usuario se ha creado correctamente!';
+                }
+            }else {
+                $status = '¡Ha ocurrido un error!';
+            }
+        }
+        else{
+            $status = '¡Ha ocurrido un error!';
+        }
+        $this->user_session->getFlashBag()
+                ->add('status', $status);
+
+        return $this->redirect("/Admin/asociados/$id_asociado");
     }
 
 

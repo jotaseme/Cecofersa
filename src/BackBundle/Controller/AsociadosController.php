@@ -3,7 +3,9 @@
 namespace BackBundle\Controller;
 
 use BackBundle\Entity\Usuario;
+use BackBundle\Entity\UsuarioAsociado;
 use BackBundle\Form\AsociadosType;
+use BackBundle\Form\UsuarioAsociadoType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -56,8 +58,19 @@ class AsociadosController extends Controller
                 'Error en la busqueda del asociado '
             );
         }
+        $usuario = new UsuarioAsociado();
+        $form_usuarioAsociado = $this->createForm(UsuarioAsociadoType::class, $usuario);
+
+        if(strlen("".$asociado->getCodigoAsociado())==3){
+            $codigo_asociado = "0".$asociado->getCodigoAsociado();
+        }else{
+            $codigo_asociado = $asociado->getCodigoAsociado();
+        }
+
+        $form_usuarioAsociado->get('idCliente')->setData($codigo_asociado);
         return $this->render('Backoffice/Asociados/detalle_asociado.html.twig', [
-            'asociado'=>$asociado
+            'asociado'=>$asociado,
+            'form' => $form_usuarioAsociado->createView()
         ]);
     }
 
