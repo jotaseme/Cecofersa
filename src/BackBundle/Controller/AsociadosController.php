@@ -122,18 +122,28 @@ class AsociadosController extends Controller
      */
     public function uploadImageAsociado(Request $request)
     {
-        //TODO: poner el id del asociado al nombre de la foto para pisar la existente si la hubiera
         $id_asociado = $request->query->get('id');
-        $file = $request->files;
-        $file = $file->get('kartik-input-705')[0];
-        $ext = $file->guessExtension();
-        if(!empty($file) && $file != null) {
-            $file_name = $id_asociado.'.'.$ext;
-            $file->move('img/Back/logos/',$file_name);
-        }
-        echo json_encode(['msg'=>'¡Success!']);
+        $asociado = $this->getDoctrine()
+            ->getRepository('BackBundle:Asociados')
+            ->find($id_asociado);
+        if($asociado!=null){
+            $file = $request->files;
+            $file = $file->get('kartik-input-705')[0];
+            $ext = $file->guessExtension();
+            if(!empty($file) && $file != null) {
+                $file_name = $id_asociado.'.'.'jpg';
+                $file->move('img/Back/logos/',$file_name);
+                $asociado->setLogotipo(1);
+                $this->getDoctrine()->getManager()->persist($asociado);
+                $this->getDoctrine()->getManager()->flush();
+            }
 
-        return new Response();
+            echo json_encode(['msg'=>'¡Success!']);
+
+            return new Response();
+        }else{
+            echo son_encode(['msg'=>'¡Ha ocurrido un erro!']);
+        }
     }
 
     /**

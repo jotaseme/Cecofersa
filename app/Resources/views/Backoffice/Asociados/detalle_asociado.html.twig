@@ -38,7 +38,9 @@
                                     </div>
                                     <div class="col-xs-12 col-sm-4">
                                         <figure>
-                                            <img class="image-box" src="{{ asset("img/Back/logos/" ~ asociado.idAsociado  ~ ".jpg") }}" style="height: auto; width: 250px">
+                                            {% if (asociado.logotipo == 1) %}
+                                                <img class="image-box" src="{{ asset("img/Back/logos/" ~ asociado.idAsociado  ~ ".jpg") }}" style="height: auto; width: 250px">
+                                            {% endif %}
                                         </figure>
                                         <div class="row">
                                             <hr/>
