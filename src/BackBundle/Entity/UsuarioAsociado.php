@@ -92,6 +92,20 @@ class UsuarioAsociado
     private $renovacionPass;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="CREATED_AT", type="datetime", nullable=true)
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="UPDATED_AT", type="datetime", nullable=true)
+     */
+    private $updatedAt;
+
+    /**
      * @var \Asociados
      *
      * @ORM\ManyToOne(targetEntity="Asociados",inversedBy="usuarios")
@@ -351,6 +365,54 @@ class UsuarioAsociado
     public function getRenovacionPass()
     {
         return $this->renovacionPass;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return UsuarioAsociado
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return UsuarioAsociado
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 
     /**
