@@ -23,9 +23,8 @@
             </ol>
         </section>
         <section class="content">
-            <div class="container">
                 <hr/>
-                <div class="col-xs-12 col-sm-9">
+                <div class="col-xs-12 col-md-6">
                     <div class="box box-default">
                         <div class="box-body">
                             <br/>
@@ -36,23 +35,17 @@
                                             <div class="alert alert-info">{{ message }}</div>
                                         {% endfor %}
                                     </div>
-                                    <div class="col-xs-12 col-sm-4">
+                                    <div class="col-xs-12 col-md-4">
                                         <figure>
                                             {% if (asociado.logotipo == 1) %}
                                                 <img class="image-box" src="{{ asset("img/Back/logos/" ~ asociado.idAsociado  ~ ".jpg") }}" style="height: auto; width: 250px">
+                                            {% else %}
+                                                <img class="image-box" src="" style="height: auto; width: 250px">
                                             {% endif %}
                                         </figure>
-                                        <div class="row">
-                                            <hr/>
-                                            <div class="col-xs-12 col-sm-6">
-                                                <a href="{{ path('edit_asociado',{'id_asociado': asociado.idAsociado }) }}"><button type="button" class="btn btn-block btn-primary">Editar</button></a>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-6">
-                                                <button type="button" class="btn btn-block btn-primary">Nuevo usuario</button>
-                                            </div>
-                                        </div>
+                                        <hr/>
                                     </div>
-                                    <div class="col-xs-12 col-sm-8">
+                                    <div class="col-xs-12 col-md-8">
                                         <ul class="list-group">
                                             <li class="list-group-item"><i class="fa fa-briefcase"></i> {{ asociado.nombre }}</li>
                                             <li class="list-group-item"><i class="fa fa-tag"></i> {{ asociado.nif }}</li>
@@ -66,13 +59,104 @@
                                             <li class="list-group-item"><i class="fa fa-barcode"></i> {{ '%04d'|format(asociado.codigoAsociado) }}</li>
                                         </ul>
                                     </div>
+                                    <hr/>
+                                    <div class="pull-left">
+                                        <a href="{{ path('asociados') }}"><button type="button" class="btn btn-primary">Volver a asociados</button></a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="{{ path('edit_asociado',{'id_asociado': asociado.idAsociado }) }}"><button type="button" class="btn btn-primary">Editar</button></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="col-xs-12 col-md-6">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Listado de usuarios de {{ asociado.nombre }}</h3>
+                        </div>
+                        <div class="box-body">
+                            <table id="usuarios" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Login</th>
+                                    <th>Email</th>
+                                    <th>Descargas</th>
+                                    <th>AreaPrivada</th>
+                                    <th>ExpoVirtual</th>
+                                    <th>ExpoReal</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for usuario in asociado.usuarios %}
+                                    <tr>
+                                        <td>{{ usuario.idUsuario }}</td>
+                                        <td><a href="#" id="login" class="login" data-type="text" data-pk="{{ usuario.idUsuario }}" data-url="{{ path("update_usuario_asociado",{'id_asociado':asociado.idAsociado,'id_usuario':usuario.idUsuario }) }}" data-title="Login usuario">{{ usuario.login }}</a></td>
+                                        <td><a href="#" id="email" class="email" data-type="email" data-pk="{{ usuario.idUsuario }}" data-url="{{ path("update_usuario_asociado",{'id_asociado':asociado.idAsociado,'id_usuario':usuario.idUsuario }) }}" data-title="Email usuario">{{ usuario.email }} </a></td>
+                                        <td><a href="#" id="estadoBloqueo" class="estadoBloqueo" data-type="select" data-pk="{{ usuario.idUsuario }}" data-url="{{ path("update_usuario_asociado",{'id_asociado':asociado.idAsociado,'id_usuario':usuario.idUsuario }) }}" data-title="Estado del usuario para descargas">{% if (usuario.estadoBloqueo=='Normal') %}<span class="label label-success">Activo</span>{% elseif(usuario.estadoBloqueo=='Permitido') %}<span class="label label-warning">Permitido</span>{% elseif(usuario.estadoBloqueo == 'Bloqueado') %}<span class="label label-danger">Bloqueado</span>{% endif %}</a></td>
+                                        <td><a href="#" id="areaPrivada" class="areaPrivada" data-type="select" data-pk="{{ usuario.idUsuario }}" data-url="{{ path("update_usuario_asociado",{'id_asociado':asociado.idAsociado,'id_usuario':usuario.idUsuario }) }}" data-title="Acceso Area Privada">{% if (usuario.accWebPrivada) %}<span class="label label-success">Activo</span>{% elseif(usuario.accWebPrivada==0) %}<span class="label label-danger">Bloqueado</span>{% endif %}</a></td>
+                                        <td><a href="#" id="expoVirtual" class="expoVirtual" data-type="select" data-pk="{{ usuario.idUsuario }}" data-url="{{ path("update_usuario_asociado",{'id_asociado':asociado.idAsociado,'id_usuario':usuario.idUsuario }) }}" data-title="Acceso ExpoVirtual">{% if (usuario.accWebExpoVirtual) %}<span class="label label-success">Activo</span>{% elseif(usuario.accWebExpoVirtual==0) %}<span class="label label-danger">Bloqueado</span>{% endif %}</a></td>
+                                        <td><a href="#" id="expoFisica" class="expoFisica" data-type="select" data-pk="{{ usuario.idUsuario }}" data-url="{{ path("update_usuario_asociado",{'id_asociado':asociado.idAsociado,'id_usuario':usuario.idUsuario }) }}" data-title="Acceso ExpoVirtual">{% if (usuario.accWebExpoReal) %}<span class="label label-success">Activo</span>{% elseif(usuario.accWebExpoReal==0) %}<span class="label label-danger">Bloqueado</span>{% endif %}</a></td>
+                                        <td></td>
+                                        <td><a id ="delete" href="#" data-id = "{{ usuario.idUsuario }}" data-href="#" data-toggle="modal" data-target="#confirm-delete"><span class="label label-pill label-danger"><i class="fa fa-trash"></i></span></a></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            <hr/>
+                            <div class="pull-right">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Nuevo usuario</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
         </section>
+
+        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Confirmar la eliminación del usuario</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Estás seguro de que quieres eliminar este usuario? <b>Si lo haces, no se podrá recuperar.</b></p>
+                        <p>¿Quieres proceder con esta acción?</p>
+                        <p class="debug-url"></p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <a id="delete-usuario" class="btn btn-danger btn-ok">Eliminar selección</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Alta de usuario de {{ asociado.nombre }}</h4>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </div>
     </body>
 {% endblock %}
@@ -80,4 +164,8 @@
 {% block javascripts %}
     {{ parent() }}
 
+    <script>var asociado = {{ asociado.idAsociado }}</script>
+    <script src="{{ asset ("bootstrap3-editable/js/bootstrap-editable.js") }}"></script>
+    <script src="{{ asset("js/customJS/usuariosJS.js") }}">
+    </script>
 {% endblock %}
