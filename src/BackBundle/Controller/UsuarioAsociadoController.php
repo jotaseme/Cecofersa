@@ -170,6 +170,11 @@ class UsuarioAsociadoController extends Controller
         if(!isset($usuario)){
             return $this->redirect("/Admin/asociados/$id_asociado");
         }
+
+
+        $descargas_dia = $em->getRepository('BackBundle:Descarga')->findDownloadsLast24H($id_usuario);
+        var_dump($descargas_dia);die;
+
         return $this->render('Backoffice/Asociados/detalle_usuario_asociado.html.twig', [
             'usuario'=>$usuario
         ]);

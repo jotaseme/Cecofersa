@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Descarga
  *
  * @ORM\Table(name="descarga", indexes={@ORM\Index(name="USUARIO_has_FICHERO_FKIndex2", columns={"FICHERO_ID_FICHERO"}), @ORM\Index(name="DESCARGA_FKIndex2", columns={"USUARIO_ID_USUARIO"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="BackBundle\Entity\DescargaRepository")
  */
 class Descarga
 {
