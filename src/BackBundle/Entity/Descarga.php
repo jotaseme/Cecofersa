@@ -14,10 +14,9 @@ class Descarga
 {
     /**
      * @var integer
-     *
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      * @ORM\Column(name="ID_DESCARGA", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idDescarga;
 
@@ -39,9 +38,9 @@ class Descarga
     private $ficheroFichero;
 
     /**
-     * @var \Usuario
+     * @var \UsuarioAsociado
      *
-     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\ManyToOne(targetEntity="UsuarioAsociado")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="USUARIO_ID_USUARIO", referencedColumnName="ID_USUARIO")
      * })
@@ -49,6 +48,16 @@ class Descarga
     private $usuarioUsuario;
 
 
+
+    /**
+     * Set idDescarga
+     *
+     */
+    public function setIdDescarga($id_descarga)
+    {
+        $this->idDescarga = $id_descarga;
+        return $this->idDescarga;
+    }
 
     /**
      * Get idDescarga
@@ -111,11 +120,11 @@ class Descarga
     /**
      * Set usuarioUsuario
      *
-     * @param \BackBundle\Entity\Usuario $usuarioUsuario
+     * @param \BackBundle\Entity\UsuarioAsociado $usuarioUsuario
      *
      * @return Descarga
      */
-    public function setUsuarioUsuario(\BackBundle\Entity\Usuario $usuarioUsuario = null)
+    public function setUsuarioUsuario(\BackBundle\Entity\UsuarioAsociado $usuarioUsuario = null)
     {
         $this->usuarioUsuario = $usuarioUsuario;
 
@@ -125,7 +134,7 @@ class Descarga
     /**
      * Get usuarioUsuario
      *
-     * @return \BackBundle\Entity\Usuario
+     * @return \BackBundle\Entity\UsuarioAsociado
      */
     public function getUsuarioUsuario()
     {

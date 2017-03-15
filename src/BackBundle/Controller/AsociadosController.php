@@ -2,6 +2,7 @@
 
 namespace BackBundle\Controller;
 
+use BackBundle\Entity\Descarga;
 use BackBundle\Entity\Usuario;
 use BackBundle\Entity\UsuarioAsociado;
 use BackBundle\Form\AsociadosType;
@@ -13,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Response;
 use Ddeboer\DataImport\Reader\CsvReader;
-
+ini_set('max_execution_time', 9200);
 
 class AsociadosController extends Controller
 {
@@ -164,39 +165,52 @@ class AsociadosController extends Controller
      * @Method({"GET"})
      */
     public function leerAsociadosAction(){
-        $file = new \SplFileObject('../web/ficheroCSV/asociados.csv');
+        die;
+        $file = new \SplFileObject('../web/ficheroCSV/descargas.csv');
         $reader = new CsvReader($file, ';');
         $reader->setHeaderRowNumber(0);
+        $batchSize = 8000;
+        $i=1;
+        var_dump("HOLA");
         foreach ($reader as $row) {
-            $id_asociado = $row['ID_ASOCIADO'];
-            if($id_asociado != null){
-                $asociado = $this->getDoctrine()
-                    ->getRepository('BackBundle:Asociados')
-                    ->find($id_asociado);
-                if($asociado!=null){
-                    $usuario = new Usuario();
-                    $usuario->setIdUsuario($row['ID_USUARIO']);
-                    $usuario->setLogin($row['LOGIN']);
-                    $usuario->setPassw($row['PASSW']);
-                    $usuario->setIdCliente($row['ID_CLIENTE']);
-                    $usuario->setEMail($row['E_MAIL']);
-                    $usuario->setAccWebPrivada($row['ACC_WEB_PRIVADA']);
-                    $usuario->setAccWebExpoVirtual($row['ACC_WEB_EXPO_VIRTUAL']);
-                    $usuario->setAccWebExpoReal($row['ACC_WEB_EXPO_REAL']);
-                    $usuario->setEstadoBloqueo($row['ESTADO_BLOQUEO']);
+            var_dump($row['ID_DESCARGA']."<br/>");
+            $id_usuario = $row['USUARIO_ID_USUARIO'];
+            $id_fichero = $row['FICHERO_ID_FICHERO'];
+            if($id_usuario != null && $id_fichero!=null){
+                $usuario = $this->getDoctrine()
+                    ->getRepository('BackBundle:UsuarioAsociado')
+                    ->find($id_usuario);
 
-                    if($row['TS_BLOQUEO']!="NULL" && $row['TS_BLOQUEO'] != null){
-                        $usuario->setTsBloqueo(new \DateTime($row['TS_BLOQUEO']));
+                $fichero = $this->getDoctrine()
+                    ->getRepository('BackBundle:Fichero')
+                    ->find($id_fichero);
+                if($usuario && $fichero){
+                    $descarga = new Descarga();
+
+                    $descarga->setFicheroFichero($fichero);
+                    $descarga->setUsuarioUsuario($usuario);
+                    $descarga->setFecha(new \DateTime($row['FECHA']));
+
+                    $this->getDoctrine()->getManager()->persist($descarga);
+
+                    if (($i % $batchSize) == 0) {
+                        $this->getDoctrine()->getManager()->flush();
+                        $this->getDoctrine()->getManager()->clear();
                     }
-                    if($row['RENOVACION_PASS'] != "NULL" && $row['RENOVACION_PASS'] != null){
-                        $usuario->setRenovacionPass(new \DateTime($row['RENOVACION_PASS']));
-                    }
-                    $usuario->setIdAsociado($asociado);
-                    $this->getDoctrine()->getManager()->persist($usuario);
-                    $this->getDoctrine()->getManager()->flush();
+                }else{
+                    echo "NO ENTRA";
                 }
+            }else{
+                echo "NO ENTRA";
             }
+            $usuario = null;
+            $fichero = null;
+            $i++;
         }
+        var_dump("ADIOS");
+        $this->getDoctrine()->getManager()->flush();
+        $this->getDoctrine()->getManager()->clear();
+        echo "FIN";
         die;
     }
 }

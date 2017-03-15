@@ -26,7 +26,8 @@
             <hr/>
             <div class="col-sm-12">
                 {% for message in app.session.flashbag().get('status') %}
-                    <div class="alert alert-info">{{ message }}</div>
+                    <div id="status" class="alert alert-info">{{ message }}</div>
+                    <div id="custom"></div>
                 {% endfor %}
             </div>
             <div class="col-xs-12 col-md-6">
@@ -72,6 +73,7 @@
                     </div>
                 </div>
             <div class="col-xs-12 col-md-6">
+
                     <div class="box box-default">
                         <div class="box-header with-border">
                             <h3 class="box-title">Listado de usuarios de {{ asociado.nombre }}</h3>
@@ -101,7 +103,7 @@
                                         <td><a href="#" id="areaPrivada" class="areaPrivada" data-type="select" data-pk="{{ usuario.idUsuario }}" data-url="{{ path("update_usuario_asociado",{'id_asociado':asociado.idAsociado,'id_usuario':usuario.idUsuario }) }}" data-title="Acceso Area Privada">{% if (usuario.accWebPrivada) %}<span class="label label-success">Activo</span>{% elseif(usuario.accWebPrivada==0) %}<span class="label label-danger">Bloqueado</span>{% endif %}</a></td>
                                         <td><a href="#" id="expoVirtual" class="expoVirtual" data-type="select" data-pk="{{ usuario.idUsuario }}" data-url="{{ path("update_usuario_asociado",{'id_asociado':asociado.idAsociado,'id_usuario':usuario.idUsuario }) }}" data-title="Acceso ExpoVirtual">{% if (usuario.accWebExpoVirtual) %}<span class="label label-success">Activo</span>{% elseif(usuario.accWebExpoVirtual==0) %}<span class="label label-danger">Bloqueado</span>{% endif %}</a></td>
                                         <td><a href="#" id="expoFisica" class="expoFisica" data-type="select" data-pk="{{ usuario.idUsuario }}" data-url="{{ path("update_usuario_asociado",{'id_asociado':asociado.idAsociado,'id_usuario':usuario.idUsuario }) }}" data-title="Acceso ExpoVirtual">{% if (usuario.accWebExpoReal) %}<span class="label label-success">Activo</span>{% elseif(usuario.accWebExpoReal==0) %}<span class="label label-danger">Bloqueado</span>{% endif %}</a></td>
-                                        <td></td>
+                                        <td><a href="{{ path("show_usuario_asociado",{ 'id_asociado': asociado.idAsociado,'id_usuario':usuario.idUsuario }) }}"><span class="label label-pill label-primary"><i class="fa fa-eye"></i></span></a></td>
                                         <td><a id ="delete" href="#" data-id = "{{ usuario.idUsuario }}" data-href="#" data-toggle="modal" data-target="#confirm-delete"><span class="label label-pill label-danger"><i class="fa fa-trash"></i></span></a></td>
                                     </tr>
                                 {% endfor %}

@@ -157,4 +157,21 @@ class UsuarioAsociadoController extends Controller
             return new Response(json_encode($response));
         }
     }
+
+
+    /**
+     * @Route("/Admin/asociados/{id_asociado}/usuarios/{id_usuario}/", name="show_usuario_asociado")
+     * @Method({"get"})
+     */
+    public function showUsuarioAction($id_asociado,$id_usuario)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $usuario = $em->getRepository('BackBundle:UsuarioAsociado')->find($id_usuario);
+        if(!isset($usuario)){
+            return $this->redirect("/Admin/asociados/$id_asociado");
+        }
+        return $this->render('Backoffice/Asociados/detalle_usuario_asociado.html.twig', [
+            'usuario'=>$usuario
+        ]);
+    }
 }

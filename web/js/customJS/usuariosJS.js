@@ -15,9 +15,10 @@ $(document).ready(function(){
                 dataType: "json",
                 success: function (response) {
                     if(response.success==true){
-                        $('#deleted-usuario').removeAttr('hidden').addClass('alert alert-success').append('ï¿½Consumo eliminado correctamente!');
+                        $('#status').addClass('hidden');
+                        $('#custom').removeAttr('hidden').addClass('alert alert-success').html("").append('¡Usuario eliminado correctamente!');
                     }else{
-                        $('#deleted-usuario').removeAttr('hidden').addClass('alert alert-danger').append('ï¿½ERROR! Ha ocurrido un error eliminando el consumo.');
+                        $('#deleted-usuario').removeAttr('hidden').addClass('alert alert-danger').append('¡ERROR! El usuario no se ha borrado!');
                     }
                 }
             });

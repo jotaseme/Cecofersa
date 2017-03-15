@@ -1,0 +1,61 @@
+{% extends 'Backoffice/base.html.twig' %}
+{% block body %}
+    <body class="skin-red-light">
+    <div class="wrapper">
+        {% block header %}
+            {% include 'Backoffice/header.html.twig' %}
+        {% endblock %}
+
+        {% block sidebar %}
+            {% include 'Backoffice/sidebar.html.twig' %}
+        {% endblock %}
+    </div>
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                {{ usuario.getIdAsociado.nombre }} - {{ usuario.login }}
+                <small>Estadisticas de usuario</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="{{ path('asociados') }}">Asociados</a></li>
+                <li><a href="{{ path('detalle_asociado',{'id_asociado':usuario.getIdAsociado.getIdAsociado}) }}">{{ usuario.getIdAsociado.nombre }}</a></li>
+                <li><a href="#">{{ usuario.login }}</a></li>
+            </ol>
+        </section>
+        <section class="content">
+            <hr/>
+            <div class="col-sm-12">
+                {% for message in app.session.flashbag().get('status') %}
+                    <div id="status" class="alert alert-info">{{ message }}</div>
+                    <div id="custom"></div>
+                {% endfor %}
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Últimas descargas</h3>
+                    </div>
+                    <div class="box-body">
+                    </div>
+                </div>
+                </div>
+            <div class="col-xs-12 col-md-6">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Listado</h3>
+                        </div>
+                        <div class="box-body">
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+    </div>
+    </body>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset ("bootstrap3-editable/js/bootstrap-editable.js") }}"></script>
+{% endblock %}
