@@ -71,7 +71,7 @@
                                         <td>{{ '%04d'|format(asociado.codigoAsociado) }}</td>
                                         <td><a href="{{ path('detalle_asociado',{'id_asociado':asociado.idAsociado}) }}"> {{asociado.nombre }}</a></td>
                                         <td><span class="badge">{{ asociado.usuarios|length }}</span></td>
-                                        <td>{% if (asociado.activo) %}<span class="label label-success">Activo</span>{% else %}<span class="label label-warning">Inactivo</span>{% endif %}</td>
+                                        <td>{% if (asociado.activo) %}<span class="label label-success">Activo</span>{% else %}<span class="label label-warning">Baja</span>{% endif %}</td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>

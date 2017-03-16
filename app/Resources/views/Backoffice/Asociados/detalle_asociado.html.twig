@@ -36,27 +36,68 @@
                             <br/>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <div class="col-xs-12 col-md-4">
+                                    <div class="col-xs-12 col-md-5">
                                         <figure>
                                             {% if (asociado.logotipo == 1) %}
                                                 <img class="image-box" src="{{ asset("img/Back/logos/" ~ asociado.idAsociado  ~ ".jpg") }}" style="height: auto; width: 250px">
                                             {% else %}
-                                                <img class="image-box" src="" style="height: auto; width: 250px">
+                                                <div class="col-xs-12">
+                                                    <input id="input-705" name="kartik-input-705[]" type="file" multiple class="file-loading">
+                                                </div>
                                             {% endif %}
                                         </figure>
                                         <hr/>
                                     </div>
-                                    <div class="col-xs-12 col-md-8">
+                                    <div class="col-xs-12 col-md-7">
                                         <ul class="list-group">
-                                            <li class="list-group-item"><i class="fa fa-briefcase"></i> {{ asociado.nombre }}</li>
-                                            <li class="list-group-item"><i class="fa fa-tag"></i> {{ asociado.nif }}</li>
-                                            <li class="list-group-item"><i class="fa fa-map-marker"></i> {{ asociado.domicilio }}</li>
-                                            <li class="list-group-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{ asociado.provincia }}</li>
-                                            <li class="list-group-item"><i class="fa fa-phone"></i> {% if(asociado.pais)=='ES' %} España {% elseif(asociado.pais=='PT') %} Portugal{% endif %}</li>
-                                            <li class="list-group-item"><i class="fa fa-user"></i> {{ asociado.contacto }}</li>
-                                            <li class="list-group-item"><i class="fa fa-phone"></i> {{ asociado.telefono }}</li>
-                                            <li class="list-group-item"><i class="fa fa-fax"></i> {{ asociado.fax }}</li>
-                                            <li class="list-group-item"><i class="fa fa-envelope"></i> {{ asociado.eMail }}</li>
+                                            <li class="list-group-item">
+                                                <i class="fa fa-briefcase"></i>
+                                                <a href="#" id="nombre-asociado" class="nombre-asociado" data-type="text" data-pk="{{ asociado.idAsociado }}" data-url="{{ path("update_post_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Nombre del asociado">{{ asociado.nombre }}</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <i class="fa fa-tag"></i>
+                                                <a href="#" id="nif-asociado" class="nif-asociado" data-type="text" data-pk="{{ asociado.idAsociado }}" data-url="{{ path("update_post_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="NIF del asociado">{{ asociado.nif }}</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <i class="fa fa-map-marker"></i>
+                                                <a href="#" id="domicilio-asociado" class="domicilio-asociado" data-type="text" data-pk="{{ asociado.idAsociado }}" data-url="{{ path("update_post_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Domicilio del asociado">{{ asociado.domicilio }}</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <i class="fa fa-map-marker"></i>
+                                                <a href="#" id="codPostal-asociado" class="codPostal-asociado" data-type="text" data-pk="{{ asociado.idAsociado }}" data-url="{{ path("update_post_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Codigo postal del asociado">{{ asociado.codigoPostal }}</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                                                <a href="#" id="provincia-asociado" class="provincia-asociado" data-type="select" data-pk="{{ asociado.idAsociado }}" data-url="{{ path("update_post_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Provincia del asociado">{{ asociado.provincia }}</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                                                <a href="#" id="comunidad-asociado" class="comunidad-asociado" data-type="select" data-pk="{{ asociado.idAsociado }}" data-url="{{ path("update_post_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Comunidad autónoma del asociado">{{ asociado.comunidadAutonoma }}</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <i class="fa fa-phone"></i>
+                                                <a href="#" id="pais-asociado" class="pais-asociado" data-type="select" data-pk="{{ asociado.idAsociado }}" data-url="{{ path("update_post_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Pais del asociado"> {% if(asociado.pais)=='ES' %} España {% elseif(asociado.pais=='PT') %} Portugal{% endif %} </a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <i class="fa fa-user"></i>
+                                                <a href="#" id="contacto-asociado" class="contacto-asociado" data-type="text" data-pk="{{ asociado.idAsociado }}" data-url="{{ path("update_post_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Persona de contacto"> {{ asociado.contacto }} </a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <i class="fa fa-phone"></i>
+                                                <a href="#" id="telefono-asociado" class="telefono-asociado" data-type="text" data-pk="{{ asociado.idAsociado }}" data-url="{{ path("update_post_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Teléfono de contacto"> {{ asociado.telefono }} </a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <i class="fa fa-fax"></i>
+                                                <a href="#" id="fax-asociado" class="fax-asociado" data-type="text" data-pk="{{ asociado.idAsociado }}" data-url="{{ path("update_post_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Fax de contacto"> {{ asociado.fax }} </a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <i class="fa fa-envelope"></i>
+                                                <a href="#" id="email-asociado" class="email-asociado" data-type="text" data-pk="{{ asociado.idAsociado }}" data-url="{{ path("update_post_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Email de contacto"> {{ asociado.eMail }} </a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <i class="fa fa-status "></i>
+                                                Estado del asociado: <a href="#" id="estado-asociado" class="estado-asociado" data-type="select" data-pk="{{ asociado.idAsociado }}" data-url="{{ path("update_post_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Estado del asociado"> {% if(asociado.activo)=='0' %} <span class="label label-warning">Baja</span> {% elseif(asociado.activo=='1') %} <span class="label label-success">Activo</span> {% endif %} </a>
+                                            </li>
                                             <li class="list-group-item"><i class="fa fa-barcode"></i> {{ '%04d'|format(asociado.codigoAsociado) }}</li>
                                         </ul>
                                     </div>
@@ -65,7 +106,7 @@
                                         <a href="{{ path('asociados') }}"><button type="button" class="btn btn-primary">Volver a asociados</button></a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="{{ path('edit_asociado',{'id_asociado': asociado.idAsociado }) }}"><button type="button" class="btn btn-primary">Editar</button></a>
+                                        <span class="time">Última edición <i class="fa fa-clock-o"></i>{{ asociado.fechaEdicion|date('d/m/Y H:i:s') }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -149,7 +190,6 @@
                         <h4 class="modal-title">Alta de usuario de {{ asociado.nombre }}</h4>
                     </div>
                     <style>
-
                         .form-submit.btn.btn-primary {
                             float: right;
                             margin-top: 30px;
@@ -179,9 +219,26 @@
 
 {% block javascripts %}
     {{ parent() }}
-
-    <script>var asociado = {{ asociado.idAsociado }}</script>
+    <script>
+        var asociado = {{ asociado.idAsociado }}
+        var array_provincias = {{ array_provincias|raw }}
+        var array_comunidades = {{ array_comunidades|raw }}
+    </script>
     <script src="{{ asset ("bootstrap3-editable/js/bootstrap-editable.js") }}"></script>
-    <script src="{{ asset("js/customJS/usuariosJS.js") }}">
+    <script src="{{ asset("js/customJS/usuariosJS.js") }}"></script>
+    <script src="{{ asset("js/customJS/asociadosJS.js") }}"></script>
+    <script>
+        var $input = $("#input-705");
+        var path = Routing.generate('upload_image_asociado', { id: {{ asociado.idAsociado  }}});
+        $input.fileinput({
+            uploadUrl: path,
+            uploadAsync: false,
+            showUpload: false,
+            showRemove: false,
+            minFileCount: 1,
+            maxFileCount: 1
+        }).on("filebatchselected", function(event, files) {
+            $input.fileinput("upload");
+        });
     </script>
 {% endblock %}

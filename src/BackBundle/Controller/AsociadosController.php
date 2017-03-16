@@ -68,35 +68,105 @@ class AsociadosController extends Controller
             $codigo_asociado = $asociado->getCodigoAsociado();
         }
 
+        $array_provincias = ['Álava','Albacete','Alicante','Almería','Asturias','Avila','Badajoz','Barcelona','Burgos','Cáceres',
+            'Cádiz','Cantabria','Castellón','Ciudad Real','Córdoba','La Coruña','Cuenca','Gerona','Granada','Guadalajara',
+            'Guipúzcoa','Huelva','Huesca','Islas Baleares','Jaén','León','Lérida','Lugo','Madrid','Málaga','Murcia','Navarra',
+            'Orense','Palencia','Las Palmas','Pontevedra','La Rioja','Salamanca','Segovia','Sevilla','Soria','Tarragona',
+            'Santa Cruz de Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya','Zamora','Zaragoza','Ceuta',
+            'Melilla','Lisboa','Leiria','Santarém','Setúbal','Beja','Faro','Ávora','Portalegre','Castelo Branco',
+            'Guarda','Coimbra','Aveiro','Viseu','Braganza','Vila Real','Porto','Braga','Viana do Castelo','Horta (Azores)'];
+
+        $array_comunidades = ["Andalucía", "Aragón", "Islas Canarias", "Cantabria", "Castilla y León", "Castilla-La Mancha",
+            "Cataluña", "Ceuta", "Comunidad Valenciana", "Comunidad de Madrid", "Extremadura", "Galicia", "Islas Baleares", "La Rioja",
+            "Melilla", "Navarra", "País Vasco", "Principado de Asturias", "Murcia", 'Portugal','Andorra'];
+
+
         $form_usuarioAsociado->get('idCliente')->setData($codigo_asociado);
         return $this->render('Backoffice/Asociados/detalle_asociado.html.twig', [
             'asociado'=>$asociado,
-            'form' => $form_usuarioAsociado->createView()
+            'form' => $form_usuarioAsociado->createView(),
+            'array_provincias' =>json_encode($array_provincias),
+            'array_comunidades'=>json_encode($array_comunidades)
         ]);
     }
 
+
     /**
-     * @Route("/Admin/asociados/{id_asociado}/edit",name="edit_asociado", requirements={"id_asociado": "\d+"})
-     * @Method({"GET"})
+     * @Route("/Admin/asociados/{id_asociado}/edit",name="update_post_asociado", requirements={"id_asociado": "\d+"})
+     * @Method({"POST"})
      */
-    public function editAsociadoAction($id_asociado)
+    public function updatePOSTAsociadoAction(Request $request)
     {
-        $asociado = $this->getDoctrine()
-            ->getRepository('BackBundle:Asociados')
-            ->find($id_asociado);
-
-        $form_asociado = $this->createForm(AsociadosType::class, $asociado);
-        $form_asociado->get('provincia')->setData(ucfirst(strtolower($asociado->getProvincia())));
-
-        if(!$asociado){
-            throw $this->createNotFoundException(
-                'Error en la busqueda del asociado '
-            );
+        $id_asociado = $request->get('pk');
+        $em = $this->getDoctrine()->getManager();
+        $asociado = $em->getRepository('BackBundle:Asociados')->find($id_asociado);
+        if($asociado) {
+            if ($request->get('name') == 'nombre-asociado') {
+                $nombre = $request->get('value');
+                $asociadoByNombre = $em->getRepository('BackBundle:Asociados')->findBy(array('nombre'=>$nombre));
+                if($asociadoByNombre){
+                    $response = array("status" => "error", "msg"=>"¡Ya existe un asociado con ese nombre!");
+                    return new Response(json_encode($response));
+                }else{
+                    $asociado->setNombre($nombre);
+                }
+            }elseif($request->get('name') == 'nif-asociado'){
+                $nif = $request->get('value');
+                $asociadoByNIF = $em->getRepository('BackBundle:Asociados')->findBy(array('nif'=>$nif));
+                if($asociadoByNIF){
+                    $response = array("status" => "error", "msg"=>"¡Ya existe un asociado con ese NIF!");
+                    return new Response(json_encode($response));
+                }else{
+                    $asociado->setNif($nif);
+                }
+            }elseif($request->get('name') == 'domicilio-asociado'){
+                $domicilio = $request->get('value');
+                $asociado->setDomicilio($domicilio);
+            }elseif($request->get('name') == 'codPostal-asociado'){
+                $codigo_postal = $request->get('value');
+                $asociado->setCodigoPostal($codigo_postal);
+            }elseif($request->get('name') == 'comunidad-asociado'){
+                $comunidad = $request->get('value');
+                $asociado->setComunidadAutonoma($comunidad);
+            }elseif($request->get('name') == 'pais-asociado'){
+                $pais = $request->get('value');
+                $asociado->setPais($pais);
+            }elseif($request->get('name') == 'contacto-asociado'){
+                $nombre_contacto = $request->get('value');
+                $asociado->setContacto($nombre_contacto);
+            }elseif($request->get('name') == 'telefono-asociado'){
+                $telefono = $request->get('value');
+                $asociado->setTelefono($telefono);
+            }elseif($request->get('name') == 'fax-asociado'){
+                $fax = $request->get('value');
+                $asociado->setFax($fax);
+            }elseif($request->get('name') == 'email-asociado'){
+                $email = $request->get('value');
+                $asociadoByEmail = $em->getRepository('BackBundle:Asociados')->findBy(array('eMail'=>$email));
+                if($asociadoByEmail){
+                    $response = array("status" => "error", "msg"=>"¡Ya existe un asociado con ese email de contacto!");
+                    return new Response(json_encode($response));
+                }else{
+                    $asociado->setEMail($email);
+                }
+            }elseif($request->get('name')=='estado-asociado'){
+                $estado = $request->get('value');
+                $asociado->setActivo($estado);
+            }
+            else{
+                $response = array("status" => "error", "msg"=>"¡Ha ocurrido un error!");
+                return new Response(json_encode($response));
+            }
+            $asociado->setFechaEdicion(new \DateTime('now'));
+            $em->persist($asociado);
+            $em->flush();
+            $response = array("code" => 200, "success" => true);
+            return new Response(json_encode($response));
+        }else{
+            $response = array("status" => "error", "msg"=>"¡Ha ocurrido un error!");
+            return new Response(json_encode($response));
         }
-        return $this->render('Backoffice/Asociados/edit_asociado.html.twig', [
-            'asociado'=>$asociado,
-            'form'=>$form_asociado->createView()
-        ]);
+
     }
 
     /**
@@ -105,14 +175,14 @@ class AsociadosController extends Controller
      */
     public function editPOSTAsociadoAction(Request $request,$id_asociado)
     {
-        $asociado = $this->getDoctrine()
+        /*$asociado = $this->getDoctrine()
             ->getRepository('BackBundle:Asociados')
             ->find($id_asociado);
         $form = $this->createForm(AsociadosType::class, $asociado);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
-                /* Datos del formulario */
+
                 $asociado->setFechaEdicion(new \DateTime("now"));
                 $this->getDoctrine()->getManager()->persist($asociado);
                 $this->getDoctrine()->getManager()->flush();
@@ -127,7 +197,7 @@ class AsociadosController extends Controller
             ->add('status', $status);
         return $this->render('Backoffice/Asociados/detalle_asociado.html.twig', [
             'asociado'=>$asociado
-        ]);
+        ]);*/
     }
 
     /**
@@ -171,7 +241,6 @@ class AsociadosController extends Controller
         $reader->setHeaderRowNumber(0);
         $batchSize = 8000;
         $i=1;
-        var_dump("HOLA");
         foreach ($reader as $row) {
             var_dump($row['ID_DESCARGA']."<br/>");
             $id_usuario = $row['USUARIO_ID_USUARIO'];
@@ -207,7 +276,6 @@ class AsociadosController extends Controller
             $fichero = null;
             $i++;
         }
-        var_dump("ADIOS");
         $this->getDoctrine()->getManager()->flush();
         $this->getDoctrine()->getManager()->clear();
         echo "FIN";

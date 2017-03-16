@@ -71,7 +71,7 @@ class UsuarioAsociadoController extends Controller
                 $response = array("status" => "error", "msg"=>"¡Ha ocurrido un error!");
                 return new Response(json_encode($response));
             }
-
+            $usuario->setUpdatedAt(new \DateTime('now'));
             $em->persist($usuario);
             $em->flush();
             $response = array("code" => 200, "success" => true);
@@ -157,7 +157,6 @@ class UsuarioAsociadoController extends Controller
             return new Response(json_encode($response));
         }
     }
-
 
     /**
      * @Route("/Admin/asociados/{id_asociado}/usuarios/{id_usuario}", name="show_usuario_asociado")
