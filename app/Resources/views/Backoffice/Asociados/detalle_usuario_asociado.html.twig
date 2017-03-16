@@ -1,61 +1,252 @@
 {% extends 'Backoffice/base.html.twig' %}
 {% block body %}
     <body class="skin-red-light">
-    <div class="wrapper">
-        {% block header %}
-            {% include 'Backoffice/header.html.twig' %}
-        {% endblock %}
+        <div class="wrapper">
+            {% block header %}
+                {% include 'Backoffice/header.html.twig' %}
+            {% endblock %}
 
-        {% block sidebar %}
-            {% include 'Backoffice/sidebar.html.twig' %}
-        {% endblock %}
-    </div>
-    <div class="content-wrapper">
-        <section class="content-header">
-            <h1>
-                {{ usuario.getIdAsociado.nombre }} - {{ usuario.login }}
-                <small>Estadisticas de usuario</small>
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="{{ path('asociados') }}">Asociados</a></li>
-                <li><a href="{{ path('detalle_asociado',{'id_asociado':usuario.getIdAsociado.getIdAsociado}) }}">{{ usuario.getIdAsociado.nombre }}</a></li>
-                <li><a href="#">{{ usuario.login }}</a></li>
-            </ol>
-        </section>
-        <section class="content">
-            <hr/>
-            <div class="col-sm-12">
-                {% for message in app.session.flashbag().get('status') %}
-                    <div id="status" class="alert alert-info">{{ message }}</div>
-                    <div id="custom"></div>
-                {% endfor %}
-            </div>
-            <div class="col-xs-12 col-md-6">
-                <div class="box box-default">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Últimas descargas</h3>
-                    </div>
-                    <div class="box-body">
-                    </div>
+            {% block sidebar %}
+                {% include 'Backoffice/sidebar.html.twig' %}
+            {% endblock %}
+        </div>
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>
+                    {{ usuario.getIdAsociado.nombre }} - {{ usuario.login }}
+                    <small>Estadisticas de usuario</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li><a href="{{ path('asociados') }}">Asociados</a></li>
+                    <li><a href="{{ path('detalle_asociado',{'id_asociado':usuario.getIdAsociado.getIdAsociado}) }}">{{ usuario.getIdAsociado.nombre }}</a></li>
+                    <li><a href="#">{{ usuario.login }}</a></li>
+                </ol>
+            </section>
+            <section class="content">
+                <hr/>
+                <div class="col-sm-12">
+                    {% for message in app.session.flashbag().get('status') %}
+                        <div id="status" class="alert alert-info">{{ message }}</div>
+                        <div id="custom"></div>
+                    {% endfor %}
                 </div>
-                </div>
-            <div class="col-xs-12 col-md-6">
+                <div class="col-xs-12 col-md-6">
                     <div class="box box-default">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Listado</h3>
+                            <h3 class="box-title">Control descargas de {{ usuario.login }}</h3>
                         </div>
                         <div class="box-body">
+                            <div class="col-xs-12">
+                                <div class="col-xs-12 col-md-4">
+                                    <div class="info-box bg-red">
+                                        <span class="info-box-icon"><i class="ion ion-ios-cloud-download-outline"></i></span>
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">&Uacute;ltimas 24H</span>
+                                            <span class="info-box-number">{{ dia }}</span>
+                                            <div class="progress">
+                                                <div class="progress-bar" style="width: {{ porcentaje_dia }}%"></div>
+                                            </div>
+                                      <span class="progress-description">
+                                        {{ porcentaje_dia|number_format(0) }}%
+                                      </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-4">
+                                    <div class="info-box bg-red">
+                                        <span class="info-box-icon"><i class="ion ion-ios-cloud-download-outline"></i></span>
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">&Uacute;ltimos 7 d&iacute;as</span>
+                                            <span class="info-box-number">{{ semana }}</span>
+                                            <div class="progress">
+                                                <div class="progress-bar" style="width: {{ porcentaje_semana }}%"></div>
+                                            </div>
+                                      <span class="progress-description">
+                                        {{ porcentaje_semana|number_format(0) }}%
+                                      </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-4">
+                                    <div class="info-box bg-red">
+                                        <span class="info-box-icon"><i class="ion ion-ios-cloud-download-outline"></i></span>
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">&Uacute;ltimos 30 d&iacute;as</span>
+                                            <span class="info-box-number">{{ mes }}</span>
+                                            <div class="progress">
+                                                <div class="progress-bar" style="width: {{ porcentaje_mes }}%"></div>
+                                            </div>
+                                      <span class="progress-description">
+                                       {{ porcentaje_mes|number_format(0) }}%
+                                      </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Últimas descargas las descargas</h3>
+                        </div>
+                        <div class="box-body">
+                            <table id="descargas" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Nombre fichero</th>
+                                    <th>Fecha</th>
+                                    <th>Hora</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for descarga in pagination %}
+                                    <tr>
+                                        <td>{{ descarga.ficheroFichero.path }}/{{ descarga.ficheroFichero.nombre }}</td>
+                                        <td>{{ descarga.fecha|date("d/m/Y") }}</td>
+                                        <td>{{ descarga.fecha|date("H:i:s") }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                            <div class="navigation">
+                                {{ knp_pagination_render(pagination) }}
+                            </div>
+
                         </div>
                     </div>
                 </div>
-        </section>
 
-    </div>
+                <div class="col-xs-12 col-md-6">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Hist&oacute;rico de descargas</h3>
+                        </div>
+                        <div class="box-body">
+                            <div id="container"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Hist&oacute;rico de descargas</h3>
+                        </div>
+                        <div class="box-body">
+                            <div id="historico"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
     </body>
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset ("bootstrap3-editable/js/bootstrap-editable.js") }}"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+
+    <script>
+        $(function () {
+            $('#container').highcharts({
+                chart: {
+                    type: 'spline'
+                },
+                title: {
+                    text: 'Evolución de las descargas de {{ usuario.login }}'
+                },
+                subtitle: {
+                    text: 'Descargas menusales del asociado hasta el día actual'
+                },
+                xAxis: {
+                    type: 'datetime',
+                    dateTimeLabelFormats: { // don't display the dummy year
+                        month: '%e. %b',
+                        year: '%b'
+                    },
+                    title: {
+                        text: 'Mes'
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: 'Descargas totales'
+                    },
+                    min: 0
+                },
+                tooltip: {
+                    headerFormat: '<b>{series.name}</b><br>',
+                    pointFormat: '{point.x:%e. %b}: {point.y:.0f}'
+                },
+
+                plotOptions: {
+                    spline: {
+                        marker: {
+                            enabled: true
+                        }
+                    }
+                },
+
+                series: {{ historico_descargas|json_encode|raw }}
+            });
+        });
+    </script>
+    <script>
+        $(function () {
+            $('#historico').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Histórico anual de descargas'
+                },
+                subtitle: {
+                    text: 'Usuario: {{ usuario.login }}'
+                },
+                xAxis: {
+                    type: 'category',
+                    labels: {
+                        rotation: -45,
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Descargas'
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                tooltip: {
+                    pointFormat: '<b>{point.y} </b>'
+                },
+                series: [{
+                    name: 'Descargas    ',
+                    data: {{ historico_anual|raw }},
+                    dataLabels: {
+                        enabled: true,
+                        rotation: -90,
+                        color: '#FFFFFF',
+                        align: 'right',
+
+                        y: 10, // 10 pixels down from the top
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                }]
+            });
+        });
+    </script>
+
 {% endblock %}
