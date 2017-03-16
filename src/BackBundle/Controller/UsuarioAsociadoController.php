@@ -183,22 +183,27 @@ class UsuarioAsociadoController extends Controller
         $this->actYear = $date->format('Y');
         $current_year = $this->actYear;
         $serie = array();
-        for($a=$años[0][1];$a<=$current_year;$a++)
-        {
-            $array=array();
-            for($i=1;$i<=12;$i++)
+        if(sizeof($años)!=0){
+            for($a=$años[0][1];$a<=$current_year;$a++)
             {
-                $contador = (int)$this->getDoctrine()
-                    ->getRepository('BackBundle:Descarga')
-                    ->count_downloads($i,$a,$id_usuario);
-                array_push($array,[strtotime('01-'.$i.'-2014') * 1000, $contador]);
+                $array=array();
+                for($i=1;$i<=12;$i++)
+                {
+                    $contador = (int)$this->getDoctrine()
+                        ->getRepository('BackBundle:Descarga')
+                        ->count_downloads($i,$a,$id_usuario);
+                    array_push($array,[strtotime('01-'.$i.'-2014') * 1000, $contador]);
+                }
+                $serie_aux = array(
+                    'name'=>"Descargas ".$a,
+                    'data'=>$array
+                );
+                array_push($serie,$serie_aux);
             }
-            $serie_aux = array(
-                'name'=>"Descargas ".$a,
-                'data'=>$array
-            );
-            array_push($serie,$serie_aux);
+        }else{
+            $serie = null;
         }
+
 
         if($descargas_dia==0){
             $porcentaje_dia = 0;
