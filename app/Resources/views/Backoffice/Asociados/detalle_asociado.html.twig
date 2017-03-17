@@ -10,7 +10,7 @@
             {% include 'Backoffice/sidebar.html.twig' %}
         {% endblock %}
     </div>
-    <div class="content-wrapper" style="height: calc(200vh);">
+    <div class="content-wrapper" style="height: calc(250vh);">
         <section class="content-header">
             <h1>
                 {{ asociado.nombre }}
@@ -30,7 +30,7 @@
                     <div id="custom"></div>
                 {% endfor %}
             </div>
-            <div class="col-xs-12 col-md-6">
+            <div class="col-xs-12 col-md-5">
                     <div class="box box-default">
                         <div class="box-header with-border">
                             <h3 class="box-title">Ficha del asociado {{ asociado.nombre }}</h3>
@@ -116,7 +116,7 @@
                         </div>
                     </div>
                 </div>
-            <div class="col-xs-12 col-md-6">
+            <div class="col-xs-12 col-md-7">
                     <div class="box box-default">
                         <div class="box-header with-border">
                             <h3 class="box-title">Listado de usuarios de {{ asociado.nombre }}</h3>
@@ -160,7 +160,7 @@
                     </div>
                 </div>
             <div class="col-xs-12" style="padding-left: 0px;">
-                <div class="col-xs-12 col-md-6">
+                <div class="col-xs-12 col-md-5">
                     <div class="box box-default">
                         <div class="box-header with-border">
                             <h3 class="box-title">Ficha de familias</h3>
@@ -229,13 +229,85 @@
                                     </tfoot>
                                 </table>
                             </div>
-
                         </div>
                     </div>
                 </div>
+                <div class="col-xs-12">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Direcciones registradas del asociado {{ asociado.nombre }}</h3>
+                        </div>
+                        <div class="box-body">
+                            <table id="direcciones" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Domicilio</th>
+                                    <th>CP</th>
+                                    <th>Poblacion</th>
+                                    <th>Provincia</th>
+                                    <th>Comunidad autonoma</th>
+                                    <th>Pais</th>
+                                    <th>Tel&eacute;fono</th>
+                                    <th>Fax</th>
+                                    <th>Oficina</th>
+                                    <th>Almacen</th>
+                                    <th>Tienda</th>
+                                    <th>Privado</th>
+                                    <th>Etiquetas</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for direccion in direcciones %}
+                                    <tr>
+                                        <td>
+                                            <a href="#" id="domicilio-direccion-asociado" class="domicilio-direccion-asociado" data-type="text" data-pk="{{ direccion.idDirecciones }}" data-url="{{ path("update_post_direccion_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Dirección del asociado">{{ direccion.domicilio }}</a>
+                                        </td>
+                                        <td>
+                                            <a href="#" id="codigoPostal-direccion-asociado" class="codigoPostal-direccion-asociado" data-type="text" data-pk="{{ direccion.idDirecciones }}" data-url="{{ path("update_post_direccion_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Codigo postal del asociado">{{ direccion.codigoPostal }}</a>
+                                        </td>
+                                        <td>
+                                            <a href="#" id="poblacion-direccion-asociado" class="poblacion-direccion-asociado" data-type="text" data-pk="{{ direccion.idDirecciones }}" data-url="{{ path("update_post_direccion_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Población del asociado">{{ direccion.poblacion }}</a>
+                                        </td>
+                                        <td>
+                                            <a href="#" id="provincia-direccion-asociado" class="provincia-direccion-asociado" data-type="select" data-pk="{{ direccion.idDirecciones }}" data-url="{{ path("update_post_direccion_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Provincia del asociado">{{ direccion.provincia }}</a>
+                                        </td>
+                                        <td>
+                                            <a href="#" id="comunidadAutonoma-direccion-asociado" class="comunidadAutonoma-direccion-asociado" data-type="select" data-pk="{{ direccion.idDirecciones }}" data-url="{{ path("update_post_direccion_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Comunidad autónoma del asociado">{{ direccion.comunidadAutonoma }}</a>
+                                        </td>
+                                        <td>
+                                            <a href="#" id="pais-direccion-asociado" class="pais-direccion-asociado" data-type="select" data-pk="{{ direccion.idDirecciones }}" data-url="{{ path("update_post_direccion_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Pais del asociado">{{ direccion.pais }}</a>
+                                        </td>
+                                        <td>
+                                            <a href="#" id="telefono-direccion-asociado" class="telefono-direccion-asociado" data-type="text" data-pk="{{ direccion.idDirecciones }}" data-url="{{ path("update_post_direccion_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Teléfono del asociado">{{ direccion.telefono }}</a>
+                                        </td>
+                                        <td>
+                                            <a href="#" id="fax-direccion-asociado" class="fax-direccion-asociado" data-type="text" data-pk="{{ direccion.idDirecciones }}" data-url="{{ path("update_post_direccion_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Fax del asociado">{{ direccion.fax }}</a>
+                                        </td>
+                                        <td>
+                                            <a href="#" id="oficina-direccion-asociado" class="oficina-direccion-asociado" data-type="select" data-pk="{{ direccion.idDirecciones }}" data-url="{{ path("update_post_direccion_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Dirección de oficina">{% if (direccion.oficina == 'VERDADERO') %} <i class="fa fa-check"></i> {% else %}<i class="fa fa-close"></i>{% endif %}</a>
+                                        </td>
+                                        <td>
+                                            <a href="#" id="almacen-direccion-asociado" class="almacen-direccion-asociado" data-type="select" data-pk="{{ direccion.idDirecciones }}" data-url="{{ path("update_post_direccion_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Dirección de almacen">{% if (direccion.almacen == 'VERDADERO') %} <i class="fa fa-check"></i> {% else %}<i class="fa fa-close"></i>{% endif %}</a>
+                                        </td>
+                                        <td>
+                                            <a href="#" id="tienda-direccion-asociado" class="tienda-direccion-asociado" data-type="select" data-pk="{{ direccion.idDirecciones }}" data-url="{{ path("update_post_direccion_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Dirección de tienda">{% if (direccion.tienda == 'VERDADERO') %} <i class="fa fa-check"></i> {% else %}<i class="fa fa-close"></i>{% endif %}</a>
+                                        </td>
+                                        <td>
+                                            <a href="#" id="privado-direccion-asociado" class="privado-direccion-asociado" data-type="select" data-pk="{{ direccion.idDirecciones }}" data-url="{{ path("update_post_direccion_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Dirección privada">{% if (direccion.privado == 'VERDADERO') %} <i class="fa fa-check"></i> {% else %}<i class="fa fa-close"></i>{% endif %}</a>
+                                        </td>
+                                        <td>
+                                            <a href="#" id="etiquetas-direccion-asociado" class="etiquetas-direccion-asociado" data-type="select" data-pk="{{ direccion.idDirecciones }}" data-url="{{ path("update_post_direccion_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Dirección activa para hacer etiquetas">{% if (direccion.etiquetas == 'VERDADERO') %} <i class="fa fa-check"></i> {% else %}<i class="fa fa-close"></i>{% endif %}</a>
+
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-
-
         <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -303,6 +375,193 @@
     <script src="{{ asset ("bootstrap3-editable/js/bootstrap-editable.js") }}"></script>
     <script src="{{ asset("js/customJS/usuariosJS.js") }}"></script>
     <script src="{{ asset("js/customJS/asociadosJS.js") }}"></script>
+    <script src="{{ asset("js/customJS/familiasJS.js") }}"></script>
+    <script>
+        $('#direcciones').DataTable({
+            "ordering": false,
+            "pageLength":20,
+            "lengthChange": false,
+            "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $('.domicilio-direccion-asociado').editable({
+                    validate: function(value) {
+                        if (value === null || value === '') {
+                            return '¡Este campo no puede estar vacio!';
+                        }
+                    },
+                    success: function(response, newValue) {
+                        response = $.parseJSON(response);
+                        if(response.status == 'error'){
+                            return response.msg; //msg will be shown in editable form
+                        }
+                    }
+                });
+                $('.codigoPostal-direccion-asociado').editable({
+                    validate: function(value) {
+                        if (value === null || value === '') {
+                            return '¡Este campo no puede estar vacio!';
+                        }
+                    },
+                    success: function(response, newValue) {
+                        response = $.parseJSON(response);
+                        if(response.status == 'error'){
+                            return response.msg; //msg will be shown in editable form
+                        }
+                    }
+                });
+                $('.poblacion-direccion-asociado').editable({
+                    validate: function(value) {
+                        if (value === null || value === '') {
+                            return '¡Este campo no puede estar vacio!';
+                        }
+                    },
+                    success: function(response, newValue) {
+                        response = $.parseJSON(response);
+                        if(response.status == 'error'){
+                            return response.msg; //msg will be shown in editable form
+                        }
+                    }
+                });
+                $('.provincia-direccion-asociado').editable({
+
+                    source:  array_provincias,
+                    validate: function(value) {
+                        if (value === null || value === '') {
+                            return '¡Este campo no puede estar vacio!';
+                        }
+                    },
+                    success: function(response, newValue) {
+                        response = $.parseJSON(response);
+                        if(response.status == 'error') return response.msg; //msg will be shown in editable form
+                    }
+                });
+                $('.comunidadAutonoma-direccion-asociado').editable({
+
+                    source:  array_comunidades,
+                    validate: function(value) {
+                        if (value === null || value === '') {
+                            return '¡Este campo no puede estar vacio!';
+                        }
+                    },
+                    success: function(response, newValue) {
+                        response = $.parseJSON(response);
+                        if(response.status == 'error') return response.msg; //msg will be shown in editable form
+                    }
+                });
+                $('.pais-direccion-asociado').editable({
+                    source: [
+                        {value: 'ESPAÑA', text: 'España'},
+                        {value: 'PORTUGAL', text: 'Portugal'}
+                    ],
+                    validate: function(value) {
+                        if (value === null || value === '') {
+                            return '¡Este campo no puede estar vacio!';
+                        }
+                    },
+                    success: function(response, newValue) {
+                        response = $.parseJSON(response);
+                        if(response.status == 'error') return response.msg; //msg will be shown in editable form
+                    }
+                });
+                $('.telefono-direccion-asociado').editable({
+                    validate: function(value) {
+                        if (value === null || value === '') {
+                            return '¡Este campo no puede estar vacio!';
+                        }
+                    },
+                    success: function(response, newValue) {
+                        response = $.parseJSON(response);
+                        if(response.status == 'error') return response.msg; //msg will be shown in editable form
+                    }
+                });
+                $('.fax-direccion-asociado').editable({
+                    validate: function(value) {
+                        if (value === null || value === '') {
+                            return '¡Este campo no puede estar vacio!';
+                        }
+                    },
+                    success: function(response, newValue) {
+                        response = $.parseJSON(response);
+                        if(response.status == 'error') return response.msg; //msg will be shown in editable form
+                    }
+                });
+                $('.oficina-direccion-asociado').editable({
+                    source: [
+                        {value: 'VERDADERO', text: 'Activar'},
+                        {value: 'FALSE', text: 'Desactivar'}
+                    ],
+                    validate: function(value) {
+                        if (value === null || value === '') {
+                            return '¡Este campo no puede estar vacio!';
+                        }
+                    },
+                    success: function(response, newValue) {
+                        response = $.parseJSON(response);
+                        if(response.status == 'error') return response.msg; //msg will be shown in editable form
+                    }
+                });
+                $('.almacen-direccion-asociado').editable({
+                    source: [
+                        {value: 'VERDADERO', text: 'Activar'},
+                        {value: 'FALSE', text: 'Desactivar'}
+                    ],
+                    validate: function(value) {
+                        if (value === null || value === '') {
+                            return '¡Este campo no puede estar vacio!';
+                        }
+                    },
+                    success: function(response, newValue) {
+                        response = $.parseJSON(response);
+                        if(response.status == 'error') return response.msg; //msg will be shown in editable form
+                    }
+                });
+                $('.tienda-direccion-asociado').editable({
+                    source: [
+                        {value: 'VERDADERO', text: 'Activar'},
+                        {value: 'FALSE', text: 'Desactivar'}
+                    ],
+                    validate: function(value) {
+                        if (value === null || value === '') {
+                            return '¡Este campo no puede estar vacio!';
+                        }
+                    },
+                    success: function(response, newValue) {
+                        response = $.parseJSON(response);
+                        if(response.status == 'error') return response.msg; //msg will be shown in editable form
+                    }
+                });
+                $('.privado-direccion-asociado').editable({
+                    source: [
+                        {value: 'VERDADERO', text: 'Activar'},
+                        {value: 'FALSE', text: 'Desactivar'}
+                    ],
+                    validate: function(value) {
+                        if (value === null || value === '') {
+                            return '¡Este campo no puede estar vacio!';
+                        }
+                    },
+                    success: function(response, newValue) {
+                        response = $.parseJSON(response);
+                        if(response.status == 'error') return response.msg; //msg will be shown in editable form
+                    }
+                });
+                $('.etiquetas-direccion-asociado').editable({
+                    source: [
+                        {value: 'VERDADERO', text: 'Activar'},
+                        {value: 'FALSE', text: 'Desactivar'}
+                    ],
+                    validate: function(value) {
+                        if (value === null || value === '') {
+                            return '¡Este campo no puede estar vacio!';
+                        }
+                    },
+                    success: function(response, newValue) {
+                        response = $.parseJSON(response);
+                        if(response.status == 'error') return response.msg; //msg will be shown in editable form
+                    }
+                });
+            }
+        });
+    </script>
     <script>
         var $input = $("#input-705");
         var path = Routing.generate('upload_image_asociado', { id: {{ asociado.idAsociado  }}});
@@ -317,28 +576,6 @@
 
         }).on("filebatchselected", function(event, files) {
             $input.fileinput("upload");
-        });
-    </script>
-    <script>
-        $('.familia-asociado').editable({
-            source: [
-                {value: 'GR', text: 'Grande'},
-                {value: 'MD', text: 'Medio'},
-                {value: 'MN', text: 'Mínimo'}
-            ],
-            validate: function(value) {
-                if (value === null || value === '') {
-                    return '¡Este campo no puede estar vacio!';
-                }
-            },
-            success: function(response, newValue) {
-                response = $.parseJSON(response);
-                if(response.status == 'error'){
-                    return response.msg; //msg will be shown in editable form
-                }else{
-                    location.reload();
-                }
-            }
         });
     </script>
 {% endblock %}

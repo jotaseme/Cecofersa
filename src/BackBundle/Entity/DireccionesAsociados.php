@@ -78,30 +78,30 @@ class DireccionesAsociados
     private $fax;
 
     /**
-     * @var boolean
+     * @var string
      *
-     * @ORM\Column(name="oficina", type="boolean", nullable=true)
+     * @ORM\Column(name="oficina", type="string", length=45, nullable=true)
      */
     private $oficina;
 
     /**
-     * @var boolean
+     * @var string
      *
-     * @ORM\Column(name="almacen", type="boolean", nullable=true)
+     * @ORM\Column(name="almacen", type="string", length=45, nullable=true)
      */
     private $almacen;
 
     /**
-     * @var boolean
+     * @var string
      *
-     * @ORM\Column(name="tienda", type="boolean", nullable=true)
+     * @ORM\Column(name="tienda", type="string", length=45, nullable=true)
      */
     private $tienda;
 
     /**
-     * @var boolean
+     * @var string
      *
-     * @ORM\Column(name="privado", type="boolean", nullable=true)
+     * @ORM\Column(name="privado", type="string", length=45, nullable=true)
      */
     private $privado;
 
@@ -113,11 +113,25 @@ class DireccionesAsociados
     private $observaciones;
 
     /**
-     * @var boolean
+     * @var string
      *
-     * @ORM\Column(name="etiquetas", type="boolean", nullable=true)
+     * @ORM\Column(name="etiquetas", type="string", length=45, nullable=true)
      */
     private $etiquetas;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdAt", type="datetime", nullable=true)
+     */
+    private $createdat;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updatedAt", type="datetime", nullable=true)
+     */
+    private $updatedat;
 
     /**
      * @var \Asociados
@@ -336,7 +350,7 @@ class DireccionesAsociados
     /**
      * Set oficina
      *
-     * @param boolean $oficina
+     * @param string $oficina
      *
      * @return DireccionesAsociados
      */
@@ -350,7 +364,7 @@ class DireccionesAsociados
     /**
      * Get oficina
      *
-     * @return boolean
+     * @return string
      */
     public function getOficina()
     {
@@ -360,7 +374,7 @@ class DireccionesAsociados
     /**
      * Set almacen
      *
-     * @param boolean $almacen
+     * @param string $almacen
      *
      * @return DireccionesAsociados
      */
@@ -374,7 +388,7 @@ class DireccionesAsociados
     /**
      * Get almacen
      *
-     * @return boolean
+     * @return string
      */
     public function getAlmacen()
     {
@@ -384,7 +398,7 @@ class DireccionesAsociados
     /**
      * Set tienda
      *
-     * @param boolean $tienda
+     * @param string $tienda
      *
      * @return DireccionesAsociados
      */
@@ -398,7 +412,7 @@ class DireccionesAsociados
     /**
      * Get tienda
      *
-     * @return boolean
+     * @return string
      */
     public function getTienda()
     {
@@ -408,7 +422,7 @@ class DireccionesAsociados
     /**
      * Set privado
      *
-     * @param boolean $privado
+     * @param string $privado
      *
      * @return DireccionesAsociados
      */
@@ -422,7 +436,7 @@ class DireccionesAsociados
     /**
      * Get privado
      *
-     * @return boolean
+     * @return string
      */
     public function getPrivado()
     {
@@ -456,7 +470,7 @@ class DireccionesAsociados
     /**
      * Set etiquetas
      *
-     * @param boolean $etiquetas
+     * @param string $etiquetas
      *
      * @return DireccionesAsociados
      */
@@ -470,11 +484,59 @@ class DireccionesAsociados
     /**
      * Get etiquetas
      *
-     * @return boolean
+     * @return string
      */
     public function getEtiquetas()
     {
         return $this->etiquetas;
+    }
+
+    /**
+     * Set createdat
+     *
+     * @param \DateTime $createdat
+     *
+     * @return DireccionesAsociados
+     */
+    public function setCreatedat($createdat)
+    {
+        $this->createdat = $createdat;
+
+        return $this;
+    }
+
+    /**
+     * Get createdat
+     *
+     * @return \DateTime
+     */
+    public function getCreatedat()
+    {
+        return $this->createdat;
+    }
+
+    /**
+     * Set updatedat
+     *
+     * @param \DateTime $updatedat
+     *
+     * @return DireccionesAsociados
+     */
+    public function setUpdatedat($updatedat)
+    {
+        $this->updatedat = $updatedat;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedat
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedat()
+    {
+        return $this->updatedat;
     }
 
     /**

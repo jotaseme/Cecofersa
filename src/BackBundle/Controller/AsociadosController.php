@@ -3,6 +3,7 @@
 namespace BackBundle\Controller;
 
 
+use BackBundle\Entity\DireccionesAsociados;
 use BackBundle\Entity\Usuario;
 use BackBundle\Entity\UsuarioAsociado;
 use BackBundle\Form\UsuarioAsociadoType;
@@ -12,6 +13,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Response;
+use Ddeboer\DataImport\Reader\CsvReader;
+
 ini_set('max_execution_time', 9200);
 
 class AsociadosController extends Controller
@@ -58,11 +61,22 @@ class AsociadosController extends Controller
             );
         }
 
+        $direcciones = $this->getDoctrine()
+            ->getRepository('BackBundle:DireccionesAsociados')
+            ->findBy(array('idasociado'=>$id_asociado));
+
         $familias =  $this->getDoctrine()
             ->getRepository('BackBundle:FamiliasAsociados')
             ->findAllOrderedByName($id_asociado);
 
         $bloque_familias = array_chunk($familias, 20);
+        if(sizeof($familias)== 0){
+            $familias1=null;
+            $familias2=null;
+        }else{
+            $familias1 = $bloque_familias[0];
+            $familias2 = $bloque_familias[1];
+        }
 
         $usuario = new UsuarioAsociado();
         $form_usuarioAsociado = $this->createForm(UsuarioAsociadoType::class, $usuario);
@@ -91,8 +105,9 @@ class AsociadosController extends Controller
             'form' => $form_usuarioAsociado->createView(),
             'array_provincias' =>json_encode($array_provincias),
             'array_comunidades'=>json_encode($array_comunidades),
-            'familias1'=>$bloque_familias[0],
-            'familias2'=>$bloque_familias[1]
+            'familias1'=>$familias1,
+            'familias2'=>$familias2,
+            'direcciones'=>$direcciones
         ]);
     }
 
@@ -264,11 +279,45 @@ class AsociadosController extends Controller
      * @Method({"GET"})
      */
     public function leerAsociadosAction(){
-        die;
-        $file = new \SplFileObject('../web/ficheroCSV/descargas.csv');
+
+        $file = new \SplFileObject('../web/ficheroCSV/direcciones.csv');
         $reader = new CsvReader($file, ';');
         $reader->setHeaderRowNumber(0);
+        foreach ($reader as $row) {
+            $codigo_asociado = $row['CODIGO'];
+            $asociado = $this->getDoctrine()
+                ->getRepository('BackBundle:Asociados')
+                ->findBy(array('codigoAsociado'=>$codigo_asociado));
+            if($asociado){
+                $direccion = new DireccionesAsociados();
+                $direccion->setIdasociado($asociado[0]);
+                $direccion->setDomicilio(utf8_encode(trim($row['DOMICILIO'])));
+                $direccion->setCodigoPostal($row['CODIGO POSTAL']);
+                $direccion->setPoblacion(utf8_encode(trim($row['POBLACION'])));
+                $direccion->setProvincia(utf8_encode(trim($row['PROVINCIA'])));
+                $direccion->setComunidadAutonoma(utf8_encode(trim($row['COMUNIDAD AUTONOMA'])));
+                $direccion->setPais(utf8_encode(trim($row['PAIS'])));
+                $direccion->setTelefono($row['TELEFONO']);
+                $direccion->setFax($row['FAX']);
+                $direccion->setOficina($row['OFICINA']);
+                $direccion->setAlmacen($row['ALMACEN']);
+                $direccion->setTienda($row['TIENDA']);
+                $direccion->setPrivado($row['PRIVADO']);
+                $direccion->setObservaciones($row['OBSERVACIONES']);
+                $direccion->setEtiquetas($row['ETIQUETAS']);
+                $direccion->setUpdatedat(new \DateTime('now'));
+                $direccion->setCreatedat(new \DateTime('now'));
 
+                $this->getDoctrine()->getManager()
+                    ->persist($direccion);
+            }else{
+                print_r($row['CODIGO']." " . "<br/>");
+            }
+
+        }
+
+        $this->getDoctrine()->getManager()
+            ->flush();
         echo "FIN";
         die;
     }
