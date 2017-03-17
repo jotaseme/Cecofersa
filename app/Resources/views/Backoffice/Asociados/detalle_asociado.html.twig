@@ -10,7 +10,7 @@
             {% include 'Backoffice/sidebar.html.twig' %}
         {% endblock %}
     </div>
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="height: calc(200vh);">
         <section class="content-header">
             <h1>
                 {{ asociado.nombre }}
@@ -117,7 +117,6 @@
                     </div>
                 </div>
             <div class="col-xs-12 col-md-6">
-
                     <div class="box box-default">
                         <div class="box-header with-border">
                             <h3 class="box-title">Listado de usuarios de {{ asociado.nombre }}</h3>
@@ -157,11 +156,85 @@
                             <div class="pull-right">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Nuevo usuario</button>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-xs-12" style="padding-left: 0px;">
+                <div class="col-xs-12 col-md-6">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Ficha de familias</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="col-xs-12 col-md-6">
+                                <table id="usuarios" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>GR</th>
+                                        <th>MD</th>
+                                        <th>MN</th>
+                                        <th>Familia</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for familia in familias1 %}
+                                        {% if familia.nombreFamilia != 'OTRAS (*)' %}
+                                            <tr>
+                                                <td>{%  if familia.volumen == 'GR' %}<span class="label label-primary">GR</span>{% endif %}</td>
+                                                <td>{%  if familia.volumen == 'MD' %}<span class="label label-primary">MD</span>{% endif %}</td>
+                                                <td>{%  if familia.volumen == 'MN' %}<span class="label label-primary">MN</span>{% endif %}</td>
+                                                <td>
+                                                    <a href="#" id="familia-asociado" class="familia-asociado" data-type="select" data-pk="{{ familia.idFamiliasAsociados }}" data-url="{{ path("update_post_familia_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Volumen de la familia">{{ familia.nombreFamilia }}</a>
+                                                </td>
+                                            </tr>
+                                        {% endif %}
+                                    {% endfor %}
+                                    </tbody>
+                                    <tfoot>
+                                    <th>GR</th>
+                                    <th>MD</th>
+                                    <th>MN</th>
+                                    <th>Familia</th>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <table id="usuarios" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>GR</th>
+                                        <th>MD</th>
+                                        <th>MN</th>
+                                        <th>Familia</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for familia in familias2 %}
+                                        {% if familia.nombreFamilia != 'OTRAS (*)' %}
+                                            <tr>
+                                                <td>{%  if familia.volumen == 'GR' %}<span class="label label-primary">GR</span>{% endif %}</td>
+                                                <td>{%  if familia.volumen == 'MD' %}<span class="label label-primary">MD</span>{% endif %}</td>
+                                                <td>{%  if familia.volumen == 'MN' %}<span class="label label-primary">MN</span>{% endif %}</td>
+                                                <td>
+                                                    <a href="#" id="familia-asociado1" class="familia-asociado" data-type="select" data-pk="{{ familia.idFamiliasAsociados }}" data-url="{{ path("update_post_familia_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Volumen de la familia">{{ familia.nombreFamilia }}</a>
+                                                </td>
+                                        {% endif %}
+                                    {% endfor %}
+                                    </tbody>
+                                    <tfoot>
+                                    <th>GR</th>
+                                    <th>MD</th>
+                                    <th>MN</th>
+                                    <th>Familia</th>
+                                    </tfoot>
+                                </table>
+                            </div>
 
                         </div>
                     </div>
                 </div>
-        </section>
+            </div>
+
 
         <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -215,7 +288,7 @@
 
             </div>
         </div>
-
+        </section>
     </div>
     </body>
 {% endblock %}
@@ -244,6 +317,28 @@
 
         }).on("filebatchselected", function(event, files) {
             $input.fileinput("upload");
+        });
+    </script>
+    <script>
+        $('.familia-asociado').editable({
+            source: [
+                {value: 'GR', text: 'Grande'},
+                {value: 'MD', text: 'Medio'},
+                {value: 'MN', text: 'Mínimo'}
+            ],
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
+                }
+            },
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error'){
+                    return response.msg; //msg will be shown in editable form
+                }else{
+                    location.reload();
+                }
+            }
         });
     </script>
 {% endblock %}

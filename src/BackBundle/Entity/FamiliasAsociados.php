@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * FamiliasAsociados
  *
  * @ORM\Table(name="familias_asociados", indexes={@ORM\Index(name="fk_asociado_idx", columns={"id_asociado"}), @ORM\Index(name="fk_familia_idx", columns={"id_familia"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="BackBundle\Entity\FamiliasAsociadosRepository")
  */
 class FamiliasAsociados
 {
@@ -29,14 +29,11 @@ class FamiliasAsociados
     private $volumen;
 
     /**
-     * @var \Asociados
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="Asociados")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_asociado", referencedColumnName="ID_ASOCIADO")
-     * })
+     * @ORM\Column(name="nombre_familia", type="string", length=255, nullable=true)
      */
-    private $idAsociado;
+    private $nombreFamilia;
 
     /**
      * @var \Familias
@@ -47,6 +44,16 @@ class FamiliasAsociados
      * })
      */
     private $idFamilia;
+
+    /**
+     * @var \Asociados
+     *
+     * @ORM\ManyToOne(targetEntity="Asociados")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_asociado", referencedColumnName="ID_ASOCIADO")
+     * })
+     */
+    private $idAsociado;
 
 
 
@@ -85,27 +92,27 @@ class FamiliasAsociados
     }
 
     /**
-     * Set idAsociado
+     * Set nombreFamilia
      *
-     * @param \BackBundle\Entity\Asociados $idAsociado
+     * @param string $nombreFamilia
      *
      * @return FamiliasAsociados
      */
-    public function setIdAsociado(\BackBundle\Entity\Asociados $idAsociado = null)
+    public function setNombreFamilia($nombreFamilia)
     {
-        $this->idAsociado = $idAsociado;
+        $this->nombreFamilia = $nombreFamilia;
 
         return $this;
     }
 
     /**
-     * Get idAsociado
+     * Get nombreFamilia
      *
-     * @return \BackBundle\Entity\Asociados
+     * @return string
      */
-    public function getIdAsociado()
+    public function getNombreFamilia()
     {
-        return $this->idAsociado;
+        return $this->nombreFamilia;
     }
 
     /**
@@ -130,5 +137,29 @@ class FamiliasAsociados
     public function getIdFamilia()
     {
         return $this->idFamilia;
+    }
+
+    /**
+     * Set idAsociado
+     *
+     * @param \BackBundle\Entity\Asociados $idAsociado
+     *
+     * @return FamiliasAsociados
+     */
+    public function setIdAsociado(\BackBundle\Entity\Asociados $idAsociado = null)
+    {
+        $this->idAsociado = $idAsociado;
+
+        return $this;
+    }
+
+    /**
+     * Get idAsociado
+     *
+     * @return \BackBundle\Entity\Asociados
+     */
+    public function getIdAsociado()
+    {
+        return $this->idAsociado;
     }
 }

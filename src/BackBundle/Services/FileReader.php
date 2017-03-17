@@ -4,11 +4,12 @@ namespace BackBundle\Services;
 
 use BackBundle\Entity\Asociados;
 use BackBundle\Entity\Familias;
+use BackBundle\Entity\FamiliasAsociados;
 use Doctrine\ORM\EntityManager;
 use Ddeboer\DataImport\Reader\CsvReader;
 use Symfony\Component\Validator\Constraints\DateTime;
 
-ini_set('memory_limit', '256M');
+ini_set('memory_limit', '512M');
 ini_set('max_execution_time', 9200);
 
 class FileReader
@@ -91,15 +92,37 @@ class FileReader
 
         foreach ($reader as $id => $row) {
             $familia = $this->em->getRepository('BackBundle:Familias')
-                ->findBy(array('nombreFamilia'=>$row['FAMILIA']));
+                ->findBy(array('nombreFamilia'=>utf8_encode($row['FAMILIA'])));
             if(!$familia){
                 $familia = new Familias();
-                $familia->setNombreFamilia($row['FAMILIA']);
+                $familia->setNombreFamilia(utf8_encode($row['FAMILIA']));
                 $this->em->persist($familia);
                 $this->em->flush();
             }
+            $codigo_asociado = substr($row['CODIGO'], 0, strpos($row['CODIGO'], ','));
+            $asociado = $this->em->getRepository('BackBundle:Asociados')
+                ->findBy(array('codigoAsociado'=>$codigo_asociado));
+            if($asociado){
+                $familia_asociado =  $this->em->getRepository('BackBundle:FamiliasAsociados')
+                    ->findBy(array(
+                        'idAsociado'=>$asociado[0]->getIdAsociado(),
+                        'idFamilia'=>$familia[0]->getIdFamilias()
+                    ));
+                if($familia_asociado){
+                    $familia_asociado = $familia_asociado[0];
+                    $familia_asociado->setVolumen($row['VOLUMEN']);
+                    $this->em->persist($familia_asociado);
+                }else{
+                    $familia_asociado = new FamiliasAsociados();
+                    $familia_asociado->setIdFamilia($familia[0]);
+                    $familia_asociado->setIdAsociado($asociado[0]);
+                    $familia_asociado->setVolumen($row['VOLUMEN']);
+                    $familia_asociado->setNombreFamilia($familia[0]->getNombreFamilia());
+                    $this->em->persist($familia_asociado);
+                }
+            }
         }
-
+        $this->em->flush();
         return true;
 
     }

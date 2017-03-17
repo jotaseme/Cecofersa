@@ -59,6 +59,13 @@ class AsociadosController extends Controller
                 'Error en la busqueda del asociado '
             );
         }
+
+        $familias =  $this->getDoctrine()
+            ->getRepository('BackBundle:FamiliasAsociados')
+            ->findAllOrderedByName($id_asociado);
+
+        $bloque_familias = array_chunk($familias, 20);
+
         $usuario = new UsuarioAsociado();
         $form_usuarioAsociado = $this->createForm(UsuarioAsociadoType::class, $usuario);
 
@@ -80,16 +87,41 @@ class AsociadosController extends Controller
             "Cataluña", "Ceuta", "Comunidad Valenciana", "Comunidad de Madrid", "Extremadura", "Galicia", "Islas Baleares", "La Rioja",
             "Melilla", "Navarra", "País Vasco", "Principado de Asturias", "Murcia", 'Portugal','Andorra'];
 
-
         $form_usuarioAsociado->get('idCliente')->setData($codigo_asociado);
         return $this->render('Backoffice/Asociados/detalle_asociado.html.twig', [
             'asociado'=>$asociado,
             'form' => $form_usuarioAsociado->createView(),
             'array_provincias' =>json_encode($array_provincias),
-            'array_comunidades'=>json_encode($array_comunidades)
+            'array_comunidades'=>json_encode($array_comunidades),
+            'familias1'=>$bloque_familias[0],
+            'familias2'=>$bloque_familias[1]
         ]);
     }
 
+    /**
+     * @Route("/Admin/asociados/{id_asociado}/edit-familia",name="update_post_familia_asociado", requirements={"id_asociado": "\d+"})
+     * @Method({"POST"})
+     */
+    public function updatePOSTFamiliasAsociadoAction(Request $request,$id_asociado)
+    {
+        $id_familiaAsociado = $request->get('pk');
+        $em = $this->getDoctrine()->getManager();
+        $familia_asociado = $em->getRepository('BackBundle:FamiliasAsociados')
+            ->find($id_familiaAsociado);
+        if(!$familia_asociado){
+            $response = array("status" => "error", "msg"=>"¡Ha ocurrido un error 1!");
+            return new Response(json_encode($response));
+        }else{
+            $volumen = $request->get('value');
+            $familia_asociado->setVolumen($volumen);
+            $em->persist($familia_asociado);
+            $em->flush();
+            $response = array("code" => 200, "success" => true);
+
+            return new Response(json_encode($response));
+
+        }
+    }
 
     /**
      * @Route("/Admin/asociados/{id_asociado}/edit",name="update_post_asociado", requirements={"id_asociado": "\d+"})
