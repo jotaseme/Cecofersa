@@ -22,18 +22,6 @@
             </ol>
         </section>
         <section class="content">
-            <div class="box box-default">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Actualizar asociados</h3>
-                </div>
-                <div class="box-body">
-                    <div class="box-body">
-                        <label class="btn btn-default btn-file">
-                            Fichero de asociados <input type="file" hidden>
-                        </label>
-                    </div>
-                </div>
-            </div>
             <div class="row">
                 <div class="col-xs-12 col-md-6">
                     <div class="box box-default">
@@ -89,6 +77,24 @@
                     </div>
                 </div>
             </div>
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Actualizar asociados</h3>
+                </div>
+                <div class="box-body">
+                    <div class="box-body">
+                        <div class="col-xs-6">
+                            <label class="control-label">Actualizaci&oacute;n de Asociados</label>
+                            <input id="asociados_input" name="asociados[]" type="file" multiple class="file-loading" data-allowed-file-extensions='["csv"]'>
+                        </div>
+                        <div class="col-xs-6">
+                            <label class="control-label">Actualizaci&oacute;n de Familias</label>
+                            <input id="familias_input" name="familias[]" type="file" multiple class="file-loading" data-allowed-file-extensions='["csv"]'>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </section>
     </div>
     </body>
@@ -106,6 +112,26 @@
             }
        });
     });
+    </script>
+    <script>
+        var $input = $("#asociados_input");
+        var path = Routing.generate('update_asociado_csv');
+        var path_familias = Routing.generate('update_familias_asociado_csv');
+        $input.fileinput({
+            showCaption: false,
+            uploadUrl: path,
+        }).on("filebatchselected", function(event, files) {
+            $input.fileinput("upload");
+        });
+        var $input1 = $("#familias_input");
+        $input1.fileinput({
+            showCaption: false,
+            uploadUrl: path_familias,
+            minFileCount: 1,
+            maxFileCount: 1
+        }).on("filebatchselected", function(event, files) {
+            $input1.fileinput("upload");
+        });
     </script>
 
 {% endblock %}

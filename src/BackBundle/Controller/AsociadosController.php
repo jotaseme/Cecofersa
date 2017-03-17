@@ -128,6 +128,9 @@ class AsociadosController extends Controller
             }elseif($request->get('name') == 'comunidad-asociado'){
                 $comunidad = $request->get('value');
                 $asociado->setComunidadAutonoma($comunidad);
+            }elseif($request->get('name') == 'provincia-asociado'){
+                $provincia = $request->get('value');
+                $asociado->setProvincia($provincia);
             }elseif($request->get('name') == 'pais-asociado'){
                 $pais = $request->get('value');
                 $asociado->setPais($pais);
@@ -154,7 +157,7 @@ class AsociadosController extends Controller
                 $asociado->setActivo($estado);
             }
             else{
-                $response = array("status" => "error", "msg"=>"¡Ha ocurrido un error!");
+                $response = array("status" => "error", "msg"=>"¡Ha ocurrido un error 1!");
                 return new Response(json_encode($response));
             }
             $asociado->setFechaEdicion(new \DateTime('now'));
@@ -163,7 +166,7 @@ class AsociadosController extends Controller
             $response = array("code" => 200, "success" => true);
             return new Response(json_encode($response));
         }else{
-            $response = array("status" => "error", "msg"=>"¡Ha ocurrido un error!");
+            $response = array("status" => "error", "msg"=>"¡Ha ocurrido un error 2!");
             return new Response(json_encode($response));
         }
 
@@ -221,13 +224,57 @@ class AsociadosController extends Controller
                 $this->getDoctrine()->getManager()->persist($asociado);
                 $this->getDoctrine()->getManager()->flush();
             }
-
             echo json_encode(['msg'=>'¡Success!']);
-
             return new Response();
         }else{
             echo son_encode(['msg'=>'¡Ha ocurrido un erro!']);
         }
+    }
+
+    /**
+     * @Route("/Admin/Asociado/updateFromCsv", name="update_asociado_csv",
+     *     options = { "expose" = true })
+     * @Method({"POST"})
+     */
+    public function updateAsociadoFromCSVAction(Request $request){
+
+        $file = $request->files;
+        $file = $file->get('asociados')[0];
+        $fecha =  date_timestamp_get(date_create());
+        if(!empty($file) && $file != null) {
+            $file_name =  $fecha.'.csv';
+            $file->move('ficheroCSV/Asociados/',$file_name);
+
+            $reader = $this->get('app.file_reader');
+            $reader->updateAsociadosFromCsv($file_name);
+            echo json_encode(['msg'=>'¡Success!']);
+        }else{
+            echo json_encode(['msg'=>'¡Ha ocurrido un error!']);
+        }
+        return new Response();
+    }
+
+    /**
+     * @Route("/Admin/Asociado/Familias/updateFromCsv", name="update_familias_asociado_csv",
+     *     options = { "expose" = true })
+     * @Method({"POST"})
+     */
+    public function updateFamiliasAsociadosFromCSVAction(Request $request){
+
+        $file = $request->files;
+        $file = $file->get('familias')[0];
+        $fecha =  date_timestamp_get(date_create());
+        if(!empty($file) && $file != null) {
+            $file_name =  $fecha.'.csv';
+            $file->move('ficheroCSV/Familias/',$file_name);
+
+            $reader = $this->get('app.file_reader');
+            $reader->updateFamilias($file_name);
+            echo json_encode(['msg'=>'¡Success!']);
+        }else{
+            echo json_encode(['msg'=>'¡Ha ocurrido un error!']);
+        }
+        return new Response();
     }
 
     /**

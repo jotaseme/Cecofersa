@@ -204,7 +204,6 @@ class UsuarioAsociadoController extends Controller
             $serie = null;
         }
 
-
         if($descargas_dia==0){
             $porcentaje_dia = 0;
         }else{
@@ -223,13 +222,11 @@ class UsuarioAsociadoController extends Controller
             $porcentaje_mes = $descargas_mes;
         }
 
-
         $descargas = $this->getDoctrine()
             ->getRepository('BackBundle:Descarga')
             ->findAllOrderedByDate($id_usuario);
-
-        $em    = $this->get('doctrine.orm.entity_manager');
-        $dql   = "SELECT d FROM BackBundle:Descarga d WHERE d.usuarioUsuario = :id_usuario ORDER BY d.fecha DESC";
+        $em = $this->get('doctrine.orm.entity_manager');
+        $dql = "SELECT d FROM BackBundle:Descarga d WHERE d.usuarioUsuario = :id_usuario ORDER BY d.fecha DESC";
         $query = $em->createQuery($dql)->setParameter('id_usuario',$id_usuario);
 
         $paginator  = $this->get('knp_paginator');
@@ -253,9 +250,7 @@ class UsuarioAsociadoController extends Controller
                     ->getRepository('BackBundle:Descarga')
                     ->count_downloads_history($i,$id_usuario);
                 if(!$contador_aux){
-
                 }else{
-
                     $anual = array(
                         (string)$i,
                         $contador_aux
@@ -265,8 +260,6 @@ class UsuarioAsociadoController extends Controller
             }
         }
         $contador_anual = json_encode($contador_anual);
-
-
 
         return $this->render('Backoffice/Asociados/detalle_usuario_asociado.html.twig', [
             'usuario'=>$usuario,
