@@ -1,0 +1,223 @@
+<html>
+{% block header %}
+{% include 'Cecofersa/header.html.twig' %}
+{% endblock %}
+{% block encabezado %}
+{% include 'Cecofersa/encabezado.html.twig' %}
+{% endblock %}
+<body>
+<!-- header start classes:
+				fixed: fixed navigation mode (sticky menu) e.g. <header class="header fixed clearfix">
+				 dark: dark header version e.g. <header class="header dark clearfix">
+			================ -->
+<header class="header fixed clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+
+                <!-- header-left start -->
+                <!-- ================ -->
+                <div class="header-left clearfix">
+
+                    <!-- logo -->
+                    <div class="logo">
+                        <a href="{{ path('ceco_index',{'languaje':languaje}) }}"><img id="logo" src="{{ asset("img/cecofersa/logo.png") }}" alt="Cecofersa"></a>
+                    </div>
+
+                    <!-- name-and-slogan -->
+
+                </div>
+                <!-- header-left end -->
+
+            </div>
+            <div class="col-md-9">
+
+                <!-- header-right start -->
+                <!-- ================ -->
+                <div class="header-right clearfix">
+
+                    <!-- main-navigation start -->
+                    <!-- ================ -->
+                    <div class="main-navigation animated">
+
+                        <!-- navbar start -->
+                        <!-- ================ -->
+                        <nav class="navbar navbar-default" role="navigation">
+                            <div class="container-fluid">
+
+                                <!-- Toggle get grouped for better mobile display -->
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                {% if languaje=='es' %}
+                                    <!-- Collect the nav links, forms, and other content for toggling -->
+                                    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                                        <ul class="nav navbar-nav navbar-right">
+                                            <li {% if activo=='index' %}class="active"{% endif %}>
+                                                <a href="{{ path('ceco_index',{'languaje':languaje}) }}">Inicio</a>
+                                            </li>
+
+                                            <li {% if activo=='somos' %}class="active"{% endif %}>
+                                                <a href="{{ path('ceco_somos',{'languaje':languaje}) }}">¿Quiénes somos?</a>
+
+                                            </li>
+                                            <!-- mega-menu start -->
+                                            <li {% if activo=='servicios' %}class="active"{% endif %}>
+                                                <a href="{{ path('ceco_servicios',{'languaje':languaje}) }}">Servicios</a>
+
+                                            </li>
+                                            <li {% if activo=='folletos' %}class="active"{% endif %}>
+                                                <a href="{{ path('ceco_folletos',{'languaje':languaje}) }}">Folletos</a>
+
+                                            </li>
+
+
+
+                                            <li class="dropdown {% if activo=='productos' %}active{% endif %}{% if activo=='informacion' %}active{% endif %}">
+                                                <a href="" class="dropdown-toggle">CECO</a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="{{ path('ceco_productos',{'languaje':languaje}) }}">Productos CECO</a></li>
+                                                    <li><a href="{{ path('ceco_informacion',{'languaje':languaje}) }}">Informaci&oacute;n CECO</a></li>
+
+                                                </ul>
+                                            </li>
+
+
+
+                                            <li {% if activo=='asociados' %}class="active"{% endif %}>
+                                                <a href="{{ path('ceco_asociados',{'languaje':languaje}) }}">Asociados</a>
+
+                                            </li>
+                                            <li {% if activo=='contacto' %}class="active"{% endif %}>
+                                                <a href="{{ path('ceco_contacto',{'languaje':languaje}) }}">Contacto</a>
+
+                                            </li>
+
+
+
+                                        </ul>
+                                    </div>
+                                {% elseif languaje== 'en' %}
+                                    <!-- Collect the nav links, forms, and other content for toggling -->
+                                    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                                        <ul class="nav navbar-nav navbar-right">
+                                            <li {% if activo=='index' %}class="active"{% endif %}>
+                                                <a href="{{ path('ceco_index',{'languaje':languaje}) }}">Home</a>
+                                            </li>
+
+                                            <li {% if activo=='somos' %}class="active"{% endif %}>
+                                                <a href="{{ path('ceco_somos',{'languaje':languaje}) }}">About us</a>
+
+                                            </li>
+                                            <!-- mega-menu start -->
+                                            <li {% if activo=='servicios' %}class="active"{% endif %}>
+                                                <a href="{{ path('ceco_servicios',{'languaje':languaje}) }}">Services</a>
+
+                                            </li>
+                                            <li {% if activo=='folletos' %}class="active"{% endif %}>
+                                                <a href="{{ path('ceco_folletos',{'languaje':languaje}) }}">Brochures</a>
+
+                                            </li>
+
+
+
+                                            <li class="dropdown {% if activo=='productos' %}active{% endif %}{% if activo=='informacion' %}active{% endif %}">
+                                                <a href="" class="dropdown-toggle">CECO</a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="{{ path('ceco_productos',{'languaje':languaje}) }}">CECO Products</a></li>
+                                                    <li><a href="{{ path('ceco_informacion',{'languaje':languaje}) }}">CECO Information</a></li>
+
+                                                </ul>
+                                            </li>
+
+
+
+                                            <li {% if activo=='asociados' %}class="active"{% endif %}>
+                                                <a href="{{ path('ceco_asociados',{'languaje':languaje}) }}">Members</a>
+
+                                            </li>
+                                            <li {% if activo=='contacto' %}class="active"{% endif %}>
+                                                <a href="{{ path('ceco_contacto',{'languaje':languaje}) }}">Contact</a>
+
+                                            </li>
+
+
+
+                                        </ul>
+                                    </div>
+                                {% elseif languaje== 'pt' %}
+                                    <!-- Collect the nav links, forms, and other content for toggling -->
+                                    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                                        <ul class="nav navbar-nav navbar-right">
+                                            <li {% if activo=='index' %}class="active"{% endif %}>
+                                                <a href="{{ path('ceco_index',{'languaje':languaje}) }}">Início</a>
+                                            </li>
+
+                                            <li {% if activo=='somos' %}class="active"{% endif %}>
+                                                <a href="{{ path('ceco_somos',{'languaje':languaje}) }}">¿Quem somos?</a>
+
+                                            </li>
+                                            <!-- mega-menu start -->
+                                            <li {% if activo=='servicios' %}class="active"{% endif %}>
+                                                <a href="{{ path('ceco_servicios',{'languaje':languaje}) }}">Serviços</a>
+
+                                            </li>
+                                            <li {% if activo=='folletos' %}class="active"{% endif %}>
+                                                <a href="{{ path('ceco_folletos',{'languaje':languaje}) }}">Folhetos</a>
+
+                                            </li>
+
+
+
+                                            <li class="dropdown {% if activo=='productos' %}active{% endif %}{% if activo=='informacion' %}active{% endif %}">
+                                                <a href="" class="dropdown-toggle">CECO</a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="{{ path('ceco_productos',{'languaje':languaje}) }}">Produtos CECO</a></li>
+                                                    <li><a href="{{ path('ceco_informacion',{'languaje':languaje}) }}">Informação CECO</a></li>
+
+                                                </ul>
+                                            </li>
+
+
+
+                                            <li {% if activo=='asociados' %}class="active"{% endif %}>
+                                                <a href="{{ path('ceco_asociados',{'languaje':languaje}) }}">Associados</a>
+
+                                            </li>
+                                            <li {% if activo=='contacto' %}class="active"{% endif %}>
+                                                <a href="{{ path('ceco_contacto',{'languaje':languaje}) }}">Contato</a>
+
+                                            </li>
+
+
+
+                                        </ul>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </nav>
+                        <!-- navbar end -->
+
+                    </div>
+                    <!-- main-navigation end -->
+
+                </div>
+                <!-- header-right end -->
+
+            </div>
+        </div>
+    </div>
+</header>
+<!-- header end -->
+</body>
+<!-- page-wrapper end -->
+{% block footer %}
+    {% include 'Cecofersa/footer.html.twig' %}
+{% endblock %}
+
+</html>
