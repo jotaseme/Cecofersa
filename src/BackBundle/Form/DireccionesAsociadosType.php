@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class DireccionesAsociadosType extends AbstractType
 {
@@ -20,7 +21,7 @@ class DireccionesAsociadosType extends AbstractType
                 'label'=> 'Domicilio',
                 'required'=>'required',
                 'attr'=> array(
-                    'class'=> 'form-name form-control'
+                    'class'=> 'form-name form-control',
                 )
             ))
             ->add('codigoPostal', TextType::class, array(
@@ -168,7 +169,6 @@ class DireccionesAsociadosType extends AbstractType
             ))
             ->add('fax', TextType::class, array(
                 'label'=> 'Fax',
-                'required'=>'required',
                 'attr'=> array(
                     'class'=> 'form-name form-control'
                 )
@@ -224,6 +224,11 @@ class DireccionesAsociadosType extends AbstractType
                 ),
                 'choices' => array('Activo' => 'VERDADERO',
                     'Inactivo' =>'FALSO')
+            ))
+            ->add('Crear direccion',SubmitType::class, array(
+                "attr" => array(
+                    "class"=>"form-submit btn btn-primary"
+                )
             ));
     }
 

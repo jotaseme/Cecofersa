@@ -1,4 +1,32 @@
+$('#direcciones tbody').on('click', 'a#delete-direccion', function () {
+    var id = $(this).data('id');
+    $('#confirm-delete-direccion').on('show.bs.modal', function(e) {
+        $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+    });
 
+    $('#delete-direccion-asociado').unbind("click").click(function(){
+        $('#deleted-direccion').attr('hidden');
+        $('#deleted-direccion').empty();
+
+        var path = Routing.generate('delete_direccion_asociado', { id_asociado: asociado  , id_direccion: id },true);
+        $.ajax({
+            url: path,
+            data: {id_direccion: id},
+            type: 'POST',
+            dataType: "json",
+            success: function (response) {
+                if(response.success==true){
+                    $('#status').addClass('hidden');
+                    $('#custom').removeAttr('hidden').addClass('alert alert-success').html("").append('¡Direccion eliminada correctamente!');
+                }else{
+                    $('#deleted-direccion').removeAttr('hidden').addClass('alert alert-danger').append('¡ERROR! La direccion no se ha borrado!');
+                }
+            }
+        });
+        $('[data-id='+id+']').parents('tr').remove();
+        $('#confirm-delete-direccion').modal('hide');
+    });
+});
 $('#direcciones').DataTable({
     "ordering": false,
     "pageLength":20,
