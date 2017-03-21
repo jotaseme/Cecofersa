@@ -4,78 +4,223 @@
     {% include 'Cecofersa/header.html.twig' %}
 {% endblock %}
 <body>
-<div class="header-top">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-2 col-sm-6">
+{% if languaje=='en' %}
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-2 col-sm-6">
 
-                <!-- header-top-first start -->
-                <!-- ================ -->
-                <div class="header-top-first clearfix" style="padding-top: 0.5em;">
-                    <div class="btn-group dropdown" style="padding-right: 2em;">
-                        <a href="{{ asset("img/cecofersa/logo_cecofersa.jpg") }}" download> Descarga logo <i class="fa fa-download"></i></a>
-                    </div>
-                    <div class="btn-group dropdown">
-                        <a href="{{ asset("img/cecofersa/ardilla_cecofersa.jpg") }}" download> Descarga ardilla <i class="fa fa-download"></i></a>
-                    </div>
-                </div>
-                <!-- header-top-first end -->
-            </div>
-            <div class="col-xs-10 col-sm-6">
-
-                <!-- header-top-second start -->
-                <!-- ================ -->
-                <div id="header-top-second"  class="clearfix">
-
-                    <!-- header top dropdowns start -->
+                    <!-- header-top-first start -->
                     <!-- ================ -->
-
-                    <div class="header-top-dropdown">
-                        <div class="btn-group dropdown">
-                        </div>
-                        <div id="style_feria" class="btn-group dropdown">
-                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <a href="" id="feria">Acceso Expocecofersa 2017</a></button>
+                    <div class="header-top-first clearfix" style="padding-top: 0.5em;">
+                        <div class="btn-group dropdown" style="padding-right: 2em;">
+                            <a href="{{ asset("img/cecofersa/logo_cecofersa.jpg") }}" download> Download logo <i class="fa fa-download"></i></a>
                         </div>
                         <div class="btn-group dropdown">
-                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <a href="" id="area">Acceso &aacute;rea privada</a></button>
+                            <a href="{{ asset("img/cecofersa/ardilla_cecofersa.jpg") }}" download> Download squirrel <i class="fa fa-download"></i></a>
                         </div>
+                    </div>
+                    <!-- header-top-first end -->
+                </div>
+                <div class="col-xs-10 col-sm-6">
+
+                    <!-- header-top-second start -->
+                    <!-- ================ -->
+                    <div id="header-top-second"  class="clearfix">
+
+                        <!-- header top dropdowns start -->
+                        <!-- ================ -->
+
+                        <div class="header-top-dropdown">
+                            <div class="btn-group dropdown">
+                            </div>
+                            <div id="style_feria" class="btn-group dropdown">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <a href="" id="feria">Expocecofersa 2017</a></button>
+                            </div>
+                            <div class="btn-group dropdown">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <a href="" id="area">Private Area</a></button>
+                            </div>
 
 
-                        <div class="btn-group dropdown">
-                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><img src="{{ asset("img/cecofersa/Bandera Spa.gif") }}" height="15" width="15"></button>
-                            <ul class="dropdown-menu Private Area dropdown-animation cart" style="min-width: 83px;">
-                                <li>
-                                    <table class="table table-hover">
-                                        <tbody>
+                            <div class="btn-group dropdown">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><img src="{{ asset("img/cecofersa/Bandera Eng.gif") }}" height="15" width="15"></button>
+                                <ul class="dropdown-menu Private Area dropdown-animation cart" style="min-width: 83px;">
+                                    <li>
+                                        <table class="table table-hover">
+                                            <tbody>
 
-                                        <tr>
-                                        </tr>
-                                        <tr>
-                                            <td class="total-quantity" colspan="2"><a href="{{ path('index',{'languaje':'en'}) }}">English</a></td>
+                                            <tr>
+                                            </tr>
+                                            <tr>
+                                                <td class="total-quantity" colspan="2"><a href="{{ path('index',{'languaje':'es'}) }}">Español</a></td>
 
-                                        </tr>
-                                        <tr>
-                                            <td class="total-quantity" colspan="2"><a href="<?php echo base_url();?>pt/folhetos">Portugues</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="total-quantity" colspan="2"><a href="{{ path('index',{'languaje':'pt'}) }}">Português</a></td>
 
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                                            </tr>
+                                            </tbody>
+                                        </table>
 
-                                </li>
-                            </ul>
+                                    </li>
+                                </ul>
+                            </div>
+
                         </div>
+                        <!--  header top dropdowns end -->
 
                     </div>
-                    <!--  header top dropdowns end -->
+                    <!-- header-top-second end -->
 
                 </div>
-                <!-- header-top-second end -->
-
             </div>
         </div>
     </div>
-</div>
+{% elseif languaje=='pt' %}
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-2 col-sm-6">
 
+                    <!-- header-top-first start -->
+                    <!-- ================ -->
+                    <div class="header-top-first clearfix" style="padding-top: 0.5em;">
+                        <div class="btn-group dropdown" style="padding-right: 2em;">
+                            <a href="{{ asset("img/cecofersa/logo_cecofersa.jpg") }}" download> Transferir logo <i class="fa fa-download"></i></a>
+                        </div>
+                        <div class="btn-group dropdown">
+                            <a href="{{ asset("img/cecofersa/ardilla_cecofersa.jpg") }}" download> Transferir ardilla <i class="fa fa-download"></i></a>
+                        </div>
+                    </div>
+                    <!-- header-top-first end -->
+                </div>
+                <div class="col-xs-10 col-sm-6">
+
+                    <!-- header-top-second start -->
+                    <!-- ================ -->
+                    <div id="header-top-second"  class="clearfix">
+
+                        <!-- header top dropdowns start -->
+                        <!-- ================ -->
+
+                        <div class="header-top-dropdown">
+                            <div class="btn-group dropdown">
+                            </div>
+                            <div id="style_feria" class="btn-group dropdown">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <a href="" id="feria">Expocecofersa 2017</a></button>
+                            </div>
+                            <div class="btn-group dropdown">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <a href="" id="area">Espaço Privado</a></button>
+                            </div>
+
+
+                            <div class="btn-group dropdown">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><img src="{{ asset("img/cecofersa/Bandera Por.gif") }}" height="15" width="15"></button>
+                                <ul class="dropdown-menu Private Area dropdown-animation cart" style="min-width: 83px;">
+                                    <li>
+                                        <table class="table table-hover">
+                                            <tbody>
+
+                                            <tr>
+                                            </tr>
+                                            <tr>
+                                                <td class="total-quantity" colspan="2"><a href="{{ path('index',{'languaje':'es'}) }}">Español</a></td>
+
+                                            </tr>
+                                            <tr>
+                                                <td class="total-quantity" colspan="2"><a href="{{ path('index',{'languaje':'en'}) }}">English</a></td>
+
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <!--  header top dropdowns end -->
+
+                    </div>
+                    <!-- header-top-second end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% elseif languaje=='es' %}
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-2 col-sm-6">
+
+                    <!-- header-top-first start -->
+                    <!-- ================ -->
+                    <div class="header-top-first clearfix" style="padding-top: 0.5em;">
+                        <div class="btn-group dropdown" style="padding-right: 2em;">
+                            <a href="{{ asset("img/cecofersa/logo_cecofersa.jpg") }}" download> Descargar logo <i class="fa fa-download"></i></a>
+                        </div>
+                        <div class="btn-group dropdown">
+                            <a href="{{ asset("img/cecofersa/ardilla_cecofersa.jpg") }}" download> Descargar ardilla <i class="fa fa-download"></i></a>
+                        </div>
+                    </div>
+                    <!-- header-top-first end -->
+                </div>
+                <div class="col-xs-10 col-sm-6">
+
+                    <!-- header-top-second start -->
+                    <!-- ================ -->
+                    <div id="header-top-second"  class="clearfix">
+
+                        <!-- header top dropdowns start -->
+                        <!-- ================ -->
+
+                        <div class="header-top-dropdown">
+                            <div class="btn-group dropdown">
+                            </div>
+                            <div id="style_feria" class="btn-group dropdown">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <a href="" id="feria">Acceso Expocecofersa 2017</a></button>
+                            </div>
+                            <div class="btn-group dropdown">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <a href="" id="area">Acceso Área Privada</a></button>
+                            </div>
+
+
+                            <div class="btn-group dropdown">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><img src="{{ asset("img/cecofersa/Bandera Spa.gif") }}" height="15" width="15"></button>
+                                <ul class="dropdown-menu Private Area dropdown-animation cart" style="min-width: 83px;">
+                                    <li>
+                                        <table class="table table-hover">
+                                            <tbody>
+
+                                            <tr>
+                                            </tr>
+                                            <tr>
+                                                <td class="total-quantity" colspan="2"><a href="{{ path('index',{'languaje':'en'}) }}">English</a></td>
+
+                                            </tr>
+                                            <tr>
+                                                <td class="total-quantity" colspan="2"><a href="{{ path('index',{'languaje':'pt'}) }}">Português</a></td>
+
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <!--  header top dropdowns end -->
+
+                    </div>
+                    <!-- header-top-second end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
 <!-- header-top end -->
 
 </body>
