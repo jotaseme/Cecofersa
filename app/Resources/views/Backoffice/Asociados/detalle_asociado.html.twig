@@ -303,6 +303,10 @@
                                 {% endfor %}
                                 </tbody>
                             </table>
+                            <hr>
+                            <div class="pull-right">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalDirecciones">Nueva direcci&oacte;n</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -357,9 +361,39 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
-
             </div>
         </div>
+
+            <div id="myModalDirecciones" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Nueva direcci&oacute;n para {{ asociado.nombre }}</h4>
+                        </div>
+                        <style>
+                            .form-submit.btn.btn-primary {
+                                float: right;
+                                margin-top: 30px;
+                                margin-right: 100px;
+                                margin-left: -189px;
+                            }
+                            label{
+                                margin-top:5px;
+                            }
+                        </style>
+                        <div class="modal-body">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </section>
     </div>
     </body>
@@ -376,192 +410,7 @@
     <script src="{{ asset("js/customJS/usuariosJS.js") }}"></script>
     <script src="{{ asset("js/customJS/asociadosJS.js") }}"></script>
     <script src="{{ asset("js/customJS/familiasJS.js") }}"></script>
-    <script>
-        $('#direcciones').DataTable({
-            "ordering": false,
-            "pageLength":20,
-            "lengthChange": false,
-            "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-                $('.domicilio-direccion-asociado').editable({
-                    validate: function(value) {
-                        if (value === null || value === '') {
-                            return '¡Este campo no puede estar vacio!';
-                        }
-                    },
-                    success: function(response, newValue) {
-                        response = $.parseJSON(response);
-                        if(response.status == 'error'){
-                            return response.msg; //msg will be shown in editable form
-                        }
-                    }
-                });
-                $('.codigoPostal-direccion-asociado').editable({
-                    validate: function(value) {
-                        if (value === null || value === '') {
-                            return '¡Este campo no puede estar vacio!';
-                        }
-                    },
-                    success: function(response, newValue) {
-                        response = $.parseJSON(response);
-                        if(response.status == 'error'){
-                            return response.msg; //msg will be shown in editable form
-                        }
-                    }
-                });
-                $('.poblacion-direccion-asociado').editable({
-                    validate: function(value) {
-                        if (value === null || value === '') {
-                            return '¡Este campo no puede estar vacio!';
-                        }
-                    },
-                    success: function(response, newValue) {
-                        response = $.parseJSON(response);
-                        if(response.status == 'error'){
-                            return response.msg; //msg will be shown in editable form
-                        }
-                    }
-                });
-                $('.provincia-direccion-asociado').editable({
-
-                    source:  array_provincias,
-                    validate: function(value) {
-                        if (value === null || value === '') {
-                            return '¡Este campo no puede estar vacio!';
-                        }
-                    },
-                    success: function(response, newValue) {
-                        response = $.parseJSON(response);
-                        if(response.status == 'error') return response.msg; //msg will be shown in editable form
-                    }
-                });
-                $('.comunidadAutonoma-direccion-asociado').editable({
-
-                    source:  array_comunidades,
-                    validate: function(value) {
-                        if (value === null || value === '') {
-                            return '¡Este campo no puede estar vacio!';
-                        }
-                    },
-                    success: function(response, newValue) {
-                        response = $.parseJSON(response);
-                        if(response.status == 'error') return response.msg; //msg will be shown in editable form
-                    }
-                });
-                $('.pais-direccion-asociado').editable({
-                    source: [
-                        {value: 'ESPAÑA', text: 'España'},
-                        {value: 'PORTUGAL', text: 'Portugal'}
-                    ],
-                    validate: function(value) {
-                        if (value === null || value === '') {
-                            return '¡Este campo no puede estar vacio!';
-                        }
-                    },
-                    success: function(response, newValue) {
-                        response = $.parseJSON(response);
-                        if(response.status == 'error') return response.msg; //msg will be shown in editable form
-                    }
-                });
-                $('.telefono-direccion-asociado').editable({
-                    validate: function(value) {
-                        if (value === null || value === '') {
-                            return '¡Este campo no puede estar vacio!';
-                        }
-                    },
-                    success: function(response, newValue) {
-                        response = $.parseJSON(response);
-                        if(response.status == 'error') return response.msg; //msg will be shown in editable form
-                    }
-                });
-                $('.fax-direccion-asociado').editable({
-                    validate: function(value) {
-                        if (value === null || value === '') {
-                            return '¡Este campo no puede estar vacio!';
-                        }
-                    },
-                    success: function(response, newValue) {
-                        response = $.parseJSON(response);
-                        if(response.status == 'error') return response.msg; //msg will be shown in editable form
-                    }
-                });
-                $('.oficina-direccion-asociado').editable({
-                    source: [
-                        {value: 'VERDADERO', text: 'Activar'},
-                        {value: 'FALSE', text: 'Desactivar'}
-                    ],
-                    validate: function(value) {
-                        if (value === null || value === '') {
-                            return '¡Este campo no puede estar vacio!';
-                        }
-                    },
-                    success: function(response, newValue) {
-                        response = $.parseJSON(response);
-                        if(response.status == 'error') return response.msg; //msg will be shown in editable form
-                    }
-                });
-                $('.almacen-direccion-asociado').editable({
-                    source: [
-                        {value: 'VERDADERO', text: 'Activar'},
-                        {value: 'FALSE', text: 'Desactivar'}
-                    ],
-                    validate: function(value) {
-                        if (value === null || value === '') {
-                            return '¡Este campo no puede estar vacio!';
-                        }
-                    },
-                    success: function(response, newValue) {
-                        response = $.parseJSON(response);
-                        if(response.status == 'error') return response.msg; //msg will be shown in editable form
-                    }
-                });
-                $('.tienda-direccion-asociado').editable({
-                    source: [
-                        {value: 'VERDADERO', text: 'Activar'},
-                        {value: 'FALSE', text: 'Desactivar'}
-                    ],
-                    validate: function(value) {
-                        if (value === null || value === '') {
-                            return '¡Este campo no puede estar vacio!';
-                        }
-                    },
-                    success: function(response, newValue) {
-                        response = $.parseJSON(response);
-                        if(response.status == 'error') return response.msg; //msg will be shown in editable form
-                    }
-                });
-                $('.privado-direccion-asociado').editable({
-                    source: [
-                        {value: 'VERDADERO', text: 'Activar'},
-                        {value: 'FALSE', text: 'Desactivar'}
-                    ],
-                    validate: function(value) {
-                        if (value === null || value === '') {
-                            return '¡Este campo no puede estar vacio!';
-                        }
-                    },
-                    success: function(response, newValue) {
-                        response = $.parseJSON(response);
-                        if(response.status == 'error') return response.msg; //msg will be shown in editable form
-                    }
-                });
-                $('.etiquetas-direccion-asociado').editable({
-                    source: [
-                        {value: 'VERDADERO', text: 'Activar'},
-                        {value: 'FALSE', text: 'Desactivar'}
-                    ],
-                    validate: function(value) {
-                        if (value === null || value === '') {
-                            return '¡Este campo no puede estar vacio!';
-                        }
-                    },
-                    success: function(response, newValue) {
-                        response = $.parseJSON(response);
-                        if(response.status == 'error') return response.msg; //msg will be shown in editable form
-                    }
-                });
-            }
-        });
-    </script>
+    <script src="{{ asset("js/customJS/direccionesJS.js") }}"></script>
     <script>
         var $input = $("#input-705");
         var path = Routing.generate('upload_image_asociado', { id: {{ asociado.idAsociado  }}});

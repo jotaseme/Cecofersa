@@ -55,7 +55,7 @@ class AsociadosType extends AbstractType
                     'class'=> 'form-name form-control'
                 ),
                 'choices' => array(
-                    "Álava"=>"Álava",
+                    "Álava"=>"Álava",
                     "Albacete"=>"Albacete",
                     "Alicante"=>"Alicante",
                     "Almería"=>"Almería",
