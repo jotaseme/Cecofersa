@@ -6,6 +6,7 @@ namespace BackBundle\Controller;
 use BackBundle\Entity\DireccionesAsociados;
 use BackBundle\Entity\Usuario;
 use BackBundle\Entity\UsuarioAsociado;
+use BackBundle\Form\DireccionesAsociadosType;
 use BackBundle\Form\UsuarioAsociadoType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -81,6 +82,9 @@ class AsociadosController extends Controller
         $usuario = new UsuarioAsociado();
         $form_usuarioAsociado = $this->createForm(UsuarioAsociadoType::class, $usuario);
 
+        $direcciones_form = new DireccionesAsociados();
+        $form_direccionesAsociado = $this->createForm(DireccionesAsociadosType::class, $direcciones_form);
+
         if(strlen("".$asociado->getCodigoAsociado())==3){
             $codigo_asociado = "0".$asociado->getCodigoAsociado();
         }else{
@@ -103,6 +107,7 @@ class AsociadosController extends Controller
         return $this->render('Backoffice/Asociados/detalle_asociado.html.twig', [
             'asociado'=>$asociado,
             'form' => $form_usuarioAsociado->createView(),
+            'form_direcciones'=>$form_direccionesAsociado->createView(),
             'array_provincias' =>json_encode($array_provincias),
             'array_comunidades'=>json_encode($array_comunidades),
             'familias1'=>$familias1,

@@ -254,6 +254,7 @@
                                     <th>Tienda</th>
                                     <th>Privado</th>
                                     <th>Etiquetas</th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -297,15 +298,15 @@
                                         </td>
                                         <td>
                                             <a href="#" id="etiquetas-direccion-asociado" class="etiquetas-direccion-asociado" data-type="select" data-pk="{{ direccion.idDirecciones }}" data-url="{{ path("update_post_direccion_asociado",{'id_asociado':asociado.idAsociado }) }}" data-title="Dirección activa para hacer etiquetas">{% if (direccion.etiquetas == 'VERDADERO') %} <i class="fa fa-check"></i> {% else %}<i class="fa fa-close"></i>{% endif %}</a>
-
                                         </td>
+                                        <td><a id ="delete-direccion" href="#" data-id = "{{ direccion.idDirecciones }}" data-href="#" data-toggle="modal" data-target="#confirm-delete-direccion"><span class="label label-pill label-danger"><i class="fa fa-trash"></i></span></a></td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
                             </table>
                             <hr>
                             <div class="pull-right">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalDirecciones">Nueva direcci&oacte;n</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalDirecciones">Nueva direcci&oacute;n</button>
                             </div>
                         </div>
                     </div>
@@ -332,6 +333,28 @@
                 </div>
             </div>
         </div>
+
+
+            <div class="modal fade" id="confirm-delete-direccion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Confirmar la eliminación de la direcci&oacute;n</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>¿Estás seguro de que quieres eliminar esta direcci&oacute;n? <b>Si lo haces, no se podrá recuperar.</b></p>
+                            <p>¿Quieres proceder con esta acción?</p>
+                            <p class="debug-url"></p>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <a id="delete-direccion-asociado" class="btn btn-danger btn-ok">Eliminar selección</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         <div id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
@@ -384,7 +407,9 @@
                             }
                         </style>
                         <div class="modal-body">
-
+                            {{ form_start(form_direcciones, {'action': path('create_post_direccion_asociado',{'id_asociado':asociado.idAsociado}), 'method': 'POST'}) }}
+                            {{ form_errors(form_direcciones) }}
+                            {{ form_end(form_direcciones) }}
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
