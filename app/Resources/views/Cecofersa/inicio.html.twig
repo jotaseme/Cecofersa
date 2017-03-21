@@ -196,6 +196,111 @@
 </div>
 <!-- page-top end -->
 
+<!-- main-container start -->
+<!-- ================ -->
+
+<section class="main-container gray-bg">
+
+    <!-- main start -->
+    <!-- ================ -->
+    <div class="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-center title">
+                        {% if languaje=='es' %}
+                            Cat&aacute;logos y folletos
+                        {% elseif languaje=='en' %}
+                            Catalogues and brochures
+                        {% elseif languaje=='pt' %}
+                            Catalogos e folhetos
+                        {% endif %}
+                    </h1>
+                    <div class="separator"></div>
+                    <p class="text-center">
+                        {% if languaje=='es' %}
+                            Accede a nuestras versiones online de los cat&aacute;logos disponibles
+                        {% elseif languaje=='en' %}
+                            Product catalog and brochures
+                        {% elseif languaje=='pt' %}
+                            Produtos do catálogo e folhetos
+                        {% endif %}
+                    </p>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="box-style-1 white-bg object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="0">
+                                <center><a href="<?php echo base_url();?>es/folletos/catalogo" ><img class="img-catalogo" src="{{ asset("img/cecofersa/Portada Catalogo CECOFERSA 2017.jpg") }}" style="height: 390px";></a></center>
+                                <h2>
+                                    {% if languaje=='es' %}
+                                        Cat&aacute;logo de productos
+                                    {% elseif languaje=='en' %}
+                                        Product catalog
+                                    {% elseif languaje=='pt' %}
+                                        Catálogo de produtos
+                                    {% endif %}
+                                </h2>
+                                <p>
+                                    {% if languaje=='es' %}
+                                        Haz click y accede al cat&aacute;logo vigente
+                                    {% elseif languaje=='en' %}
+                                        Click here to see product catalog
+                                    {% elseif languaje=='pt' %}
+                                        Clique na imagem para ver o folheto
+                                    {% endif %}
+                                </p>
+
+                                <a href="<?php echo base_url();?>es/folletos/catalogo" class="btn btn-white">
+                                    {% if languaje=='es' %}
+                                        Ver más
+                                    {% elseif languaje=='en' %}
+                                        See more
+                                    {% elseif languaje=='pt' %}
+                                        Ver mais
+                                    {% endif %}
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="box-style-1 white-bg object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
+                                <center><a href="<?php echo base_url();?>uploads/files/Monografico CECOFERSA CONSUMIBLES 2017.pdf" target="_blank"><img class="img-catalogo" src="<?php echo base_url();?>/public_html/images/Monografico CECOFERSA CONSUMIBLES 2017.jpg" width="270px" height="10px"></a></center>
+                                <h2>
+                                    {% if languaje=='es' %}
+                                        Monogr&aacute;fico consumibles
+                                    {% elseif languaje=='en' %}
+                                        Supplies catalog
+                                    {% elseif languaje=='pt' %}
+                                        Catálogo dos consumíveis
+                                    {% endif %}
+                                </h2>
+
+                                <a href="<?php echo base_url();?>uploads/files/Monografico CECOFERSA CONSUMIBLES 2017.pdf" target="_blank" class="btn btn-white">
+                                    {% if languaje=='es' %}
+                                        Descargar PDF
+                                    {% elseif languaje=='en' %}
+                                        Download PDF
+                                    {% elseif languaje=='pt' %}
+                                        Transferir PDF
+                                    {% endif %}
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="box-style-1 white-bg object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="400">
+                                <center><a href="<?php echo base_url();?>uploads/files/folleto.pdf" target="_blank"><img class="img-catalogo" src="<?php echo base_url();?>/public_html/images/folleto.gif" width="270px" height="10px"></a></center>
+                                <h2>Folleto vigente</h2>
+                                <p>Folleto de primavera Cecofersa</p>
+                                <a href="<?php echo base_url();?>uploads/files/folleto.pdf" target="_blank" class="btn btn-white">Descargar PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- main end -->
+
+</section>
+<!-- section end -->
 
 
 </body>
