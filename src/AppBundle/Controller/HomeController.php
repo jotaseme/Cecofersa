@@ -12,7 +12,7 @@ class HomeController extends Controller
      */
     public function indexAction($languaje='es', $activo='index')
     {
-        return $this->render('Cecofersa/menu.html.twig',
+        return $this->render('Cecofersa/inicio.html.twig',
             ['languaje' => $languaje,
              'activo' => $activo
         ]);
@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function somosAction($languaje='es', $activo='somos')
     {
-        return $this->render('Cecofersa/menu.html.twig',
+        return $this->render('Cecofersa/quienes-somos.html.twig',
             ['languaje' => $languaje,
              'activo' => $activo,
             ]);
@@ -36,7 +36,7 @@ class HomeController extends Controller
      */
     public function serviciosAction($languaje='es', $activo='servicios')
     {
-        return $this->render('Cecofersa/menu.html.twig',
+        return $this->render('Cecofersa/servicios.html.twig',
             ['languaje' => $languaje,
              'activo' => $activo
             ]);
@@ -48,7 +48,7 @@ class HomeController extends Controller
      */
     public function folletosAction($languaje='es', $activo='folletos')
     {
-        return $this->render('Cecofersa/menu.html.twig',
+        return $this->render('Cecofersa/folletos.html.twig',
             ['languaje' => $languaje,
              'activo' => $activo
             ]);
@@ -60,7 +60,7 @@ class HomeController extends Controller
      */
     public function productosAction($languaje='es', $activo='productos')
     {
-        return $this->render('Cecofersa/menu.html.twig',
+        return $this->render('Cecofersa/ceco-productos.html.twig',
             ['languaje' => $languaje,
              'activo' => $activo
             ]);
@@ -72,7 +72,7 @@ class HomeController extends Controller
      */
     public function informacionAction($languaje='es', $activo='informacion')
     {
-        return $this->render('Cecofersa/menu.html.twig',
+        return $this->render('Cecofersa/ceco-informacion.html.twig',
             ['languaje' => $languaje,
              'activo' => $activo
             ]);
@@ -84,7 +84,7 @@ class HomeController extends Controller
      */
     public function asociadosAction($languaje='es', $activo='asociados')
     {
-        return $this->render('Cecofersa/menu.html.twig',
+        return $this->render('Cecofersa/ceco-asociados.html.twig',
             ['languaje' => $languaje,
              'activo' => $activo
             ]);
@@ -96,7 +96,7 @@ class HomeController extends Controller
      */
     public function contactoAction($languaje='es', $activo='contacto')
     {
-        return $this->render('Cecofersa/menu.html.twig',
+        return $this->render('Cecofersa/contacto.html.twig',
             ['languaje' => $languaje,
              'activo' => $activo
             ]);

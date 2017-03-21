@@ -1,0 +1,205 @@
+<html>
+{% block header %}
+    {% include 'Cecofersa/header.html.twig' %}
+{% endblock %}
+<body>
+{% block encabezado %}
+    {% include 'Cecofersa/encabezado.html.twig' %}
+{% endblock %}
+{% block menu %}
+    {% include 'Cecofersa/menu.html.twig' %}
+{% endblock %}
+
+<!-- banner start -->
+<!-- ================ -->
+<div class="banner">
+
+    <div class="banner">
+
+        <!-- slideshow start -->
+        <!-- ================ -->
+        <div class="slideshow white-bg">
+
+            <!-- slider revolution start -->
+            <!-- ================ -->
+            <div class="slider-banner-container">
+                <div class="slider-banner-3 bullets-with-bg">
+                    <ul>
+                        <!-- slide 1 start -->
+                        <li data-transition="fade" data-slotamount="7" data-masterspeed="1000" data-saveperformance="on" data-title="Slide 1">
+
+                            <!-- main image -->
+                            <img src="{{ asset("img/cecofersa/patos.jpg") }}"  alt="slidebg1" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+                            <!-- Translucent background -->
+                            <div class="tp-caption dark-translucent-bg"
+                                 data-x="center"
+                                 data-y="bottom"
+                                 data-speed="600"
+                                 data-start="0"
+                                 style="background-color:rgba(0,0,0,0.5);">
+                            </div>
+
+                            <!-- LAYER NR. 1 -->
+                            <div class="tp-caption very_large_text sfl tp-resizeme"
+                                 data-x="center"
+                                 data-y="70"
+                                 data-speed="600"
+                                 data-start="0"
+                                 data-end="10000"
+                                 data-endspeed="600">
+                            </div>
+
+                            <!-- LAYER NR. 2 -->
+                            <div class="tp-caption small_thin_white sfr text-center tp-resizeme"
+                                 data-x="center"
+                                 data-y="400"
+                                 data-speed="600"
+                                 data-start="0"
+                                 data-end="10000"
+                                 data-endspeed="600">
+
+                                    {% if languaje=='es' %}
+                                        <blockquote class="inline"><i><strong><h2 style="color:white;">Reunirse es un comienzo, mantenerse juntos es un progreso, trabajar juntos es el &eacute;xito</h2></strong> - Henry Ford </i></blockquote>
+                                    {% elseif languaje=='en' %}
+                                        <blockquote class="inline"><i><strong><h2 style="color:white;">Coming together is a beginning, keeping together is progress, working together is success</h2></strong> - Henry Ford </i></blockquote>
+                                    {% elseif languaje=='pt' %}
+                                        <blockquote class="inline"><i><strong><h2 style="color:white;">Reunirmo-nos é um começo, mantermo-nos juntos é um progresso, trabalhar juntos é o êxito</h2></strong> - Henry Ford </i></blockquote>
+                                    {% endif %}
+                            </div>
+
+                        </li>
+                        <!-- slide 1 end -->
+
+                        <!-- slide 2 start -->
+                        <li data-transition="fade" data-slotamount="7" data-masterspeed="1000" data-saveperformance="on" data-title="Slide 2">
+
+                            <!-- main image -->
+                            <img src="{{ asset("img/cecofersa/medusas.jpg") }}"  alt="slidebg1" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+                            <!-- Translucent background -->
+                            <div class="tp-caption dark-translucent-bg"
+                                 data-x="center"
+                                 data-y="bottom"
+                                 data-speed="600"
+                                 data-start="0"
+                                 style="background-color:rgba(0,0,0,0.5);">
+                            </div>
+
+                            <!-- LAYER NR. 1 -->
+                            <div class="tp-caption very_large_text sfl tp-resizeme"
+                                 data-x="center"
+                                 data-y="70"
+                                 data-speed="600"
+                                 data-start="0"
+                                 data-end="10000"
+                                 data-endspeed="600">
+                            </div>
+
+                            <!-- LAYER NR. 2 -->
+                            <div class="tp-caption sfr small_thin_white text-center tp-resizeme"
+                                 data-x="center"
+                                 data-y="170"
+                                 data-speed="200"
+                                 data-start="0"
+                                 data-end="10000"
+                                 data-endspeed="600">
+                                {% if languaje=='es' %}
+                                    <blockquote class="inline"><i><strong><h2 style="color:white;">Individualmente somos una gota, juntos somos un oc&eacute;ano</h2></strong> - Ryunosuke Satoro </i></blockquote>
+                                {% elseif languaje=='en' %}
+                                    <blockquote class="inline"><i><strong><h2 style="color:white;">Individually, we are one drop. Together, we are an ocean</h2></strong> - Ryunosuke Satoro </i></blockquote>
+                                {% elseif languaje=='pt' %}
+                                    <blockquote class="inline"><i><strong><h2 style="color:white;">Individualmente somos uma gota de agua, juntos somos um oceano</h2></strong> - Ryunosuke Satoro </i></blockquote>
+                                {% endif %}
+
+                            </div>
+
+                        </li>
+                        <!-- slide 2 end -->
+
+                        <!-- slide 3 end -->
+                        <li data-transition="fade" data-slotamount="7" data-masterspeed="1000" data-saveperformance="on" data-title="Slide 2">
+
+                            <!-- main image -->
+                            <img src="{{ asset("img/cecofersa/equipo.jpg") }}"  alt="slidebg1" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+                            <!-- Translucent background -->
+                            <div class="tp-caption dark-translucent-bg"
+                                 data-x="center"
+                                 data-y="bottom"
+                                 data-speed="600"
+                                 data-start="0"
+                                 style="background-color:rgba(0,0,0,0.5);">
+                            </div>
+
+                            <!-- LAYER NR. 1 -->
+                            <div class="tp-caption very_large_text sfl tp-resizeme"
+                                 data-x="center"
+                                 data-y="70"
+                                 data-speed="600"
+                                 data-start="0"
+                                 data-end="10000"
+                                 data-endspeed="600">
+                            </div>
+
+                            <!-- LAYER NR. 2 -->
+                            <div class="tp-caption sfr small_thin_white text-center tp-resizeme"
+                                 data-x="520"
+                                 data-y="200"
+                                 data-speed="200"
+                                 data-start="0"
+                                 data-end="10000"
+                                 data-endspeed="600">
+                                {% if languaje=='es' %}
+                                    <blockquote class="inline"><i><strong><h2 style="color:white;">Las fortalezas est&aacute;n en nuestras diferencias,<br/> no en nuestras similitudes </h2></strong> - Stephen Covey </i></blockquote>
+                                {% elseif languaje=='en' %}
+                                    <blockquote class="inline"><i><strong><h2 style="color:white;">Strength lies in differences,<br/> not in similarities</h2></strong> - Stephen Covey </i></blockquote>
+                                {% elseif languaje=='pt' %}
+                                    <blockquote class="inline"><i><strong><h2 style="color:white;">As forças estão nas nossas diferenças,<br/> não nas nossas semelhanças </h2></strong> - Stephen Covey </i></blockquote>
+                                {% endif %}
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <!-- slider revolution end -->
+
+        </div>
+        <!-- slideshow end -->
+    </div>
+</div>
+<!-- banner end -->
+
+<!-- page-top start-->
+<!-- ================ -->
+<div class="page-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="call-to-action">
+                    <h1 class="title">Central de compras y servicios profesionales</h1>
+                    <a href="{{ path('ceco_contacto',{'languaje':languaje}) }}" class="btn btn-default contact">
+                        {% if languaje=='es' %}
+                            Cont&aacute;ctanos
+                        {% elseif languaje=='en' %}
+                            Contact us
+                        {% elseif languaje=='pt' %}
+                            Contato
+                        {% endif %}
+                        <i class="pl-10 fa fa-phone"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- page-top end -->
+
+
+
+</body>
+{% block footer %}
+    {% include 'Cecofersa/footer.html.twig' %}
+{% endblock %}
+</html>
