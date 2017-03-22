@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 class InformesPDFController extends Controller
 {
     /**
-     * @Route("/Admin/asociados/relacion-empresas/todos", name="relacionEmpresasToPdf")
+     * @Route("/Admin/asociados/pdf/relacion-empresas/todos", name="relacionEmpresasToPdf")
      */
     public function relacionEmpresasToPDFAction()
     {
@@ -34,7 +34,7 @@ class InformesPDFController extends Controller
     }
 
     /**
-     * @Route("/Admin/asociados/relacion-empresas/portugal", name="relacionEmpresasPortugalToPdf")
+     * @Route("/Admin/asociados/pdf/relacion-empresas/portugal", name="relacionEmpresasPortugalToPdf")
      */
     public function relacionEmpresasPortugalToPDFAction()
     {
@@ -58,19 +58,20 @@ class InformesPDFController extends Controller
     }
 
     /**
-     * @Route("/Admin/asociados/etiquetas", name="etiquetasToPdf")
+     * @Route("/Admin/asociados/pdf/etiquetas", name="etiquetasToPdf")
      */
     public function etiquetasToPDFAction()
     {
-        $asociados = $this->getDoctrine()
-            ->getRepository('BackBundle:Asociados')
-            ->findAllOrderedByNameRelacionAsociados('Todos');
+        $direcciones = $this->getDoctrine()
+            ->getRepository('BackBundle:DireccionesAsociados')
+            ->findAllOrderedByNameEtiquetasAsociados('Todos');
 
+        //var_dump($direcciones[0]);die;
         return new Response(
             $this->get('knp_snappy.pdf')->getOutputFromHtml($this->renderView(
                 'Backoffice/PDF/etiquetas.twig',
                 array(
-                    'asociados'=>$asociados
+                    'direcciones'=>$direcciones
                 )
             )),
             200,

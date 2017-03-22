@@ -7,6 +7,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class HomeController extends Controller
 {
+
+    private $variable;
     /**
      * @Route("/{languaje}", name="ceco_index")
      */
