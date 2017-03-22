@@ -28,10 +28,25 @@ class HomeController extends Controller
     {
         $asociados = $this->getDoctrine()
             ->getRepository('BackBundle:Asociados')
-            ->findAllOrderedByName('Activos');
+            ->findAllOrderedByName('activos');
+        $contAsociados = sizeof($asociados);
+
+        $proveedores = $this->getDoctrine()
+            ->getRepository('BackBundle:Proveedores')
+            ->findAll();
+        $contProveedores = sizeof($proveedores);
+
+        $ficheros = $this->getDoctrine()
+            ->getRepository('BackBundle:Fichero')
+            ->findAll();
+        $contFicheros = sizeof($ficheros);
+
         return $this->render('Cecofersa/quienes-somos.html.twig',
             ['languaje' => $languaje,
              'activo' => $activo,
+             'asociados' => $contAsociados,
+             'proveedores' => $contProveedores,
+             'ficheros' => $contFicheros,
             ]);
 
     }
