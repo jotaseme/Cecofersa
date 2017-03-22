@@ -92,3 +92,12 @@ swiftmailer:
     password: '%mailer_password%'
     spool: { type: memory }
 
+# app/config/config.yml
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:     "\"C:\\Program Files (x86)\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\""
+        options:
+                    - { name: 'viewport-size', value: ‘1024x768’ }
+                    - { name: 'page-size', value: 'A4' }
+

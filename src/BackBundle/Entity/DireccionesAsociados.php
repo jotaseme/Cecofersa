@@ -136,7 +136,7 @@ class DireccionesAsociados
     /**
      * @var \Asociados
      *
-     * @ORM\ManyToOne(targetEntity="Asociados")
+     * @ORM\ManyToOne(targetEntity="Asociados",inversedBy="direcciones")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idAsociado", referencedColumnName="ID_ASOCIADO")
      * })
