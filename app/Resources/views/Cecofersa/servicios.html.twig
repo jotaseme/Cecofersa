@@ -10,7 +10,603 @@
     {% include 'Cecofersa/menu.html.twig' %}
 {% endblock %}
 
-Estás en servicios
+<!-- page-intro start-->
+<!-- ================ -->
+<div class="page-intro">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><i class="fa fa-home pr-10"></i>
+
+                        {% if languaje == 'es' %}
+                            <a href="{{ path('ceco_index',{'languaje':languaje}) }}">Inicio</a>
+                        {% elseif languaje == 'en' %}
+                            <a href="{{ path('ceco_index',{'languaje':languaje}) }}">Home</a>
+                        {% elseif languaje == 'pt' %}
+                            <a href="{{ path('ceco_index',{'languaje':languaje}) }}">Início</a>
+                        {% endif %}
+
+                    </li>
+                    <li class="active">
+
+                        {% if languaje == 'es' %}
+                            Servicios
+                        {% elseif languaje == 'en' %}
+                            Services
+                        {% elseif languaje == 'pt' %}
+                            Serviços
+                        {% endif %}
+
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- page-intro end -->
+
+
+<!-- main-container start -->
+<!-- ================ -->
+
+<section class="main-container">
+
+
+    <div class="container">
+        <div class="row">
+            <h1 class="page-title">Nuestros servicios</h1>
+            <div class="separator-2"></div>
+            <!-- page-title end -->
+
+            <!-- main start -->
+            <!-- ================ -->
+            <div class="main col-md-12">
+
+                <!--Estrcuturado por idioma siguiendo el orden ES/EN/PT-->
+
+                {% if languaje == 'es' %}
+
+                    <p><b>CECOFERSA</b> es la Central de Compras de Ferretería más moderna y dinámica del sector, que cuenta en la actualidad con un importante número de ferreteros asociados en España y Portugal.</p>
+                    <!-- page-title start -->
+                    <!-- ================ -->
+                    <h1 class="page-title text-center">Ventajas para asociados: </h1>
+                    <div class="separator"></div>
+                    <!-- page-title end -->
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="box-style-3 right animated fadeInUpSmall">
+                                <div class="icon-container default-bg">
+                                    <i class="fa fa-euro"></i>
+                                </div>
+                                <div class="body">
+                                    <h2> Mejores precios del sector</h2>
+                                    <p>
+                                        <b>CECOFERSA</b> tiene acuerdos preferenciales con los más importantes fabricantes del sector.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="box-style-3 right animated fadeInUpSmall">
+                                <div class="icon-container default-bg">
+                                    <i class="fa fa-bullhorn"></i>
+                                </div>
+                                <div class="body">
+                                    <h2>Campañas de marketing </h2>
+                                    <p>Se realizan atractivas promociones y disponen de distintos elementos de presentación y marketing directo.</p>
+                                </div>
+                            </div>
+
+                            <div class="box-style-3 right animated fadeInUpSmall">
+                                <div class="icon-container default-bg">
+                                    <i class="fa fa-globe"></i>
+                                </div>
+                                <div class="body">
+                                    <h2>Importaciones</h2>
+                                    <p>Importan el producto directamente de cualquier parte del mundo.</p>
+                                </div>
+                            </div>
+
+                            <div class="box-style-3 right animated fadeInUpSmall">
+                                <div class="icon-container default-bg">
+                                    <i class="fa fa-bank"></i>
+                                </div>
+                                <div class="body">
+                                    <h2>Apoyo asociados </h2>
+                                    <p>Para remodelar su establecimiento, los asociados cuentan con la ayuda de <b>CECOFERSA</b>, logrando que sea el más moderno y eficaz del sector.</p>
+
+                                </div>
+                            </div>
+
+                            <div class="box-style-3 right animated fadeInUpSmall">
+                                <div class="icon-container default-bg">
+                                    <i class="fa fa-bar-chart"></i>
+                                </div>
+                                <div class="body">
+                                    <h2> Informaci&oacute;n</h2>
+                                    <p>
+                                        Disponen de toda la información del sector y reciben formación especializada, as&iacute; como asesoramiento comercial en cuanto a surtidos, m&aacute;rgenes, pol&iacute;ticas de precios, etc.
+                                    </p>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="space hidden-lg hidden-md"></div>
+                            <img id="ardilla_1" class="animated fadeInUpSmall" src="{{ asset("img/cecofersa/ardilla_1.jpg") }}" alt="iDea">
+                        </div>
+                    </div>
+
+                {% elseif languaje == 'en' %}
+
+                    <p><b>CECOFERSA</b> is the most advanced and dynamic Hardware central purchasing of the industry, which currently has a large number of related hardware stores throughout Spain.</p>
+                    <!-- page-title start -->
+                    <!-- ================ -->
+                    <h1 class="page-title text-center">Advantages for our associate members</h1>
+                    <div class="separator"></div>
+                    <!-- page-title end -->
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="box-style-3 right animated fadeInUpSmall">
+                                <div class="icon-container default-bg">
+                                    <i class="fa fa-euro"></i>
+                                </div>
+                                <div class="body">
+                                    <h2>Best prices in the business</h2>
+                                    <p>
+                                        <b>CECOFERSA</b> has preferential agreements with major suppliers.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="box-style-3 right animated fadeInUpSmall">
+                                <div class="icon-container default-bg">
+                                    <i class="fa fa-bullhorn"></i>
+                                </div>
+                                <div class="body">
+                                    <h2>Marketing </h2>
+                                    <p>Attractive promotions, including other presentation elements and direct marketing.</p>
+                                </div>
+                            </div>
+
+                            <div class="box-style-3 right animated fadeInUpSmall">
+                                <div class="icon-container default-bg">
+                                    <i class="fa fa-globe"></i>
+                                </div>
+                                <div class="body">
+                                    <h2>Imports</h2>
+                                    <p>Import products directly from any where in the world.</p>
+                                </div>
+                            </div>
+
+                            <div class="box-style-3 right animated fadeInUpSmall">
+                                <div class="icon-container default-bg">
+                                    <i class="fa fa-bank"></i>
+                                </div>
+                                <div class="body">
+                                    <h2>Support for associate members</h2>
+                                    <p>To renew their stores they have <b>CECOFERSA</b> know-how, making it a more modern and efficient business.</p>
+
+                                </div>
+                            </div>
+
+                            <div class="box-style-3 right animated fadeInUpSmall">
+                                <div class="icon-container default-bg">
+                                    <i class="fa fa-bar-chart"></i>
+                                </div>
+                                <div class="body">
+                                    <h2>Information</h2>
+                                    <p>All the latest industry information is available and they receive specialized training. They have support when managing their business. Receive business advice regarding assortments, margins, pricing policies, etc...
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="space hidden-lg hidden-md"></div>
+                            <img id="ardilla_1" class="animated fadeInUpSmall" src="{{ asset("img/cecofersa/ardilla_1.jpg") }}" alt="iDea">
+                        </div>
+                    </div>
+
+                {% elseif languaje == 'pt' %}
+
+                    <p><b>CECOFERSA</b> &eacute; a Central de Compras de M&aacute;quinas e Ferramentas mais moderna e din&acirc;mica do sector, que conta na actualidade com um importante n&uacute;mero de estabelecimentos associados em Espanha e Portugal.</p>
+                    <!-- page-title start -->
+                    <!-- ================ -->
+                    <h1 class="page-title text-center">Os estabelecimentos encontram in&uacute;meras vantagens:</h1>
+                    <div class="separator"></div>
+                    <!-- page-title end -->
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="box-style-3 right animated fadeInUpSmall">
+                                <div class="icon-container default-bg">
+                                    <i class="fa fa-euro"></i>
+                                </div>
+                                <div class="body">
+                                    <h2>Conseguem os melhores pre&ccedil;os do sector</h2>
+                                    <p>
+                                        <b>CECOFERSA</b> em acordos preferenciais com os mais importantes fabricantes do sector.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="box-style-3 right animated fadeInUpSmall">
+                                <div class="icon-container default-bg">
+                                    <i class="fa fa-bullhorn"></i>
+                                </div>
+                                <div class="body">
+                                    <h2>Marketing </h2>
+                                    <p>Realizam atractivas promo&ccedil;&otilde;es e dispoem de  diversos elementos de apresenta&ccedil;&atilde;o e marketing directo.</p>
+                                </div>
+                            </div>
+
+                            <div class="box-style-3 right animated fadeInUpSmall">
+                                <div class="icon-container default-bg">
+                                    <i class="fa fa-globe"></i>
+                                </div>
+                                <div class="body">
+                                    <h2>Importaciones</h2>
+                                    <p>Importam directamente os productos se qualquer parte do mundo.</p>
+                                </div>
+                            </div>
+
+                            <div class="box-style-3 right animated fadeInUpSmall">
+                                <div class="icon-container default-bg">
+                                    <i class="fa fa-bank"></i>
+                                </div>
+                                <div class="body">
+                                    <h2>Apoio associados</h2>
+                                    <p>Para remodelar os estabelecimentos contam com a ajuda  de <b>CECOFERSA</b>, para que seja o mais moderno e eficaz do sector.</p>
+
+                                </div>
+                            </div>
+
+                            <div class="box-style-3 right animated fadeInUpSmall">
+                                <div class="icon-container default-bg">
+                                    <i class="fa fa-bar-chart"></i>
+                                </div>
+                                <div class="body">
+                                    <h2>Informa&ccedil;&atilde;o</h2>
+                                    <p>
+                                        Dispoem de toda a informa&ccedil;&atilde;o do sector  e recebem forma&ccedil;&atilde;o especializada.
+
+                                        T&ecirc;m apoio em todas em todas as t&eacute;cnicas de gest&atilde;o do seu neg&oacute;cio. Recebem  informa&ccedil;&atilde;o comercial sobre os sortidos, margens, pol&iacute;ticas de pre&ccedil;o, etc.</p>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="space hidden-lg hidden-md"></div>
+                            <img id="ardilla_1" class="animated fadeInUpSmall" src="{{ asset("img/cecofersa/ardilla_1.jpg") }}" alt="iDea">
+                        </div>
+                    </div>
+
+                {% endif %}
+
+
+            </div>
+            <!-- main end -->
+
+        </div>
+    </div>
+</section>
+<!-- main-container end -->
+
+
+<!-- section start -->
+<!-- ================ -->
+
+<!--Estructurado por idioma siguiendo el orden ES/EN/PT-->
+
+{% if languaje == 'es' %}
+
+    <div class="section gray-bg clearfix">
+        <div class="container">
+            <h1 class="text-center title">Ventajas para proveedores</h1>
+            <div class="separator"></div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="space hidden-lg hidden-md"></div>
+                    <img id="ardilla_2" class="animated fadeInUpSmall" src="{{ asset("img/cecofersa/ardilla_2.png") }}" alt="ceco_ardilla" height="auto" width="250">
+                </div>
+
+                <div class="col-md-8">
+                    <div class="box-style-3 left animated fadeInUpSmall">
+                        <div class="icon-container default-bg">
+                            <i class="fa fa-group"></i>
+                        </div>
+                        <div class="body">
+                            <h2>Continuidad y respaldo total de sus asociados. </h2>
+                            <p><br></p>
+
+                        </div>
+                    </div>
+
+                    <div class="box-style-3 left animated fadeInUpSmall">
+                        <div class="icon-container default-bg">
+                            <i class="fa fa-line-chart"></i>
+                        </div>
+                        <div class="body">
+                            <h2>Aumento progresivo del número de asociados</h2>
+                            <p>
+                                <br>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="box-style-3 left animated fadeInUpSmall">
+                        <div class="icon-container default-bg">
+                            <i class="fa fa-exchange"></i>
+                        </div>
+                        <div class="body">
+                            <h2>Cobertura</h2>
+                            <p>
+                                Importante cobertura a nivel peninsular con crecimiento en los volúmenes de compra.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="box-style-3 left animated fadeInUpSmall">
+                        <div class="icon-container default-bg">
+                            <i class="fa  fa-thumbs-up"></i>
+                        </div>
+                        <div class="body">
+                            <h2>Fidelidad</h2>
+                            <p>
+                                Máxima fidelidad a las marcas con las que <b>CECOFERSA</b> trabaja, con mayor concentración de compras.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="box-style-3 left animated fadeInUpSmall">
+                        <div class="icon-container default-bg">
+                            <i class="fa fa-certificate"></i>
+                        </div>
+                        <div class="body">
+                            <h2>Confianza</h2>
+                            <p>
+                                <b>CECOFERSA </b>no realiza operaciones especulativas, la relación con sus proveedores está basada en la continuidad y confianza mutua.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="box-style-3 left animated fadeInUpSmall">
+                        <div class="icon-container default-bg">
+                            <i class="fa fa-bullhorn"></i>
+                        </div>
+                        <div class="body">
+                            <h2>Marketing</h2>
+                            <p>
+                                Importante presencia de las marcas en los establecimientos y en todos los elementos promocionales. Eficaz canalizaci&oacute;n de la informaci&oacute;n hacia los asociados.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="box-style-3 left animated fadeInUpSmall">
+                        <div class="icon-container default-bg">
+                            <i class="fa fa-euro"></i>
+                        </div>
+                        <div class="body">
+                            <h2>Comercializaci&oacute;n</h2>
+                            <p>
+                                Comercialización a precios razonables, vigilando los precios de la competencia, sin agredir innecesariamente al mercado.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% elseif languaje == 'en' %}
+
+    <div class="section gray-bg clearfix">
+        <div class="container">
+            <h1 class="text-center title">We also offer exciting benefits to suppliers</h1>
+            <div class="separator"></div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="space hidden-lg hidden-md"></div>
+                    <img id="ardilla_2" class="animated fadeInUpSmall" src="{{ asset("img/cecofersa/ardilla_2.png") }}" alt="ceco_ardilla" height="auto" width="250">
+                </div>
+
+                <div class="col-md-8">
+                    <div class="box-style-3 left animated fadeInUpSmall">
+                        <div class="icon-container default-bg">
+                            <i class="fa fa-group"></i>
+                        </div>
+                        <div class="body">
+                            <h2>Continuity and full support from the members.</h2>
+                            <p><br></p>
+
+                        </div>
+                    </div>
+
+                    <div class="box-style-3 left animated fadeInUpSmall">
+                        <div class="icon-container default-bg">
+                            <i class="fa fa-line-chart"></i>
+                        </div>
+                        <div class="body">
+                            <h2>Progressive increase in the number of members.</h2>
+                            <p><br></p>
+                        </div>
+                    </div>
+
+                    <div class="box-style-3 left animated fadeInUpSmall">
+                        <div class="icon-container default-bg">
+                            <i class="fa fa-exchange"></i>
+                        </div>
+                        <div class="body">
+                            <h2>Cobertura</h2>
+                            <p>
+                                Important national coverage with growth in purchase volume.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="box-style-3 left animated fadeInUpSmall">
+                        <div class="icon-container default-bg">
+                            <i class="fa  fa-thumbs-up"></i>
+                        </div>
+                        <div class="body">
+                            <h2>Fidelity</h2>
+                            <p>
+                                Maximum fidelity to the brands with which <b>CECOFERSA</b> works, with the highest concentration of purchases.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="box-style-3 left animated fadeInUpSmall">
+                        <div class="icon-container default-bg">
+                            <i class="fa fa-certificate"></i>
+                        </div>
+                        <div class="body">
+                            <h2>Trust</h2>
+                            <p>
+                                <b>CECOFERSA </b>does not speculate, the relationship with suppliers is based on continuity and mutual trus.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="box-style-3 left animated fadeInUpSmall">
+                        <div class="icon-container default-bg">
+                            <i class="fa fa-bullhorn"></i>
+                        </div>
+                        <div class="body">
+                            <h2>Marketing</h2>
+                            <p>
+                                Brands with priority placement in stores and all promotional events.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="box-style-3 left animated fadeInUpSmall">
+                        <div class="icon-container default-bg">
+                            <i class="fa fa-euro"></i>
+                        </div>
+                        <div class="body">
+                            <h2>Commercialization</h2>
+                            <p>
+                                Placing on the market at reasonable prices, monitoring the competitors' prices, without damaging the market unnecessarily.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% elseif languaje == 'pt' %}
+
+    <div class="section gray-bg clearfix">
+        <div class="container">
+            <h1 class="text-center title">Tamb&eacute;m  oferece interessantes vantagens aos fornecedores</h1>
+            <div class="separator"></div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="space hidden-lg hidden-md"></div>
+                    <img id="ardilla_2" class="animated fadeInUpSmall" src="{{ asset("img/cecofersa/ardilla_2.png") }}" alt="ceco_ardilla" height="auto" width="250">
+                </div>
+
+
+                <div class="col-md-8">
+                    <div class="box-style-3 left animated fadeInUpSmall">
+                        <div class="icon-container default-bg">
+                            <i class="fa fa-group"></i>
+                        </div>
+                        <div class="body">
+                            <h2>Continua&ccedil;&atilde;o e fidelidade dos seus  associados.</h2>
+                            <p><br></p>
+
+                        </div>
+                    </div>
+
+                    <div class="box-style-3 left animated fadeInUpSmall">
+                        <div class="icon-container default-bg">
+                            <i class="fa fa-line-chart"></i>
+                        </div>
+                        <div class="body">
+                            <h2>Aumento progressivo de n&uacute;mero de associados.</h2>
+                            <p><br></p>
+                        </div>
+                    </div>
+
+                    <div class="box-style-3 left animated fadeInUpSmall">
+                        <div class="icon-container default-bg">
+                            <i class="fa fa-exchange"></i>
+                        </div>
+                        <div class="body">
+                            <h2>Cobertura</h2>
+                            <p>
+                                Importante cobertura a n&iacute;vel nacional com  crescimento no volume de compras.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="box-style-3 left animated fadeInUpSmall">
+                        <div class="icon-container default-bg">
+                            <i class="fa  fa-thumbs-up"></i>
+                        </div>
+                        <div class="body">
+                            <h2>Fidelidade</h2>
+                            <p>
+                                M&aacute;xima fidelidade &aacute;s marcas com que <b>CECOFERSA</b> trabalha, com maior concentra&ccedil;&atilde;o de compras.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="box-style-3 left animated fadeInUpSmall">
+                        <div class="icon-container default-bg">
+                            <i class="fa fa-certificate"></i>
+                        </div>
+                        <div class="body">
+                            <h2>Confianza</h2>
+                            <p>
+                                <b>CECOFERSA </b>n&atilde;o realiza opera&ccedil;&otilde;es especulativas,  e a rela&ccedil;&atilde;o com os seus fornecedores est&aacute; baseada  na continuidade e confian&ccedil;a m&uacute;tua.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="box-style-3 left animated fadeInUpSmall">
+                        <div class="icon-container default-bg">
+                            <i class="fa fa-bullhorn"></i>
+                        </div>
+                        <div class="body">
+                            <h2>Marketing</h2>
+                            <p>
+                                Importante presen&ccedil;a das marcas nos estabelecimentos e todos os elementos promocionais.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="box-style-3 left animated fadeInUpSmall">
+                        <div class="icon-container default-bg">
+                            <i class="fa fa-euro"></i>
+                        </div>
+                        <div class="body">
+                            <h2>Comercializa&ccedil;&atilde;o</h2>
+                            <p>
+                                Comercializa&ccedil;&atilde;o a pre&ccedil;os razo&aacute;veis, estando atento aos pre&ccedil;os da concorr&ecirc;ncia, sem agredir o  mercado.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endif %}
+
 
 </body>
 {% block footer %}
