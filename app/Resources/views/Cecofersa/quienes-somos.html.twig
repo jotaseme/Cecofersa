@@ -219,7 +219,7 @@
                         {% endif %}
                     </h2>
                     <i class="fa fa-briefcase"></i>
-                    <span class="stat-num" data-to="150" data-speed="3000">0</span>
+                    <span class="stat-num" data-to="{{ asociados }}" data-speed="3000">0</span>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
@@ -234,14 +234,22 @@
                         {% endif %}
                     </h2>
                     <i class="fa fa-users"></i>
-                    <span class="stat-num" data-to="300" data-speed="3000">0</span>
+                    <span class="stat-num" data-to="{{ proveedores }}" data-speed="3000">0</span>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
                 <div class="box-style-1 default-bg">
-                    <h2 class="title">Ficheros para descargar</h2>
+                    <h2 class="title">
+                        {% if languaje == 'es' %}
+                            Ficheros para descargar
+                        {% elseif languaje == 'en'%}
+                            Download files
+                        {% elseif languaje == 'pt' %}
+                            Download de arquivos
+                        {% endif %}
+                    </h2>
                     <i class="fa fa-cloud-download"></i>
-                    <span class="stat-num" data-to="4000" data-speed="3000">0</span>
+                    <span class="stat-num" data-to="{{ ficheros }}" data-speed="3000">0</span>
                 </div>
             </div>
 
