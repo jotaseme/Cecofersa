@@ -2,7 +2,115 @@
 <!-- ================ -->
 <div class="scrollToTop"><i class="icon-up-open-big"></i></div>
 
-{% if languaje=='en' %}
+
+<!--Estructurado por idiomas ES/EN/PT-->
+
+{% if languaje=='es' %}
+<div class="header-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-2 col-sm-6">
+
+                <!-- header-top-first start -->
+                <!-- ================ -->
+                <div class="header-top-first clearfix" style="padding-top: 0.5em;">
+                    <div class="btn-group dropdown" style="padding-right: 2em;">
+                        <a href="{{ asset("img/cecofersa/logo_cecofersa.jpg") }}" download> Descargar logo <i class="fa fa-download"></i></a>
+                    </div>
+                    <div class="btn-group dropdown">
+                        <a href="{{ asset("img/cecofersa/ardilla_cecofersa.jpg") }}" download> Descargar ardilla <i class="fa fa-download"></i></a>
+                    </div>
+                </div>
+                <!-- header-top-first end -->
+            </div>
+            <div class="col-xs-10 col-sm-6">
+
+                <!-- header-top-second start -->
+                <!-- ================ -->
+                <div id="header-top-second"  class="clearfix">
+
+                    <!-- header top dropdowns start -->
+                    <!-- ================ -->
+
+                    <div class="header-top-dropdown">
+                        <div class="btn-group dropdown">
+                        </div>
+                        <div id="style_feria" class="btn-group dropdown">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <a href="" id="feria">Acceso Expocecofersa 2017</a></button>
+                        </div>
+                        <div class="btn-group dropdown">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <a href="" id="area">Acceso Área Privada</a></button>
+                        </div>
+
+
+                        <div class="btn-group dropdown">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><img src="{{ asset("img/cecofersa/Bandera Spa.gif") }}" height="15" width="15"></button>
+                            <ul class="dropdown-menu Private Area dropdown-animation cart" style="min-width: 83px;">
+                                <li>
+                                    <table class="table table-hover">
+                                        <tbody>
+
+                                        <tr>
+                                        </tr>
+                                        <tr>
+                                            <td class="total-quantity" colspan="2">
+                                                {% if activo == 'index' %}
+                                                    <a href="{{ path('ceco_index',{'languaje':'en'}) }}">English</a></td>
+                                                {% elseif activo == 'somos' %}
+                                                    <a href="{{ path('ceco_somos_en',{'languaje':'en'}) }}">English</a></td>
+                                                {% elseif activo == 'servicios' %}
+                                                    <a href="{{ path('ceco_servicios_en',{'languaje':'en'}) }}">English</a></td>
+                                                {% elseif activo == 'folletos' %}
+                                                    <a href="{{ path('ceco_folletos_en',{'languaje':'en'}) }}">English</a></td>
+                                                {% elseif activo == 'productos' %}
+                                                    <a href="{{ path('ceco_productos_en',{'languaje':'en'}) }}">English</a></td>
+                                                {% elseif activo == 'informacion' %}
+                                                    <a href="{{ path('ceco_informacion_en',{'languaje':'en'}) }}">English</a></td>
+                                                {% elseif activo == 'asociados' %}
+                                                    <a href="{{ path('ceco_asociados_en',{'languaje':'en'}) }}">English</a></td>
+                                                {% elseif activo == 'contacto' %}
+                                                    <a href="{{ path('ceco_contacto_en',{'languaje':'en'}) }}">English</a></td>
+                                                {% endif %}
+
+                                        </tr>
+                                        <tr>
+                                            <td class="total-quantity" colspan="2">
+                                                {% if activo == 'index' %}
+                                                    <a href="{{ path('ceco_index',{'languaje':'pt'}) }}">Português</a></td>
+                                                {% elseif activo == 'somos' %}
+                                                    <a href="{{ path('ceco_somos_pt',{'languaje':'pt'}) }}">Português</a></td>
+                                                {% elseif activo == 'servicios' %}
+                                                    <a href="{{ path('ceco_servicios_pt',{'languaje':'pt'}) }}">Português</a></td>
+                                                {% elseif activo == 'folletos' %}
+                                                    <a href="{{ path('ceco_folletos_pt',{'languaje':'pt'}) }}">Português</a></td>
+                                                {% elseif activo == 'productos' %}
+                                                    <a href="{{ path('ceco_productos_pt',{'languaje':'pt'}) }}">Português</a></td>
+                                                {% elseif activo == 'informacion' %}
+                                                    <a href="{{ path('ceco_informacion_pt',{'languaje':'pt'}) }}">Português</a></td>
+                                                {% elseif activo == 'asociados' %}
+                                                    <a href="{{ path('ceco_asociados_pt',{'languaje':'pt'}) }}">Português</a></td>
+                                                {% elseif activo == 'contacto' %}
+                                                    <a href="{{ path('ceco_contacto_pt',{'languaje':'pt'}) }}">Português</a></td>
+                                                {% endif %}
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <!--  header top dropdowns end -->
+
+                </div>
+                <!-- header-top-second end -->
+
+            </div>
+        </div>
+    </div>
+</div>
+{% elseif languaje=='en' %}
     <div class="header-top">
         <div class="container">
             <div class="row">
@@ -50,12 +158,45 @@
                                             <tr>
                                             </tr>
                                             <tr>
-                                                <td class="total-quantity" colspan="2"><a href="{{ path('ceco_index',{'languaje':'es'}) }}">Español</a></td>
+                                                <td class="total-quantity" colspan="2">
+                                                    {% if activo == 'index' %}
+                                                        <a href="{{ path('ceco_index',{'languaje':'es'}) }}">Español</a></td>
+                                                    {% elseif activo == 'somos' %}
+                                                        <a href="{{ path('ceco_somos',{'languaje':'es'}) }}">Español</a></td>
+                                                    {% elseif activo == 'servicios' %}
+                                                        <a href="{{ path('ceco_servicios',{'languaje':'es'}) }}">Español</a></td>
+                                                    {% elseif activo == 'folletos' %}
+                                                        <a href="{{ path('ceco_folletos',{'languaje':'es'}) }}">Español</a></td>
+                                                    {% elseif activo == 'productos' %}
+                                                        <a href="{{ path('ceco_productos',{'languaje':'es'}) }}">Español</a></td>
+                                                    {% elseif activo == 'informacion' %}
+                                                        <a href="{{ path('ceco_informacion',{'languaje':'es'}) }}">Español</a></td>
+                                                    {% elseif activo == 'asociados' %}
+                                                        <a href="{{ path('ceco_asociados',{'languaje':'es'}) }}">Español</a></td>
+                                                    {% elseif activo == 'contacto' %}
+                                                        <a href="{{ path('ceco_contacto',{'languaje':'es'}) }}">Español</a></td>
+                                                    {% endif %}
 
                                             </tr>
                                             <tr>
-                                                <td class="total-quantity" colspan="2"><a href="{{ path('ceco_index',{'languaje':'pt'}) }}">Português</a></td>
-
+                                                <td class="total-quantity" colspan="2">
+                                                    {% if activo == 'index' %}
+                                                        <a href="{{ path('ceco_index',{'languaje':'pt'}) }}">Português</a></td>
+                                                    {% elseif activo == 'somos' %}
+                                                        <a href="{{ path('ceco_somos_pt',{'languaje':'pt'}) }}">Português</a></td>
+                                                    {% elseif activo == 'servicios' %}
+                                                        <a href="{{ path('ceco_servicios_pt',{'languaje':'pt'}) }}">Português</a></td>
+                                                    {% elseif activo == 'folletos' %}
+                                                        <a href="{{ path('ceco_folletos_pt',{'languaje':'pt'}) }}">Português</a></td>
+                                                    {% elseif activo == 'productos' %}
+                                                        <a href="{{ path('ceco_productos_pt',{'languaje':'pt'}) }}">Português</a></td>
+                                                    {% elseif activo == 'informacion' %}
+                                                        <a href="{{ path('ceco_informacion_pt',{'languaje':'pt'}) }}">Português</a></td>
+                                                    {% elseif activo == 'asociados' %}
+                                                        <a href="{{ path('ceco_asociados_pt',{'languaje':'pt'}) }}">Português</a></td>
+                                                    {% elseif activo == 'contacto' %}
+                                                        <a href="{{ path('ceco_contacto_pt',{'languaje':'pt'}) }}">Português</a></td>
+                                                    {% endif %}
                                             </tr>
                                             </tbody>
                                         </table>
@@ -122,11 +263,45 @@
                                             <tr>
                                             </tr>
                                             <tr>
-                                                <td class="total-quantity" colspan="2"><a href="{{ path('ceco_index',{'languaje':'es'}) }}">Español</a></td>
+                                                <td class="total-quantity" colspan="2">
+                                                {% if activo == 'index' %}
+                                                    <a href="{{ path('ceco_index',{'languaje':'es'}) }}">Español</a></td>
+                                                {% elseif activo == 'somos' %}
+                                                    <a href="{{ path('ceco_somos',{'languaje':'es'}) }}">Español</a></td>
+                                                {% elseif activo == 'servicios' %}
+                                                    <a href="{{ path('ceco_servicios',{'languaje':'es'}) }}">Español</a></td>
+                                                {% elseif activo == 'folletos' %}
+                                                    <a href="{{ path('ceco_folletos',{'languaje':'es'}) }}">Español</a></td>
+                                                {% elseif activo == 'productos' %}
+                                                    <a href="{{ path('ceco_productos',{'languaje':'es'}) }}">Español</a></td>
+                                                {% elseif activo == 'informacion' %}
+                                                    <a href="{{ path('ceco_informacion',{'languaje':'es'}) }}">Español</a></td>
+                                                {% elseif activo == 'asociados' %}
+                                                    <a href="{{ path('ceco_asociados',{'languaje':'es'}) }}">Español</a></td>
+                                                {% elseif activo == 'contacto' %}
+                                                    <a href="{{ path('ceco_contacto',{'languaje':'es'}) }}">Español</a></td>
+                                                {% endif %}
 
                                             </tr>
                                             <tr>
-                                                <td class="total-quantity" colspan="2"><a href="{{ path('ceco_index',{'languaje':'en'}) }}">English</a></td>
+                                                <td class="total-quantity" colspan="2">
+                                                {% if activo == 'index' %}
+                                                    <a href="{{ path('ceco_index',{'languaje':'en'}) }}">English</a></td>
+                                                {% elseif activo == 'somos' %}
+                                                    <a href="{{ path('ceco_somos_en',{'languaje':'en'}) }}">English</a></td>
+                                                {% elseif activo == 'servicios' %}
+                                                    <a href="{{ path('ceco_servicios_en',{'languaje':'en'}) }}">English</a></td>
+                                                {% elseif activo == 'folletos' %}
+                                                    <a href="{{ path('ceco_folletos_en',{'languaje':'en'}) }}">English</a></td>
+                                                {% elseif activo == 'productos' %}
+                                                    <a href="{{ path('ceco_productos_en',{'languaje':'en'}) }}">English</a></td>
+                                                {% elseif activo == 'informacion' %}
+                                                    <a href="{{ path('ceco_informacion_en',{'languaje':'en'}) }}">English</a></td>
+                                                {% elseif activo == 'asociados' %}
+                                                    <a href="{{ path('ceco_asociados_en',{'languaje':'en'}) }}">English</a></td>
+                                                {% elseif activo == 'contacto' %}
+                                                    <a href="{{ path('ceco_contacto_en',{'languaje':'en'}) }}">English</a></td>
+                                                {% endif %}
 
                                             </tr>
                                             </tbody>
@@ -146,77 +321,6 @@
             </div>
         </div>
     </div>
-{% elseif languaje=='es' %}
-    <div class="header-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-2 col-sm-6">
 
-                    <!-- header-top-first start -->
-                    <!-- ================ -->
-                    <div class="header-top-first clearfix" style="padding-top: 0.5em;">
-                        <div class="btn-group dropdown" style="padding-right: 2em;">
-                            <a href="{{ asset("img/cecofersa/logo_cecofersa.jpg") }}" download> Descargar logo <i class="fa fa-download"></i></a>
-                        </div>
-                        <div class="btn-group dropdown">
-                            <a href="{{ asset("img/cecofersa/ardilla_cecofersa.jpg") }}" download> Descargar ardilla <i class="fa fa-download"></i></a>
-                        </div>
-                    </div>
-                    <!-- header-top-first end -->
-                </div>
-                <div class="col-xs-10 col-sm-6">
-
-                    <!-- header-top-second start -->
-                    <!-- ================ -->
-                    <div id="header-top-second"  class="clearfix">
-
-                        <!-- header top dropdowns start -->
-                        <!-- ================ -->
-
-                        <div class="header-top-dropdown">
-                            <div class="btn-group dropdown">
-                            </div>
-                            <div id="style_feria" class="btn-group dropdown">
-                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <a href="" id="feria">Acceso Expocecofersa 2017</a></button>
-                            </div>
-                            <div class="btn-group dropdown">
-                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <a href="" id="area">Acceso Área Privada</a></button>
-                            </div>
-
-
-                            <div class="btn-group dropdown">
-                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><img src="{{ asset("img/cecofersa/Bandera Spa.gif") }}" height="15" width="15"></button>
-                                <ul class="dropdown-menu Private Area dropdown-animation cart" style="min-width: 83px;">
-                                    <li>
-                                        <table class="table table-hover">
-                                            <tbody>
-
-                                            <tr>
-                                            </tr>
-                                            <tr>
-                                                <td class="total-quantity" colspan="2"><a href="{{ path('ceco_index',{'languaje':'en'}) }}">English</a></td>
-
-                                            </tr>
-                                            <tr>
-                                                <td class="total-quantity" colspan="2"><a href="{{ path('ceco_index',{'languaje':'pt'}) }}">Português</a></td>
-
-                                            </tr>
-                                            </tbody>
-                                        </table>
-
-                                    </li>
-                                </ul>
-                            </div>
-
-                        </div>
-                        <!--  header top dropdowns end -->
-
-                    </div>
-                    <!-- header-top-second end -->
-
-                </div>
-            </div>
-        </div>
-    </div>
 {% endif %}
 <!-- header-top end -->
