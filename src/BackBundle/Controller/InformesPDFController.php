@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 class InformesPDFController extends Controller
 {
     /**
-     * @Route("/Admin/asociados/relacion-empresas/todos", name="relacionEmpresasToPdf")
+     * @Route("/Admin/asociados/pdf/relacion-empresas/todos", name="relacionEmpresasToPdf")
      */
     public function relacionEmpresasToPDFAction()
     {
@@ -34,7 +34,7 @@ class InformesPDFController extends Controller
     }
 
     /**
-     * @Route("/Admin/asociados/relacion-empresas/portugal", name="relacionEmpresasPortugalToPdf")
+     * @Route("/Admin/asociados/pdf/relacion-empresas/portugal", name="relacionEmpresasPortugalToPdf")
      */
     public function relacionEmpresasPortugalToPDFAction()
     {
@@ -58,7 +58,7 @@ class InformesPDFController extends Controller
     }
 
     /**
-     * @Route("/Admin/asociados/etiquetas", name="etiquetasToPdf")
+     * @Route("/Admin/asociados/pdf/etiquetas", name="etiquetasToPdf")
      */
     public function etiquetasToPDFAction()
     {
