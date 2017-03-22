@@ -21,6 +21,8 @@ class HomeController extends Controller
 
     /**
      * @Route("/{languaje}/somos", name="ceco_somos")
+     * @Route("/{languaje}/about", name="ceco_somos_en")
+     * @Route("/{languaje}/somos", name="ceco_somos_pt")
      */
     public function somosAction($languaje='es', $activo='somos')
     {
@@ -33,6 +35,8 @@ class HomeController extends Controller
 
     /**
      * @Route("/{languaje}/servicios", name="ceco_servicios")
+     * @Route("/{languaje}/services", name="ceco_servicios_en")
+     * @Route("/{languaje}/servicos", name="ceco_servicios_pt")
      */
     public function serviciosAction($languaje='es', $activo='servicios')
     {
@@ -45,6 +49,8 @@ class HomeController extends Controller
 
     /**
      * @Route("/{languaje}/folletos", name="ceco_folletos")
+     * @Route("/{languaje}/brochures", name="ceco_folletos_en")
+     * @Route("/{languaje}/folhetos", name="ceco_folletos_pt")
      */
     public function folletosAction($languaje='es', $activo='folletos')
     {
@@ -57,6 +63,8 @@ class HomeController extends Controller
 
     /**
      * @Route("/{languaje}/productos", name="ceco_productos")
+     * @Route("/{languaje}/products", name="ceco_productos_en")
+     * @Route("/{languaje}/produtos", name="ceco_productos_pt")
      */
     public function productosAction($languaje='es', $activo='productos')
     {
@@ -69,6 +77,8 @@ class HomeController extends Controller
 
     /**
      * @Route("/{languaje}/informacion", name="ceco_informacion")
+     * @Route("/{languaje}/information", name="ceco_informacion_en")
+     * @Route("/{languaje}/informacao", name="ceco_informacion_pt")
      */
     public function informacionAction($languaje='es', $activo='informacion')
     {
@@ -81,6 +91,8 @@ class HomeController extends Controller
 
     /**
      * @Route("/{languaje}/asociados", name="ceco_asociados")
+     * @Route("/{languaje}/members", name="ceco_asociados_en")
+     * @Route("/{languaje}/associados", name="ceco_asociados_pt")
      */
     public function asociadosAction($languaje='es', $activo='asociados')
     {
@@ -93,6 +105,8 @@ class HomeController extends Controller
 
     /**
      * @Route("/{languaje}/contacto", name="ceco_contacto")
+     * @Route("/{languaje}/contact", name="ceco_contacto_en")
+     * @Route("/{languaje}/contato", name="ceco_contacto_pt")
      */
     public function contactoAction($languaje='es', $activo='contacto')
     {

@@ -179,16 +179,16 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="call-to-action">
                     <h1 class="title">Central de compras y servicios profesionales</h1>
-                    <a href="{{ path('ceco_contacto',{'languaje':languaje}) }}" class="btn btn-default contact">
+
                         {% if languaje=='es' %}
-                            Cont&aacute;ctanos
+                            <a href="{{ path('ceco_contacto',{'languaje':languaje}) }}" class="btn btn-default contact">Cont&aacute;ctanos</a>
                         {% elseif languaje=='en' %}
-                            Contact us
+                            <a href="{{ path('ceco_contacto_en',{'languaje':languaje}) }}" class="btn btn-default contact">Contact us</a>
                         {% elseif languaje=='pt' %}
-                            Contato
+                            <a href="{{ path('ceco_contacto_pt',{'languaje':languaje}) }}" class="btn btn-default contact">Contato</a>
                         {% endif %}
                         <i class="pl-10 fa fa-phone"></i>
-                    </a>
+
                 </div>
             </div>
         </div>
