@@ -181,13 +181,13 @@
                     <h1 class="title">Central de compras y servicios profesionales</h1>
 
                         {% if languaje=='es' %}
-                            <a href="{{ path('ceco_contacto',{'languaje':languaje}) }}" class="btn btn-default contact">Cont&aacute;ctanos</a>
+                            <a href="{{ path('ceco_contacto',{'languaje':languaje}) }}" class="btn btn-default contact">Cont&aacute;ctanos<i class="pl-10 fa fa-phone"></i></a>
                         {% elseif languaje=='en' %}
-                            <a href="{{ path('ceco_contacto_en',{'languaje':languaje}) }}" class="btn btn-default contact">Contact us</a>
+                            <a href="{{ path('ceco_contacto_en',{'languaje':languaje}) }}" class="btn btn-default contact">Contact us<i class="pl-10 fa fa-phone"></i></a>
                         {% elseif languaje=='pt' %}
-                            <a href="{{ path('ceco_contacto_pt',{'languaje':languaje}) }}" class="btn btn-default contact">Contato</a>
+                            <a href="{{ path('ceco_contacto_pt',{'languaje':languaje}) }}" class="btn btn-default contact">Contato<i class="pl-10 fa fa-phone"></i></a>
                         {% endif %}
-                        <i class="pl-10 fa fa-phone"></i>
+
 
                 </div>
             </div>
