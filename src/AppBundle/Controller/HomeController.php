@@ -12,6 +12,9 @@ class HomeController extends Controller
      */
     public function indexAction($languaje='es')
     {
+        $asociados = $this->getDoctrine()
+            ->getRepository('BackBundle:Asociados')
+            ->findAllOrderedByNameRelacionAsociados('Portugal');
         return $this->render('Cecofersa/encabezado.html.twig',
             ['languaje' => $languaje
         ]);
