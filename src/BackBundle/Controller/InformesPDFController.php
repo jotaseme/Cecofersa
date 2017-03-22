@@ -62,15 +62,16 @@ class InformesPDFController extends Controller
      */
     public function etiquetasToPDFAction()
     {
-        $asociados = $this->getDoctrine()
-            ->getRepository('BackBundle:Asociados')
-            ->findAllOrderedByNameRelacionAsociados('Todos');
+        $direcciones = $this->getDoctrine()
+            ->getRepository('BackBundle:DireccionesAsociados')
+            ->findAllOrderedByNameEtiquetasAsociados('Todos');
 
+        //var_dump($direcciones[0]);die;
         return new Response(
             $this->get('knp_snappy.pdf')->getOutputFromHtml($this->renderView(
                 'Backoffice/PDF/etiquetas.twig',
                 array(
-                    'asociados'=>$asociados
+                    'direcciones'=>$direcciones
                 )
             )),
             200,

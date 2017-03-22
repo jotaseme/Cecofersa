@@ -1,11 +1,48 @@
-{% extends 'Backoffice/PDF/layout.twig' %}
-{% block body %}
-    <body class="skin-red-light">
-    <div class="content-wrapper">
-        <section class="content-header">
-            HOLA
-        </section>
+<meta charset="utf-8" />
+{% set counter = 0 %}
+    {% for direccion in direcciones %}
+        {% set counter = counter + 1 %}
+        {% if (counter < 14) %}
+            {% if  direccion['nombre']|length > 45 %}
+                <div style="border-bottom:1px solid white;padding-top: 0.9cm;height: 4cm; width: 11.6cm; float: left; text-align: center">
+                    <p style="padding-bottom:0; padding-top:0;margin-top:0; margin-bottom:0; font-weight: bold">{{ direccion['nombre'] }}</p>
+                    <p style="padding-bottom:0; padding-top:0;margin-top:0; margin-bottom:0;">A/A. {{ direccion['contacto'] }}</p>
+                    <p style="padding-bottom:0; padding-top:0;margin-top:0; margin-bottom:0;">{{ direccion[0].domicilio }}</p>
+                    <p style="padding-bottom:0; padding-top:0;margin-top:0; margin-bottom:0;">{{ direccion[0].codigoPostal }} {{ direccion[0].poblacion }}</p>
+                    <p style="padding-bottom:0; padding-top:0;margin-top:0; margin-bottom:0;">{{ direccion[0].provincia }} <b>{{ direccion[0].pais }}</b></p>
+                </div>
+            {% else %}
+                <div style="border:1px solid white;padding-top: 1.4cm;height: 3.5cm; width: 11.6cm; float: left; text-align: center">
+                    <p style="padding-bottom:0; padding-top:0;margin-top:0; margin-bottom:0; font-weight: bold">{{ direccion['nombre'] }}</p>
+                    <p style="padding-bottom:0; padding-top:0;margin-top:0; margin-bottom:0;">A/A. {{ direccion['contacto'] }}</p>
+                    <p style="padding-bottom:0; padding-top:0;margin-top:0; margin-bottom:0;">{{ direccion[0].domicilio }}</p>
+                    <p style="padding-bottom:0; padding-top:0;margin-top:0; margin-bottom:0;">{{ direccion[0].codigoPostal }} {{ direccion[0].poblacion }}</p>
+                    <p style="padding-bottom:0; padding-top:0;margin-top:0; margin-bottom:0;">{{ direccion[0].provincia }} <b>{{ direccion[0].pais }}</b></p>
+                </div>
+            {% endif %}
+        {% elseif (counter==14) %}
+            {% if  direccion['nombre']|length > 45%}
+                <div style="border-bottom:1px solid white;padding-top: 0.9cm;height: 4cm; width: 11.6cm; float: left; text-align: center">
+                    <p style="padding-bottom:0; padding-top:0;margin-top:0; margin-bottom:0; font-weight: bold">{{ direccion['nombre'] }}</p>
+                    <p style="padding-bottom:0; padding-top:0;margin-top:0; margin-bottom:0;">A/A. {{ direccion['contacto'] }}</p>
+                    <p style="padding-bottom:0; padding-top:0;margin-top:0; margin-bottom:0;">{{ direccion[0].domicilio }}</p>
+                    <p style="padding-bottom:0; padding-top:0;margin-top:0; margin-bottom:0;">{{ direccion[0].codigoPostal }} {{ direccion[0].poblacion }}</p>
+                    <p style="padding-bottom:0; padding-top:0;margin-top:0; margin-bottom:0;">{{ direccion[0].provincia }} <b>{{ direccion[0].pais }}</b></p>
+                </div>
+            {% else %}
+                <div style="border:1px solid white;padding-top: 1.4cm;height: 3.5cm; width: 11.6cm; float: left; text-align: center">
+                    <p style="padding-bottom:0; padding-top:0;margin-top:0; margin-bottom:0; font-weight: bold">{{ direccion['nombre'] }}</p>
+                    <p style="padding-bottom:0; padding-top:0;margin-top:0; margin-bottom:0;">A/A. {{ direccion['contacto'] }}</p>
+                    <p style="padding-bottom:0; padding-top:0;margin-top:0; margin-bottom:0;">{{ direccion[0].domicilio }}</p>
+                    <p style="padding-bottom:0; padding-top:0;margin-top:0; margin-bottom:0;">{{ direccion[0].codigoPostal }} {{ direccion[0].poblacion }}</p>
+                    <p style="padding-bottom:0; padding-top:0;margin-top:0; margin-bottom:0;">{{ direccion[0].provincia }} <b>{{ direccion[0].pais }}</b></p>
+                </div>
+            {% endif %}
+            {% set counter = 0 %}
+            <footer style="border-bottom:1px solid white; page-break-after: always;">
+            </footer>
+        {% endif %}
 
-    </div>
-    </body>
-{% endblock %}
+    {% endfor %}
+
+
