@@ -57,131 +57,199 @@
             <!-- ================ -->
             <div class="main col-md-12">
 
-            <!-- Estructurado todo por idiomas -->
+                <!-- Estructurado todo por idiomas -->
 
-            {% if languaje == 'es' %}
-                <!-- page-title start -->
-                <!-- ================ -->
-                <h1 class="page-title">¿Qui&eacute;nes somos?</h1>
-                <div class="separator-2"></div>
-                <!-- page-title end -->
+                {% if languaje == 'es' %}
+                    <!-- page-title start -->
+                    <!-- ================ -->
+                    <h1 class="page-title">¿Qui&eacute;nes somos?</h1>
+                    <div class="separator-2"></div>
+                    <!-- page-title end -->
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <p> <b> CECOFERSA </b> es la mayor Cadena de distribución española de Ferretería Industrial y Suministros Industriales. Cuenta con más de 120 empresas asociadas y con 250 establecimientos por toda España y Portugal. </p>
-                        <p>
-                            Los establecimientos <b>CECOFERSA</b> disponen de un gran surtido de artículos, fabricados por las primeras marcas mundiales. Además, un equipo de profesionales se encuentra a su disposición para poder orientarle y conseguir que usted realice la mejor compra. <b>CECOFERSA</b> se ha convertido en una práctica y moderna herramienta de futuro al servicio de la distribución, gracias a la confianza de los más importantes ferreteros y fabricantes
-                        </p>
-                        <ul class="list-icons">
-                            <li class="object-non-visible" data-animation-effect="fadeInUpSmall"><i class="icon-check"></i> Podr&aacute; comprar directamente a los principales fabricantes y a los mejores precios.</li>
-                            <li class="object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="100"><i class="icon-check"></i> Podr&aacute; ahorrarse hasta el 40% cuando compra en algún establecimiento asociado a <b>CECOFERSA</b>. Estas tiendas se reconocen  fácilmente por nuestra mascota, la ardilla <b>CECOFERSA</b>.</li>
-                            <li class="object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="300"><i class="icon-check"></i> <b>CECOFERSA</b> es el representante para España y Portugal de <b>EURO CRAFT</b>, el mayor grupo de compras del sector de Ferretería y Suministro Industrial en Europa.</li>
-                            <li class="object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
-                                <map name="MicrosoftOfficeMap0" id="MicrosoftOfficeMap0">
-                                    <area shape="rect" target="_blank" coords="159,1,293,32" href="http://www.ede.de/" />
-                                    <area shape="rect" target="_blank" coords="160,57,291,88" href="http://www.zevij-necomij.com/" />
-                                    <area shape="rect" target="_blank" coords="160,87,292,113" href="http://www.cdu.net/" />
-                                    <area shape="rect" coords="160,139,295,166" href="http://www.thstools.co.uk/" target="_blank" />
-                                    <area shape="rect" coords="159,31,295,58" href="http://www.socoda.com/" target="_blank" />
-                                    <!--<area shape="rect" coords="18,35,124,123" href="http://www.eurocraft.de/" target="_blank" />--><!--No funciona link-->
-                                </map>
-                                <img src="{{ asset("img/cecofersa/grafico.gif") }}" alt="grafico" width="297" height="164" border="0" usemap="#MicrosoftOfficeMap0" id="_x0000_i1026" rectangle="(159,108) (291, 134)  http://www.luna.se##_blank" /></p>
-                            </li>
-                        </ul>
-                    </div>
-
-            {% elseif languaje == 'en' %}
-                <!-- page-title start -->
-                <!-- ================ -->
-                <h1 class="page-title">About us</h1>
-                <div class="separator-2"></div>
-                <!-- page-title end -->
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <p> <b> CECOFERSA </b> is the largest Spanish-Supply center for Industrial Hardware and Industrial Supplies. It has over 120 members and 250 stores throughout Spain and Portugal.</p>
-
-                        <p><b>CECOFERSA</b> retailers have a large assortment of items, manufactured by the world's leading brands. </p>
-                        <p>In addition, a team of professionals is at your disposal to help you to make the best purchase. <b>CECOFERSA</b> has become a practical and modern tool to serve the distribution, thanks to the confidence of the most important hardware stores and manufacturers.</p>
-
-
-                        <ul class="list-icons">
-                            <li class="object-non-visible" data-animation-effect="fadeInUpSmall"><i class="icon-check"></i> Allows you to buy directly from major suppliers at the best rates.</li>
-                            <li class="object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="100"><i class="icon-check"></i> You can save up to 40% when you shop in a store associated to <b>CECOFERSA</b>. These stores are easily recognized by our mascot, <b>CECOFERSA's</b> squirrel.</li>
-                            <li class="object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="300"><i class="icon-check"></i> <b>CECOFERSA</b> is the representative for <b>EUROCRAFT</b> in Spain and Portugal, the largest purchasing group  of Hardware and Industrial Supply industry in Europe, composed by the following groups:</li>
-                            <li class="object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
-                                <map name="MicrosoftOfficeMap0" id="MicrosoftOfficeMap0">
-                                    <area shape="rect" target="_blank" coords="159,1,293,32" href="http://www.ede.de/" />
-                                    <area shape="rect" target="_blank" coords="160,57,291,88" href="http://www.zevij-necomij.com/" />
-                                    <area shape="rect" target="_blank" coords="160,87,292,113" href="http://www.cdu.net/" />
-                                    <area shape="rect" coords="160,139,295,166" href="http://www.thstools.co.uk/" target="_blank" />
-                                    <area shape="rect" coords="159,31,295,58" href="http://www.socoda.com/" target="_blank" />
-                                    <!--<area shape="rect" coords="18,35,124,123" href="http://www.eurocraft.de/" target="_blank" />--><!--Link no funciona-->
-                                </map>
-                                <img src="{{ asset("img/cecofersa/grafico.gif") }}" alt="grafico" width="297" height="164" border="0" usemap="#MicrosoftOfficeMap0" id="_x0000_i1026" rectangle="(159,108) (291, 134)  http://www.luna.se##_blank" /></p>
-                            </li>
-                        </ul>
-                    </div>
-
-            {% elseif languaje == 'pt' %}
-                <!-- page-title start -->
-                <!-- ================ -->
-                <h1 class="page-title">&iquest;Quem somos?</h1>
-                <div class="separator-2"></div>
-                <!-- page-title end -->
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <p> <b> CECOFERSA </b> &Eacute; a maior Central de distribui&ccedil;&atilde;o Espanhola de m&aacute;quinas, ferramentas  e fornecimento para a &Iacute;ndustria.  Tem mais de 120 empresas associadas e 250 estabelecimentos entre Espanha e Portugal.</p>
-
-                        <p>Os estabelecimientos CECOFERSA dispoem de um grande sortido de artigos, fabricados pelas primeiras marcas a n&iacute;vel mundial. </p>
-                        <p> &Aacute;lem disso, encontra uma equipa de profissionais &aacute; sua disposi&ccedil;&atilde;o para o  poder orientar e conseguir que realize a melhor op&ccedil;&atilde;o de compra.<b> CECOFERSA</b> converteu-se numa  pr&aacute;ctica e moderna  ferramenta de futuro ao servi&ccedil;o  da distribui&ccedil;&atilde;o, gra&ccedil;as &aacute; confian&ccedil;a das melhores e mais importantes lojas e fabricantes do sector.
-
-
-                        <ul class="list-icons">
-                            <li class="object-non-visible" data-animation-effect="fadeInUpSmall"><i class="icon-check"></i> Permite comprar aos principais fabricantes aos  melhores pre&ccedil;os.</li>
-                            <li class="object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="100"><i class="icon-check"></i> Pode poupar at&eacute; 40% quando compra  num estabeleciment o associado a <b>CECOFERSA</b>. Os nossos estabelecimentos s&atilde;o f&aacute;cilmente identific&aacute;veis  atrav&eacute;s da nossa mascote, o esquilo <b>CECOFERSA</b>.</li>
-                            <li class="object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="300"><i class="icon-check"></i> <b>CECOFERSA</b> &eacute; a representante para Espanha e Portugal de <b>EURO CRAFT</b>, o maior grupo de compras do sector de M&aacute;quinas, Ferramentas e Distribui&ccedil;&atilde;o Industrial na Europa, composta pelos seguintes grupos:</li>
-                            <li class="object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
-                                <map name="MicrosoftOfficeMap0" id="MicrosoftOfficeMap0">
-                                    <area shape="rect" target="_blank" coords="159,1,293,32" href="http://www.ede.de/" />
-                                    <area shape="rect" target="_blank" coords="160,57,291,88" href="http://www.zevij-necomij.com/" />
-                                    <area shape="rect" target="_blank" coords="160,87,292,113" href="http://www.cdu.net/" />
-                                    <area shape="rect" coords="160,139,295,166" href="http://www.thstools.co.uk/" target="_blank" />
-                                    <area shape="rect" coords="159,31,295,58" href="http://www.socoda.com/" target="_blank" />
-                                    <!--<area shape="rect" coords="18,35,124,123" href="http://www.eurocraft.de/" target="_blank" />--><!--Link no funciona-->
-                                </map>
-                                <img src="{{ asset("img/cecofersa/grafico.gif") }}" alt="grafico" width="297" height="164" border="0" usemap="#MicrosoftOfficeMap0" id="_x0000_i1026" rectangle="(159,108) (291, 134)  http://www.luna.se##_blank" /></p>
-                            </li>
-                        </ul>
-                    </div>
-            {% endif %}
-
-
-                    <!-- sidebar start -->
-                    <aside class="sidebar col-md-6">
-                        <div class="side vertical-divider-left">
-                            <div class="block clearfix">
-
-                                <img src="{{ asset("img/cecofersa/ardilla.jpg") }}"/>
-                            </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p> <b> CECOFERSA </b> es la mayor Cadena de distribución española de Ferretería Industrial y Suministros Industriales. Cuenta con más de 120 empresas asociadas y con 250 establecimientos por toda España y Portugal. </p>
+                            <p>
+                                Los establecimientos <b>CECOFERSA</b> disponen de un gran surtido de artículos, fabricados por las primeras marcas mundiales. Además, un equipo de profesionales se encuentra a su disposición para poder orientarle y conseguir que usted realice la mejor compra. <b>CECOFERSA</b> se ha convertido en una práctica y moderna herramienta de futuro al servicio de la distribución, gracias a la confianza de los más importantes ferreteros y fabricantes
+                            </p>
+                            <ul class="list-icons">
+                                <li class="object-non-visible" data-animation-effect="fadeInUpSmall"><i class="icon-check"></i> Podr&aacute; comprar directamente a los principales fabricantes y a los mejores precios.</li>
+                                <li class="object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="100"><i class="icon-check"></i> Podr&aacute; ahorrarse hasta el 40% cuando compra en algún establecimiento asociado a <b>CECOFERSA</b>. Estas tiendas se reconocen  fácilmente por nuestra mascota, la ardilla <b>CECOFERSA</b>.</li>
+                                <li class="object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="300"><i class="icon-check"></i> <b>CECOFERSA</b> es el representante para España y Portugal de <b>EURO CRAFT</b>, el mayor grupo de compras del sector de Ferretería y Suministro Industrial en Europa.</li>
+                                <li class="object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
+                                    <map name="MicrosoftOfficeMap0" id="MicrosoftOfficeMap0">
+                                        <area shape="rect" target="_blank" coords="159,1,293,32" href="http://www.ede.de/" />
+                                        <area shape="rect" target="_blank" coords="160,57,291,88" href="http://www.zevij-necomij.com/" />
+                                        <area shape="rect" target="_blank" coords="160,87,292,113" href="http://www.cdu.net/" />
+                                        <area shape="rect" coords="160,139,295,166" href="http://www.thstools.co.uk/" target="_blank" />
+                                        <area shape="rect" coords="159,31,295,58" href="http://www.socoda.com/" target="_blank" />
+                                        <!--<area shape="rect" coords="18,35,124,123" href="http://www.eurocraft.de/" target="_blank" />--><!--No funciona link-->
+                                    </map>
+                                    <img src="{{ asset("img/cecofersa/grafico.gif") }}" alt="grafico" width="297" height="164" border="0" usemap="#MicrosoftOfficeMap0" id="_x0000_i1026" rectangle="(159,108) (291, 134)  http://www.luna.se##_blank" /></p>
+                                </li>
+                            </ul>
                         </div>
-                    </aside>
-                    <!-- sidebar end -->
-                </div>
+                        <!-- sidebar start -->
+                        <aside class="sidebar col-md-6">
+                            <div class="side vertical-divider-left">
+                                <div class="block clearfix">
+
+                                    <img src="{{ asset("img/cecofersa/ardilla.jpg") }}"/>
+                                </div>
+                            </div>
+                        </aside>
+                        <!-- sidebar end -->
+                    </div>
+
+                {% elseif languaje == 'en' %}
+                    <!-- page-title start -->
+                    <!-- ================ -->
+                    <h1 class="page-title">About us</h1>
+                    <div class="separator-2"></div>
+                    <!-- page-title end -->
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p> <b> CECOFERSA </b> is the largest Spanish-Supply center for Industrial Hardware and Industrial Supplies. It has over 120 members and 250 stores throughout Spain and Portugal.</p>
+
+                            <p><b>CECOFERSA</b> retailers have a large assortment of items, manufactured by the world's leading brands. </p>
+                            <p>In addition, a team of professionals is at your disposal to help you to make the best purchase. <b>CECOFERSA</b> has become a practical and modern tool to serve the distribution, thanks to the confidence of the most important hardware stores and manufacturers.</p>
+
+
+                            <ul class="list-icons">
+                                <li class="object-non-visible" data-animation-effect="fadeInUpSmall"><i class="icon-check"></i> Allows you to buy directly from major suppliers at the best rates.</li>
+                                <li class="object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="100"><i class="icon-check"></i> You can save up to 40% when you shop in a store associated to <b>CECOFERSA</b>. These stores are easily recognized by our mascot, <b>CECOFERSA's</b> squirrel.</li>
+                                <li class="object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="300"><i class="icon-check"></i> <b>CECOFERSA</b> is the representative for <b>EUROCRAFT</b> in Spain and Portugal, the largest purchasing group  of Hardware and Industrial Supply industry in Europe, composed by the following groups:</li>
+                                <li class="object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
+                                    <map name="MicrosoftOfficeMap0" id="MicrosoftOfficeMap0">
+                                        <area shape="rect" target="_blank" coords="159,1,293,32" href="http://www.ede.de/" />
+                                        <area shape="rect" target="_blank" coords="160,57,291,88" href="http://www.zevij-necomij.com/" />
+                                        <area shape="rect" target="_blank" coords="160,87,292,113" href="http://www.cdu.net/" />
+                                        <area shape="rect" coords="160,139,295,166" href="http://www.thstools.co.uk/" target="_blank" />
+                                        <area shape="rect" coords="159,31,295,58" href="http://www.socoda.com/" target="_blank" />
+                                        <!--<area shape="rect" coords="18,35,124,123" href="http://www.eurocraft.de/" target="_blank" />--><!--Link no funciona-->
+                                    </map>
+                                    <img src="{{ asset("img/cecofersa/grafico.gif") }}" alt="grafico" width="297" height="164" border="0" usemap="#MicrosoftOfficeMap0" id="_x0000_i1026" rectangle="(159,108) (291, 134)  http://www.luna.se##_blank" /></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- sidebar start -->
+                        <aside class="sidebar col-md-6">
+                            <div class="side vertical-divider-left">
+                                <div class="block clearfix">
+
+                                    <img src="{{ asset("img/cecofersa/ardilla.jpg") }}"/>
+                                </div>
+                            </div>
+                        </aside>
+                        <!-- sidebar end -->
+                    </div>
+
+                {% elseif languaje == 'pt' %}
+                    <!-- page-title start -->
+                    <!-- ================ -->
+                    <h1 class="page-title">&iquest;Quem somos?</h1>
+                    <div class="separator-2"></div>
+                    <!-- page-title end -->
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p> <b> CECOFERSA </b> &Eacute; a maior Central de distribui&ccedil;&atilde;o Espanhola de m&aacute;quinas, ferramentas  e fornecimento para a &Iacute;ndustria.  Tem mais de 120 empresas associadas e 250 estabelecimentos entre Espanha e Portugal.</p>
+
+                            <p>Os estabelecimientos CECOFERSA dispoem de um grande sortido de artigos, fabricados pelas primeiras marcas a n&iacute;vel mundial. </p>
+                            <p> &Aacute;lem disso, encontra uma equipa de profissionais &aacute; sua disposi&ccedil;&atilde;o para o  poder orientar e conseguir que realize a melhor op&ccedil;&atilde;o de compra.<b> CECOFERSA</b> converteu-se numa  pr&aacute;ctica e moderna  ferramenta de futuro ao servi&ccedil;o  da distribui&ccedil;&atilde;o, gra&ccedil;as &aacute; confian&ccedil;a das melhores e mais importantes lojas e fabricantes do sector.
+
+
+                            <ul class="list-icons">
+                                <li class="object-non-visible" data-animation-effect="fadeInUpSmall"><i class="icon-check"></i> Permite comprar aos principais fabricantes aos  melhores pre&ccedil;os.</li>
+                                <li class="object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="100"><i class="icon-check"></i> Pode poupar at&eacute; 40% quando compra  num estabeleciment o associado a <b>CECOFERSA</b>. Os nossos estabelecimentos s&atilde;o f&aacute;cilmente identific&aacute;veis  atrav&eacute;s da nossa mascote, o esquilo <b>CECOFERSA</b>.</li>
+                                <li class="object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="300"><i class="icon-check"></i> <b>CECOFERSA</b> &eacute; a representante para Espanha e Portugal de <b>EURO CRAFT</b>, o maior grupo de compras do sector de M&aacute;quinas, Ferramentas e Distribui&ccedil;&atilde;o Industrial na Europa, composta pelos seguintes grupos:</li>
+                                <li class="object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
+                                    <map name="MicrosoftOfficeMap0" id="MicrosoftOfficeMap0">
+                                        <area shape="rect" target="_blank" coords="159,1,293,32" href="http://www.ede.de/" />
+                                        <area shape="rect" target="_blank" coords="160,57,291,88" href="http://www.zevij-necomij.com/" />
+                                        <area shape="rect" target="_blank" coords="160,87,292,113" href="http://www.cdu.net/" />
+                                        <area shape="rect" coords="160,139,295,166" href="http://www.thstools.co.uk/" target="_blank" />
+                                        <area shape="rect" coords="159,31,295,58" href="http://www.socoda.com/" target="_blank" />
+                                        <!--<area shape="rect" coords="18,35,124,123" href="http://www.eurocraft.de/" target="_blank" />--><!--Link no funciona-->
+                                    </map>
+                                    <img src="{{ asset("img/cecofersa/grafico.gif") }}" alt="grafico" width="297" height="164" border="0" usemap="#MicrosoftOfficeMap0" id="_x0000_i1026" rectangle="(159,108) (291, 134)  http://www.luna.se##_blank" /></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- sidebar start -->
+                        <aside class="sidebar col-md-6">
+                            <div class="side vertical-divider-left">
+                                <div class="block clearfix">
+
+                                    <img src="{{ asset("img/cecofersa/ardilla.jpg") }}"/>
+                                </div>
+                            </div>
+                        </aside>
+                        <!-- sidebar end -->
+                    </div>
+                {% endif %}
 
             </div>
             <!-- main end -->
-
         </div>
     </div>
 </section>
 <!-- main-container end -->
-
-
 <!-- section end -->
 
+<!-- section start -->
+<!-- ================ -->
+<div class="section gray-bg clearfix">
+    <div class="container">
 
+        <h2 class="title">Estad&iacute;sticas de Cecofersa </h2>
+        <div class="separator-2"></div>
+        <p class="lead"></p>
+        <div class="stats row grid-space-10">
+            <div class="col-md-4 col-sm-6">
+                <div class="box-style-1 default-bg">
+                    <h2 class="title">
+                        {% if languaje == 'es' %}
+                            Asociados
+                        {% elseif languaje == 'en'%}
+                            Members
+                        {% elseif languaje == 'pt' %}
+                            Associados
+                        {% endif %}
+                    </h2>
+                    <i class="fa fa-briefcase"></i>
+                    <span class="stat-num" data-to="150" data-speed="3000">0</span>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="box-style-1 default-bg">
+                    <h2 class="title">
+                        {% if languaje == 'es' %}
+                            Proveedores
+                        {% elseif languaje == 'en'%}
+                            Suppliers
+                        {% elseif languaje == 'pt' %}
+                            Fornecedores
+                        {% endif %}
+                    </h2>
+                    <i class="fa fa-users"></i>
+                    <span class="stat-num" data-to="300" data-speed="3000">0</span>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="box-style-1 default-bg">
+                    <h2 class="title">Ficheros para descargar</h2>
+                    <i class="fa fa-cloud-download"></i>
+                    <span class="stat-num" data-to="4000" data-speed="3000">0</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="space"></div>
+    </div>
+</div>
+<!-- section end -->
 
 </body>
 {% block footer %}

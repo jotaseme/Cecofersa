@@ -26,6 +26,9 @@ class HomeController extends Controller
      */
     public function somosAction($languaje='es', $activo='somos')
     {
+        $asociados = $this->getDoctrine()
+            ->getRepository('BackBundle:Asociados')
+            ->findAllOrderedByName('Activos');
         return $this->render('Cecofersa/quienes-somos.html.twig',
             ['languaje' => $languaje,
              'activo' => $activo,
