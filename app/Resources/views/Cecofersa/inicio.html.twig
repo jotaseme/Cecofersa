@@ -1,0 +1,359 @@
+<html>
+{% block header %}
+    {% include 'Cecofersa/header.html.twig' %}
+{% endblock %}
+<body>
+{% block encabezado %}
+    {% include 'Cecofersa/encabezado.html.twig' %}
+{% endblock %}
+{% block menu %}
+    {% include 'Cecofersa/menu.html.twig' %}
+{% endblock %}
+
+<!-- banner start -->
+<!-- ================ -->
+<div class="banner">
+
+    <div class="banner">
+
+        <!-- slideshow start -->
+        <!-- ================ -->
+        <div class="slideshow white-bg">
+
+            <!-- slider revolution start -->
+            <!-- ================ -->
+            <div class="slider-banner-container">
+                <div class="slider-banner-3 bullets-with-bg">
+                    <ul>
+                        <!-- slide 1 start -->
+                        <li data-transition="fade" data-slotamount="7" data-masterspeed="1000" data-saveperformance="on" data-title="Slide 1">
+
+                            <!-- main image -->
+                            <img src="{{ asset("img/cecofersa/patos.jpg") }}"  alt="slidebg1" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+                            <!-- Translucent background -->
+                            <div class="tp-caption dark-translucent-bg"
+                                 data-x="center"
+                                 data-y="bottom"
+                                 data-speed="600"
+                                 data-start="0"
+                                 style="background-color:rgba(0,0,0,0.5);">
+                            </div>
+
+                            <!-- LAYER NR. 1 -->
+                            <div class="tp-caption very_large_text sfl tp-resizeme"
+                                 data-x="center"
+                                 data-y="70"
+                                 data-speed="600"
+                                 data-start="0"
+                                 data-end="10000"
+                                 data-endspeed="600">
+                            </div>
+
+                            <!-- LAYER NR. 2 -->
+                            <div class="tp-caption small_thin_white sfr text-center tp-resizeme"
+                                 data-x="center"
+                                 data-y="400"
+                                 data-speed="600"
+                                 data-start="0"
+                                 data-end="10000"
+                                 data-endspeed="600">
+
+                                    {% if languaje=='es' %}
+                                        <blockquote class="inline"><i><strong><h2 style="color:white;">Reunirse es un comienzo, mantenerse juntos es un progreso, trabajar juntos es el &eacute;xito</h2></strong> - Henry Ford </i></blockquote>
+                                    {% elseif languaje=='en' %}
+                                        <blockquote class="inline"><i><strong><h2 style="color:white;">Coming together is a beginning, keeping together is progress, working together is success</h2></strong> - Henry Ford </i></blockquote>
+                                    {% elseif languaje=='pt' %}
+                                        <blockquote class="inline"><i><strong><h2 style="color:white;">Reunirmo-nos é um começo, mantermo-nos juntos é um progresso, trabalhar juntos é o êxito</h2></strong> - Henry Ford </i></blockquote>
+                                    {% endif %}
+                            </div>
+
+                        </li>
+                        <!-- slide 1 end -->
+
+                        <!-- slide 2 start -->
+                        <li data-transition="fade" data-slotamount="7" data-masterspeed="1000" data-saveperformance="on" data-title="Slide 2">
+
+                            <!-- main image -->
+                            <img src="{{ asset("img/cecofersa/medusas.jpg") }}"  alt="slidebg1" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+                            <!-- Translucent background -->
+                            <div class="tp-caption dark-translucent-bg"
+                                 data-x="center"
+                                 data-y="bottom"
+                                 data-speed="600"
+                                 data-start="0"
+                                 style="background-color:rgba(0,0,0,0.5);">
+                            </div>
+
+                            <!-- LAYER NR. 1 -->
+                            <div class="tp-caption very_large_text sfl tp-resizeme"
+                                 data-x="center"
+                                 data-y="70"
+                                 data-speed="600"
+                                 data-start="0"
+                                 data-end="10000"
+                                 data-endspeed="600">
+                            </div>
+
+                            <!-- LAYER NR. 2 -->
+                            <div class="tp-caption sfr small_thin_white text-center tp-resizeme"
+                                 data-x="center"
+                                 data-y="170"
+                                 data-speed="200"
+                                 data-start="0"
+                                 data-end="10000"
+                                 data-endspeed="600">
+                                {% if languaje=='es' %}
+                                    <blockquote class="inline"><i><strong><h2 style="color:white;">Individualmente somos una gota, juntos somos un oc&eacute;ano</h2></strong> - Ryunosuke Satoro </i></blockquote>
+                                {% elseif languaje=='en' %}
+                                    <blockquote class="inline"><i><strong><h2 style="color:white;">Individually, we are one drop. Together, we are an ocean</h2></strong> - Ryunosuke Satoro </i></blockquote>
+                                {% elseif languaje=='pt' %}
+                                    <blockquote class="inline"><i><strong><h2 style="color:white;">Individualmente somos uma gota de agua, juntos somos um oceano</h2></strong> - Ryunosuke Satoro </i></blockquote>
+                                {% endif %}
+
+                            </div>
+
+                        </li>
+                        <!-- slide 2 end -->
+
+                        <!-- slide 3 end -->
+                        <li data-transition="fade" data-slotamount="7" data-masterspeed="1000" data-saveperformance="on" data-title="Slide 2">
+
+                            <!-- main image -->
+                            <img src="{{ asset("img/cecofersa/equipo.jpg") }}"  alt="slidebg1" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+                            <!-- Translucent background -->
+                            <div class="tp-caption dark-translucent-bg"
+                                 data-x="center"
+                                 data-y="bottom"
+                                 data-speed="600"
+                                 data-start="0"
+                                 style="background-color:rgba(0,0,0,0.5);">
+                            </div>
+
+                            <!-- LAYER NR. 1 -->
+                            <div class="tp-caption very_large_text sfl tp-resizeme"
+                                 data-x="center"
+                                 data-y="70"
+                                 data-speed="600"
+                                 data-start="0"
+                                 data-end="10000"
+                                 data-endspeed="600">
+                            </div>
+
+                            <!-- LAYER NR. 2 -->
+                            <div class="tp-caption sfr small_thin_white text-center tp-resizeme"
+                                 data-x="520"
+                                 data-y="200"
+                                 data-speed="200"
+                                 data-start="0"
+                                 data-end="10000"
+                                 data-endspeed="600">
+                                {% if languaje=='es' %}
+                                    <blockquote class="inline"><i><strong><h2 style="color:white;">Las fortalezas est&aacute;n en nuestras diferencias,<br/> no en nuestras similitudes </h2></strong> - Stephen Covey </i></blockquote>
+                                {% elseif languaje=='en' %}
+                                    <blockquote class="inline"><i><strong><h2 style="color:white;">Strength lies in differences,<br/> not in similarities</h2></strong> - Stephen Covey </i></blockquote>
+                                {% elseif languaje=='pt' %}
+                                    <blockquote class="inline"><i><strong><h2 style="color:white;">As forças estão nas nossas diferenças,<br/> não nas nossas semelhanças </h2></strong> - Stephen Covey </i></blockquote>
+                                {% endif %}
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <!-- slider revolution end -->
+
+        </div>
+        <!-- slideshow end -->
+    </div>
+</div>
+<!-- banner end -->
+
+<!-- page-top start-->
+<!-- ================ -->
+<div class="page-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="call-to-action">
+                    <h1 class="title">Central de compras y servicios profesionales</h1>
+
+                        {% if languaje=='es' %}
+                            <a href="{{ path('ceco_contacto',{'languaje':languaje}) }}" class="btn btn-default contact">Cont&aacute;ctanos</a>
+                        {% elseif languaje=='en' %}
+                            <a href="{{ path('ceco_contacto_en',{'languaje':languaje}) }}" class="btn btn-default contact">Contact us</a>
+                        {% elseif languaje=='pt' %}
+                            <a href="{{ path('ceco_contacto_pt',{'languaje':languaje}) }}" class="btn btn-default contact">Contato</a>
+                        {% endif %}
+                        <i class="pl-10 fa fa-phone"></i>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- page-top end -->
+
+<!-- main-container start -->
+<!-- ================ -->
+
+<section class="main-container gray-bg">
+
+    <!-- main start -->
+    <!-- ================ -->
+    <div class="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-center title">
+                        {% if languaje=='es' %}
+                            Cat&aacute;logos y folletos
+                        {% elseif languaje=='en' %}
+                            Catalogues and brochures
+                        {% elseif languaje=='pt' %}
+                            Catalogos e folhetos
+                        {% endif %}
+                    </h1>
+                    <div class="separator"></div>
+                    <p class="text-center">
+                        {% if languaje=='es' %}
+                            Accede a nuestras versiones online de los cat&aacute;logos disponibles
+                        {% elseif languaje=='en' %}
+                            Product catalog and brochures
+                        {% elseif languaje=='pt' %}
+                            Produtos do catálogo e folhetos
+                        {% endif %}
+                    </p>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="box-style-1 white-bg object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="0">
+                                <center><a href="<?php echo base_url();?>es/folletos/catalogo" ><img class="img-catalogo" src="{{ asset("img/cecofersa/Portada Catalogo CECOFERSA 2017.jpg") }}" style="height: 390px";></a></center>
+                                <h2>
+                                    {% if languaje=='es' %}
+                                        Cat&aacute;logo de productos
+                                    {% elseif languaje=='en' %}
+                                        Product catalog
+                                    {% elseif languaje=='pt' %}
+                                        Catálogo de produtos
+                                    {% endif %}
+                                </h2>
+                                <p>
+                                    {% if languaje=='es' %}
+                                        Haz click y accede al cat&aacute;logo vigente
+                                    {% elseif languaje=='en' %}
+                                        Click here to see product catalog
+                                    {% elseif languaje=='pt' %}
+                                        Clique na imagem para ver o folheto
+                                    {% endif %}
+                                </p>
+
+                                <a href="<?php echo base_url();?>es/folletos/catalogo" class="btn btn-white">
+                                    {% if languaje=='es' %}
+                                        Ver más
+                                    {% elseif languaje=='en' %}
+                                        See more
+                                    {% elseif languaje=='pt' %}
+                                        Ver mais
+                                    {% endif %}
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="box-style-1 white-bg object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
+                                <center><a href="{{ asset("uploads/files/Monografico CECOFERSA CONSUMIBLES 2017.pdf") }}" target="_blank"><img class="img-catalogo" src="{{ asset("img/cecofersa/Monografico CECOFERSA CONSUMIBLES 2017.jpg") }}" width="270px" height="10px"></a></center>
+                                <h2>
+                                    {% if languaje=='es' %}
+                                        Monogr&aacute;fico consumibles
+                                    {% elseif languaje=='en' %}
+                                        Supplies catalog
+                                    {% elseif languaje=='pt' %}
+                                        Catálogo dos consumíveis
+                                    {% endif %}
+                                </h2>
+
+                                <a href="{{ asset("uploads/files/Monografico CECOFERSA CONSUMIBLES 2017.pdf") }}" target="_blank" class="btn btn-white">
+                                    {% if languaje=='es' %}
+                                        Descargar PDF
+                                    {% elseif languaje=='en' %}
+                                        Download PDF
+                                    {% elseif languaje=='pt' %}
+                                        Transferir PDF
+                                    {% endif %}
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="box-style-1 white-bg object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="400">
+                                <center><a href="{{ asset("uploads/files/folleto.pdf") }}" target="_blank"><img class="img-catalogo" src="{{ asset("img/cecofersa/folleto.gif") }}" width="270px" height="10px"></a></center>
+                                <h2>
+                                    {% if languaje=='es' %}
+                                        Folleto vigente
+                                    {% elseif languaje=='en' %}
+                                        Current brochure
+                                    {% elseif languaje=='pt' %}
+                                        Folheto vigente
+                                    {% endif %}
+                                </h2>
+                                <p>
+                                    {% if languaje=='es' %}
+                                        Folleto de primavera Cecofersa
+                                    {% elseif languaje=='en' %}
+                                        Cecofersa Spring brochure
+                                    {% elseif languaje=='pt' %}
+                                        Brochura mola Cecofersa
+                                    {% endif %}
+                                </p>
+                                <a href="{{ asset("uploads/files/folleto.pdf") }}" target="_blank" class="btn btn-white">
+                                    {% if languaje=='es' %}
+                                        Descargar PDF
+                                    {% elseif languaje=='en' %}
+                                        Download PDF
+                                    {% elseif languaje=='pt' %}
+                                        Transferir PDF
+                                    {% endif %}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- main end -->
+
+</section>
+<!--first section end -->
+
+<!--second section-->
+<section id="folleto" class="main-container white-bg">
+    <h1 class="text-center title">
+        {% if languaje=='es' %}
+            Folleto vigente
+        {% elseif languaje=='en' %}
+            Current brochure
+        {% elseif languaje=='pt' %}
+            Folheto vigente
+        {% endif %}
+    </h1>
+    <div class="separator"></div>
+    <p class="text-center">
+        {% if languaje=='es' %}
+            Pulsa sobre la flecha del margen derecho para comenzar a pasar p&aacute;ginas
+        {% elseif languaje=='en' %}
+            Click on the arrow on the right side to start turning pages
+        {% elseif languaje=='pt' %}
+            Clique na seta do lado direito para come&ccedil;ar a virar as p&aacute;ginas
+        {% endif %}
+    </p>
+    <div id="publitas-embed-luzcce9a082ox7wwbqrh5xw29"></div><script publitas-embed data-wrapperId="publitas-embed-luzcce9a082ox7wwbqrh5xw29" data-cfasync="false" data-publication="https://view.publitas.com/cecofersa/cecofersa-folleto-otono/" data-responsive="true" type="text/javascript" src="https://view.publitas.com/embed.js"></script>
+</section>
+<!--second section end-->
+
+
+</body>
+{% block footer %}
+    {% include 'Cecofersa/footer.html.twig' %}
+{% endblock %}
+</html>
