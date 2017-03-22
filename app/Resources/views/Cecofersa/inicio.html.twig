@@ -262,7 +262,7 @@
                         </div>
                         <div class="col-xs-12 col-sm-4">
                             <div class="box-style-1 white-bg object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
-                                <center><a href="<?php echo base_url();?>uploads/files/Monografico CECOFERSA CONSUMIBLES 2017.pdf" target="_blank"><img class="img-catalogo" src="<?php echo base_url();?>/public_html/images/Monografico CECOFERSA CONSUMIBLES 2017.jpg" width="270px" height="10px"></a></center>
+                                <center><a href="{{ asset("uploads/files/Monografico CECOFERSA CONSUMIBLES 2017.pdf") }}" target="_blank"><img class="img-catalogo" src="{{ asset("img/cecofersa/Monografico CECOFERSA CONSUMIBLES 2017.jpg") }}" width="270px" height="10px"></a></center>
                                 <h2>
                                     {% if languaje=='es' %}
                                         Monogr&aacute;fico consumibles
@@ -273,7 +273,7 @@
                                     {% endif %}
                                 </h2>
 
-                                <a href="<?php echo base_url();?>uploads/files/Monografico CECOFERSA CONSUMIBLES 2017.pdf" target="_blank" class="btn btn-white">
+                                <a href="{{ asset("uploads/files/Monografico CECOFERSA CONSUMIBLES 2017.pdf") }}" target="_blank" class="btn btn-white">
                                     {% if languaje=='es' %}
                                         Descargar PDF
                                     {% elseif languaje=='en' %}
@@ -286,10 +286,34 @@
                         </div>
                         <div class="col-xs-12 col-sm-4">
                             <div class="box-style-1 white-bg object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="400">
-                                <center><a href="<?php echo base_url();?>uploads/files/folleto.pdf" target="_blank"><img class="img-catalogo" src="<?php echo base_url();?>/public_html/images/folleto.gif" width="270px" height="10px"></a></center>
-                                <h2>Folleto vigente</h2>
-                                <p>Folleto de primavera Cecofersa</p>
-                                <a href="<?php echo base_url();?>uploads/files/folleto.pdf" target="_blank" class="btn btn-white">Descargar PDF</a>
+                                <center><a href="{{ asset("uploads/files/folleto.pdf") }}" target="_blank"><img class="img-catalogo" src="{{ asset("img/cecofersa/folleto.gif") }}" width="270px" height="10px"></a></center>
+                                <h2>
+                                    {% if languaje=='es' %}
+                                        Folleto vigente
+                                    {% elseif languaje=='en' %}
+                                        Current brochure
+                                    {% elseif languaje=='pt' %}
+                                        Folheto vigente
+                                    {% endif %}
+                                </h2>
+                                <p>
+                                    {% if languaje=='es' %}
+                                        Folleto de primavera Cecofersa
+                                    {% elseif languaje=='en' %}
+                                        Cecofersa Spring brochure
+                                    {% elseif languaje=='pt' %}
+                                        Brochura mola Cecofersa
+                                    {% endif %}
+                                </p>
+                                <a href="{{ asset("uploads/files/folleto.pdf") }}" target="_blank" class="btn btn-white">
+                                    {% if languaje=='es' %}
+                                        Descargar PDF
+                                    {% elseif languaje=='en' %}
+                                        Download PDF
+                                    {% elseif languaje=='pt' %}
+                                        Transferir PDF
+                                    {% endif %}
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -300,7 +324,32 @@
     <!-- main end -->
 
 </section>
-<!-- section end -->
+<!--first section end -->
+
+<!--second section-->
+<section id="folleto" class="main-container white-bg">
+    <h1 class="text-center title">
+        {% if languaje=='es' %}
+            Folleto vigente
+        {% elseif languaje=='en' %}
+            Current brochure
+        {% elseif languaje=='pt' %}
+            Folheto vigente
+        {% endif %}
+    </h1>
+    <div class="separator"></div>
+    <p class="text-center">
+        {% if languaje=='es' %}
+            Pulsa sobre la flecha del margen derecho para comenzar a pasar p&aacute;ginas
+        {% elseif languaje=='en' %}
+            Click on the arrow on the right side to start turning pages
+        {% elseif languaje=='pt' %}
+            Clique na seta do lado direito para come&ccedil;ar a virar as p&aacute;ginas
+        {% endif %}
+    </p>
+    <div id="publitas-embed-luzcce9a082ox7wwbqrh5xw29"></div><script publitas-embed data-wrapperId="publitas-embed-luzcce9a082ox7wwbqrh5xw29" data-cfasync="false" data-publication="https://view.publitas.com/cecofersa/cecofersa-folleto-otono/" data-responsive="true" type="text/javascript" src="https://view.publitas.com/embed.js"></script>
+</section>
+<!--second section end-->
 
 
 </body>
