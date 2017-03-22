@@ -10,7 +10,324 @@
     {% include 'Cecofersa/menu.html.twig' %}
 {% endblock %}
 
-Estás en folletos
+<!-- page-intro start-->
+<!-- ================ -->
+<div class="page-intro">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><i class="fa fa-home pr-10"></i>
+
+                        {% if languaje == 'es' %}
+                            <a href="{{ path('ceco_index',{'languaje':languaje}) }}">Inicio</a>
+                        {% elseif languaje == 'en' %}
+                            <a href="{{ path('ceco_index',{'languaje':languaje}) }}">Home</a>
+                        {% elseif languaje == 'pt' %}
+                            <a href="{{ path('ceco_index',{'languaje':languaje}) }}">Início</a>
+                        {% endif %}
+
+                    </li>
+                    <li class="active">
+
+                        {% if languaje == 'es' %}
+                            Folletos
+                        {% elseif languaje == 'en' %}
+                            Brochures
+                        {% elseif languaje == 'pt' %}
+                            Folhetos
+                        {% endif %}
+
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- page-intro end -->
+
+<!-- main-container start -->
+<!-- ================ -->
+
+<section class="main-container gray-bg">
+    <!-- main start -->
+    <!-- ================ -->
+    <div class="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-center title">
+                        {% if languaje=='es' %}
+                            Cat&aacute;logos y folletos
+                        {% elseif languaje=='en' %}
+                            Catalogues and brochures
+                        {% elseif languaje=='pt' %}
+                            Catalogos e folhetos
+                        {% endif %}
+                    </h1>
+                    <div class="separator"></div>
+                    <p class="text-center">
+                        {% if languaje=='es' %}
+                            Accede a nuestras versiones online de los cat&aacute;logos disponibles
+                        {% elseif languaje=='en' %}
+                            Product catalog and brochures
+                        {% elseif languaje=='pt' %}
+                            Produtos do catálogo e folhetos
+                        {% endif %}
+                    </p>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="box-style-1 white-bg object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="0">
+                                <center><a href="<?php echo base_url();?>es/folletos/catalogo" ><img class="img-catalogo" src="{{ asset("img/cecofersa/Portada Catalogo CECOFERSA 2017.jpg") }}" style="height: 390px";></a></center>
+                                <h2>
+                                    {% if languaje=='es' %}
+                                        Cat&aacute;logo de productos
+                                    {% elseif languaje=='en' %}
+                                        Product catalog
+                                    {% elseif languaje=='pt' %}
+                                        Catálogo de produtos
+                                    {% endif %}
+                                </h2>
+                                <p>
+                                    {% if languaje=='es' %}
+                                        Haz click y accede al cat&aacute;logo vigente
+                                    {% elseif languaje=='en' %}
+                                        Click here to see product catalog
+                                    {% elseif languaje=='pt' %}
+                                        Clique na imagem para ver o folheto
+                                    {% endif %}
+                                </p>
+
+                                <a href="<?php echo base_url();?>es/folletos/catalogo" class="btn btn-white">
+                                    {% if languaje=='es' %}
+                                        Ver más
+                                    {% elseif languaje=='en' %}
+                                        See more
+                                    {% elseif languaje=='pt' %}
+                                        Ver mais
+                                    {% endif %}
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="box-style-1 white-bg object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
+                                <center><a href="{{ asset("uploads/files/Monografico CECOFERSA CONSUMIBLES 2017.pdf") }}" target="_blank"><img class="img-catalogo" src="{{ asset("img/cecofersa/Monografico CECOFERSA CONSUMIBLES 2017.jpg") }}" width="270px" height="10px"></a></center>
+                                <h2>
+                                    {% if languaje=='es' %}
+                                        Monogr&aacute;fico consumibles
+                                    {% elseif languaje=='en' %}
+                                        Supplies catalog
+                                    {% elseif languaje=='pt' %}
+                                        Catálogo dos consumíveis
+                                    {% endif %}
+                                </h2>
+
+                                <a href="{{ asset("uploads/files/Monografico CECOFERSA CONSUMIBLES 2017.pdf") }}" target="_blank" class="btn btn-white">
+                                    {% if languaje=='es' %}
+                                        Descargar PDF
+                                    {% elseif languaje=='en' %}
+                                        Download PDF
+                                    {% elseif languaje=='pt' %}
+                                        Download PDF
+                                    {% endif %}
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="box-style-1 white-bg object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="400">
+                                <center><a href="{{ asset("uploads/files/folleto.pdf") }}" target="_blank"><img class="img-catalogo" src="{{ asset("img/cecofersa/folleto.gif") }}" width="270px" height="10px"></a></center>
+                                <h2>
+                                    {% if languaje=='es' %}
+                                        Folleto vigente
+                                    {% elseif languaje=='en' %}
+                                        Current brochure
+                                    {% elseif languaje=='pt' %}
+                                        Folheto vigente
+                                    {% endif %}
+                                </h2>
+                                <p>
+                                    {% if languaje=='es' %}
+                                        Folleto de primavera Cecofersa
+                                    {% elseif languaje=='en' %}
+                                        Cecofersa Spring brochure
+                                    {% elseif languaje=='pt' %}
+                                        Brochura mola Cecofersa
+                                    {% endif %}
+                                </p>
+                                <a href="{{ asset("uploads/files/folleto.pdf") }}" target="_blank" class="btn btn-white">
+                                    {% if languaje=='es' %}
+                                        Descargar PDF
+                                    {% elseif languaje=='en' %}
+                                        Download PDF
+                                    {% elseif languaje=='pt' %}
+                                        Download PDF
+                                    {% endif %}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- main end -->
+</section>
+<!--first section end -->
+
+<!--second section-->
+<section id="folleto" class="main-container white-bg">
+    <h1 class="text-center title">
+        {% if languaje=='es' %}
+            Folleto vigente
+        {% elseif languaje=='en' %}
+            Current brochure
+        {% elseif languaje=='pt' %}
+            Folheto vigente
+        {% endif %}
+    </h1>
+    <div class="separator"></div>
+    <p class="text-center">
+        {% if languaje=='es' %}
+            Pulsa sobre la flecha del margen derecho para comenzar a pasar p&aacute;ginas
+        {% elseif languaje=='en' %}
+            Click on the arrow on the right side to start turning pages
+        {% elseif languaje=='pt' %}
+            Clique na seta do lado direito para come&ccedil;ar a virar as p&aacute;ginas
+        {% endif %}
+    </p>
+    <div id="publitas-embed-luzcce9a082ox7wwbqrh5xw29"></div><script publitas-embed data-wrapperId="publitas-embed-luzcce9a082ox7wwbqrh5xw29" data-cfasync="false" data-publication="https://view.publitas.com/cecofersa/cecofersa-folleto-otono/" data-responsive="true" type="text/javascript" src="https://view.publitas.com/embed.js"></script>
+</section>
+<!--second section end-->
+
+<!--Catálogo Cecofersa--><!--SIN TRADUCCION-->
+<section class="main-container gray-bg">
+    <div class="main">
+        <div class="container" id="tabla">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-center title">Cat&aacute;logo Cecofersa - 2017</h1>
+                    <div class="separator"></div>
+                    <p class="text-center"></p>
+                    <div class="space"></div>
+                    <table class="table table-hover" >
+                        <thead>
+                        <tr>
+                            <th>Indice</th>
+                            <th>Contenido</th>
+                            <th>Descarga</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><b>Indice familias</b></td>
+                            <td>
+                                <li>Introducci&oacute;n</li><li>&Iacute;ndice de familias</li>
+                            </td>
+                            <td>
+                                <a href="{{ asset("uploads/files/00intro_indice.pdf") }}" target="_blank"><img src="{{ asset("img/cecofersa/descarga.gif") }}" height="45" width="45"></a>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td><b>Abrasivos</b></td>
+                            <td>
+
+                                Abrasivos flexibles, muelas, cepiller&iacute;a alambre y nylon y discos y abrasivos de corte.<br /> P&aacute;ginas 1-20
+
+                            </td>
+                            <td>
+                                <a href="{{ asset("uploads/files/01abrasivos.pdf") }}"><img src="{{ asset("img/cecofersa/descarga.gif") }}" height="45" width="45"></a>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td><b>Cerrajer&iacute;a y seguridad</b></td>
+                            <td>Cerraduras de seguridad, cerraduras de sobreponer, cerraduras puertas met&aacute;licas, cerraduras de embutir, bisagras, cilindros, cierrapuertas, picaportes, pomos y manillas, antip&aacute;nico, accesorios, cajones, puertas correderas y barandillas, automatizaci&oacute;n, candados, cajas de seguridad y buzones.<br /> P&aacute;ginas 21-42
+
+                            </td>
+                            <td>
+                                <a href="{{ asset("uploads/files/02cerrajeria.pdf") }}"><img src="{{ asset("img/cecofersa/descarga.gif") }}" height="45" width="45"></a>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td><b>Construcci&oacute;n</b></td>
+                            <td>
+                                Cubos, gavetas y espuertas, cuerda y polvo de marcar, hormigoneras, elevaci&oacute;n y carga, mesas de corte, andamiaje, carros y carretillas de obra, encofrados, amasadoras y mezcladores, se&ntilde;alizaci&oacute;n obra, cortadores manuales profesionales, perforadoras, compactadoras, cortadoras y rozadoras, decoraci&oacute;n jard&iacute;n y estufas.<br />
+                                P&aacute;ginas 43-58
+                                </li>
+                            </td>
+                            <td>
+                                <a href="{{ asset("uploads/files/03construccion.pdf") }}"><img src="{{ asset("img/cecofersa/descarga.gif") }}" height="45" width="45"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Herramienta de corte</b></td>
+                            <td>
+                                Brocas, portabrocas, juegos de brocas, machos de roscar, avellanadores, fresas, cojinetes, coronas y husillos y hojas sierra.<br /> P&aacute;ginas 59-84
+                            </td>
+                            <td>
+
+                                <a href="{{ asset("uploads/files/04hta_corte.pdf") }}"><img src="{{ asset("img/cecofersa/descarga.gif") }}" height="45" width="45"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Herramienta el&eacute;ctrica, maquinaria/neum&aacute;tica/gas</b></td>
+                            <td>
+                                Compresores y accesorios, aspiradores, hidrolimpiadoras y barredoras, soldadura, calentadores y ventiladores, esmeriladoras, generadores, taladros de columna, taladros y atornilladores, martillos, herramienta sin cable, amoladoras, sierras e ingletadoras, lijadoras y cepillos, decapadores, fresadoras, maquinar&iacute;a agr&iacute;cola / jard&iacute;n, herramienta neum&aacute;tica.<br /> P&aacute;ginas 85-162
+                            </td>
+                            <td><a href="{{ asset("uploads/files/05hta_electrica.pdf") }}"><img src="{{ asset("img/cecofersa/descarga.gif") }}" height="45" width="45"></a></td>
+                        </tr>
+                        <tr>
+                            <td><b>Herramienta manual</b></td>
+                            <td>
+                                Alicates, tenazas, llaves, destornilladores y puntas, martillos y mazas, llanas, paletas, esp&aacute;tulas y talochas, palas, raederas y azadas, serruchos, sierras y hachas, herramienta manual agr&iacute;cola, picos, alcotanas y desencofradores, limas y cepillos, formones, gubias y escoplos, punteros, cinceles y cortafr&iacute;os, sacabocados, botadores y granetes, tornillos de banco, herramienta para tubos, grapadoras y remachadoras manuales, gatos y prensas, herramienta de apriete, herramienta de corte, medici&oacute;n y nivelaci&oacute;n y sujeci&oacute;n y extractores.. </br> P&aacute;ginas 163-314
+                            </td>
+                            <td><a href="{{ asset("uploads/files/06hta_manual.pdf") }}"><img src="{{ asset("img/cecofersa/descarga.gif") }}" height="45" width="45"></a></td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Mobiliario de taller, mantenimiento y conducci&oacute;n de fluidos / aguas / gases</b></td>
+                            <td>
+                                Maletas y cajas de herramientas, carros de taller y bandejas, armarios y casetas, bancos de trabajo y plataformas, escaleras, ruedas, enrollacables, l&aacute;mparas y material el&eacute;ctrico, carretillas y transpaletas, elevaci&oacute;n y carga, engrase y trasvase de fl uidos / gases, bombas de agua y grupos de presi&oacute;n, riego, pulverizaci&oacute;n, mantenimiento, limpieza y piscinas.<br /> P&aacute;ginas 315-378
+                            </td>
+                            <td><a href="{{ asset("uploads/files/07mobiliario_taller.pdf") }}"><img src="{{ asset("img/cecofersa/descarga.gif") }}" height="45" width="45"></a></td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Productos qu&iacute;micos y adhesivos</b></td>
+                            <td>Adhesivos, siliconas, masillas, selladores y reparadores, espumas poliuretano y rellenos, pistolas y aplicadores, aceites y productos industriales, abonos e insecticidas, pinturas y disolventes, trapos y absorbentes.<br /> P&aacute;ginas 379-418
+                            </td>
+                            <td><a href="{{ asset("uploads/files/08productos_quimicos.pdf") }}"><img src="{{ asset("img/cecofersa/descarga.gif") }}" height="45" width="45"></a></td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Vestuario, protecci&oacute;n laboral y seguridad</b></td>
+                            <td>Ropa laboral, guantes, calzado, antica&iacute;das, protecci&oacute;n ocular, protecci&oacute;n cabeza, protecci&oacute;n respiratoria, protecci&oacute;n auditiva y fajas y mu&ntilde;equeras.<br /> P&aacute;ginas 419-456</td>
+                            <td><a href="{{ asset("uploads/files/09vestuario_pl.pdf") }}"><img src="{{ asset("img/cecofersa/descarga.gif") }}" height="45" width="45"></a></td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Torniller&iacute;a, fi jaci&oacute;n y sujeci&oacute;n</b></td>
+                            <td>Torniller&iacute;a, torniller&iacute;a para madera, rosca chapa y para construcci&oacute;n, remaches, anclajes pl&aacute;stico, anclajes met&aacute;licos, anclajes qu&iacute;micos, alcayatas, escarpias y hembrillas, abrazaderas, bridas, gu&iacute;as, alambres y enrejados y cordeler&iacute;a.<br /> P&aacute;ginas 457-514</td>
+                            <td><a href="{{ asset("uploads/files/10tornilleria.pdf") }}"><img src="{{ asset("img/cecofersa/descarga.gif") }}" height="45" width="45"></a></td>
+                        </tr>
+
+                        <tr>
+                            <td><b>&Iacute;ndices, tablas &uacute;tiles y premios innovaci&oacute;n</b></td>
+                            <td><li>&Iacute;ndice de art&iacute;culos P&aacute;ginas 515-522</li><li>&Iacute;ndice de marcas P&aacute;ginas 523-537</li><li>Tablas &uacute;tiles P&aacute;ginas 541-600</li><li>Premios innovaci&oacute;n P&aacute;ginas 601-616</li></td>
+                            <td><a href="{{ asset("uploads/files/11indices_tablas.pdf") }}"><img src="{{ asset("img/cecofersa/descarga.gif") }}" height="45" width="45"></a></td>
+                        </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 </body>
 {% block footer %}
