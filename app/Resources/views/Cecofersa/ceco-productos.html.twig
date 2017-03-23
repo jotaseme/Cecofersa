@@ -10,7 +10,88 @@
     {% include 'Cecofersa/menu.html.twig' %}
 {% endblock %}
 
-Estás en ceco-productos
+<section class="main-container">
+
+
+<div class="container">
+    <div class="row">
+        <h1 class="page-title">
+            {% if languaje == 'es' %}
+                PRODUCTOS CECO, garant&iacute;a de calidad
+            {% elseif languaje == 'en' %}
+                CECO PRODUCTS, Quality  guarantee
+            {% elseif languaje == 'pt' %}
+                PRODUCTOS CECO, garantia de qualidade
+            {% endif %}
+        </h1>
+        <div class="separator-2"></div>
+        <!-- page-title end -->
+
+        <!-- main start -->
+        <!-- ================ -->
+        <div class="main col-md-12">
+            {% if languaje == 'es' %}
+                <p>Desde 2004 <b>CECOFERSA</b>, a la cabeza de las tendencias del sector, comenz&oacute; a comercializar y fabricar art&iacute;culos identificados con el nombre <b>CECO</b>.</p>
+                <p> La idea, desde sus comienzos ha sido ofrecer a los asociados a la central de compras, una alternativa de productos de importaci&oacute;n o fabricados por marcas l&iacute;deres de reconocido prestigio con una competitiva relaci&oacute;n calidad-precio.</p>
+                <p>Al igual que en otros sectores del comercio en nuestro pa&iacute;s, el reconocimiento y la participaci&oacute;n de las Marcas Propias crece considerablemente y <b>CECOFERSA</b> quiere ofrecer a sus asociados la posibilidad de contar con una amplia gama de productos de Marca Propia identificados con la familia a la que pertenece.</p>
+            {% elseif languaje == 'en' %}
+                <p>Since 2004, <b>CECOFERSA</b>, leading the industry trends, began purchasing and producing items identified with the tab <b>CECO</b>. </p>
+                <p>From the beginning, the idea has been to provide to the members of the purchasing center a n alternative to imported or manufactured productsmade by recognised brands, while keeping a competitive ratio quality-money.</p>
+                <p>As in other parts of this industry in our country, recognition and participation of our private label has had a strong growth and <b>CECOFERSA</b> wants to offer its associates the possibility of having a wide range of own- brand products grouped together in their own category.</p>
+            {% elseif languaje == 'pt' %}
+                <p>Desde 2004 <b>CECOFERSA</b>, acompanhando as tendencias do sector, come&ccedil;ou a comercializar e fabricar artigos  identificados com o nome <b>CECO</b>.</p>
+                <p> A ide&iacute;a desde o in&iacute;cio,  foi  oferecer aos associados, uma alternativa de productos de importa&ccedil;&atilde;o  fabricados por marcas l&iacute;deres de reconhecido  prest&iacute;gio com  uma competitiva rela&ccedil;&atilde;o  qualidade-pre&ccedil;o.</p>
+                <p> Igualmente com outros sectores de actividade nos nossos pa&iacute;ses, o reconhecimento e a participa&ccedil;&atilde;o das Marcas Propias cresce consider&aacute;velmente  e <b>CECOFERSA</b> quer oferecer aos seus associados a possibilidade de contar com uma ampla gama de productos de Marca Pr&oacutepia identificados com a fam&iacute;lia a que pertencem.</p>
+            {% endif %}
+
+            <div class="space"></div>
+                <div class="owl-carousel clients">
+                    <div class="client">
+                        <a href="#"><img src="{{ asset("img/cecofersa/cecolight.gif") }}" alt=""></a>
+                    </div>
+                    <div class="client">
+                        <a href="#"><img src="{{ asset("img/cecofersa/cecomat.gif") }}" alt=""></a>
+                    </div>
+                    <div class="client">
+                        <a href="#"><img src="{{ asset("img/cecofersa/cecobrico.gif") }}" alt=""></a>
+                    </div>
+                    <div class="client">
+                        <a href="#"><img src="{{ asset("img/cecofersa/cecowood.gif") }}" alt=""></a>
+                    </div>
+                    <div class="client">
+                        <a href="#"><img src="{{ asset("img/cecofersa/CECOPOWER.gif") }}" alt=""></a>
+                    </div>
+                    <div class="client">
+                        <a href="#"><img src="{{ asset("img/cecofersa/cecotools.gif") }}" alt=""></a>
+                    </div>
+                    <div class="client">
+                        <a href="#"><img src="{{ asset("img/cecofersa/cecofix.gif") }}" alt=""></a>
+                    </div>
+                    <div class="client">
+                        <a href="#"><img src="{{ asset("img/cecofersa/cecogreen.gif") }}" alt=""></a>
+                    </div>
+                </div>
+            <div class="space"></div>
+
+            {% if languaje == 'es' %}
+                <p>Estas gamas de productos de Marca Propia exclusiva para todos los asociados a <b>CECOFERSA</b>, ofrecen art&iacute;culos de una calidad garantizada a un precio inferior que las grandes marcas de reconocido prestigio, ya que su coste no se ve incrementado con grandes inversiones en publicidad o atractivos dise&ntilde;os de sus envases.</p>
+                <p>Por lo tanto, en cualquier establecimiento asociado a <b>CECOFERSA</b> el consumidor podr&aacute; cubrir sus necesidades con productos de reconocido prestigio de las marcas m&aacute;s conocidas y productos sensiblemente m&aacute;s baratos de Marca Propia con garant&iacute;a de calidad.</p>
+                <p><b>CECOFERSA</b> garantiza que todos los productos identificados con la marca <b>CECO</b> cumplen con todos los requisitos de calidad necesarios para satisfacer las necesidades de sus clientes.</p>
+            {% elseif languaje == 'en' %}
+                <p>Private Label products exclusively for all associates of <b>CECOFERSA</b> offer guaranteed quality ítems. The price is lower than well-known prestigious brands because in their case the cost is increased with large investments in advertising and attractive design packaging. </p>
+                <p>Therefore, in any associated store to <b>CECOFERSA</b>, our clients can find both well-known products of prestigious brands and also others more affordable, quality guaranteed, of our private label.</p>
+                <p><b>CECOFERSA</b> guarantees that all goods bearing the brand <b>CECO</b> meet all quality requirements necessary to satisfy the needs of its customers.</p>
+            {% elseif languaje == 'pt' %}
+                <p>Estas gamas de productos de Marca Pr&oacute;pia exclusiva para todos os associados de <b>CECOFERSA</b>, ofrecem artigos de uma qualidade garantida a um  pre&ccedil;o inferior que as grandes marcas de reconhecido prest&iacute;gio  visto que ao seu custo  n&atilde;o &eacute; acrescentado qualquer investimento publicit&aacute;rio,  nem o  atractivo desenho das suas embalagens.</p>
+                <p>Como tal, em qualquer estabelecimento  associado a <b>CECOFERSA</b> o consumidor poder&aacute; cobrir as suas  necessidades con productos de reconhecido prest&iacute;gio das marcas mais conhecidas e productos sensiv&acute;lmente  mais baratos de Marca Pr&oacute;pia com garantia de qualidade.</p>
+                <p><b>CECOFERSA</b> garante que todos os productos identificados con a marca <b>CECO</b> cumprem com todos os requisitos deqaulidade  necess&aacute;rios para satisfazer as necessidades dos seus clientes.</p>
+            {% endif %}
+            <div class="space"></div>
+        </div><!--End Main-->
+    </div><!--End Row-->
+</div><!--End Container-->
+</section>
+<!-- main-container end -->
 
 </body>
 {% block footer %}
