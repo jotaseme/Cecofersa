@@ -102,9 +102,14 @@ class HomeController extends Controller
      */
     public function informacionAction($languaje='es', $activo='informacion')
     {
+        $entradas = $this->getDoctrine()
+            ->getRepository('BackBundle:Blog')
+            ->findAllByIdiomaOrderedByFecha($languaje);
+
         return $this->render('Cecofersa/ceco-informacion.html.twig',
             ['languaje' => $languaje,
-             'activo' => $activo
+             'activo' => $activo,
+             'entradas' => $entradas
             ]);
 
     }

@@ -10,8 +10,151 @@
     {% include 'Cecofersa/menu.html.twig' %}
 {% endblock %}
 
-Estás en ceco-informacion
+<!-- main-container start -->
+<!-- ================ -->
+<section class="main-container">
 
+    <div class="container">
+        <div class="row">
+            <div class="main col-md-12">
+                <div class="main col-md-8">
+
+                    {% for entrada in entradas %}
+                        <h1 class="page-title">{{ entrada.titulo }}</h1>
+                        <h3>{{ entrada.subtitulo }}</h3>
+                        <article class="clearfix blogpost full">
+                            <div class="blogpost-body">
+                                <div class="side">
+                                    <div class="post-info">
+                                        <span class="day">{{ entrada.fecha|date("d") }}</span>
+                                        <span class="month">
+                                            {% if entrada.fecha|date("m") == '01' %}
+                                                {% if languaje == 'es' %}
+                                                    Ene
+                                                {% elseif languaje == 'en' %}
+                                                    Jan
+                                                {% elseif languaje == 'pt' %}
+                                                    Jan
+                                                {% endif %}
+                                            {% elseif entrada.fecha|date("m") == '02' %}
+                                                {% if languaje == 'es' %}
+                                                    Feb
+                                                {% elseif languaje == 'en' %}
+                                                    Feb
+                                                {% elseif languaje == 'pt' %}
+                                                    Fev
+                                                {% endif %}
+                                            {% elseif entrada.fecha|date("m") == '03' %}
+                                                {% if languaje == 'es' %}
+                                                    Mar
+                                                {% elseif languaje == 'en' %}
+                                                    Mar
+                                                {% elseif languaje == 'pt' %}
+                                                    Mar
+                                                {% endif %}
+                                            {% elseif entrada.fecha|date("m") == '04' %}
+                                                {% if languaje == 'es' %}
+                                                    Abr
+                                                {% elseif languaje == 'en' %}
+                                                    Apr
+                                                {% elseif languaje == 'pt' %}
+                                                    Abr
+                                                {% endif %}
+                                            {% elseif entrada.fecha|date("m") == '05' %}
+                                                {% if languaje == 'es' %}
+                                                    May
+                                                {% elseif languaje == 'en' %}
+                                                    May
+                                                {% elseif languaje == 'pt' %}
+                                                    Mai
+                                                {% endif %}
+                                            {% elseif entrada.fecha|date("m") == '06' %}
+                                                {% if languaje == 'es' %}
+                                                    Jun
+                                                {% elseif languaje == 'en' %}
+                                                    Jun
+                                                {% elseif languaje == 'pt' %}
+                                                    Jun
+                                                {% endif %}
+                                            {% elseif entrada.fecha|date("m") == '07' %}
+                                                {% if languaje == 'es' %}
+                                                    Jul
+                                                {% elseif languaje == 'en' %}
+                                                    Jul
+                                                {% elseif languaje == 'pt' %}
+                                                    Jul
+                                                {% endif %}
+                                            {% elseif entrada.fecha|date("m") == '08' %}
+                                                {% if languaje == 'es' %}
+                                                    Ago
+                                                {% elseif languaje == 'en' %}
+                                                    Aug
+                                                {% elseif languaje == 'pt' %}
+                                                    Ago
+                                                {% endif %}
+                                            {% elseif entrada.fecha|date("m") == '09' %}
+                                                {% if languaje == 'es' %}
+                                                    Sep
+                                                {% elseif languaje == 'en' %}
+                                                    Sep
+                                                {% elseif languaje == 'pt' %}
+                                                    Set
+                                                {% endif %}
+                                            {% elseif entrada.fecha|date("m") == '10' %}
+                                                {% if languaje == 'es' %}
+                                                    Oct
+                                                {% elseif languaje == 'en' %}
+                                                    Oct
+                                                {% elseif languaje == 'pt' %}
+                                                    Out
+                                                {% endif %}
+                                            {% elseif entrada.fecha|date("m") == '11' %}
+                                                {% if languaje == 'es' %}
+                                                    Nov
+                                                {% elseif languaje == 'en' %}
+                                                    Nov
+                                                {% elseif languaje == 'pt' %}
+                                                    Nov
+                                                {% endif %}
+                                            {% elseif entrada.fecha|date("m") == '12' %}
+                                                {% if languaje == 'es' %}
+                                                    Dic
+                                                {% elseif languaje == 'en' %}
+                                                    Dec
+                                                {% elseif languaje == 'pt' %}
+                                                    Dez
+                                                {% endif %}
+                                            {% endif %}
+                                            {{ entrada.fecha|date("Y") }}
+                                        </span>
+                                    </div>
+
+                                </div>
+                                <div class="blogpost-content">
+                                    <header>
+                                        <div class="submitted"><i class="fa fa-user pr-5"></i> {% if languaje == 'es' %}Por{% elseif languaje == 'en' %}By{% elseif languaje == 'pt' %}Por{% endif %} <a href="#">Cecofersa</a></div>
+                                    </header>
+                                    <div class="owl-carousel content-slider-with-controls">
+                                        <img src="{{ asset("img/cecofersa/") }}{{ entrada.imagen }}">
+
+                                    </div>
+                                    <div id="cuerpo">
+                                        {{ entrada.cuerpo|raw }}
+                                    </div>
+
+                                </div>
+                            </div>
+                        </article>
+                    {% endfor %}
+
+                </div>
+            </div>
+            <!-- main end -->
+
+        </div>
+    </div>
+</section>
+<!-- main-container end -->
 </body>
 {% block footer %}
     {% include 'Cecofersa/footer.html.twig' %}

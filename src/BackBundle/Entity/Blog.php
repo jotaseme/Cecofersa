@@ -8,18 +8,18 @@ use Doctrine\ORM\Mapping as ORM;
  * Blog
  *
  * @ORM\Table(name="blog")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="BackBundle\Entity\BlogRepository")
  */
 class Blog
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id-entrada", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idEntrada;
+    private $id;
 
     /**
      * @var string
@@ -38,7 +38,7 @@ class Blog
     /**
      * @var string
      *
-     * @ORM\Column(name="cuerpo", type="blob", length=65535, nullable=true)
+     * @ORM\Column(name="cuerpo", type="text", length=16777215, nullable=true)
      */
     private $cuerpo;
 
@@ -66,13 +66,13 @@ class Blog
 
 
     /**
-     * Get idEntrada
+     * Get id
      *
      * @return integer
      */
-    public function getIdEntrada()
+    public function getId()
     {
-        return $this->idEntrada;
+        return $this->id;
     }
 
     /**

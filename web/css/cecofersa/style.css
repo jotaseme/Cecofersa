@@ -6213,3 +6213,7 @@ background-color:#e84c3d;
 #catalogo {
 	height: 100px;
 }
+
+#cuerpo p{
+	text-align: justify;
+}
