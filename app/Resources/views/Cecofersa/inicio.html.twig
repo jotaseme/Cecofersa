@@ -229,7 +229,7 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-4">
                             <div class="box-style-1 white-bg object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="0">
-                                <center><a href="<?php echo base_url();?>es/folletos/catalogo" ><img class="img-catalogo" src="{{ asset("img/cecofersa/Portada Catalogo CECOFERSA 2017.jpg") }}" style="height: 390px";></a></center>
+                                <center><a href="{% if languaje == 'es' %}{{ path('ceco_folletos',{'languaje':languaje}) }}#catalogo{% elseif languaje == 'en' %}{{ path('ceco_folletos_en',{'languaje':languaje}) }}#catalogo{% elseif languaje == 'pt' %}{{ path('ceco_folletos_pt',{'languaje':languaje}) }}#catalogo{% endif %}"><img class="img-catalogo" src="{{ asset("img/cecofersa/Portada Catalogo CECOFERSA 2017.jpg") }}" style="height: 390px";></a></center>
                                 <h2>
                                     {% if languaje=='es' %}
                                         Cat&aacute;logo de productos
@@ -249,15 +249,15 @@
                                     {% endif %}
                                 </p>
 
-                                <a href="<?php echo base_url();?>es/folletos/catalogo" class="btn btn-white">
+
                                     {% if languaje=='es' %}
-                                        Ver más
+                                        <a href="{{ path('ceco_folletos',{'languaje':languaje}) }}#catalogo" class="btn btn-white">Ver más</a>
                                     {% elseif languaje=='en' %}
-                                        See more
+                                        <a href="{{ path('ceco_folletos_en',{'languaje':languaje}) }}#catalogo" class="btn btn-white">See more</a>
                                     {% elseif languaje=='pt' %}
-                                        Ver mais
+                                        <a href="{{ path('ceco_folletos_pt',{'languaje':languaje}) }}#catalogo" class="btn btn-white">Ver mais</a>
                                     {% endif %}
-                                </a>
+
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-4">

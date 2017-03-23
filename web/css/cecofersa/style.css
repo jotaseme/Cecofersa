@@ -6206,9 +6206,10 @@ background-color:#e84c3d;
 	color:white;
 }
 
-
-
 #style_feria a:active {
 	background-color:#e84c3d;
+}
 
+#catalogo {
+	height: 100px;
 }
