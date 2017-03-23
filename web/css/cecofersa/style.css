@@ -6217,3 +6217,7 @@ background-color:#e84c3d;
 #cuerpo p{
 	text-align: justify;
 }
+
+#imagen-entrada img{
+    margin: 20px auto;
+}
