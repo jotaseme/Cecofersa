@@ -10,9 +10,37 @@
     {% include 'Cecofersa/menu.html.twig' %}
 {% endblock %}
 
+<div class="page-intro">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><i class="fa fa-home pr-10"></i>
+                        {% if languaje == 'es' %}
+                            <a href="{{ path('ceco_index',{'languaje':languaje}) }}">Inicio</a>
+                        {% elseif languaje == 'en' %}
+                            <a href="{{ path('ceco_index',{'languaje':languaje}) }}">Home</a>
+                        {% elseif languaje == 'pt' %}
+                            <a href="{{ path('ceco_index',{'languaje':languaje}) }}">Início</a>
+                        {% endif %}
+                    </li>
+                    <li class="active">
+                        {% if languaje == 'es' %}
+                            Productos CECO
+                        {% elseif languaje == 'en' %}
+                            CECO Products
+                        {% elseif languaje == 'pt' %}
+                            Produtos CECO
+                        {% endif %}
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <section class="main-container">
-
-
 <div class="container">
     <div class="row">
         <h1 class="page-title">
