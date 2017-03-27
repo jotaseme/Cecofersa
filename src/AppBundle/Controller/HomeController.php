@@ -2,8 +2,19 @@
 
 namespace AppBundle\Controller;
 
+use Doctrine\ORM\Mapping\OrderBy;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use BackBundle\Entity\DireccionesAsociados;
+use BackBundle\Entity\Usuario;
+use BackBundle\Entity\UsuarioAsociado;
+use BackBundle\Form\DireccionesAsociadosType;
+use BackBundle\Form\UsuarioAsociadoType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Response;
+use Ddeboer\DataImport\Reader\CsvReader;
 
 class HomeController extends Controller
 {
@@ -125,6 +136,32 @@ class HomeController extends Controller
             ['languaje' => $languaje,
              'activo' => $activo
             ]);
+
+    }
+
+    /**
+     * @Route("/{languaje}/asociados/hola", options = { "expose" = true },name="mapa")
+     * @Method({"POST"})
+     */
+
+    public function updatePOSTasociadosAction (Request $request)
+    {
+        $aux = $request->get('valorcito');
+        if ($aux == "Portugal"){
+            $response = $this->getDoctrine()
+                ->getRepository('BackBundle:Asociados')
+                ->findBy(array('pais' => 'PT','activo' => '1'),array('nombre' => 'ASC'));
+        }else{
+            $response = $this->getDoctrine()
+                ->getRepository('BackBundle:Asociados')
+                ->findBy(array('comunidadAutonoma' => $aux,'activo' => '1'),array('nombre' => 'ASC'));
+        }
+
+
+        $serializer = $this->get('jms_serializer');
+        $asociados = $serializer->serialize($response, 'json');
+
+        return new Response($asociados);
 
     }
 

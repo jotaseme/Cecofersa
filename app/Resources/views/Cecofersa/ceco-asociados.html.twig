@@ -10,7 +10,204 @@
     {% include 'Cecofersa/menu.html.twig' %}
 {% endblock %}
 
-Estás en ceco-asociados
+<!-- page-intro start-->
+<!-- ================ -->
+<div class="page-intro">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><i class="fa fa-home pr-10"></i>
+                        {% if languaje == 'es' %}
+                            <a href="{{ path('ceco_index',{'languaje':languaje}) }}">Inicio</a>
+                        {% elseif languaje == 'en' %}
+                            <a href="{{ path('ceco_index',{'languaje':languaje}) }}">Home</a>
+                        {% elseif languaje == 'pt' %}
+                            <a href="{{ path('ceco_index',{'languaje':languaje}) }}">Início</a>
+                        {% endif %}
+                    </li>
+                    <li class="active">
+                        {% if languaje == 'es' %}
+                            Asociados
+                        {% elseif languaje == 'en' %}
+                            Members
+                        {% elseif languaje == 'pt' %}
+                            Associados
+                        {% endif %}
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- page-intro end -->
+
+<!-- main-container start -->
+<!-- ================ -->
+<section class="main-container">
+
+    <div class="container">
+        <div class="row">
+
+            <!-- main start -->
+            <!-- ================ -->
+            <div class="main col-md-12">
+
+                <!-- page-title start -->
+                <!-- ================ -->
+                <h1 class="page-title">
+                    {% if languaje == 'es' %}
+                        Asociados
+                    {% elseif languaje == 'en' %}
+                        Members
+                    {% elseif languaje == 'pt' %}
+                        Associados
+                    {% endif %}
+                </h1>
+                <div class="separator-2"></div>
+                    {% if languaje == 'es' %}
+                        <p>Haz click en el mapa para obtener una lista de los asociados de <b>Cecofersa</b> de la zona seleccionada.</p>
+                    {% elseif languaje == 'en' %}
+                        <p>Click on the map to get a list of <b>Cecofersa</b> members in the selected area.</p>
+                    {% elseif languaje == 'pt' %}
+                        <p>Clique na comunidade autónoma que deseja obter uma lista de associados do Cecofersa na área.</p>
+                    {% endif %}
+
+                <!-- page-title end -->
+                <article class="clearfix blogpost object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="200" style="border: none; background: white;">
+
+                        <table width="690" border="0" cellpadding="10" style="margin: auto;">
+                            <tr>
+                                <td><p align="center"><img src="{{ asset("img/cecofersa/mapa.gif") }}" width="550" height="400" border="0" align="middle" usemap="#Map" style="border: 1px solid lightgrey" />
+                                        <map name="Map" id="Map">
+                                            <area shape="poly" coords="139,78,149,71,159,69,163,72,160,80,165,81,176,80,184,83,197,78,200,74,200,61,204,53,197,48,202,43,200,31,195,20,200,15,183,6,175,4,159,11,155,21,146,19,132,29,133,36,135,49,140,55,143,66" onclick="realizaProceso('Galicia');" target="rigFrame" alt="GALICIA" />
+                                            <area shape="poly" coords="264,31,274,24,200,14,202,42"  onclick="realizaProceso('Principado de Asturias');"  target="rigFrame" alt="ASTURIAS" />
+                                            <area shape="poly" coords="266,32,286,47,314,26,274,25" target="rigFrame" onclick="realizaProceso('Cantabria');" alt="CANTABRIA" />
+                                            <area shape="poly" coords="197,148,215,94,201,75,202,46,264,31,285,47,307,34,320,55,315,76,353,88,346,114,308,111,259,153" onclick="realizaProceso('Castilla León');" target="rigFrame" alt="CASTILLA LEÓN" />
+                                            <area shape="poly" coords="354,86,315,75,322,56,358,77" target="rigFrame" onclick="realizaProceso('La Rioja');"alt="LA RIOJA" />
+                                            <area shape="poly" coords="335,62,321,55,307,35,326,21,356,28" onclick="realizaProceso('País Vasco');" target="rigFrame" alt="PAIS VASCO" />
+                                            <area shape="poly" coords="362,80,356,75,334,60,357,28,385,46" onclick="realizaProceso('Navarra');" target="rigFrame" alt="NAVARRA" />
+                                            <area shape="poly" coords="305,116,313,160,266,149" onclick="realizaProceso('MADRID');" target="rigFrame" alt="MADRID" />
+                                            <area shape="poly" coords="387,45,432,51,418,132,387,164,359,146,348,115,355,87" onclick="realizaProceso('Aragón');" target="rigFrame" alt="ARAGON" />
+                                            <area shape="poly" coords="428,139,420,131,433,47,458,60,505,54,509,79" onclick="realizaProceso('Cataluña');" target="rigFrame" alt="CATALU&Ntilde;A" />
+                                            <area shape="poly" coords="426,143,417,133,384,166,372,158,368,187,383,220,388,247,418,211,403,181" onclick="realizaProceso('Comunidad Valenciana');" target="rigFrame" alt="VALENCIA" />
+                                            <area shape="poly" coords="379,212,366,185,374,158,359,146,348,114,307,114,315,161,267,150,245,159,257,185,257,210,282,230,333,223,340,242" onclick="realizaProceso('Castilla La Mancha');" target="rigFrame" alt="CASTILLA LA MANCHA" />
+                                            <area shape="poly" coords="256,211,221,240,181,231,192,198,175,173,194,150,244,155" onclick="realizaProceso('Extremadura');" target="rigFrame" alt="EXTREMADURA" />
+                                            <area shape="poly" coords="389,247,390,258,361,269,341,244,378,216" onclick="realizaProceso('Murcia');" target="rigFrame" alt="MURCIA" />
+                                            <area shape="poly" coords="358,269,332,222,283,232,254,213,220,241,180,233,175,271,230,322,278,293,345,295" onclick="realizaProceso('Andalucía');" target="rigFrame" alt="ANDALUCIA" />
+                                            <area shape="poly" coords="14,394,111,392,170,372,191,322,24,342" onclick="realizaProceso('Islas Canarias');"target="rigFrame" alt="CANARIAS" />
+                                            <area shape="poly" coords="454,218,549,162,536,150,493,164,449,204" onclick="realizaProceso('Islas Baleares');" target="rigFrame" alt="BALEARES" />
+                                            <area shape="poly" coords="221,329,241,322,241,340,227,300" onclick="realizaProceso('Ciudad autónoma de Ceuta');" target="rigFrame" alt="CEUTA" />
+                                            <area shape="poly" coords="307,349,324,348,321,365,298,280" onclick="realizaProceso('Ciudad autónoma de Melilla');" target="rigFrame" alt="MELILLA" />
+                                            <area shape="poly" coords="446,49,463,42,470,54,457,59" target="rigFrame" alt="ANDORRA" />
+                                            <area shape="poly" coords="138,80,158,71,160,81,182,85,199,76,213,95,196,146,174,171,190,197,183,219,176,247,173,270,122,275,126,216,111,203,140,128" onclick="realizaProceso('Portugal');"  target="rigFrame" alt="PORTUGAL" />
+                                        </map>
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<div id="resultado"></div>
+
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+<script>
+    function realizaProceso(valor){
+        var parametros = {
+            "valorcito" : valor,
+        };
+
+        var url = Routing.generate('mapa', { languaje: '{{ languaje  }}'});
+        console.log(url);
+        $.ajax({
+            data:  parametros,
+            url: url,
+//            url:   'ejemplo_ajax_proceso.php',
+            type:  'post',
+//            beforeSend: function () {
+//                $("#resultado").html("Procesando, espere por favor...");
+//            },
+            success:  function (response) {
+                console.log(response);
+                //Guardamos la respuesta en una variable que vamos a poder manejar
+                var asociados = JSON.parse(response);
+                console.log(asociados);
+                //Inicializamos la variable "html" en la que iremos concatenando resultados de la consulta. Lo primero que metemos es el encabezado de sección
+                var html = "<div class='section gray-bg clearfix' >" +
+                                "<div class='container'>" +
+                                    "<h1 class='text-center title'>" + valor + "</h1>" +
+                                    "<div class='row grid-space-12'>";
+
+                //Bucle for para cada asociado que recorre la consulta
+                for (var i=0; i<asociados.length; i++) {
+
+                    //Guardamos encabezado del asociado con el nombre
+                    html += "<div class='col-sm-4'>" +
+                            "<div class='box-style-3' data-animation-effect='fadeInUpSmall' data-effect-delay='0'>" +
+                            "<div class='icon-container default-bg'>" +
+                            "<i class='fa fa-user'></i>" +
+                            "</div>" +
+                            "<div class='body' id='lista'>" +
+                            "<h4>" + asociados[i].nombre + "</h4>" +
+                            "<ul class='list-icons'>";
+
+                    //Guardamos dirección
+                    html += "<li><i class='fa fa-map-marker'></i>" + asociados[i].domicilio + "<br><i class='fa fa-map-marker transparente'></i>" + asociados[i].codigo_postal + " " + asociados[i].poblacion + "<br><i class='fa fa-map-marker transparente'></i>" + asociados[i].provincia + "<br></li>";
+
+                    //Guardamos teléfono
+                    html += "<li><i class='fa fa-phone'></i>" + asociados[i].telefono + "</li>";
+
+                    //Guardamos fax si lo hubiese
+                    if (asociados[i].fax) {
+                        html += "<li><i class='fa fa-fax'></i>" + asociados[i].fax + "</li>";
+                    }
+
+                    //Guardamos email de contacto
+                    html += "<li><i class='fa fa-envelope-o'></i>" + asociados[i].e_mail + "</li>";
+
+                    //Guardamos página web si la hubiese
+                    if (asociados[i].pag_web) {
+                        html += "<li><i class='fa fa-internet-explorer'></i><a href='http://" + asociados[i].pag_web + "' target='_blank'>" + asociados[i].pag_web + "</a></li>";
+                    }
+
+                    //Guardamos el cierre del asociado
+                    html += "</ul>" +
+                            "</div>" +
+                            "</div>" +
+                            "</div>";
+
+                    //Obligamos a saltar de línea en caso de ser 3 o múltiplo de 3
+                    if ((i+1)%3 == 0){
+                        html += "<div id='saltodelinea' class='col-xs-12'></div>"
+                    }
+                }
+
+                //Guardamos el cierre de la sección
+                html +=
+                                    "</div>" +
+                                "</div>" +
+                            "</div>";
+
+
+
+
+                $("#resultado").html(html);
+                $('html,body').animate({
+                    scrollTop: $("#resultado").offset().top-150},1500);
+
+            }
+        });
+    }
+</script>
+
 
 </body>
 {% block footer %}

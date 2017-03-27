@@ -3,7 +3,6 @@
 namespace BackBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Asociados
@@ -218,22 +217,6 @@ class Asociados
      */
     private $fechaEdicion;
 
-    /**
-     * @ORM\OneToMany(targetEntity="UsuarioAsociado", mappedBy="idAsociado")
-     */
-    protected $usuarios;
-
-
-    /**
-     * @ORM\OneToMany(targetEntity="DireccionesAsociados", mappedBy="idasociado")
-     */
-    protected $direcciones;
-
-    function __construct()
-    {
-        $this->usuarios = new ArrayCollection();
-        $this->direcciones = new ArrayCollection();
-    }
 
 
     /**
@@ -916,25 +899,5 @@ class Asociados
     public function getFechaEdicion()
     {
         return $this->fechaEdicion;
-    }
-
-    /**
-     * Get usuarios
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getUsuarios()
-    {
-        return $this->usuarios;
-    }
-
-    /**
-     * Get direcciones
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getDirecciones()
-    {
-        return $this->direcciones;
     }
 }

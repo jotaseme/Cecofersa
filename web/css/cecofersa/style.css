@@ -6221,3 +6221,14 @@ background-color:#e84c3d;
 #imagen-entrada img{
     margin: 20px auto;
 }
+
+#lista i{
+	width: 18px;
+	text-align: left;
+	font-size: 14px;
+	line-height: 14px;
+}
+
+.transparente {
+    color: transparent;
+}
