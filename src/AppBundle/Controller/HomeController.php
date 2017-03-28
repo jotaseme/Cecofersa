@@ -169,13 +169,60 @@ class HomeController extends Controller
      * @Route("/{languaje}/contacto", name="ceco_contacto")
      * @Route("/{languaje}/contact", name="ceco_contacto_en")
      * @Route("/{languaje}/contato", name="ceco_contacto_pt")
+     * @Method({"GET"})
      */
     public function contactoAction($languaje='es', $activo='contacto')
     {
+//
         return $this->render('Cecofersa/contacto.html.twig',
             ['languaje' => $languaje,
-             'activo' => $activo
+             'activo' => $activo,
+             'enviado' => false
             ]);
+
+    }
+
+    /**
+     * @Route("/{languaje}/contacto",name="formContacto")
+     * @Route("/{languaje}/contact",name="formContact")
+     * @Route("/{languaje}/contato",name="formContato")
+     * @Method({"POST"})
+     */
+    public function sendContactEmailAction(Request $request){
+
+        $name = $request->get('name');
+        $email = $request->get('email');
+        $subject= $request->get('subject');
+        $message = $request->get('message');
+
+        $mailcompleto = \Swift_Message::newInstance()
+            ->setSubject($subject)
+            ->setFrom($email)
+            ->setTo('fromero@cecofersa.com')
+            ->setBody($message)
+            /*
+             * If you also want to include a plaintext version of the message
+            ->addPart(
+                $this->renderView(
+                    'Emails/registration.txt.twig',
+                    array('name' => $name)
+                ),
+                'text/plain'
+            )
+            */
+        ;
+
+        $this->get('mailer')->send($mailcompleto);
+        $languaje = $request->get('languaje');
+        $activo = $request->get('activo');
+        return $this->render('Cecofersa/contacto.html.twig',
+            ['languaje' => $languaje,
+             'activo' => $activo,
+             'enviado' => true
+            ]);
+
+
+
 
     }
 }
