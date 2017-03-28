@@ -217,7 +217,22 @@ class Asociados
      */
     private $fechaEdicion;
 
+    /**
+     * @ORM\OneToMany(targetEntity="UsuarioAsociado", mappedBy="idAsociado")
+     */
+    protected $usuarios;
 
+
+    /**
+     * @ORM\OneToMany(targetEntity="DireccionesAsociados", mappedBy="idAsociado")
+     */
+    protected $direcciones;
+
+    function __construct()
+    {
+        $this->usuarios = new ArrayCollection();
+        $this->direcciones = new ArrayCollection();
+    }
 
     /**
      * Get idAsociado
@@ -899,5 +914,25 @@ class Asociados
     public function getFechaEdicion()
     {
         return $this->fechaEdicion;
+    }
+
+    /**
+     * Get usuarios
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsuarios()
+    {
+        return $this->usuarios;
+    }
+
+    /**
+     * Get direcciones
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDirecciones()
+    {
+        return $this->direcciones;
     }
 }
