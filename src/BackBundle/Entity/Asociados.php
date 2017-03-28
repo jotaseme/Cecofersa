@@ -224,7 +224,7 @@ class Asociados
 
 
     /**
-     * @ORM\OneToMany(targetEntity="DireccionesAsociados", mappedBy="idAsociado")
+     * @ORM\OneToMany(targetEntity="DireccionesAsociados", mappedBy="idasociado")
      */
     protected $direcciones;
 
