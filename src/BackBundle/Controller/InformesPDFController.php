@@ -22,7 +22,8 @@ class InformesPDFController extends Controller
             $this->get('knp_snappy.pdf')->getOutputFromHtml($this->renderView(
                 'Backoffice/PDF/relacion de empresas.twig',
                 array(
-                    'asociados'=>$asociados
+                    'asociados'=>$asociados,
+                    'tipo' => 'todos'
                 )
             )),
             200,
@@ -46,7 +47,8 @@ class InformesPDFController extends Controller
             $this->get('knp_snappy.pdf')->getOutputFromHtml($this->renderView(
                 'Backoffice/PDF/relacion de empresas.twig',
                 array(
-                    'asociados' => $asociados
+                    'asociados' => $asociados,
+                    'tipo' => 'pt'
                 )
             )),
             200,
@@ -74,15 +76,17 @@ class InformesPDFController extends Controller
 //            ['asociadosES' => $asociadosES,
 //             'asociadosPT' => $asociadosPT,
 //            ]);
+        $footer = $this->renderView('Backoffice/PDF/footer.html.twig');
+        var_dump($footer);
+        $html = $this->renderView('Backoffice/PDF/relacion de empresas por areas.html.twig',array(
+        'asociadosES' => $asociadosES,
+        'asociadosPT' => $asociadosPT));
+
+        $pdf = $this->get('knp_snappy.pdf');
+        $pdf -> setOption('footer-html', $footer);
 
         return new Response(
-            $this->get('knp_snappy.pdf')->getOutputFromHtml($this->renderView(
-                'Backoffice/PDF/relacion de empresas por areas.html.twig',
-                array(
-                    'asociadosES' => $asociadosES,
-                    'asociadosPT' => $asociadosPT,
-                )
-            )),
+            $pdf->getOutputFromHtml($html),
             200,
             array(
                 'Content-Type' => 'application/pdf',
