@@ -41,6 +41,9 @@
 
                 <div style="page-break-after: always;"></div>
             </div>
+            <div class="col-xs-push-4" style="text-align: right">
+                <img style="width: 105px; height: auto; margin-bottom: 5px;" src="http://www.cecofersa.com/uploads/img_corporativa/logo_cecofersa.jpg" alt="Cecofersa">
+            </div>
             <div id="asociadosEs" class="content-header">
                 <h1>ESPAÑA</h1>
             </div>
@@ -54,6 +57,9 @@
                         {% set comunidad = asociado.comunidadAutonoma|upper %}
                         {% if comunidad == 'MADRID' or comunidad == 'CASTILLA LA MANCHA' or comunidad == 'COMUNIDAD VALENCIANA'%}
                             <footer style="page-break-after: always;"></footer>
+                            <div class="col-xs-push-4" style="text-align: right">
+                                <img style="width: 105px; height: auto; margin-bottom: 5px;" src="http://www.cecofersa.com/uploads/img_corporativa/logo_cecofersa.jpg" alt="Cecofersa">
+                            </div>
                         {% endif %}
                         <div class="titulo-comunidad"><h2>{{ asociado.comunidadAutonoma|upper }}</h2></div>
                     {% endif %}
@@ -70,6 +76,9 @@
                 {% endfor %}
             </div>
             <footer style="page-break-after: always;"></footer>
+            <div class="col-xs-push-4" style="text-align: right">
+                <img style="width: 105px; height: auto; margin-bottom: 5px;" src="http://www.cecofersa.com/uploads/img_corporativa/logo_cecofersa.jpg" alt="Cecofersa">
+            </div>
             <div id="asociadosPt" class="content-header">
                 <h1>PORTUGAL</h1>
             </div>
