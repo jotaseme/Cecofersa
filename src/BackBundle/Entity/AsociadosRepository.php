@@ -52,4 +52,25 @@ class AsociadosRepository extends \Doctrine\ORM\EntityRepository
                 ->getResult();
         }
     }
+
+    public function findAllOrderByComunidadProvinciaNombre($pais){
+        if($pais == 'es'){
+            return $this->getEntityManager()
+                ->createQuery(
+                    'SELECT a FROM BackBundle:Asociados a WHERE a.activo = 1 and a.pais = \'ES\' and a.nombre != :nombre1 and a.nombre != :nombre2 and a.nombre != :nombre3 order by a.comunidadAutonoma, a.provincia, a.nombre asc')
+                ->setParameter('nombre1', 'CECOFERSA')
+                ->setParameter('nombre2', 'CECOFERSA PORTUGAL')
+                ->setParameter('nombre3', 'DELCREDIT')
+                ->getResult();
+        }elseif($pais == 'pt'){
+            return $this->getEntityManager()
+                ->createQuery(
+                    'SELECT a FROM BackBundle:Asociados a WHERE a.activo = 1 and a.pais = \'PT\' and a.nombre != :nombre1 and a.nombre != :nombre2 and a.nombre != :nombre3 order by a.provincia, a.nombre asc')
+                ->setParameter('nombre1', 'CECOFERSA')
+                ->setParameter('nombre2', 'CECOFERSA PORTUGAL')
+                ->setParameter('nombre3', 'DELCREDIT')
+                ->getResult();
+        }
+
+    }
 }

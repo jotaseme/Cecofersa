@@ -1,0 +1,91 @@
+{% extends 'Backoffice/PDF/layout.twig' %}
+{% block body %}
+    <body class="skin-red-light">
+        <div class="content-wrapper">
+            <div class="content-header">
+                <div>
+                    <div class="col-xs-6" style="text-align: left">
+                        <img style="width: 150px; height: auto;" src="http://www.cecofersa.com/uploads/img_corporativa/logo_aniversario.jpg" alt="CecofersaAniversario">
+                    </div>
+                    <div class="col-xs-6" style="text-align: right">
+                        <img style="width: 400px; height: auto;" src="http://www.cecofersa.com/uploads/img_corporativa/ardilla_informe.jpg" alt="CecofersaArdilla">
+                    </div>
+                </div>
+                <div class="col-xs-12" style="text-align: center">
+                    <br/>
+                    <br/>
+                    <br/>
+                    <h1 style="font-size: 40px; font-weight:bold;">RELACI&Oacute;N DE EMPRESAS ASOCIADAS POR ÁREAS GEOGRÁFICAS</h1>
+                    <img style="width: 470px; height: auto; margin-top: 130px;  margin-bottom: 90px;" src="http://www.cecofersa.com/uploads/img_corporativa/logo_cecofersa.jpg" alt="Cecofersa">
+                </div>
+
+                <br/>
+
+                <div>
+
+                    <div>
+                        <h4 style="font-weight: bold">CENTRAL DE COMPRAS Y SERVICIOS PROFESIONALES, S.A.</h4>
+                        Avd. Valdelaparra, 39<br/>
+                        Naves D y E - Pol. Ind. de Alcobendas. 28108 ALCOBENDAS (Madrid)<br/>
+                        Tel.: +34 91 662 24 15 Fax.: +34 91 661 48  51<br/>
+                        E-mail: info@cecofersa.com <br/>
+                        <a href="http://www.cecofersa.com">www.cecofersa.com</a>
+                    </div>
+                    <div class=>
+                        <div class="col-xs-6 col-xs-offset-6" style="text-align: right">
+                            {{ "now"|date("d/m/Y") }}
+                        </div>
+                    </div>
+
+                </div>
+
+                <div style="page-break-after: always;"></div>
+            </div>
+            <div id="asociadosEs" class="content-header">
+                <h1>ESPAÑA</h1>
+            </div>
+            <div id="asociadosEsContent">
+                {% set comunidad = 'comunidad' %}
+                {% set provincia = 'provincia' %}
+                {% for asociado in asociadosES %}
+
+                    {#Comprobamos que no ha cambiado la CA y en caso de hacerlo metemos título#}
+                    {% if comunidad != asociado.comunidadAutonoma|upper %}
+                        {% set comunidad = asociado.comunidadAutonoma|upper %}
+                        {% if comunidad == 'MADRID' or comunidad == 'CASTILLA LA MANCHA' or comunidad == 'COMUNIDAD VALENCIANA'%}
+                            <footer style="page-break-after: always;"></footer>
+                        {% endif %}
+                        <div class="titulo-comunidad"><h2>{{ asociado.comunidadAutonoma|upper }}</h2></div>
+                    {% endif %}
+
+                    {#Comprobamos que no ha cambiado la provincia y en caso de hacerlo metemos subtítulo#}
+                    {% if provincia != asociado.provincia|upper %}
+                        {% set provincia = asociado.provincia|upper %}
+                        <div class="titulo-provincia"><h3>{{ asociado.provincia|upper }}</h3></div>
+                    {% endif %}
+
+                    {#Sacamos lista de los asociados de esa provincia#}
+                    <div class="nombre-asociado">{{ asociado.nombre|upper }}</div>
+
+                {% endfor %}
+            </div>
+            <footer style="page-break-after: always;"></footer>
+            <div id="asociadosPt" class="content-header">
+                <h1>PORTUGAL</h1>
+            </div>
+            <div id="asociadosPtContent">
+                {% set provincia = 'provincia' %}
+                {% for asociado in asociadosPT %}
+                    {#Comprobamos que no ha cambiado la provincia y en caso de hacerlo metemos subtítulo#}
+                    {% if provincia != asociado.provincia|upper %}
+                        {% set provincia = asociado.provincia|upper %}
+                        <div id="titulo-provincia"><h3>{{ asociado.provincia|upper }}</h3></div>
+                    {% endif %}
+
+                    {#Sacamos lista de los asociados de esa provincia#}
+                    <div class="nombre-asociado">{{ asociado.nombre|upper }}</div>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+{% endblock %}

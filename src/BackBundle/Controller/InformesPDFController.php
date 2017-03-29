@@ -58,6 +58,40 @@ class InformesPDFController extends Controller
     }
 
     /**
+     * @Route("/Admin/asociados/pdf/relacion-empresas-area", name="relacionEmpresasAreaGeograficaToPdf")
+     */
+    public function relacionEmpresasAreaGeograficaToPDFAction()
+    {
+        $asociadosES = $this->getDoctrine()
+            ->getRepository('BackBundle:Asociados')
+            ->findAllOrderByComunidadProvinciaNombre('es');
+
+        $asociadosPT = $this->getDoctrine()
+            ->getRepository('BackBundle:Asociados')
+            ->findAllOrderByComunidadProvinciaNombre('pt');
+
+//        return $this->render('Backoffice/PDF/relacion de empresas por areas.html.twig',
+//            ['asociadosES' => $asociadosES,
+//             'asociadosPT' => $asociadosPT,
+//            ]);
+
+        return new Response(
+            $this->get('knp_snappy.pdf')->getOutputFromHtml($this->renderView(
+                'Backoffice/PDF/relacion de empresas por areas.html.twig',
+                array(
+                    'asociadosES' => $asociadosES,
+                    'asociadosPT' => $asociadosPT,
+                )
+            )),
+            200,
+            array(
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'attachment; filename="relacion_asociados_por_areas.pdf"'
+            )
+        );
+    }
+
+    /**
      * @Route("/Admin/asociados/pdf/etiquetas", name="etiquetasToPdf")
      */
     public function etiquetasToPDFAction()
