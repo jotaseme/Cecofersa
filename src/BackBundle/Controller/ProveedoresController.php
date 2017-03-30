@@ -26,14 +26,40 @@ class ProveedoresController extends Controller
     {
         $this->user_session = new Session();
     }
-
     /**
      * @Route("/Admin/proveedores/{id}", name="detalle_proveedor")
      */
     public function detalleAction($id)
     {
+        $proveedor = $this->getDoctrine()
+            ->getRepository('BackBundle:Proveedores')
+            ->find($id);
+
         return $this->render('Backoffice/Proveedores/detalle_proveedor.html.twig',
-            ['idproveedor' => $id,
+            ['proveedor' => $proveedor,
         ]);
+    }
+    /**
+     * @Route("/Admin/proveedores/{id}/plantilla", name="PDFplantilla")
+     */
+    public function plantillaToPDFAction($id)
+    {
+        $proveedor = $this->getDoctrine()
+            ->getRepository('BackBundle:Proveedores')
+            ->find($id);
+
+        return new Response(
+            $this->get('knp_snappy.pdf')->getOutputFromHtml($this->renderView(
+                'Backoffice/Proveedores/plantilla.html.twig',
+                array(
+                    'proveedor'=>$proveedor
+                )
+            )),
+            200,
+            array(
+                'Content-Type'          => 'application/pdf',
+                'Content-Disposition'   => 'attachment; filename="plantilla.pdf"'
+            )
+        );
     }
 }

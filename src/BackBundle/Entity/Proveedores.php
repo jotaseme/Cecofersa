@@ -24,16 +24,9 @@ class Proveedores
     /**
      * @var string
      *
-     * @ORM\Column(name="NUMERO_CONVENIO", type="string", length=8, nullable=true)
+     * @ORM\Column(name="PROVEEDOR", type="string", length=255, nullable=true)
      */
-    private $numeroConvenio;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="RAZON_SOCIAL", type="string", length=100, nullable=true)
-     */
-    private $razonSocial;
+    private $proveedor;
 
     /**
      * @var string
@@ -41,6 +34,13 @@ class Proveedores
      * @ORM\Column(name="NOMBRE_COMERCIAL", type="string", length=255, nullable=true)
      */
     private $nombreComercial;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="GESTOR", type="integer", nullable=true)
+     */
+    private $gestor;
 
     /**
      * @var string
@@ -52,128 +52,72 @@ class Proveedores
     /**
      * @var string
      *
-     * @ORM\Column(name="POBLACION", type="string", length=90, nullable=true)
+     * @ORM\Column(name="POBLACION", type="string", length=255, nullable=true)
      */
     private $poblacion;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="PROVINCIA", type="string", length=90, nullable=true)
+     * @ORM\Column(name="PROVINCIA", type="string", length=255, nullable=true)
      */
     private $provincia;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="CODIGO_POSTAL", type="string", length=30, nullable=true)
+     * @ORM\Column(name="CODIGO_POSTAL", type="string", length=45, nullable=true)
      */
     private $codigoPostal;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="CIF", type="string", length=255, nullable=true)
+     * @ORM\Column(name="NIF", type="string", length=45, nullable=true)
      */
-    private $cif;
+    private $nif;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="TELEFONO", type="string", length=90, nullable=true)
+     * @ORM\Column(name="TELEFONO", type="string", length=45, nullable=true)
      */
     private $telefono;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="FAX", type="string", length=90, nullable=true)
+     * @ORM\Column(name="FAX", type="string", length=45, nullable=true)
      */
     private $fax;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="E_MAIL", type="string", length=255, nullable=true)
+     * @ORM\Column(name="RESPONSABLE_CONVENIO", type="string", length=255, nullable=true)
      */
-    private $eMail;
+    private $responsableConvenio;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="RESPONSABLE", type="string", length=255, nullable=true)
+     * @ORM\Column(name="CARGO_CONVENIO", type="string", length=255, nullable=true)
      */
-    private $responsable;
+    private $cargoConvenio;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="CARGO_RESPONSABLE", type="string", length=255, nullable=true)
+     * @ORM\Column(name="EMAIL_CONVENIO", type="string", length=255, nullable=true)
      */
-    private $cargoResponsable;
+    private $emailConvenio;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="MARCAS", type="text", length=65535, nullable=true)
+     * @ORM\Column(name="CONVENIO_COLABORACION", type="string", length=45, nullable=true)
      */
-    private $marcas;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="PARTICIPO_CATALOGO", type="string", length=50, nullable=true)
-     */
-    private $participoCatalogo;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="LOGOTIPO", type="boolean", nullable=true)
-     */
-    private $logotipo;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="OBSERVACIONES", type="text", length=65535, nullable=true)
-     */
-    private $observaciones;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="FORMA_DE_PAGO", type="string", length=255, nullable=true)
-     */
-    private $formaDePago;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="DTOS_FACTURA", type="text", length=65535, nullable=true)
-     */
-    private $dtosFactura;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="IVA", type="string", length=100, nullable=true)
-     */
-    private $iva;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="PRECIOS", type="string", length=255, nullable=true)
-     */
-    private $precios;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="VIGENCIA", type="string", length=50, nullable=true)
-     */
-    private $vigencia;
+    private $convenioColaboracion;
 
     /**
      * @var \DateTime
@@ -185,9 +129,240 @@ class Proveedores
     /**
      * @var string
      *
-     * @ORM\Column(name="ARTICULOS_PROVEEDOR", type="string", length=765, nullable=true)
+     * @ORM\Column(name="VIGENCIA", type="string", length=45, nullable=true)
+     */
+    private $vigencia;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PRECIOS", type="string", length=45, nullable=true)
+     */
+    private $precios;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="IVA", type="string", length=45, nullable=true)
+     */
+    private $iva;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DESCUENTOS_FACTURA", type="string", length=45, nullable=true)
+     */
+    private $descuentosFactura;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="GESTION_CENTRALIZADA", type="string", length=45, nullable=true)
+     */
+    private $gestionCentralizada;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PORTES_PENINSULA", type="string", length=255, nullable=true)
+     */
+    private $portesPeninsula;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="FORMA_PAGO", type="string", length=45, nullable=true)
+     */
+    private $formaPago;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PRONTO_PAGO", type="string", length=45, nullable=true)
+     */
+    private $prontoPago;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ANDORRA", type="string", length=45, nullable=true)
+     */
+    private $andorra;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="GIBRALTAR", type="string", length=45, nullable=true)
+     */
+    private $gibraltar;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PORTUGAL", type="string", length=255, nullable=true)
+     */
+    private $portugal;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CANARIAS", type="string", length=255, nullable=true)
+     */
+    private $canarias;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="BALEARES", type="string", length=255, nullable=true)
+     */
+    private $baleares;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CEUTA_MELILLA", type="string", length=255, nullable=true)
+     */
+    private $ceutaMelilla;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ARTICULOS_COMERCIALIZA", type="text", length=65535, nullable=true)
+     */
+    private $articulosComercializa;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ARTICULOS_PROVEEDOR", type="text", length=65535, nullable=true)
      */
     private $articulosProveedor;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="RAPPEL_CECOFERSA", type="string", length=255, nullable=true)
+     */
+    private $rappelCecofersa;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="RAPPEL_ASOCIADO", type="string", length=255, nullable=true)
+     */
+    private $rappelAsociado;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="OBSERVACIONES", type="text", length=65535, nullable=true)
+     */
+    private $observaciones;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PARTICIPACION_CATALOGO", type="string", length=45, nullable=true)
+     */
+    private $participacionCatalogo;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_ALTA", type="datetime", nullable=true)
+     */
+    private $fechaAlta;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_BAJA", type="datetime", nullable=true)
+     */
+    private $fechaBaja;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_EDICION", type="datetime", nullable=true)
+     */
+    private $fechaEdicion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PAGINA_WEB", type="string", length=45, nullable=true)
+     */
+    private $paginaWeb;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="VALIDEZ_ESPA", type="string", length=45, nullable=true)
+     */
+    private $validezEspa;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="VALIDEZ_PORTUGAL", type="string", length=45, nullable=true)
+     */
+    private $validezPortugal;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PEDIDO_MINIMO", type="string", length=45, nullable=true)
+     */
+    private $pedidoMinimo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MARCAS", type="text", length=65535, nullable=true)
+     */
+    private $marcas;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="FAMILIA", type="string", length=45, nullable=true)
+     */
+    private $familia;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="EXPOCECOFERSA", type="string", length=45, nullable=true)
+     */
+    private $expocecofersa;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PUBLICIDAD", type="string", length=500, nullable=true)
+     */
+    private $publicidad;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="REFERENCIA_DELCREDIT", type="integer", nullable=true)
+     */
+    private $referenciaDelcredit;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LOGOTIPO", type="string", length=45, nullable=true)
+     */
+    private $logotipo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ACTIVO", type="integer", nullable=true)
+     */
+    private $activo;
 
 
 
@@ -202,51 +377,27 @@ class Proveedores
     }
 
     /**
-     * Set numeroConvenio
+     * Set proveedor
      *
-     * @param string $numeroConvenio
+     * @param string $proveedor
      *
      * @return Proveedores
      */
-    public function setNumeroConvenio($numeroConvenio)
+    public function setProveedor($proveedor)
     {
-        $this->numeroConvenio = $numeroConvenio;
+        $this->proveedor = $proveedor;
 
         return $this;
     }
 
     /**
-     * Get numeroConvenio
+     * Get proveedor
      *
      * @return string
      */
-    public function getNumeroConvenio()
+    public function getProveedor()
     {
-        return $this->numeroConvenio;
-    }
-
-    /**
-     * Set razonSocial
-     *
-     * @param string $razonSocial
-     *
-     * @return Proveedores
-     */
-    public function setRazonSocial($razonSocial)
-    {
-        $this->razonSocial = $razonSocial;
-
-        return $this;
-    }
-
-    /**
-     * Get razonSocial
-     *
-     * @return string
-     */
-    public function getRazonSocial()
-    {
-        return $this->razonSocial;
+        return $this->proveedor;
     }
 
     /**
@@ -271,6 +422,30 @@ class Proveedores
     public function getNombreComercial()
     {
         return $this->nombreComercial;
+    }
+
+    /**
+     * Set gestor
+     *
+     * @param integer $gestor
+     *
+     * @return Proveedores
+     */
+    public function setGestor($gestor)
+    {
+        $this->gestor = $gestor;
+
+        return $this;
+    }
+
+    /**
+     * Get gestor
+     *
+     * @return integer
+     */
+    public function getGestor()
+    {
+        return $this->gestor;
     }
 
     /**
@@ -370,27 +545,27 @@ class Proveedores
     }
 
     /**
-     * Set cif
+     * Set nif
      *
-     * @param string $cif
+     * @param string $nif
      *
      * @return Proveedores
      */
-    public function setCif($cif)
+    public function setNif($nif)
     {
-        $this->cif = $cif;
+        $this->nif = $nif;
 
         return $this;
     }
 
     /**
-     * Get cif
+     * Get nif
      *
      * @return string
      */
-    public function getCif()
+    public function getNif()
     {
-        return $this->cif;
+        return $this->nif;
     }
 
     /**
@@ -442,291 +617,99 @@ class Proveedores
     }
 
     /**
-     * Set eMail
+     * Set responsableConvenio
      *
-     * @param string $eMail
+     * @param string $responsableConvenio
      *
      * @return Proveedores
      */
-    public function setEMail($eMail)
+    public function setResponsableConvenio($responsableConvenio)
     {
-        $this->eMail = $eMail;
+        $this->responsableConvenio = $responsableConvenio;
 
         return $this;
     }
 
     /**
-     * Get eMail
+     * Get responsableConvenio
      *
      * @return string
      */
-    public function getEMail()
+    public function getResponsableConvenio()
     {
-        return $this->eMail;
+        return $this->responsableConvenio;
     }
 
     /**
-     * Set responsable
+     * Set cargoConvenio
      *
-     * @param string $responsable
+     * @param string $cargoConvenio
      *
      * @return Proveedores
      */
-    public function setResponsable($responsable)
+    public function setCargoConvenio($cargoConvenio)
     {
-        $this->responsable = $responsable;
+        $this->cargoConvenio = $cargoConvenio;
 
         return $this;
     }
 
     /**
-     * Get responsable
+     * Get cargoConvenio
      *
      * @return string
      */
-    public function getResponsable()
+    public function getCargoConvenio()
     {
-        return $this->responsable;
+        return $this->cargoConvenio;
     }
 
     /**
-     * Set cargoResponsable
+     * Set emailConvenio
      *
-     * @param string $cargoResponsable
+     * @param string $emailConvenio
      *
      * @return Proveedores
      */
-    public function setCargoResponsable($cargoResponsable)
+    public function setEmailConvenio($emailConvenio)
     {
-        $this->cargoResponsable = $cargoResponsable;
+        $this->emailConvenio = $emailConvenio;
 
         return $this;
     }
 
     /**
-     * Get cargoResponsable
+     * Get emailConvenio
      *
      * @return string
      */
-    public function getCargoResponsable()
+    public function getEmailConvenio()
     {
-        return $this->cargoResponsable;
+        return $this->emailConvenio;
     }
 
     /**
-     * Set marcas
+     * Set convenioColaboracion
      *
-     * @param string $marcas
+     * @param string $convenioColaboracion
      *
      * @return Proveedores
      */
-    public function setMarcas($marcas)
+    public function setConvenioColaboracion($convenioColaboracion)
     {
-        $this->marcas = $marcas;
+        $this->convenioColaboracion = $convenioColaboracion;
 
         return $this;
     }
 
     /**
-     * Get marcas
+     * Get convenioColaboracion
      *
      * @return string
      */
-    public function getMarcas()
+    public function getConvenioColaboracion()
     {
-        return $this->marcas;
-    }
-
-    /**
-     * Set participoCatalogo
-     *
-     * @param string $participoCatalogo
-     *
-     * @return Proveedores
-     */
-    public function setParticipoCatalogo($participoCatalogo)
-    {
-        $this->participoCatalogo = $participoCatalogo;
-
-        return $this;
-    }
-
-    /**
-     * Get participoCatalogo
-     *
-     * @return string
-     */
-    public function getParticipoCatalogo()
-    {
-        return $this->participoCatalogo;
-    }
-
-    /**
-     * Set logotipo
-     *
-     * @param boolean $logotipo
-     *
-     * @return Proveedores
-     */
-    public function setLogotipo($logotipo)
-    {
-        $this->logotipo = $logotipo;
-
-        return $this;
-    }
-
-    /**
-     * Get logotipo
-     *
-     * @return boolean
-     */
-    public function getLogotipo()
-    {
-        return $this->logotipo;
-    }
-
-    /**
-     * Set observaciones
-     *
-     * @param string $observaciones
-     *
-     * @return Proveedores
-     */
-    public function setObservaciones($observaciones)
-    {
-        $this->observaciones = $observaciones;
-
-        return $this;
-    }
-
-    /**
-     * Get observaciones
-     *
-     * @return string
-     */
-    public function getObservaciones()
-    {
-        return $this->observaciones;
-    }
-
-    /**
-     * Set formaDePago
-     *
-     * @param string $formaDePago
-     *
-     * @return Proveedores
-     */
-    public function setFormaDePago($formaDePago)
-    {
-        $this->formaDePago = $formaDePago;
-
-        return $this;
-    }
-
-    /**
-     * Get formaDePago
-     *
-     * @return string
-     */
-    public function getFormaDePago()
-    {
-        return $this->formaDePago;
-    }
-
-    /**
-     * Set dtosFactura
-     *
-     * @param string $dtosFactura
-     *
-     * @return Proveedores
-     */
-    public function setDtosFactura($dtosFactura)
-    {
-        $this->dtosFactura = $dtosFactura;
-
-        return $this;
-    }
-
-    /**
-     * Get dtosFactura
-     *
-     * @return string
-     */
-    public function getDtosFactura()
-    {
-        return $this->dtosFactura;
-    }
-
-    /**
-     * Set iva
-     *
-     * @param string $iva
-     *
-     * @return Proveedores
-     */
-    public function setIva($iva)
-    {
-        $this->iva = $iva;
-
-        return $this;
-    }
-
-    /**
-     * Get iva
-     *
-     * @return string
-     */
-    public function getIva()
-    {
-        return $this->iva;
-    }
-
-    /**
-     * Set precios
-     *
-     * @param string $precios
-     *
-     * @return Proveedores
-     */
-    public function setPrecios($precios)
-    {
-        $this->precios = $precios;
-
-        return $this;
-    }
-
-    /**
-     * Get precios
-     *
-     * @return string
-     */
-    public function getPrecios()
-    {
-        return $this->precios;
-    }
-
-    /**
-     * Set vigencia
-     *
-     * @param string $vigencia
-     *
-     * @return Proveedores
-     */
-    public function setVigencia($vigencia)
-    {
-        $this->vigencia = $vigencia;
-
-        return $this;
-    }
-
-    /**
-     * Get vigencia
-     *
-     * @return string
-     */
-    public function getVigencia()
-    {
-        return $this->vigencia;
+        return $this->convenioColaboracion;
     }
 
     /**
@@ -754,6 +737,366 @@ class Proveedores
     }
 
     /**
+     * Set vigencia
+     *
+     * @param string $vigencia
+     *
+     * @return Proveedores
+     */
+    public function setVigencia($vigencia)
+    {
+        $this->vigencia = $vigencia;
+
+        return $this;
+    }
+
+    /**
+     * Get vigencia
+     *
+     * @return string
+     */
+    public function getVigencia()
+    {
+        return $this->vigencia;
+    }
+
+    /**
+     * Set precios
+     *
+     * @param string $precios
+     *
+     * @return Proveedores
+     */
+    public function setPrecios($precios)
+    {
+        $this->precios = $precios;
+
+        return $this;
+    }
+
+    /**
+     * Get precios
+     *
+     * @return string
+     */
+    public function getPrecios()
+    {
+        return $this->precios;
+    }
+
+    /**
+     * Set iva
+     *
+     * @param string $iva
+     *
+     * @return Proveedores
+     */
+    public function setIva($iva)
+    {
+        $this->iva = $iva;
+
+        return $this;
+    }
+
+    /**
+     * Get iva
+     *
+     * @return string
+     */
+    public function getIva()
+    {
+        return $this->iva;
+    }
+
+    /**
+     * Set descuentosFactura
+     *
+     * @param string $descuentosFactura
+     *
+     * @return Proveedores
+     */
+    public function setDescuentosFactura($descuentosFactura)
+    {
+        $this->descuentosFactura = $descuentosFactura;
+
+        return $this;
+    }
+
+    /**
+     * Get descuentosFactura
+     *
+     * @return string
+     */
+    public function getDescuentosFactura()
+    {
+        return $this->descuentosFactura;
+    }
+
+    /**
+     * Set gestionCentralizada
+     *
+     * @param string $gestionCentralizada
+     *
+     * @return Proveedores
+     */
+    public function setGestionCentralizada($gestionCentralizada)
+    {
+        $this->gestionCentralizada = $gestionCentralizada;
+
+        return $this;
+    }
+
+    /**
+     * Get gestionCentralizada
+     *
+     * @return string
+     */
+    public function getGestionCentralizada()
+    {
+        return $this->gestionCentralizada;
+    }
+
+    /**
+     * Set portesPeninsula
+     *
+     * @param string $portesPeninsula
+     *
+     * @return Proveedores
+     */
+    public function setPortesPeninsula($portesPeninsula)
+    {
+        $this->portesPeninsula = $portesPeninsula;
+
+        return $this;
+    }
+
+    /**
+     * Get portesPeninsula
+     *
+     * @return string
+     */
+    public function getPortesPeninsula()
+    {
+        return $this->portesPeninsula;
+    }
+
+    /**
+     * Set formaPago
+     *
+     * @param string $formaPago
+     *
+     * @return Proveedores
+     */
+    public function setFormaPago($formaPago)
+    {
+        $this->formaPago = $formaPago;
+
+        return $this;
+    }
+
+    /**
+     * Get formaPago
+     *
+     * @return string
+     */
+    public function getFormaPago()
+    {
+        return $this->formaPago;
+    }
+
+    /**
+     * Set prontoPago
+     *
+     * @param string $prontoPago
+     *
+     * @return Proveedores
+     */
+    public function setProntoPago($prontoPago)
+    {
+        $this->prontoPago = $prontoPago;
+
+        return $this;
+    }
+
+    /**
+     * Get prontoPago
+     *
+     * @return string
+     */
+    public function getProntoPago()
+    {
+        return $this->prontoPago;
+    }
+
+    /**
+     * Set andorra
+     *
+     * @param string $andorra
+     *
+     * @return Proveedores
+     */
+    public function setAndorra($andorra)
+    {
+        $this->andorra = $andorra;
+
+        return $this;
+    }
+
+    /**
+     * Get andorra
+     *
+     * @return string
+     */
+    public function getAndorra()
+    {
+        return $this->andorra;
+    }
+
+    /**
+     * Set gibraltar
+     *
+     * @param string $gibraltar
+     *
+     * @return Proveedores
+     */
+    public function setGibraltar($gibraltar)
+    {
+        $this->gibraltar = $gibraltar;
+
+        return $this;
+    }
+
+    /**
+     * Get gibraltar
+     *
+     * @return string
+     */
+    public function getGibraltar()
+    {
+        return $this->gibraltar;
+    }
+
+    /**
+     * Set portugal
+     *
+     * @param string $portugal
+     *
+     * @return Proveedores
+     */
+    public function setPortugal($portugal)
+    {
+        $this->portugal = $portugal;
+
+        return $this;
+    }
+
+    /**
+     * Get portugal
+     *
+     * @return string
+     */
+    public function getPortugal()
+    {
+        return $this->portugal;
+    }
+
+    /**
+     * Set canarias
+     *
+     * @param string $canarias
+     *
+     * @return Proveedores
+     */
+    public function setCanarias($canarias)
+    {
+        $this->canarias = $canarias;
+
+        return $this;
+    }
+
+    /**
+     * Get canarias
+     *
+     * @return string
+     */
+    public function getCanarias()
+    {
+        return $this->canarias;
+    }
+
+    /**
+     * Set baleares
+     *
+     * @param string $baleares
+     *
+     * @return Proveedores
+     */
+    public function setBaleares($baleares)
+    {
+        $this->baleares = $baleares;
+
+        return $this;
+    }
+
+    /**
+     * Get baleares
+     *
+     * @return string
+     */
+    public function getBaleares()
+    {
+        return $this->baleares;
+    }
+
+    /**
+     * Set ceutaMelilla
+     *
+     * @param string $ceutaMelilla
+     *
+     * @return Proveedores
+     */
+    public function setCeutaMelilla($ceutaMelilla)
+    {
+        $this->ceutaMelilla = $ceutaMelilla;
+
+        return $this;
+    }
+
+    /**
+     * Get ceutaMelilla
+     *
+     * @return string
+     */
+    public function getCeutaMelilla()
+    {
+        return $this->ceutaMelilla;
+    }
+
+    /**
+     * Set articulosComercializa
+     *
+     * @param string $articulosComercializa
+     *
+     * @return Proveedores
+     */
+    public function setArticulosComercializa($articulosComercializa)
+    {
+        $this->articulosComercializa = $articulosComercializa;
+
+        return $this;
+    }
+
+    /**
+     * Get articulosComercializa
+     *
+     * @return string
+     */
+    public function getArticulosComercializa()
+    {
+        return $this->articulosComercializa;
+    }
+
+    /**
      * Set articulosProveedor
      *
      * @param string $articulosProveedor
@@ -775,5 +1118,437 @@ class Proveedores
     public function getArticulosProveedor()
     {
         return $this->articulosProveedor;
+    }
+
+    /**
+     * Set rappelCecofersa
+     *
+     * @param string $rappelCecofersa
+     *
+     * @return Proveedores
+     */
+    public function setRappelCecofersa($rappelCecofersa)
+    {
+        $this->rappelCecofersa = $rappelCecofersa;
+
+        return $this;
+    }
+
+    /**
+     * Get rappelCecofersa
+     *
+     * @return string
+     */
+    public function getRappelCecofersa()
+    {
+        return $this->rappelCecofersa;
+    }
+
+    /**
+     * Set rappelAsociado
+     *
+     * @param string $rappelAsociado
+     *
+     * @return Proveedores
+     */
+    public function setRappelAsociado($rappelAsociado)
+    {
+        $this->rappelAsociado = $rappelAsociado;
+
+        return $this;
+    }
+
+    /**
+     * Get rappelAsociado
+     *
+     * @return string
+     */
+    public function getRappelAsociado()
+    {
+        return $this->rappelAsociado;
+    }
+
+    /**
+     * Set observaciones
+     *
+     * @param string $observaciones
+     *
+     * @return Proveedores
+     */
+    public function setObservaciones($observaciones)
+    {
+        $this->observaciones = $observaciones;
+
+        return $this;
+    }
+
+    /**
+     * Get observaciones
+     *
+     * @return string
+     */
+    public function getObservaciones()
+    {
+        return $this->observaciones;
+    }
+
+    /**
+     * Set participacionCatalogo
+     *
+     * @param string $participacionCatalogo
+     *
+     * @return Proveedores
+     */
+    public function setParticipacionCatalogo($participacionCatalogo)
+    {
+        $this->participacionCatalogo = $participacionCatalogo;
+
+        return $this;
+    }
+
+    /**
+     * Get participacionCatalogo
+     *
+     * @return string
+     */
+    public function getParticipacionCatalogo()
+    {
+        return $this->participacionCatalogo;
+    }
+
+    /**
+     * Set fechaAlta
+     *
+     * @param \DateTime $fechaAlta
+     *
+     * @return Proveedores
+     */
+    public function setFechaAlta($fechaAlta)
+    {
+        $this->fechaAlta = $fechaAlta;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaAlta
+     *
+     * @return \DateTime
+     */
+    public function getFechaAlta()
+    {
+        return $this->fechaAlta;
+    }
+
+    /**
+     * Set fechaBaja
+     *
+     * @param \DateTime $fechaBaja
+     *
+     * @return Proveedores
+     */
+    public function setFechaBaja($fechaBaja)
+    {
+        $this->fechaBaja = $fechaBaja;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaBaja
+     *
+     * @return \DateTime
+     */
+    public function getFechaBaja()
+    {
+        return $this->fechaBaja;
+    }
+
+    /**
+     * Set fechaEdicion
+     *
+     * @param \DateTime $fechaEdicion
+     *
+     * @return Proveedores
+     */
+    public function setFechaEdicion($fechaEdicion)
+    {
+        $this->fechaEdicion = $fechaEdicion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaEdicion
+     *
+     * @return \DateTime
+     */
+    public function getFechaEdicion()
+    {
+        return $this->fechaEdicion;
+    }
+
+    /**
+     * Set paginaWeb
+     *
+     * @param string $paginaWeb
+     *
+     * @return Proveedores
+     */
+    public function setPaginaWeb($paginaWeb)
+    {
+        $this->paginaWeb = $paginaWeb;
+
+        return $this;
+    }
+
+    /**
+     * Get paginaWeb
+     *
+     * @return string
+     */
+    public function getPaginaWeb()
+    {
+        return $this->paginaWeb;
+    }
+
+    /**
+     * Set validezEspa�a
+     *
+     * @param string $validezEspa�a
+     *
+     * @return Proveedores
+     */
+    public function setValidezEspa($validezEspa)
+    {
+        $this->validezEspa = $validezEspa;
+
+        return $this;
+    }
+
+    /**
+     * Get validezEspa�a
+     *
+     * @return string
+     */
+    public function getValidezEspa()
+    {
+        return $this->validezEspa;
+    }
+
+    /**
+     * Set validezPortugal
+     *
+     * @param string $validezPortugal
+     *
+     * @return Proveedores
+     */
+    public function setValidezPortugal($validezPortugal)
+    {
+        $this->validezPortugal = $validezPortugal;
+
+        return $this;
+    }
+
+    /**
+     * Get validezPortugal
+     *
+     * @return string
+     */
+    public function getValidezPortugal()
+    {
+        return $this->validezPortugal;
+    }
+
+    /**
+     * Set pedidoMinimo
+     *
+     * @param string $pedidoMinimo
+     *
+     * @return Proveedores
+     */
+    public function setPedidoMinimo($pedidoMinimo)
+    {
+        $this->pedidoMinimo = $pedidoMinimo;
+
+        return $this;
+    }
+
+    /**
+     * Get pedidoMinimo
+     *
+     * @return string
+     */
+    public function getPedidoMinimo()
+    {
+        return $this->pedidoMinimo;
+    }
+
+    /**
+     * Set marcas
+     *
+     * @param string $marcas
+     *
+     * @return Proveedores
+     */
+    public function setMarcas($marcas)
+    {
+        $this->marcas = $marcas;
+
+        return $this;
+    }
+
+    /**
+     * Get marcas
+     *
+     * @return string
+     */
+    public function getMarcas()
+    {
+        return $this->marcas;
+    }
+
+    /**
+     * Set familia
+     *
+     * @param string $familia
+     *
+     * @return Proveedores
+     */
+    public function setFamilia($familia)
+    {
+        $this->familia = $familia;
+
+        return $this;
+    }
+
+    /**
+     * Get familia
+     *
+     * @return string
+     */
+    public function getFamilia()
+    {
+        return $this->familia;
+    }
+
+    /**
+     * Set expocecofersa
+     *
+     * @param string $expocecofersa
+     *
+     * @return Proveedores
+     */
+    public function setExpocecofersa($expocecofersa)
+    {
+        $this->expocecofersa = $expocecofersa;
+
+        return $this;
+    }
+
+    /**
+     * Get expocecofersa
+     *
+     * @return string
+     */
+    public function getExpocecofersa()
+    {
+        return $this->expocecofersa;
+    }
+
+    /**
+     * Set publicidad
+     *
+     * @param string $publicidad
+     *
+     * @return Proveedores
+     */
+    public function setPublicidad($publicidad)
+    {
+        $this->publicidad = $publicidad;
+
+        return $this;
+    }
+
+    /**
+     * Get publicidad
+     *
+     * @return string
+     */
+    public function getPublicidad()
+    {
+        return $this->publicidad;
+    }
+
+    /**
+     * Set referenciaDelcredit
+     *
+     * @param integer $referenciaDelcredit
+     *
+     * @return Proveedores
+     */
+    public function setReferenciaDelcredit($referenciaDelcredit)
+    {
+        $this->referenciaDelcredit = $referenciaDelcredit;
+
+        return $this;
+    }
+
+    /**
+     * Get referenciaDelcredit
+     *
+     * @return integer
+     */
+    public function getReferenciaDelcredit()
+    {
+        return $this->referenciaDelcredit;
+    }
+
+    /**
+     * Set logotipo
+     *
+     * @param string $logotipo
+     *
+     * @return Proveedores
+     */
+    public function setLogotipo($logotipo)
+    {
+        $this->logotipo = $logotipo;
+
+        return $this;
+    }
+
+    /**
+     * Get logotipo
+     *
+     * @return string
+     */
+    public function getLogotipo()
+    {
+        return $this->logotipo;
+    }
+
+    /**
+     * Set activo
+     *
+     * @param integer $activo
+     *
+     * @return Proveedores
+     */
+    public function setActivo($activo)
+    {
+        $this->activo = $activo;
+
+        return $this;
+    }
+
+    /**
+     * Get activo
+     *
+     * @return integer
+     */
+    public function getActivo()
+    {
+        return $this->activo;
     }
 }
