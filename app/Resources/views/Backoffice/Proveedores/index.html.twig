@@ -1,0 +1,120 @@
+{% extends 'Backoffice/base.html.twig' %}
+{% block body %}
+    <body class="skin-red-light">
+    <div class="wrapper">
+        {% block header %}
+            {% include 'Backoffice/header.html.twig' %}
+        {% endblock %}
+
+        {% block sidebar %}
+            {% include 'Backoffice/sidebar.html.twig' %}
+        {% endblock %}
+    </div>
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                Administraci&oacute;n de proveedores
+                <small>Preview</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="#">Proveedores</a></li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Listado de proveedores de Cecofersa</h3>
+                        </div>
+                        <div class="box-body">
+                            <table id="proveedores" class="table table-bordered table-striped">
+
+                                <div class="clearfix"></div>
+                                <thead>
+                                <div class="col-sm-4">
+                                    <a href="{{ path('asociados') }}"><button type="button" class="btn btn-block btn-primary {% if filter is null %} disabled{% endif %}">Todos</button></a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a href="{{ path('asociados',{'filter':'activos'}) }}"><button type="button" class="btn btn-block btn-primary {% if filter == 'activos' %} disabled{% endif %}">Activos</button></a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a href="{{ path('asociados',{'filter':'inactivos'}) }}"><button type="button" class="btn btn-block btn-primary {% if filter == 'inactivos' %} disabled{% endif %}">Inactivos</button></a>
+                                </div>
+                                <hr/>
+                                <br/>
+                                <tr>
+                                    <th>NIF</th>
+                                    <th>C&oacute;digo Cecofersa</th>
+                                    <th>Nombre asociado</th>
+                                    <th>Usuarios</th>
+                                    <th>Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th>NIF</th>
+                                    <th>C&oacute;digo Cecofersa</th>
+                                    <th>Nombre asociado</th>
+                                    <th>Usuarios</th>
+                                    <th>Status</th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Actualizar proveedores</h3>
+                </div>
+                <div class="box-body">
+                    <div class="box-body">
+                        <div class="col-xs-6">
+                            <label class="control-label">Actualizaci&oacute;n de proveedores</label>
+                            <input id="proveedores_input" name="proveedores[]" type="file" multiple class="file-loading" data-allowed-file-extensions='["csv"]'>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    </body>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+    $(document).ready(function() {
+       $('#proveedores').DataTable({
+            "ordering": false,
+            "pageLength":20,
+            "lengthChange": false,
+            "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+            }
+       });
+    });
+    </script>
+    <script>
+        var $input = $("#proveedores_input");
+        var path = Routing.generate('update_proveedor_csv');
+        $input.fileinput({
+            showCaption: false,
+            uploadUrl: path,
+        }).on("filebatchselected", function(event, files) {
+            $input.fileinput("upload");
+        });
+    </script>
+
+{% endblock %}
