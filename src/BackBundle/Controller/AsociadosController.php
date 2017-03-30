@@ -278,55 +278,52 @@ class AsociadosController extends Controller
         }
         return new Response();
     }
-
-    /**
-     * @Route("/Admin/leerFichero", name="leer_fichero")
-     * @Method({"GET"})
-     */
-    public function leerAsociadosAction(){
-
-        $file = new \SplFileObject('../web/ficheroCSV/direcciones.csv');
-        $reader = new CsvReader($file, ';');
-        $reader->setHeaderRowNumber(0);
-        foreach ($reader as $row) {
-            $codigo_asociado = $row['CODIGO'];
-            $asociado = $this->getDoctrine()
-                ->getRepository('BackBundle:Asociados')
-                ->findBy(array('codigoAsociado'=>$codigo_asociado));
-            if($asociado){
-                $direccion = new DireccionesAsociados();
-                $direccion->setIdasociado($asociado[0]);
-                $direccion->setDomicilio(utf8_encode(trim($row['DOMICILIO'])));
-                $direccion->setCodigoPostal($row['CODIGO POSTAL']);
-                $direccion->setPoblacion(utf8_encode(trim($row['POBLACION'])));
-                $direccion->setProvincia(utf8_encode(trim($row['PROVINCIA'])));
-                $direccion->setComunidadAutonoma(utf8_encode(trim($row['COMUNIDAD AUTONOMA'])));
-                $direccion->setPais(utf8_encode(trim($row['PAIS'])));
-                $direccion->setTelefono($row['TELEFONO']);
-                $direccion->setFax($row['FAX']);
-                $direccion->setOficina($row['OFICINA']);
-                $direccion->setAlmacen($row['ALMACEN']);
-                $direccion->setTienda($row['TIENDA']);
-                $direccion->setPrivado($row['PRIVADO']);
-                $direccion->setObservaciones($row['OBSERVACIONES']);
-                $direccion->setEtiquetas($row['ETIQUETAS']);
-                $direccion->setUpdatedat(new \DateTime('now'));
-                $direccion->setCreatedat(new \DateTime('now'));
-
-                $this->getDoctrine()->getManager()
-                    ->persist($direccion);
-            }else{
-                print_r($row['CODIGO']." " . "<br/>");
-            }
-
-        }
-
-        $this->getDoctrine()->getManager()
-            ->flush();
-        echo "FIN";
-        die;
-    }
 }
+    ############# LEER CSV direcciones ##################
+//    public function leerAsociadosAction(){
+//
+//        $file = new \SplFileObject('../web/ficheroCSV/direcciones.csv');
+//        $reader = new CsvReader($file, ';');
+//        $reader->setHeaderRowNumber(0);
+//        foreach ($reader as $row) {
+//            $codigo_asociado = $row['CODIGO'];
+//            $asociado = $this->getDoctrine()
+//                ->getRepository('BackBundle:Asociados')
+//                ->findBy(array('codigoAsociado'=>$codigo_asociado));
+//            if($asociado){
+//                $direccion = new DireccionesAsociados();
+//                $direccion->setIdasociado($asociado[0]);
+//                $direccion->setDomicilio(utf8_encode(trim($row['DOMICILIO'])));
+//                $direccion->setCodigoPostal($row['CODIGO POSTAL']);
+//                $direccion->setPoblacion(utf8_encode(trim($row['POBLACION'])));
+//                $direccion->setProvincia(utf8_encode(trim($row['PROVINCIA'])));
+//                $direccion->setComunidadAutonoma(utf8_encode(trim($row['COMUNIDAD AUTONOMA'])));
+//                $direccion->setPais(utf8_encode(trim($row['PAIS'])));
+//                $direccion->setTelefono($row['TELEFONO']);
+//                $direccion->setFax($row['FAX']);
+//                $direccion->setOficina($row['OFICINA']);
+//                $direccion->setAlmacen($row['ALMACEN']);
+//                $direccion->setTienda($row['TIENDA']);
+//                $direccion->setPrivado($row['PRIVADO']);
+//                $direccion->setObservaciones($row['OBSERVACIONES']);
+//                $direccion->setEtiquetas($row['ETIQUETAS']);
+//                $direccion->setUpdatedat(new \DateTime('now'));
+//                $direccion->setCreatedat(new \DateTime('now'));
+//
+//                $this->getDoctrine()->getManager()
+//                    ->persist($direccion);
+//            }else{
+//                print_r($row['CODIGO']." " . "<br/>");
+//            }
+//
+//        }
+//
+//        $this->getDoctrine()->getManager()
+//            ->flush();
+//        echo "FIN";
+//        die;
+//    }
+
 
 ############# LEER CSV DESCARGAS ##################
 
