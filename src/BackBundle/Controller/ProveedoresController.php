@@ -35,7 +35,7 @@ class ProveedoresController extends Controller
     {
         if(is_numeric($filter)){
             $response = $this->forward('BackBundle:Proveedores:detalle', array(
-                'id_asociado'  => $filter,
+                'id_proveedor'  => $filter,
             ));
             return $response;
         }
@@ -74,26 +74,26 @@ class ProveedoresController extends Controller
     }
 
     /**
-     * @Route("/Admin/proveedores/{id}", name="detalle_proveedor")
+     * @Route("/Admin/proveedores/{id_proveedor}", name="detalle_proveedor")
      */
-    public function detalleAction($id)
+    public function detalleAction($id_proveedor)
     {
         $proveedor = $this->getDoctrine()
             ->getRepository('BackBundle:Proveedores')
-            ->find($id);
+            ->find($id_proveedor);
 
         return $this->render('Backoffice/Proveedores/detalle_proveedor.html.twig',
             ['proveedor' => $proveedor,
         ]);
     }
     /**
-     * @Route("/Admin/proveedores/{id}/plantilla", name="PDFplantilla")
+     * @Route("/Admin/proveedores/{id_proveedor}/plantilla", name="PDFplantilla")
      */
-    public function plantillaToPDFAction($id)
+    public function plantillaToPDFAction($id_proveedor)
     {
         $proveedor = $this->getDoctrine()
             ->getRepository('BackBundle:Proveedores')
-            ->find($id);
+            ->find($id_proveedor);
 
         return new Response(
             $this->get('knp_snappy.pdf')->getOutputFromHtml($this->renderView(
@@ -106,6 +106,30 @@ class ProveedoresController extends Controller
             array(
                 'Content-Type'          => 'application/pdf',
                 'Content-Disposition'   => 'attachment; filename="plantilla.pdf"'
+            )
+        );
+    }
+
+    /**
+     * @Route("/Admin/proveedores/{id_proveedor}/ficha", name="PDFficha")
+     */
+    public function fichaToPDFAction($id_proveedor)
+    {
+        $proveedor = $this->getDoctrine()
+            ->getRepository('BackBundle:Proveedores')
+            ->find($id_proveedor);
+
+        return new Response(
+            $this->get('knp_snappy.pdf')->getOutputFromHtml($this->renderView(
+                'Backoffice/Proveedores/ficha.html.twig',
+                array(
+                    'proveedor'=>$proveedor
+                )
+            )),
+            200,
+            array(
+                'Content-Type'          => 'application/pdf',
+                'Content-Disposition'   => 'attachment; filename="ficha.pdf"'
             )
         );
     }

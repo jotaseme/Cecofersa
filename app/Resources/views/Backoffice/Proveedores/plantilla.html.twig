@@ -1,87 +1,115 @@
 {% extends 'Backoffice/PDF/layout.twig' %}
 {% block body %}
 <body>
-    <div id="encabezado-pl" class="col-xs-12" style="padding: 0;">
-        <div class="col-xs-3">
-            <img class="img-responsive" src="http://www.cecofersa.com/public_html/images/logoCeco.jpg">
-        </div>
-        <div class="col-xs-9">
-            <h1>{{ proveedor.proveedor }}</h1>
-            <div class="col-xs-12" style="padding-top: 3px"><p>DIRECCIÓN: <a href="#">{{ proveedor.direccion }}</a></p></div>
-            <div class="col-xs-7" style="padding-bottom: 3px">
-                <p>POBLACIÓN: <a href="#">{{ proveedor.poblacion }}</a></p>
-                <p>PROVINCIA: <a href="#">{{ proveedor.provincia }}</a></p>
-                <p>TELÉFONO: <a href="#">{{ proveedor.telefono }}</a></p>
-                <p>RESPONSABLE: <a href="#">{{ proveedor.responsableConvenio }}</a></p>
-                <p>CARGO RESP.: <a href="#">{{ proveedor.cargoConvenio }}</a></p>
-                <p>PÁGINA WEB: <a href="#">{{ proveedor.paginaWeb }}</a></p>
+    <div id="plantilla" class="col-xs-12">
+        <div id="encabezado-pl" class="col-xs-12" style="padding: 0;">
+            <div class="col-xs-3">
+                <img class="img-responsive" src="http://www.cecofersa.com/public_html/images/logoCeco.jpg">
             </div>
-            <div class="col-xs-5" style="padding-bottom: 3px">
-                <p>CÓDIGO POSTAL: <a href="#">{{ proveedor.codigoPostal }}</a></p>
-                <p>NIF: <a href="#">{{ proveedor.nif }}</a></p>
-                <p>FAX: <a href="#">{{ proveedor.fax }}</a></p>
-                <p><br></p>
-                <p>E-MAIL: <a href="#">{{ proveedor.emailConvenio }}</a></p>
-                <p><br></p>
-            </div>
-            <div class="col-xs-12 recuadrado" style="padding: 5px 10px;">
-                <div class="col-xs-4"><p>CONVENIO: <a href="#">{{ proveedor.convenioColaboracion }}</a></p></div>
-                <div class="col-xs-4"><p>FECHA: <a href="#">{{ proveedor.fechaConvenio|date("d/m/Y") }}</a></p></div>
-                <div class="col-xs-4"><p>VIGENCIA: <a href="#">{{ proveedor.vigencia }}</a></p></div>
-            </div>
-        </div>
-    </div>
-    <div id="cuerpo-pl" class="col-xs-12" style="padding: 0; margin-top: 10px;">
-        <div class="recuadrado col-xs-7" style="padding: 15px; height: 360px;">
-            <p>PRECIOS: <a href="#">{{ proveedor.precios }}</a></p>
-            <p>IVA: <a href="#">{{ proveedor.IVA }}</a></p>
-            <p><br></p>
-            <p>DTOS. FACTURA: <a href="#">{{ proveedor.descuentosFactura }}</a></p>
-            <p><br></p>
-            <p>GESTIÓN CENTRALIZADA: <a href="#">{{ proveedor.gestionCentralizada }}</a></p>
-            <p>FORMA DE PAGO: <a href="#">{{ proveedor.formaPago }}</a></p>
-            <p>PRONTO PAGO: <a href="#">{{ proveedor.prontoPago }}</a></p>
-            <p>PEDIDO MÍNIMO:{{ proveedor.pedidoMinimo }}</p>
-            <p><br></p>
-            <p style="text-decoration: underline">PORTES PAGADOS:</p>
-            <p>PENÍNSULA: <a href="#">{{ proveedor.portesPeninsula }}</a></p>
-            <p>PORTUGAL: <a href="#">{{ proveedor.portugal }}</a></p>
-            <p>CANARIAS: <a href="#">{{ proveedor.canarias }}</a></p>
-            <p>BALEARES: <a href="#">{{ proveedor.baleares }}</a></p>
-            <p>CEUTA Y MELILLA: <a href="#">{{ proveedor.ceutaMelilla }}</a></p>
-        </div>
-        <div class="recuadrado col-xs-5" style="padding: 15px; height: 360px; border-left: none">
-            <p>ARTÍCULOS QUE COMERCIALIZA:</p>
-            <p><a href="#">{{ proveedor.articulosComercializa|raw }}</a></p>
-        </div>
+            <div class="col-xs-9">
 
-        <div class="recuadrado col-xs-6" style="padding: 15px; height: 180px; border-top: none;">
-            <p>RAPPEL CECOFERSA:</p>
-            <p><a href="#">{{ proveedor.rappelCecofersa|raw }}</a></p>
-        </div>
-        <div class="recuadrado col-xs-6" style="padding: 15px; height: 180px; border-left: none; border-top: none;">
-            <p>RAPPEL ASOCIADO:</p>
-            <p><a href="#">{{ proveedor.rappelAsociado|raw }}</a></p>
-        </div>
-    </div>
-    <div id="cuerpo2-pl" class="col-xs-12" style="padding: 0; margin-top: 10px">
-        <div class="col-xs-3" style="height: 315px; padding: 0;">
-            <div class="recuadrado" style="height: 100%; margin: 0 2px 0 0; padding: 2px;">
-                <img class="img-responsive" src="http://www.cecofersa.com/public_html/images/clausulas.jpg">
-            </div>
-        </div>
-        <div class="col-xs-6" style="height: 315px; padding: 0;">
-            <div class="recuadrado" style="padding: 15px; height: 100%; margin: 0 4px 0 2px">
-                <p>OBSERVACIONES:</p>
-                <p><a href="#">{{ proveedor.observaciones|raw }}</a></p>
-            </div>
-        </div>
-        <div class="col-xs-3" style="height: 315px; padding: 0;">
-            <div class="col-xs-12 recuadrado" style="height: 100%; margin: 0px">
-                <div class="col-xs-12"><p>PARTICIPA EN EXPOCECOFERSA: <input>{{ proveedor.precios }}</a></p></div>
-            </div>
-        </div>
+                <h1 class="col-xs-10" style="text-align: left">{{ proveedor.proveedor }}</h1><h1 class="col-xs-2" style="text-align: right">{{ proveedor.nif }}</h1>
+                <div class="col-xs-12" style="padding-top: 3px; margin-bottom: 2px;"><p>DIRECCIÓN: <a href="#">{{ proveedor.direccion }}</a></p></div>
+                <div class="col-xs-6" style="padding-bottom: 3px">
+                    <p>POBLACIÓN: <a href="#">{{ proveedor.poblacion }}</a></p>
+                    <p>CÓDIGO POSTAL: <a href="#">{{ proveedor.codigoPostal }}</a></p>
+                    <p style="margin-bottom: 8px;">PROVINCIA: <a href="#">{{ proveedor.provincia }}</a></p>
+                    <p>RESPONSABLE: <a href="#">{{ proveedor.responsableConvenio }}</a></p>
+                    <p style="margin-bottom: 5px;">E-MAIL: <a href="#">{{ proveedor.emailConvenio }}</a></p>
 
+                </div>
+                <div class="col-xs-6" style="padding-bottom: 3px">
+                    <p>TELÉFONO: <a href="#">{{ proveedor.telefono }}</a></p>
+                    <p>FAX: <a href="#">{{ proveedor.fax }}</a></p>
+                    <p style="margin-bottom: 8px;">PÁGINA WEB: <a href="#">{{ proveedor.paginaWeb }}</a></p>
+                    <p>CARGO RESP.: <a href="#">{{ proveedor.cargoConvenio }}</a></p>
+
+                </div>
+                <div class="col-xs-12 recuadrado" style="padding: 5px 10px;">
+                    <div class="col-xs-4"><p>CONVENIO: <a href="#">{{ proveedor.convenioColaboracion }}</a></p></div>
+                    <div class="col-xs-4"><p>FECHA: <a href="#">{{ proveedor.fechaConvenio|date("d/m/Y") }}</a></p></div>
+                    <div class="col-xs-4"><p>VIGENCIA: <a href="#">{{ proveedor.vigencia }}</a></p></div>
+                </div>
+            </div>
+        </div>
+        <div id="cuerpo-pl" class="col-xs-12" style="padding: 0; margin-top: 4px;">
+            <div class="col-xs-6" style="padding: 0px; height: 450px;">
+                <div class="recuadrado" style="padding: 15px; height: 100%; margin: 0 2px 0 0">
+                    <p>PRECIOS: <a href="#">{{ proveedor.precios }}</a></p>
+                    <p>IVA: <a href="#">{{ proveedor.IVA }}</a></p>
+                    <p>DTOS. FACTURA: <a href="#">{{ proveedor.descuentosFactura }}</a></p>
+                    <p><br></p>
+                    <p>GESTIÓN CENTRALIZADA: <a href="#">{{ proveedor.gestionCentralizada }}</a></p>
+                    <p>FORMA DE PAGO: <a href="#">{{ proveedor.formaPago }}</a></p>
+                    <p>PRONTO PAGO: <a href="#">{{ proveedor.prontoPago }}</a></p>
+                    <p>PEDIDO MÍNIMO:{{ proveedor.pedidoMinimo }}</p>
+                    <p><br></p>
+                    <p style="text-decoration: underline">PORTES PAGADOS:</p>
+                    <p>PENÍNSULA: <a href="#">{{ proveedor.portesPeninsula }}</a></p>
+                    <p>PORTUGAL: <a href="#">{{ proveedor.portugal }}</a></p>
+                    <p>CANARIAS: <a href="#">{{ proveedor.canarias }}</a></p>
+                    <p>BALEARES: <a href="#">{{ proveedor.baleares }}</a></p>
+                    <p>CEUTA Y MELILLA: <a href="#">{{ proveedor.ceutaMelilla }}</a></p>
+                </div>
+            </div>
+            <div class="col-xs-6" style="padding: 0px; height: 450px; border-left: none">
+                <div class="recuadrado" style="padding: 15px; height: 100%; margin: 0 0 0 2px">
+                    <p>ARTÍCULOS QUE COMERCIALIZA:</p>
+                    <p><a href="#">{{ proveedor.articulosComercializa|raw }}</a></p>
+                </div>
+            </div>
+
+            <div class="recuadrado col-xs-6" style="padding: 15px; height: 225px; border-right: none; margin-top: 4px;">
+                <p>RAPPEL CECOFERSA:</p>
+                <p><a href="#">{{ proveedor.rappelCecofersa|raw }}</a></p>
+            </div>
+            <div class="recuadrado col-xs-6" style="padding: 15px; height: 225px; border-left: none; margin-top: 4px;">
+                <p>RAPPEL ASOCIADO:</p>
+                <p><a href="#">{{ proveedor.rappelAsociado|raw }}</a></p>
+            </div>
+        </div>
+        <div id="cuerpo2-pl" class="col-xs-12" style="padding: 0; margin-top: 4px">
+            <div class="col-xs-3" style="height: 315px; padding: 0;">
+                <div class="recuadrado" style="height: 100%; margin: 0 2px 0 0; padding: 2px;">
+                    <img class="img-responsive" src="http://www.cecofersa.com/public_html/images/clausulas.jpg">
+                </div>
+            </div>
+            <div class="col-xs-6" style="height: 315px; padding: 0;">
+                <div class="recuadrado" style="padding: 15px; height: 100%; margin: 0 4px 0 2px">
+                    <p>OBSERVACIONES:</p>
+                    <p><a href="#">{{ proveedor.observaciones|raw }}</a></p>
+                </div>
+            </div>
+            <div id="publicidad" class="col-xs-3" style="height: 315px; padding: 0;">
+                <div class="col-xs-12 recuadrado" style="height: 100%; margin: 0px; padding:0;">
+                    <div class="col-xs-12" style="padding: 5px 10px; border-bottom: 1px solid black;"><p style="letter-spacing: normal">PARTICIPA EN EXPOCECOFERSA: <a style="line-height: 10px" href="#">
+                                {% if proveedor.expocecofersa|upper == 'VERDADERO' %}
+                                    <img src="http://www.cecofersa.com/public_html/images/checked.png">
+                                {% else %}
+                                    <img src="http://www.cecofersa.com/public_html/images/no-checked.png">
+                                {% endif %}
+                            </a></p></div>
+                    <div class="col-xs-12" style="padding: 5px 10px;"><p>PUBLICIDAD: <a href="#">{{ proveedor.publicidad|raw }}</a></p></div>
+                </div>
+            </div>
+        </div>
+        <div id="footer-pl" class="col-xs-12" style="padding: 0; margin-top: 10px">
+            <div class="col-xs-4" style="height: 100px; padding: 0;">
+                <div class="recuadrado" style="height: 100%; margin: 0 2px 0 0; padding: 2px;">
+                    <img class="img-responsive" src="http://www.cecofersa.com/public_html/images/leydatos.jpg">
+                </div>
+            </div>
+            <div class="col-xs-4" style="height: 100px; padding: 0;">
+                <div class="recuadrado" style="height: 100%; margin: 0 2px 0 0; padding: 10px;">
+                    <p>Por CECOFERSA:</p>
+                </div>
+            </div>
+            <div class="col-xs-4" style="height: 100px; padding: 0;">
+                <div class="recuadrado" style="height: 100%; margin: 0; padding: 10px;">
+                    <p>Por el PROVEEDOR:</p>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 {% endblock %}
