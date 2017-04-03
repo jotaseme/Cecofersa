@@ -11,12 +11,16 @@
         </div>
         <div class="col-xs-9">
 
-            <h1 class="col-xs-10" style="text-align: left">{{ proveedor.proveedor }}</h1><h1 class="col-xs-2" style="text-align: right">{{ proveedor.nif }}</h1>
-            <div class="col-xs-12" style="padding-top: 3px; margin-bottom: 2px;"><p>DIRECCIÓN: <a href="#">{{ proveedor.direccion }}</a></p></div>
+            <h1 class="col-xs-10" style="text-align: left"><a href="#" id="nombre-proveedor" class="nombre-proveedor" data-type="text" data-pk="{{ proveedor.idProveedor }}" data-url="{{ path("proveedor_update",{'id_proveedor':proveedor.idProveedor }) }}" data-title="Nombre del proveedor">{{ proveedor.proveedor }}</a></h1>
+            <h1 class="col-xs-2" style="text-align: right"><a href="#" id="nif-proveedor" class="nif-proveedor" data-type="text" data-pk="{{ proveedor.idProveedor }}" data-url="{{ path("proveedor_update",{'id_proveedor':proveedor.idProveedor }) }}" data-title="NIF del proveedor">{{ proveedor.nif }}</a></h1>
+
+            <div class="col-xs-12" style="padding-top: 3px; margin-bottom: 2px;">
+                <p>DIRECCIÓN:<a href="#" id="direccion-proveedor" class="direccion-proveedor" data-type="text" data-pk="{{ proveedor.idProveedor }}" data-url="{{ path("proveedor_update",{'id_proveedor':proveedor.idProveedor }) }}" data-title="Dirección del proveedor">{{ proveedor.direccion }}</a></p>
+            </div>
             <div class="col-xs-6" style="padding-bottom: 3px">
-                <p>POBLACIÓN: <a href="#">{{ proveedor.poblacion }}</a></p>
-                <p>CÓDIGO POSTAL: <a href="#">{{ proveedor.codigoPostal }}</a></p>
-                <p style="margin-bottom: 8px;">PROVINCIA: <a href="#">{{ proveedor.provincia }}</a></p>
+                <p>POBLACIÓN: <a href="#" id="poblacion-proveedor" class="poblacion-proveedor" data-type="text" data-pk="{{ proveedor.idProveedor }}" data-url="{{ path("proveedor_update",{'id_proveedor':proveedor.idProveedor }) }}" data-title="Población del proveedor">{{ proveedor.poblacion }}</a></p>
+                <p>CÓDIGO POSTAL: <a href="#" id="codigoPostal-proveedor" class="codigoPostal-proveedor" data-type="text" data-pk="{{ proveedor.idProveedor }}" data-url="{{ path("proveedor_update",{'id_proveedor':proveedor.idProveedor }) }}" data-title="Código postal del proveedor">{{ proveedor.codigoPostal }}</a></p>
+                <p style="margin-bottom: 8px;">PROVINCIA: <a href="#" id="provincia-proveedor" class="provincia-proveedor" data-type="select" data-pk="{{ proveedor.idProveedor }}" data-url="{{ path("proveedor_update",{'id_proveedor':proveedor.idProveedor }) }}" data-title="Provincia del proveedor">{{ proveedor.provincia }}</a></p>
                 <p>RESPONSABLE: <a href="#">{{ proveedor.responsableConvenio }}</a></p>
                 <p style="margin-bottom: 5px;">E-MAIL: <a href="#">{{ proveedor.emailConvenio }}</a></p>
 

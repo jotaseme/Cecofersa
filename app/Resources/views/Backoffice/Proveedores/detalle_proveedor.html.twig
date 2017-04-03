@@ -66,18 +66,96 @@
 
 
     <script>
-        $(document).ready(function() {
-            $('#username').editable();
-        });
-    </script>
-    <script>
+        var array_provincias = {{ array_provincias|raw }}
         var path = Routing.generate('proveedor_update',true);
         $(function(){
             $('#comments').editable({
-                title: 'Enter comments',
+                title: 'Edición de observaciones',
                 url: path
             });
         });
+
+        $('#nombre-proveedor').editable({
+            tpl: "<input type='text' style='width: 400px'>",
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
+                }
+            },
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+
+        });
+
+        $('#nif-proveedor').editable({
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
+                }
+            },
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+
+        });
+
+        $('#direccion-proveedor').editable({
+            tpl: "<input type='text' style='width: 400px'>",
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
+                }
+            },
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+
+        });
+
+        $('#poblacion-proveedor').editable({
+            tpl: "<input type='text' style='width: 200px'>",
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
+                }
+            },
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+
+        });
+        $('#codigoPostal-proveedor').editable({
+            tpl: "<input type='text' style='width: 100px'>",
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
+                }
+            },
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+
+        });
+        $('#provincia-proveedor').editable({
+            source: array_provincias,
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
+                }
+            },
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+
+        });
+
     </script>
 
 {% endblock %}

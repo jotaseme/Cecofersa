@@ -82,9 +82,16 @@ class ProveedoresController extends Controller
             ->getRepository('BackBundle:Proveedores')
             ->find($id_proveedor);
 
+        $array_provincias = ['Álava','Albacete','Alicante','Almería','Asturias','Avila','Badajoz','Barcelona','Burgos','Cáceres',
+            'Cádiz','Cantabria','Castellón','Ciudad Real','Córdoba','La Coruña','Cuenca','Gerona','Granada','Guadalajara',
+            'Guipúzcoa','Huelva','Huesca','Islas Baleares','Jaén','León','Lérida','Lugo','Madrid','Málaga','Murcia','Navarra',
+            'Orense','Palencia','Las Palmas','Pontevedra','La Rioja','Salamanca','Segovia','Sevilla','Soria','Tarragona',
+            'Santa Cruz de Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya','Zamora','Zaragoza','Ceuta',
+            'Melilla','Lisboa','Leiria','Santarém','Setúbal','Beja','Faro','Ávora','Portalegre','Castelo Branco',
+            'Guarda','Coimbra','Aveiro','Viseu','Braganza','Vila Real','Porto','Braga','Viana do Castelo','Horta (Azores)'];
+
         return $this->render('Backoffice/Proveedores/detalle_proveedor.html.twig',
-            ['proveedor' => $proveedor,
-        ]);
+            ['proveedor' => $proveedor, 'array_provincias'=>json_encode($array_provincias)]);
     }
     /**
      * @Route("/Admin/proveedores/{id_proveedor}/plantilla", name="PDFplantilla")
@@ -142,10 +149,48 @@ class ProveedoresController extends Controller
      */
     public function updateProveedoresAction(Request $request)
     {
-        $id_asociado = $request->get('pk');
+        $id_proveedor = $request->get('pk');
         $em = $this->getDoctrine()->getManager();
-        $nombre = $request->get('value');
-        var_dump($id_asociado);
-        var_dump($nombre);die;
+        $proveedor = $em->getRepository('BackBundle:Proveedores')->find($id_proveedor);
+        if($proveedor) {
+            if ($request->get('name') == 'nombre-proveedor') {
+                $nombre_proveedor = $request->get('value');
+                $proveedor->setProveedor($nombre_proveedor);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'nif-proveedor'){
+                $nif = $request->get('value');
+                $proveedorByNif = $em->getRepository('BackBundle:Proveedores')->findBy(array('nif'=>$nif));
+                if($proveedorByNif){
+                    $response = array("status" => "error", "msg"=>"¡Ya existe un proveedor con ese NIF!");
+                    return new Response(json_encode($response));
+                }else{
+                    $proveedor->setNif($nif);
+                    $proveedor->getFechaEdicion(new \DateTime('now'));
+                }
+            }elseif($request->get('name') == 'direccion-proveedor'){
+                $direccion_proveedor = $request->get('value');
+                $proveedor->setDireccion($direccion_proveedor);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'poblacion-proveedor'){
+                $poblacion_proveedor = $request->get('value');
+                $proveedor->setPoblacion($poblacion_proveedor);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'codigoPostal-proveedor'){
+                $codigoPostal = $request->get('value');
+                $proveedor->setCodigoPostal($codigoPostal);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'provincia-proveedor'){
+                $provinciaProveedor = $request->get('value');
+                $proveedor->setProvincia($provinciaProveedor);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }
+            $em->persist($proveedor);
+            $em->flush();
+            $response = array("code" => 200, "success" => true);
+            return new Response(json_encode($response));
+        }else{
+            $response = array("status" => "error", "msg"=>"¡Ha ocurrido un error!");
+            return new Response(json_encode($response));
+        }
     }
 }
