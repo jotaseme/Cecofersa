@@ -240,6 +240,65 @@ class ProveedoresController extends Controller
                 $gestionCentralizada = $request->get('value');
                 $proveedor->setGestionCentralizada($gestionCentralizada);
                 $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'forma-pago-proveedor'){
+                $formaPago = $request->get('value');
+                $proveedor->setFormaPago($formaPago);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'pronto-pago-proveedor'){
+                $prontoPago = $request->get('value');
+                $proveedor->setProntoPago($prontoPago);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'pedido-minimo-proveedor'){
+                $pedidoMinimo = $request->get('value');
+                $proveedor->setPedidoMinimo($pedidoMinimo);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'portes-peninsula-proveedor'){
+                $portesPeninsula = $request->get('value');
+                $proveedor->setPortesPeninsula($portesPeninsula);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'portes-portugal-proveedor'){
+                $portesPortugal = $request->get('value');
+                $proveedor->setPortugal($portesPortugal);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'portes-canarias-proveedor'){
+                $portesCanarias = $request->get('value');
+                $proveedor->setCanarias($portesCanarias);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'portes-baleares-proveedor'){
+                $portesBaleares = $request->get('value');
+                $proveedor->setBaleares($portesBaleares);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'portes-ceuta-melilla-proveedor'){
+                $portesCeutaMelilla = $request->get('value');
+                $proveedor->setCeutaMelilla($portesCeutaMelilla);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'articulos-comercializa-proveedor'){
+                $articulosComercializa = $request->get('value');
+                $proveedor->setArticulosComercializa($articulosComercializa);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'rappel-cecofersa-proveedor'){
+                $rappelCecofersa = $request->get('value');
+                $proveedor->setRappelCecofersa($rappelCecofersa);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'rappel-asociado-proveedor'){
+                $rappelAsociado = $request->get('value');
+                $proveedor->setRappelAsociado($rappelAsociado);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'observaciones-proveedor'){
+                $observaciones = $request->get('value');
+                $proveedor->setObservaciones($observaciones);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'publicidad-proveedor'){
+                $publicidad = $request->get('value');
+                $proveedor->setPublicidad($publicidad);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'expocecofersa-proveedor'){
+                $expocecofersa = $request->get('value');
+                $proveedor->setExpocecofersa($expocecofersa);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }else{
+                $response = array("status" => "error", "msg"=>"¡Ha ocurrido un error!");
+                return new Response(json_encode($response));
             }
 
             $em->persist($proveedor);

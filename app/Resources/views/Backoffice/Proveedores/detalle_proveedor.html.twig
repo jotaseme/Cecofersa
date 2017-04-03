@@ -274,20 +274,18 @@
                 if(response.status == 'error') return response.msg; //msg will be shown in editable form
             }
         });
-        $(function(){
-            $('#descuentos-factura-proveedor').editable({
-                title: 'Descuentos factura',
-                url: path,
-                validate: function(value) {
-                    if (value === null || value === '') {
-                        return '¡Este campo no puede estar vacio!';
-                    }
-                },
-                success: function(response, newValue) {
-                    response = $.parseJSON(response);
-                    if(response.status == 'error') return response.msg; //msg will be shown in editable form
+        $('#descuentos-factura-proveedor').editable({
+            title: 'Descuentos factura',
+            url: path,
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
                 }
-            });
+            },
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
         });
         $('#iva-precio-proveedor').editable({
             tpl: "<input type='text' style='width: 300px'>",
@@ -302,6 +300,131 @@
             }
         });
         $('#gestion-centralizada-proveedor').editable({
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+        $('#forma-pago-proveedor').editable({
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
+                }
+            },
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+        $('#pronto-pago-proveedor').editable({
+            tpl: "<input type='text' style='width: 300px'>",
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+        $('#pedido-minimo-proveedor').editable({
+            tpl: "<input type='text' style='width: 300px'>",
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+        $('#portes-peninsula-proveedor').editable({
+            tpl: "<input type='text' style='width: 300px'>",
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+        $('#portes-portugal-proveedor').editable({
+            tpl: "<input type='text' style='width: 300px'>",
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+        $('#portes-canarias-proveedor').editable({
+            tpl: "<input type='text' style='width: 300px'>",
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+        $('#portes-baleares-proveedor').editable({
+            tpl: "<input type='text' style='width: 300px'>",
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+        $('#portes-ceuta-melilla-proveedor').editable({
+            tpl: "<input type='text' style='width: 300px'>",
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+        $('#articulos-comercializa-proveedor').editable({
+            title: 'Articulos que comercializa el proveedor',
+            url: path,
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
+                }
+            },
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+        $('#rappel-cecofersa-proveedor').editable({
+            title: 'Especificación del Rappel Cecofersa',
+            url: path,
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
+                }
+            },
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+        $('#rappel-asociado-proveedor').editable({
+            title: 'Especificación del Rappel Asociado',
+            url: path,
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+        $('#observaciones-proveedor').editable({
+            title: 'Observaciones',
+            url: path,
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+        $('#publicidad-proveedor').editable({
+            title: 'Especificación publicidad',
+            url: path,
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+        $('#expocecofersa-proveedor').editable({
+            source: [
+                {value: 'VERDADERO', text: 'Participa'},
+                {value: 'FALSO', text: 'No Participa'}
+            ],
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
+                }
+            },
             success: function(response, newValue) {
                 response = $.parseJSON(response);
                 if(response.status == 'error') return response.msg; //msg will be shown in editable form
