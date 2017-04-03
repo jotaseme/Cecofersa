@@ -39,13 +39,13 @@ class ProveedoresController extends Controller
             ));
             return $response;
         }
-        $proveedores = $this->getDoctrine()
+        $proveedor = $this->getDoctrine()
             ->getRepository('BackBundle:Proveedores')
-            ->findAll();
+            ->find(1);
 
 
-        return $this->render('Backoffice/Proveedores/index.html.twig', [
-            'proveedores'=>$proveedores,
+        return $this->render('Backoffice/Proveedores/index1.html.twig', [
+            'proveedor'=>$proveedor,
             'filter'=>$filter
         ]);
     }
@@ -74,13 +74,13 @@ class ProveedoresController extends Controller
     }
 
     /**
-     * @Route("/Admin/proveedores/{id}", name="detalle_proveedor")
+     * @Route("/Admin/proveedores/{id_asociado}", name="detalle_proveedor")
      */
-    public function detalleAction($id)
+    public function detalleAction($id_asociado)
     {
         $proveedor = $this->getDoctrine()
             ->getRepository('BackBundle:Proveedores')
-            ->find($id);
+            ->find($id_asociado);
 
         return $this->render('Backoffice/Proveedores/detalle_proveedor.html.twig',
             ['proveedor' => $proveedor,
@@ -89,11 +89,11 @@ class ProveedoresController extends Controller
     /**
      * @Route("/Admin/proveedores/{id}/plantilla", name="PDFplantilla")
      */
-    public function plantillaToPDFAction($id)
+    public function plantillaToPDFAction($id_asociado)
     {
         $proveedor = $this->getDoctrine()
             ->getRepository('BackBundle:Proveedores')
-            ->find($id);
+            ->find($id_asociado);
 
         return new Response(
             $this->get('knp_snappy.pdf')->getOutputFromHtml($this->renderView(
@@ -108,5 +108,20 @@ class ProveedoresController extends Controller
                 'Content-Disposition'   => 'attachment; filename="plantilla.pdf"'
             )
         );
+    }
+
+
+    /**
+     * @Route("/Admin/Proveedor/update", name="proveedor_update",
+     *     options = { "expose" = true })
+     * @Method({"POST"})
+     */
+    public function updateProveedoresAction(Request $request)
+    {
+        $id_asociado = $request->get('pk');
+        $em = $this->getDoctrine()->getManager();
+        $nombre = $request->get('value');
+        var_dump($id_asociado);
+        var_dump($nombre);die;
     }
 }
