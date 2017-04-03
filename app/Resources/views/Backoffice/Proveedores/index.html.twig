@@ -59,7 +59,7 @@
                                         <td>{{ proveedor.nif }}</td>
 
                                         <td><a href="{{ path('detalle_proveedor',{'id_proveedor':proveedor.idProveedor}) }}"> {{proveedor.proveedor }}</a></td>
-                                        <td><span class="badge">0</span></td>
+                                        <td><span class="badge">{{ proveedor.usuarios|length }}</span></td>
                                         <td>{% if (proveedor.activo) %}<span class="label label-success">Activo</span>{% else %}<span class="label label-warning">Baja</span>{% endif %}</td>
                                     </tr>
                                 {% endfor %}

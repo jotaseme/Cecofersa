@@ -6,6 +6,7 @@ namespace BackBundle\Controller;
 use BackBundle\Entity\DireccionesAsociados;
 use BackBundle\Entity\Usuario;
 use BackBundle\Entity\UsuarioAsociado;
+use BackBundle\Entity\UsuarioProveedor;
 use BackBundle\Form\DireccionesAsociadosType;
 use BackBundle\Form\UsuarioAsociadoType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -240,4 +241,40 @@ class ProveedoresController extends Controller
             return new Response(json_encode($response));
         }
     }
+    ############# LEER CSV usuarioProveedor ##################
+
+//    public function leerProveedoresAction(){
+//
+//        $file = new \SplFileObject('../web/ficheroCSV/usuariosProveedores.csv');
+//        $reader = new CsvReader($file, ';');
+//        $reader->setHeaderRowNumber(0);
+//        foreach ($reader as $row) {
+//            $id_proveedor = $row['ID_PROVEEDOR'];
+//            $proveedor = $this->getDoctrine()
+//                ->getRepository('BackBundle:Proveedores')
+//                ->findBy(array('idProveedor'=>$id_proveedor));
+//            if($proveedor){
+//                $usuario = new UsuarioProveedor();
+//                $usuario->setIdProveedor($proveedor[0]);
+//                $usuario->setLogin(utf8_encode(trim($row['LOGIN'])));
+//                $usuario->setPassword(utf8_encode(trim($row['PASSW'])));
+//                $usuario->setEmail(utf8_encode(trim($row['E_MAIL'])));
+//                $usuario->setAccesoWebExpoVirtual($row['ACC_WEB_EXPO_VIRTUAL']);
+//                $usuario->setAccesoWebExpoReal($row['ACC_WEB_EXPO_REAL']);
+//                $usuario->setRenovacionPass(new \DateTime('now'));
+//
+//                $this->getDoctrine()->getManager()
+//                    ->persist($usuario);
+//            }else{
+//                print_r($row['ID_PROVEEDOR']." " . "<br/>");
+//            }
+//
+//        }
+//
+//        $this->getDoctrine()->getManager()
+//            ->flush();
+//        echo "FIN";
+//        die;
+//    }
 }
+
