@@ -1,8 +1,5 @@
 {% extends 'Backoffice/PDF/layout.twig' %}
 {% block body %}
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.css" type="text/css" />
-    <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet"/>
-    <link href="{{ asset("wysihtml5/bootstrap-wysihtml5-0.0.2.css")}}" rel="stylesheet" type="text/css" />
 <body>
     <div id="plantilla" class="col-xs-12">
         <div id="encabezado-pl" class="col-xs-12" style="padding: 0;">
@@ -113,38 +110,6 @@
                 </div>
             </div>
         </div>
-
-        <div id="comments" data-type="wysihtml5" data-pk="1"><h2>awesome</h2> comment!</div>
     </div>
 </body>
-    {% block javascripts %}
-        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-        <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
-        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap-editable/js/bootstrap-editable.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/inputs-ext/wysihtml5/wysihtml5.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/wysihtml5-0.3.0.js"></script>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.js"></script>
-
-
-        <script>
-            $(document).ready(function() {
-                $('#username').editable();
-            });
-        </script>
-        <script>
-            var path = Routing.generate('proveedor_update',true);
-            $(function(){
-                $('#comments').editable({
-                    title: 'Enter comments',
-                    url: path
-                });
-            });
-        </script>
-
-    {% endblock %}
-
 {% endblock %}
