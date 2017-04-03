@@ -141,7 +141,6 @@ class ProveedoresController extends Controller
         );
     }
 
-
     /**
      * @Route("/Admin/Proveedor/update", name="proveedor_update",
      *     options = { "expose" = true })
@@ -217,6 +216,30 @@ class ProveedoresController extends Controller
                     $proveedor->setConvenioColaboracion($convenio);
                     $proveedor->getFechaEdicion(new \DateTime('now'));
                 }
+            }elseif($request->get('name') == 'fecha-convenio-proveedor'){
+                $fechaConvenio = $request->get('value');
+                $proveedor->setFechaConvenio( \DateTime::createFromFormat('d/m/Y', $fechaConvenio));
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'vigencia-proveedor'){
+                $vigencia = $request->get('value');
+                $proveedor->setVigencia($vigencia);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'precio-proveedor'){
+                $precio = $request->get('value');
+                $proveedor->setPrecios($precio);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'descuentos-factura-proveedor'){
+                $descuentoFactura = $request->get('value');
+                $proveedor->setDescuentosFactura($descuentoFactura);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'iva-precio-proveedor'){
+                $ivaPrecio = $request->get('value');
+                $proveedor->setIva($ivaPrecio);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'gestion-centralizada-proveedor'){
+                $gestionCentralizada = $request->get('value');
+                $proveedor->setGestionCentralizada($gestionCentralizada);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
             }
 
             $em->persist($proveedor);

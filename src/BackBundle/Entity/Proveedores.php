@@ -150,7 +150,7 @@ class Proveedores
     /**
      * @var string
      *
-     * @ORM\Column(name="DESCUENTOS_FACTURA", type="string", length=45, nullable=true)
+     * @ORM\Column(name="DESCUENTOS_FACTURA", type="text", length=65535, nullable=true)
      */
     private $descuentosFactura;
 
@@ -1313,9 +1313,9 @@ class Proveedores
     }
 
     /**
-     * Set validezEspa�a
+     * Set validezEspa
      *
-     * @param string $validezEspa�a
+     * @param string $validezEspa
      *
      * @return Proveedores
      */
@@ -1327,7 +1327,7 @@ class Proveedores
     }
 
     /**
-     * Get validezEspa�a
+     * Get validezEspa
      *
      * @return string
      */

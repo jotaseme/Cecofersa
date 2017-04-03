@@ -239,6 +239,75 @@
             }
         });
 
+        $('#fecha-convenio-proveedor').editable({
+            format:'dd/mm/yyyy',
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
+                }
+            },
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+        $('#vigencia-proveedor').editable({
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
+                }
+            },
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+        $('#precio-proveedor').editable({
+            tpl: "<input type='text' style='width: 300px'>",
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
+                }
+            },
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+        $(function(){
+            $('#descuentos-factura-proveedor').editable({
+                title: 'Descuentos factura',
+                url: path,
+                validate: function(value) {
+                    if (value === null || value === '') {
+                        return '¡Este campo no puede estar vacio!';
+                    }
+                },
+                success: function(response, newValue) {
+                    response = $.parseJSON(response);
+                    if(response.status == 'error') return response.msg; //msg will be shown in editable form
+                }
+            });
+        });
+        $('#iva-precio-proveedor').editable({
+            tpl: "<input type='text' style='width: 300px'>",
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
+                }
+            },
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+        $('#gestion-centralizada-proveedor').editable({
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+
     </script>
 
 {% endblock %}
