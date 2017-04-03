@@ -13,21 +13,22 @@
     <div class="content-wrapper" style="height: calc(250vh);">
         <section class="content-header">
             <h1>
-                Nombre del Proveedor
+                {{ proveedor.proveedor }}
                 <small>Propiedades</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
                 <li><a href="ruta a index proveedores">Proveedores</a></li>
-                <li><a href="#">Nombre del Proveedor</a></li>
+                <li><a href="#">{{ proveedor.proveedor }}</a></li>
             </ol>
         </section>
         <section class="content">
             <div class="col-xs-12">
+                <div class="col-lg-1"></div>
                 <div class="col-xs-12 col-lg-7">
                     <div class="box box-default">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Plantilla de PROVEEDOR</h3>
+                        <div style="text-align: center" class="box-header with-border">
+                            <h3 class="box-title">PLANTILLA DE PROVEEDOR</h3>
                         </div>
                         <div class="box-body">
                             <div class="row">
@@ -38,9 +39,16 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-xs-12 col-lg-3">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <a href="{{ path('PDFplantilla', { 'id_proveedor': proveedor.idProveedor }) }}"><button type="button" class="btn btn-primary">Descargar PDF Plantilla</button></a>
+                            <a href="{{ path('PDFficha',  { 'id_proveedor': proveedor.idProveedor }) }}"><button type="button" class="btn btn-primary">Descargar PDF Ficha</button></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-
     </div>
     </body>
 {% endblock %}
