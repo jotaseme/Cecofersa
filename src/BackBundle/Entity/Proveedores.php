@@ -364,7 +364,10 @@ class Proveedores
      */
     private $activo;
 
-
+    /**
+     * @ORM\OneToMany(targetEntity="UsuarioProveedor", mappedBy="idProveedor")
+     */
+    protected $usuarios;
 
     /**
      * Get idProveedor
@@ -1550,5 +1553,15 @@ class Proveedores
     public function getActivo()
     {
         return $this->activo;
+    }
+
+    /**
+     * Get usuarios
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsuarios()
+    {
+        return $this->usuarios;
     }
 }

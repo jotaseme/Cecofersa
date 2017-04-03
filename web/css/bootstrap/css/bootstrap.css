@@ -6797,4 +6797,12 @@ button.close {
     display: none !important;
   }
 }
+
+#proveedores_filter label{
+  float:right;
+}
+
+#proveedores_filter .input-sm{
+  height: 20px;
+}
 /*# sourceMappingURL=bootstrap.css.map */

@@ -31,35 +31,38 @@
                         <div class="box-body">
                             <table id="proveedores" class="table table-bordered table-striped">
 
-                                <div class="clearfix"></div>
                                 <thead>
+                                <div class="col-sm-6">
                                 <div class="col-sm-4">
-                                    <a href="{{ path('asociados') }}"><button type="button" class="btn btn-block btn-primary {% if filter is null %} disabled{% endif %}">Todos</button></a>
+                                    <a href="{{ path('proveedores') }}"><button type="button" class="btn btn-block btn-primary {% if filter is null %} disabled{% endif %}">Todos</button></a>
                                 </div>
                                 <div class="col-sm-4">
-                                    <a href="{{ path('asociados',{'filter':'activos'}) }}"><button type="button" class="btn btn-block btn-primary {% if filter == 'activos' %} disabled{% endif %}">Activos</button></a>
+                                    <a href="{{ path('proveedores',{'filter':'activos'}) }}"><button type="button" class="btn btn-block btn-primary {% if filter == 'activos' %} disabled{% endif %}">Activos</button></a>
                                 </div>
                                 <div class="col-sm-4">
-                                    <a href="{{ path('asociados',{'filter':'inactivos'}) }}"><button type="button" class="btn btn-block btn-primary {% if filter == 'inactivos' %} disabled{% endif %}">Inactivos</button></a>
+                                    <a href="{{ path('proveedores',{'filter':'inactivos'}) }}"><button type="button" class="btn btn-block btn-primary {% if filter == 'inactivos' %} disabled{% endif %}">Inactivos</button></a>
                                 </div>
-                                <hr/>
-                                <br/>
+                                </div>
+
+
                                 <tr>
                                     <th>NIF</th>
-                                    <th>C&oacute;digo Cecofersa</th>
+
                                     <th>Nombre asociado</th>
                                     <th>Usuarios</th>
                                     <th>Status</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                {% for proveedor in proveedores %}
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>{{ proveedor.nif }}</td>
+
+                                        <td><a href="{{ path('detalle_proveedor',{'id_proveedor':proveedor.idProveedor}) }}"> {{proveedor.proveedor }}</a></td>
+                                        <td><span class="badge">0</span></td>
+                                        <td>{% if (proveedor.activo) %}<span class="label label-success">Activo</span>{% else %}<span class="label label-warning">Baja</span>{% endif %}</td>
                                     </tr>
+                                {% endfor %}
                                 </tbody>
                                 <tfoot>
                                 <tr>

@@ -39,12 +39,24 @@ class ProveedoresController extends Controller
             ));
             return $response;
         }
-        $proveedores = $this->getDoctrine()
-            ->getRepository('BackBundle:Proveedores')
-            ->findAll();
+
+        if ($filter == 'activos'){
+            $proveedores = $this->getDoctrine()
+                ->getRepository('BackBundle:Proveedores')
+                ->findBy(array('activo'=>'1'),array('proveedor'=>'ASC'));
+        } elseif ($filter == 'inactivos'){
+            $proveedores = $this->getDoctrine()
+                ->getRepository('BackBundle:Proveedores')
+                ->findBy(array('activo'=>'0'),array('proveedor'=>'ASC'));
+        } else {
+            $proveedores = $this->getDoctrine()
+                ->getRepository('BackBundle:Proveedores')
+                ->findBy(array(),array('proveedor'=>'ASC'));
+        }
 
 
-        return $this->render('Backoffice/Proveedores/index1.html.twig', [
+
+        return $this->render('Backoffice/Proveedores/index.html.twig', [
             'proveedores'=>$proveedores,
             'filter'=>$filter
         ]);
