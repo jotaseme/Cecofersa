@@ -156,6 +156,89 @@
 
         });
 
+        $('#responsable-convenio-proveedor').editable({
+            tpl: "<input type='text' style='width: 300px'>",
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
+                }
+            },
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+        $('#email-responsable-convenio-proveedor').editable({
+            tpl: "<input type='text' style='width: 300px'>",
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
+                }
+            },
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+        $('#telefono-proveedor').editable({
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
+                }
+            },
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+        $('#fax-proveedor').editable({
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
+                }
+            },
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+        $('#pagina-web-proveedor').editable({
+            tpl: "<input type='text' style='width: 300px'>",
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
+                }
+            },
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+        $('#cargo-responsable-convenio-proveedor').editable({
+            tpl: "<input type='text' style='width: 300px'>",
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
+                }
+            },
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+        $('#convenio-proveedor').editable({
+            tpl: "<input type='text' style='width: 300px'>",
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
+                }
+            },
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+        });
+
     </script>
 
 {% endblock %}

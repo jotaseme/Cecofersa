@@ -183,7 +183,42 @@ class ProveedoresController extends Controller
                 $provinciaProveedor = $request->get('value');
                 $proveedor->setProvincia($provinciaProveedor);
                 $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'responsable-convenio-proveedor'){
+                $responsable = $request->get('value');
+                $proveedor->setResponsableConvenio($responsable);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'email-responsable-convenio-proveedor'){
+                $emailResponsable = $request->get('value');
+                $proveedor->setEmailConvenio($emailResponsable);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'telefono-proveedor'){
+                $telefono = $request->get('value');
+                $proveedor->setTelefono($telefono);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'fax-proveedor'){
+                $fax = $request->get('value');
+                $proveedor->setFax($fax);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'pagina-web-proveedor'){
+                $paginaWeb = $request->get('value');
+                $proveedor->setPaginaWeb($paginaWeb);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'cargo-responsable-convenio-proveedor'){
+                $cargoResponsableConvenio = $request->get('value');
+                $proveedor->setCargoConvenio($cargoResponsableConvenio);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'convenio-proveedor'){
+                $convenio = $request->get('value');
+                $proveedorByConvenio = $em->getRepository('BackBundle:Proveedores')->findBy(array('convenioColaboracion'=>$convenio));
+                if($proveedorByConvenio){
+                    $response = array("status" => "error", "msg"=>"¡Ya existe un proveedor con ese identificador de convenio!");
+                    return new Response(json_encode($response));
+                }else{
+                    $proveedor->setConvenioColaboracion($convenio);
+                    $proveedor->getFechaEdicion(new \DateTime('now'));
+                }
             }
+
             $em->persist($proveedor);
             $em->flush();
             $response = array("code" => 200, "success" => true);

@@ -21,19 +21,19 @@
                 <p>POBLACIÓN: <a href="#" id="poblacion-proveedor" class="poblacion-proveedor" data-type="text" data-pk="{{ proveedor.idProveedor }}" data-url="{{ path("proveedor_update",{'id_proveedor':proveedor.idProveedor }) }}" data-title="Población del proveedor">{{ proveedor.poblacion }}</a></p>
                 <p>CÓDIGO POSTAL: <a href="#" id="codigoPostal-proveedor" class="codigoPostal-proveedor" data-type="text" data-pk="{{ proveedor.idProveedor }}" data-url="{{ path("proveedor_update",{'id_proveedor':proveedor.idProveedor }) }}" data-title="Código postal del proveedor">{{ proveedor.codigoPostal }}</a></p>
                 <p style="margin-bottom: 8px;">PROVINCIA: <a href="#" id="provincia-proveedor" class="provincia-proveedor" data-type="select" data-pk="{{ proveedor.idProveedor }}" data-url="{{ path("proveedor_update",{'id_proveedor':proveedor.idProveedor }) }}" data-title="Provincia del proveedor">{{ proveedor.provincia }}</a></p>
-                <p>RESPONSABLE: <a href="#">{{ proveedor.responsableConvenio }}</a></p>
-                <p style="margin-bottom: 5px;">E-MAIL: <a href="#">{{ proveedor.emailConvenio }}</a></p>
+                <p>RESPONSABLE:  <a href="#" id="responsable-convenio-proveedor" class="responsable-convenio-proveedor" data-type="text" data-pk="{{ proveedor.idProveedor }}" data-url="{{ path("proveedor_update",{'id_proveedor':proveedor.idProveedor }) }}" data-title="Responsable del convenio">{{ proveedor.responsableConvenio }}</a></p>
+                <p style="margin-bottom: 5px;">E-MAIL:  <a href="#" id="email-responsable-convenio-proveedor" class="email-responsable-convenio-proveedor" data-type="email" data-pk="{{ proveedor.idProveedor }}" data-url="{{ path("proveedor_update",{'id_proveedor':proveedor.idProveedor }) }}" data-title="Email responsable del convenio">{{ proveedor.emailConvenio }}</a></p>
 
             </div>
             <div class="col-xs-6" style="padding-bottom: 3px">
-                <p>TELÉFONO: <a href="#">{{ proveedor.telefono }}</a></p>
-                <p>FAX: <a href="#">{{ proveedor.fax }}</a></p>
-                <p style="margin-bottom: 8px;">PÁGINA WEB: <a href="#">{{ proveedor.paginaWeb }}</a></p>
-                <p>CARGO RESP.: <a href="#">{{ proveedor.cargoConvenio }}</a></p>
+                <p>TELÉFONO:<a href="#" id="telefono-proveedor" class="telefono-proveedor" data-type="text" data-pk="{{ proveedor.idProveedor }}" data-url="{{ path("proveedor_update",{'id_proveedor':proveedor.idProveedor }) }}" data-title="Teléfono de contacto">{{ proveedor.telefono }}</a></p>
+                <p>FAX: <a href="#" id="fax-proveedor" class="fax-proveedor" data-type="text" data-pk="{{ proveedor.idProveedor }}" data-url="{{ path("proveedor_update",{'id_proveedor':proveedor.idProveedor }) }}" data-title="Fax de contacto">{{ proveedor.fax }}</a></p>
+                <p style="margin-bottom: 8px;">PÁGINA WEB: <a href="#" id="pagina-web-proveedor" class="pagina-web-proveedor" data-type="text" data-pk="{{ proveedor.idProveedor }}" data-url="{{ path("proveedor_update",{'id_proveedor':proveedor.idProveedor }) }}" data-title="Página web proveedor">{{ proveedor.paginaWeb }}</a></p>
+                <p>CARGO RESP.: <a href="#" id="cargo-responsable-convenio-proveedor" class="cargo-responsable-convenio-proveedor" data-type="text" data-pk="{{ proveedor.idProveedor }}" data-url="{{ path("proveedor_update",{'id_proveedor':proveedor.idProveedor }) }}" data-title="Cargo responsable del convenio del proveedor">{{ proveedor.cargoConvenio }}</a></p>
 
             </div>
             <div class="col-xs-12 recuadrado" style="padding: 5px 10px;">
-                <div class="col-xs-4"><p>CONVENIO: <a href="#">{{ proveedor.convenioColaboracion }}</a></p></div>
+                <div class="col-xs-4"><p>CONVENIO:<a href="#" id="convenio-proveedor" class="convenio-proveedor" data-type="text" data-pk="{{ proveedor.idProveedor }}" data-url="{{ path("proveedor_update",{'id_proveedor':proveedor.idProveedor }) }}" data-title="Identificador del convenio de colaboración">{{ proveedor.convenioColaboracion }}</a></p></div>
                 <div class="col-xs-4"><p>FECHA: <a href="#">{{ proveedor.fechaConvenio|date("d/m/Y") }}</a></p></div>
                 <div class="col-xs-4"><p>VIGENCIA: <a href="#">{{ proveedor.vigencia }}</a></p></div>
             </div>
