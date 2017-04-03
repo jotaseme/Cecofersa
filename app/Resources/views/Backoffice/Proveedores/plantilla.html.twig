@@ -38,7 +38,7 @@
                 <div class="recuadrado" style="padding: 15px; height: 100%; margin: 0 2px 0 0">
                     <p>PRECIOS: <a href="#">{{ proveedor.precios }}</a></p>
                     <p>IVA: <a href="#">{{ proveedor.IVA }}</a></p>
-                    <p>DTOS. FACTURA: <a href="#">{{ proveedor.descuentosFactura }}</a></p>
+                    <div class="col-xs-3" style="padding: 0;"><p>DTOS. FACTURA:</p></div><div class="col-xs-9" style="margin-bottom: 10px;"> <a href="#">{{ proveedor.descuentosFactura|raw }}</a></div>
                     <p><br></p>
                     <p>GESTIÓN CENTRALIZADA: <a href="#">{{ proveedor.gestionCentralizada }}</a></p>
                     <p>FORMA DE PAGO: <a href="#">{{ proveedor.formaPago }}</a></p>
