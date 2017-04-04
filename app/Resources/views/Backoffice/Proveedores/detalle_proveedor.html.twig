@@ -38,7 +38,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-lg-5">
+                <div id="detalle-proveedor-derecha" class="col-xs-12 col-lg-5">
                     <div class="box box-default">
                         <div class="box-header with-border">
                             <a href="{{ path('PDFplantilla', { 'id_proveedor': proveedor.idProveedor }) }}"><button type="button" class="btn btn-primary">Descargar PDF Plantilla</button></a>
@@ -46,12 +46,122 @@
                         </div>
                     </div>
                 </div>
+                <div id="otros-campos" class="col-xs-12 col-lg-5">
+                    <div class="box box-default">
+                        <div style="text-align: center" class="box-header with-border">
+                            <h3 class="box-title">MODIFICANDO OTROS CAMPOS</h3>
+                        </div>
+                        <div class="box-body">
+                            <div id="campos-fuera-plantilla" class="col-xs-12">
+                                <p>GESTOR: <a href="#" id="gestor-proveedor" class="gestor-proveedor" data-type="text" data-pk="{{ proveedor.idProveedor }}" data-url="{{ path("proveedor_update",{'id_proveedor':proveedor.idProveedor }) }}" data-title="Gestor">{{ proveedor.gestor }}</a></p>
+                                <p>FECHA DE BAJA: <a href="#" id="fechabaja-proveedor" class="fechabaja-proveedor" data-type="text" data-pk="{{ proveedor.idProveedor }}" data-url="{{ path("proveedor_update",{'id_proveedor':proveedor.idProveedor }) }}" data-title="Fecha de baja">{{ proveedor.fechaBaja }}</a></p>
+                                <p>NOMBRE COMERCIAL: <a href="#" id="nombrecomercial-proveedor" class="nombrecomercial-proveedor" data-type="text" data-pk="{{ proveedor.idProveedor }}" data-url="{{ path("proveedor_update",{'id_proveedor':proveedor.idProveedor }) }}" data-title="Nombre comercial">{{ proveedor.nombreComercial }}</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">LISTADO DE USUARIOS DE {{ proveedor.proveedor|upper }}</h3>
+                        </div>
+                        <div class="box-body">
+                            <table id="usuariosProveedores" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Login</th>
+                                    <th>Email</th>
+                                    <th>ExpoVirtual</th>
+                                    <th>ExpoReal</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for usuario in proveedor.usuarios %}
+                                    <tr>
+                                        <td>{{ usuario.idUsuario }}</td>
+                                        <td><a href="#" id="login" class="login" data-type="text" data-pk="{{ usuario.idUsuario }}" data-url="{{ path("update_usuario_proveedor",{'id_proveedor':proveedor.idProveedor,'id_usuario':usuario.idUsuario }) }}" data-title="Login usuario">{{ usuario.login }}</a></td>
+                                        <td><a href="#" id="email" class="email" data-type="email" data-pk="{{ usuario.idUsuario }}" data-url="{{ path("update_usuario_proveedor",{'id_proveedor':proveedor.idProveedor,'id_usuario':usuario.idUsuario }) }}" data-title="Email usuario">{{ usuario.email }} </a></td>
+                                        <td><a href="#" id="expoVirtual" class="expoVirtual" data-type="select" data-pk="{{ usuario.idUsuario }}" data-url="{{ path("update_usuario_proveedor",{'id_proveedor':proveedor.idProveedor,'id_usuario':usuario.idUsuario }) }}" data-title="Acceso ExpoVirtual">{% if (usuario.accesoWebExpoVirtual) %}<span class="label label-success">Activo</span>{% elseif(usuario.accWebExpoVirtual==0) %}<span class="label label-danger">Bloqueado</span>{% endif %}</a></td>
+                                        <td><a href="#" id="expoFisica" class="expoFisica" data-type="select" data-pk="{{ usuario.idUsuario }}" data-url="{{ path("update_usuario_proveedor",{'id_proveedor':proveedor.idProveedor,'id_usuario':usuario.idUsuario }) }}" data-title="Acceso ExpoVirtual">{% if (usuario.accesoWebExpoReal) %}<span class="label label-success">Activo</span>{% elseif(usuario.accWebExpoReal==0) %}<span class="label label-danger">Bloqueado</span>{% endif %}</a></td>
+                                        <td><a href="#"><span class="label label-pill label-primary"><i class="fa fa-eye"></i></span></a></td>
+                                        <td><a id ="delete" href="#" data-id = "{{ usuario.idUsuario }}" data-href="#" data-toggle="modal" data-target="#confirm-delete"><span class="label label-pill label-danger"><i class="fa fa-trash"></i></span></a></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            <hr/>
+                            <div class="pull-right">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Nuevo usuario</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Confirmar la eliminación del usuario</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>¿Estás seguro de que quieres eliminar este usuario? <b>Si lo haces, no se podrá recuperar.</b></p>
+                            <p>¿Quieres proceder con esta acción?</p>
+                            <p class="debug-url"></p>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <a id="delete-usuario" class="btn btn-danger btn-ok">Eliminar selección</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Alta de usuario de {{ proveedor.proveedor }}</h4>
+                        </div>
+                        <style>
+                            .form-submit.btn.btn-primary {
+                                float: right;
+                                margin-top: 30px;
+                                margin-right: 100px;
+                                margin-left: -189px;
+                            }
+                            label{
+                                margin-top:5px;
+                            }
+                        </style>
+                        <div class="modal-body">
+                            {{ form_start(form, {'action': path('create_usuario_proveedor',{'id_proveedor':proveedor.idProveedor}), 'method': 'POST'}) }}
+                            {{ form_errors(form) }}
+                            {{ form_end(form) }}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </section>
     </div>
     </body>
 {% endblock %}
 {% block javascripts %}
+    <script>
+        var proveedor = {{ proveedor.idProveedor }}
+    </script>
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
@@ -60,7 +170,8 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap-editable/js/bootstrap-editable.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/inputs-ext/wysihtml5/wysihtml5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/wysihtml5-0.3.0.js"></script>
-
+    <script src="{{ asset ("js/jquery.dataTables.min.js") }}"></script>
+    <script src="{{ asset ("js/dataTables.bootstrap.min.js") }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.js"></script>
 
 
@@ -128,6 +239,7 @@
             }
 
         });
+
         $('#codigoPostal-proveedor').editable({
             tpl: "<input type='text' style='width: 100px'>",
             validate: function(value) {
@@ -430,6 +542,49 @@
             }
         });
 
-    </script>
+        $('#gestor-proveedor').editable({
+            tpl: "<input type='text' style='width: 200px'>",
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
+                }
+            },
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
 
+        });
+
+        $('#fechabaja-proveedor').editable({
+            tpl: "<input type='text' style='width: 200px'>",
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
+                }
+            },
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+
+        });
+
+        $('#nombrecomercial-proveedor').editable({
+            tpl: "<input type='text' style='width: 200px'>",
+            validate: function(value) {
+                if (value === null || value === '') {
+                    return '¡Este campo no puede estar vacio!';
+                }
+            },
+            success: function(response, newValue) {
+                response = $.parseJSON(response);
+                if(response.status == 'error') return response.msg; //msg will be shown in editable form
+            }
+
+        });
+
+
+    </script>
+    <script src="{{ asset("js/customJS/usuariosJS.js") }}"></script>
 {% endblock %}

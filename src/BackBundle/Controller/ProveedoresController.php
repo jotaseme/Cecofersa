@@ -8,7 +8,7 @@ use BackBundle\Entity\Usuario;
 use BackBundle\Entity\UsuarioAsociado;
 use BackBundle\Entity\UsuarioProveedor;
 use BackBundle\Form\DireccionesAsociadosType;
-use BackBundle\Form\UsuarioAsociadoType;
+use BackBundle\Form\UsuarioProveedorType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -95,6 +95,9 @@ class ProveedoresController extends Controller
             ->getRepository('BackBundle:Proveedores')
             ->find($id_proveedor);
 
+        $usuario = new UsuarioProveedor();
+        $form_usuarioProveedor = $this->createForm(UsuarioProveedorType::class, $usuario);
+
         $array_provincias = ['Álava','Albacete','Alicante','Almería','Asturias','Avila','Badajoz','Barcelona','Burgos','Cáceres',
             'Cádiz','Cantabria','Castellón','Ciudad Real','Córdoba','La Coruña','Cuenca','Gerona','Granada','Guadalajara',
             'Guipúzcoa','Huelva','Huesca','Islas Baleares','Jaén','León','Lérida','Lugo','Madrid','Málaga','Murcia','Navarra',
@@ -103,8 +106,12 @@ class ProveedoresController extends Controller
             'Melilla','Lisboa','Leiria','Santarém','Setúbal','Beja','Faro','Ávora','Portalegre','Castelo Branco',
             'Guarda','Coimbra','Aveiro','Viseu','Braganza','Vila Real','Porto','Braga','Viana do Castelo','Horta (Azores)'];
 
+        $form_usuarioProveedor->get('idProveedor')->setData($id_proveedor);
+
         return $this->render('Backoffice/Proveedores/detalle_proveedor.html.twig',
-            ['proveedor' => $proveedor, 'array_provincias'=>json_encode($array_provincias)]);
+            ['proveedor' => $proveedor,
+             'array_provincias'=>json_encode($array_provincias),
+             'form' => $form_usuarioProveedor->createView()]);
     }
     /**
      * @Route("/Admin/proveedores/{id_proveedor}/plantilla", name="PDFplantilla")
@@ -308,6 +315,18 @@ class ProveedoresController extends Controller
             }elseif($request->get('name') == 'expocecofersa-proveedor'){
                 $expocecofersa = $request->get('value');
                 $proveedor->setExpocecofersa($expocecofersa);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'gestor-proveedor'){
+                $gestor = $request->get('value');
+                $proveedor->setGestor($gestor);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'fechabaja-proveedor'){
+                $fechaBaja = (new \DateTime($request->get('value')));
+                $proveedor->setFechaBaja($fechaBaja);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'nombrecomercial-proveedor'){
+                $comercial = $request->get('value');
+                $proveedor->setNombreComercial($comercial);
                 $proveedor->setFechaEdicion(new \DateTime('now'));
             }else{
                 $response = array("status" => "error", "msg"=>"¡Ha ocurrido un error!");

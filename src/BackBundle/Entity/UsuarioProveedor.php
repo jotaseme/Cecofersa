@@ -71,6 +71,13 @@ class UsuarioProveedor
     private $turnoComida;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="update_at", type="datetime", nullable=true)
+     */
+    private $updateAt;
+
+    /**
      * @var \Proveedores
      *
      * @ORM\ManyToOne(targetEntity="Proveedores",inversedBy="usuarios")
@@ -258,6 +265,30 @@ class UsuarioProveedor
     public function getTurnoComida()
     {
         return $this->turnoComida;
+    }
+
+    /**
+     * Set updateAt
+     *
+     * @param \DateTime $updateAt
+     *
+     * @return UsuarioProveedor
+     */
+    public function setUpdateAt($updateAt)
+    {
+        $this->updateAt = $updateAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updateAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdateAt()
+    {
+        return $this->updateAt;
     }
 
     /**
