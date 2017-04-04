@@ -6,8 +6,9 @@
     <link href="{{ asset("wysihtml5/bootstrap-wysihtml5-0.0.2.css")}}" rel="stylesheet" type="text/css" />
     <body>
     <div id="encabezado-pl" class="col-xs-12" style="padding: 0;">
-        <div class="col-xs-3">
-            <img class="img-responsive" src="http://www.cecofersa.com/public_html/images/logoCeco.jpg">
+        <div class="col-xs-3" style="padding: 5px;">
+            <img class="img-responsive" src="{{ asset("img/cecofersa/logoCeco.png") }}">
+            <p style="font-size: 10px; font-family:Calibri; letter-spacing: normal; text-align: justify;">CENTRAL DE COMPRAS Y SERV: PROF., S.A.<br>Av. Valdelaparra, 39 Naves D y E, P. I Alcobendas<br>28108 ALCOBENDAS (Madrid)<br>Tel.: +34 91 662 2415&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fax.: +34 91 661 4851<br>E-mail: comercial@cecofersa.com<br>http://www.cecofersa.com</p>
         </div>
         <div class="col-xs-9">
 
@@ -42,7 +43,7 @@
     <div id="cuerpo-pl" class="col-xs-12" style="padding: 0; margin-top: 4px;">
         <div class="col-xs-12" style=" height: 100%;padding: 0;">
             <div class="col-xs-6" style="padding: 0px;">
-                <div class="recuadrado" style="padding: 15px; height: 100%; margin: 0 2px 0 0">
+                <div class="recuadrado" style="padding: 15px; min-height: 500px; height: 100%; margin: 0 2px 0 0">
                     <p>PRECIOS: <a href="#" id="precio-proveedor" class="precio-proveedor" data-type="text" data-pk="{{ proveedor.idProveedor }}" data-url="{{ path("proveedor_update",{'id_proveedor':proveedor.idProveedor }) }}" data-title="Precio">{{ proveedor.precios }}</a></p>
                     <p>IVA: <a href="#" id="iva-precio-proveedor" class="iva-precio-proveedor" data-type="text" data-pk="{{ proveedor.idProveedor }}" data-url="{{ path("proveedor_update",{'id_proveedor':proveedor.idProveedor }) }}" data-title="IVA">{{ proveedor.IVA }}</a></p>
                     <div class="col-xs-3" style="padding: 0;"><p>DTOS. FACTURA:</p> </div><div class="col-xs-9" style="margin-bottom: 10px;"id="descuentos-factura-proveedor" data-type="wysihtml5" data-pk="{{ proveedor.idProveedor }}">{{ proveedor.descuentosFactura|raw }}</div>
@@ -61,7 +62,7 @@
                 </div>
             </div>
             <div class="col-xs-6" style="padding: 0px; height: 100%; border-left: none">
-                <div class="recuadrado" style="padding: 15px; height: 100%; margin: 0 0 0 2px">
+                <div class="recuadrado" style="padding: 15px; min-height: 500px; height: 100%; margin: 0 0 0 2px">
                     <p>ARTÍCULOS QUE COMERCIALIZA:</p>
                     <p><div id="articulos-comercializa-proveedor" data-type="wysihtml5" data-pk="{{ proveedor.idProveedor }}">{{ proveedor.articulosComercializa|raw }}</div></p>
                 </div>
@@ -81,7 +82,12 @@
     <div id="cuerpo2-pl" class="col-xs-12" style="padding: 0; margin-top: 4px">
         <div class="col-xs-3" style="height: 315px; padding: 0;">
             <div class="recuadrado" style="height: 100%; margin: 0 2px 0 0; padding: 2px;">
-                <img class="img-responsive" src="http://www.cecofersa.com/public_html/images/clausulas.jpg">
+                <p style="font-size: 10px; letter-spacing: normal; margin-bottom: 3px;">El   rappel   será   abonado   exclusivamente   a "CECOFERSA" en la fecha fijada en esta Plantilla. De no establecerse,  esta no podrá exceder del día 01 de marzo del año siguiente al vigente.</p>
+                <p style="font-size: 10px; letter-spacing: normal; margin-bottom: 3px;">En la liquidación del rappel se incluirá el I.V.A. correspondiente al mismo.</p>
+                <p style="font-size: 10px; letter-spacing: normal; margin-bottom: 3px;">Esta     Plantilla    se     considerará     renovada automáticamente  en  las mismas   condiciones establecidas,    al    finalizar    su     periodo   de vigencia. Ello si no existe comunicación escrita en contra por alguna de las partes.</p>
+                <p style="font-size: 10px; letter-spacing: normal; margin-bottom: 3px;">Salvo pacto expreso,   "CECOFERSA"   no asume responsabilidad   alguna   sobre   el   pago   de mercancías suministradas a sus asociados. En ningún  caso  facturas  impagadas  podrán ser deducidas del rappel general, reteniendo únicamente el importe correspondiente al asociado.</p>
+                <p style="font-size: 10px; letter-spacing: normal; margin-bottom: 3px;">"CECOFERSA" recibirá, al menos trimestralmente, relación del consumo  individual de cada uno de sus  asociados.</p>
+                {#<img class="img-responsive" src="http://www.cecofersa.com/public_html/images/clausulas.jpg">#}
             </div>
         </div>
         <div class="col-xs-6" style="height: 315px; padding: 0;">
@@ -110,17 +116,20 @@
         </div>
     </div>
     <div id="footer-pl" class="col-xs-12" style="padding: 0; margin-top: 10px">
-        <div class="col-xs-4" style="height: 100px; padding: 0;">
+        <div class="col-xs-6" style="height: 115px; padding: 0;">
             <div class="recuadrado" style="height: 100%; margin: 0 2px 0 0; padding: 2px;">
-                <img class="img-responsive" src="http://www.cecofersa.com/public_html/images/leydatos.jpg">
+                <p style="font-size: 10px; letter-spacing: normal; margin-bottom: 2px;">En cumplimiento a la Ley Orgánica 15/1999 de Protección de Datos de Carácter Personal (LOPD) informamos que esta información será introducida en un fichero propiedad de la empresa CENTRAL DE COMPRAS Y SERVICIOS PROFESIONALES S.A. y serán puesta a disposición de nuestras empresas asociadas con finalidades comerciales.</p>
+                <p style="font-size: 10px; letter-spacing: normal; margin-bottom: 2px;">Se podrán ejercer los derechos de acceso, rectificación y cancelación de los datos de carácter personal por escrito con fotocopia del DNI a la dirección:</p>
+                <p style="font-size: 10px; letter-spacing: normal;">Avda. Valdelaparra, 39. Naves D y E. Pol. Ind. De Alcobendas. 28108 Alcobendas. MADRID.</p>
+                {#<img class="img-responsive" src="http://www.cecofersa.com/public_html/images/leydatos.jpg">#}
             </div>
         </div>
-        <div class="col-xs-4" style="height: 100px; padding: 0;">
+        <div class="col-xs-3" style="height: 115px; padding: 0;">
             <div class="recuadrado" style="height: 100%; margin: 0 2px 0 0; padding: 10px;">
                 <p>Por CECOFERSA:</p>
             </div>
         </div>
-        <div class="col-xs-4" style="height: 100px; padding: 0;">
+        <div class="col-xs-3" style="height: 115px; padding: 0;">
             <div class="recuadrado" style="height: 100%; margin: 0; padding: 10px;">
                 <p>Por el PROVEEDOR:</p>
             </div>
