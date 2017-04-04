@@ -250,10 +250,11 @@ class AsociadosController extends Controller
                 $this->getDoctrine()->getManager()->flush();
             }
             echo json_encode(['msg'=>'¡Success!']);
-            return new Response();
+
         }else{
-            echo son_encode(['msg'=>'¡Ha ocurrido un erro!']);
+            echo json_encode(['msg'=>'¡Ha ocurrido un erro!']);
         }
+        return new Response();
     }
 
     /**

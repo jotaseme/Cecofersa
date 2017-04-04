@@ -342,6 +342,29 @@ class ProveedoresController extends Controller
             return new Response(json_encode($response));
         }
     }
+
+    /**
+     * @Route("/Admin/proveedores/{id_proveedor}/updateAnexoPDF", name="update_anexo_pdf",
+     *     options = { "expose" = true })
+     * @Method({"POST"})
+     */
+    public function updateAnexoFromPDFAction(Request $request,$id_proveedor){
+
+        //$id_proveedor = $request->query->get('id_proveedor');
+        $file = $request->files;
+        $file = $file->get('anexos')[0];
+
+        if(!empty($file) && $file != null) {
+            $file_name =  "$id_proveedor-anexo.pdf";
+            $file->move('ficheroPDF/Proveedores/',$file_name);
+            echo json_encode(['msg'=>'¡Success!']);
+        }else{
+            echo json_encode(['msg'=>'¡Ha ocurrido un error!']);
+        }
+        return new Response();
+    }
+
+
     ############# LEER CSV usuarioProveedor ##################
 
 //    public function leerProveedoresAction(){

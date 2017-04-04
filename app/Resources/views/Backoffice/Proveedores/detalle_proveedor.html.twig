@@ -61,6 +61,20 @@
                     </div>
                 </div>
 
+                <div id="otros-campos" class="col-xs-12 col-lg-5">
+                    <div class="box box-default">
+                        <div style="text-align: center" class="box-header with-border">
+                            <h3 class="box-title">ANEXOS</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="col-xs-12">
+                                <label class="control-label">Subir anexo público</label>
+                                <input id="anexos_input" name="anexos[]" type="file" multiple class="file-loading" data-allowed-file-extensions='["pdf"]'>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="col-xs-12">
                     <div class="box box-default">
                         <div class="box-header with-border">
@@ -173,7 +187,8 @@
     <script src="{{ asset ("js/jquery.dataTables.min.js") }}"></script>
     <script src="{{ asset ("js/dataTables.bootstrap.min.js") }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.js"></script>
-
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{ asset('js/fileinput.min.js') }}"></script>
 
     <script>
         var array_provincias = {{ array_provincias|raw }}
@@ -581,10 +596,24 @@
                 response = $.parseJSON(response);
                 if(response.status == 'error') return response.msg; //msg will be shown in editable form
             }
-
         });
-
-
     </script>
+    <script>
+        var $input = $("#anexos_input");
+        var path = Routing.generate('update_anexo_pdf', { id_proveedor: {{ proveedor.idProveedor  }}});
+        $input.fileinput({
+            uploadUrl: path,
+            uploadAsync: false,
+            showUpload: false,
+            showRemove: false,
+            minFileCount: 1,
+            maxFileCount: 1,
+            mainClass: "input-group-sm"
+
+        }).on("filebatchselected", function(event, files) {
+            $input.fileinput("upload");
+        });
+    </script>
+
     <script src="{{ asset("js/customJS/usuariosJS.js") }}"></script>
 {% endblock %}
