@@ -31,19 +31,18 @@
                         <div class="box-body">
                             <table id="asociados" class="table table-bordered table-striped">
 
-                                <div class="clearfix"></div>
                                 <thead>
-                                <div class="col-sm-4">
-                                    <a href="{{ path('asociados') }}"><button type="button" class="btn btn-block btn-primary {% if filter is null %} disabled{% endif %}">Todos</button></a>
+                                <div class="col-sm-6">
+                                    <div class="col-sm-4">
+                                        <a href="{{ path('asociados') }}"><button type="button" class="btn btn-block btn-primary {% if filter is null %} disabled{% endif %}">Todos</button></a>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <a href="{{ path('asociados',{'filter':'activos'}) }}"><button type="button" class="btn btn-block btn-primary {% if filter == 'activos' %} disabled{% endif %}">Activos</button></a>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <a href="{{ path('asociados',{'filter':'inactivos'}) }}"><button type="button" class="btn btn-block btn-primary {% if filter == 'inactivos' %} disabled{% endif %}">Inactivos</button></a>
+                                    </div>
                                 </div>
-                                <div class="col-sm-4">
-                                    <a href="{{ path('asociados',{'filter':'activos'}) }}"><button type="button" class="btn btn-block btn-primary {% if filter == 'activos' %} disabled{% endif %}">Activos</button></a>
-                                </div>
-                                <div class="col-sm-4">
-                                    <a href="{{ path('asociados',{'filter':'inactivos'}) }}"><button type="button" class="btn btn-block btn-primary {% if filter == 'inactivos' %} disabled{% endif %}">Inactivos</button></a>
-                                </div>
-                                <hr/>
-                                <br/>
                                 <tr>
                                     <th>NIF</th>
                                     <th>C&oacute;digo Cecofersa</th>
