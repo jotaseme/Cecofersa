@@ -75,7 +75,7 @@ class Fichero
      *
      * @ORM\Column(name="FECHA_CREACION", type="date", nullable=false)
      */
-    private $fechaCreacion = '0000-00-00';
+    private $fechaCreacion;
 
     /**
      * @var \DateTime
@@ -104,6 +104,20 @@ class Fichero
      * @ORM\Column(name="ID_PROVEEDOR", type="integer", nullable=true)
      */
     private $idProveedor;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="ACTIVO", type="boolean", nullable=true)
+     */
+    private $activo;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="PUBLICADO", type="boolean", nullable=true)
+     */
+    private $publicado;
 
 
 
@@ -403,5 +417,53 @@ class Fichero
     public function getIdProveedor()
     {
         return $this->idProveedor;
+    }
+
+    /**
+     * Set activo
+     *
+     * @param boolean $activo
+     *
+     * @return Fichero
+     */
+    public function setActivo($activo)
+    {
+        $this->activo = $activo;
+
+        return $this;
+    }
+
+    /**
+     * Get activo
+     *
+     * @return boolean
+     */
+    public function getActivo()
+    {
+        return $this->activo;
+    }
+
+    /**
+     * Set publicado
+     *
+     * @param boolean $publicado
+     *
+     * @return Fichero
+     */
+    public function setPublicado($publicado)
+    {
+        $this->publicado = $publicado;
+
+        return $this;
+    }
+
+    /**
+     * Get publicado
+     *
+     * @return boolean
+     */
+    public function getPublicado()
+    {
+        return $this->publicado;
     }
 }

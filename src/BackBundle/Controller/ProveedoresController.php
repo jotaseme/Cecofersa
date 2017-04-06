@@ -4,6 +4,7 @@ namespace BackBundle\Controller;
 
 
 use BackBundle\Entity\DireccionesAsociados;
+use BackBundle\Entity\Fichero;
 use BackBundle\Entity\Usuario;
 use BackBundle\Entity\UsuarioAsociado;
 use BackBundle\Entity\UsuarioProveedor;
@@ -206,19 +207,56 @@ class ProveedoresController extends Controller
             ->getRepository('BackBundle:Proveedores')
             ->find($id_proveedor);
 
-        return new Response(
-            $this->get('knp_snappy.pdf')->getOutputFromHtml($this->renderView(
+        $razon = utf8_decode($proveedor->getProveedor());
+        $razon = str_replace(",", "", $razon);
+        $razon = str_replace(".", "", $razon);
+        $vigencia = $proveedor->getVigencia();
+
+        $plantilla = new Fichero();
+        $plantilla->setIdProveedor($id_proveedor);
+        $plantilla->setNombre($razon.' '.$vigencia);
+        $plantilla->setIdContenedor(0);
+        $plantilla->setIsFolder(0);
+        $plantilla->setTipo('Plantilla');
+        $plantilla->setPublicado(0);
+        $plantilla->setActivo(1);
+        $plantilla->setPath('/FICHEROS ASOCIADOS CECOFERSA/ACUERDOS CON PROVEEDORES (PLANTILLAS)/PLANTILLAS '.$vigencia);
+        $plantilla->setPermisos(0);
+        $plantilla->setFechaCreacion(new \DateTime('now'));
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($plantilla);
+        $em->flush();
+
+        $this->get('knp_snappy.pdf')->generateFromHtml(
+            $this->renderView(
                 'Backoffice/Proveedores/ficha.html.twig',
                 array(
                     'proveedor'=>$proveedor
                 )
-            )),
-            200,
-            array(
-                'Content-Type'          => 'application/pdf',
-                'Content-Disposition'   => 'attachment; filename="ficha.pdf"'
-            )
+            ),
+            '../web/ficheroPDF/Plantillas/'.$razon.' '.$vigencia.'.pdf'
         );
+
+        $usuario = new UsuarioProveedor();
+        $form_usuarioProveedor = $this->createForm(UsuarioProveedorType::class, $usuario);
+
+        $array_provincias = ['Álava','Albacete','Alicante','Almería','Asturias','Avila','Badajoz','Barcelona','Burgos','Cáceres',
+            'Cádiz','Cantabria','Castellón','Ciudad Real','Córdoba','La Coruña','Cuenca','Gerona','Granada','Guadalajara',
+            'Guipúzcoa','Huelva','Huesca','Islas Baleares','Jaén','León','Lérida','Lugo','Madrid','Málaga','Murcia','Navarra',
+            'Orense','Palencia','Las Palmas','Pontevedra','La Rioja','Salamanca','Segovia','Sevilla','Soria','Tarragona',
+            'Santa Cruz de Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya','Zamora','Zaragoza','Ceuta',
+            'Melilla','Lisboa','Leiria','Santarém','Setúbal','Beja','Faro','Ávora','Portalegre','Castelo Branco',
+            'Guarda','Coimbra','Aveiro','Viseu','Braganza','Vila Real','Porto','Braga','Viana do Castelo','Horta (Azores)'];
+
+        $form_usuarioProveedor->get('idProveedor')->setData($id_proveedor);
+
+
+
+        return $this->render('Backoffice/Proveedores/detalle_proveedor.html.twig',
+            ['proveedor' => $proveedor,
+                'array_provincias'=>json_encode($array_provincias),
+                'form' => $form_usuarioProveedor->createView()]);
     }
 
     /**
