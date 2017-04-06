@@ -111,7 +111,7 @@ class ProveedoresController extends Controller
         $ficheros_proveedor = $this->getDoctrine()
             ->getRepository('BackBundle:Fichero')
             ->findBy(
-                array('idProveedor'=>$id_proveedor),
+                array('idProveedor'=>$id_proveedor,'activo'=>1),
                 array('idFichero'=>'DESC')
             );
 

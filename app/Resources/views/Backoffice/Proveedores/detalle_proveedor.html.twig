@@ -104,9 +104,9 @@
                                         <td>{{ fichero.tipo }}</td>
                                         <td>{{ fichero.fechaCreacion|date('d/m/Y') }}</td>
                                         <td>{% if(fichero.fechaCaducidad is not null) %}{{ fichero.fechaCaducidad|date('d/m/Y') }}{% endif %}</td>
-                                        <td><input type="checkbox" checked data-toggle="toggle"></td>
-                                        <td><a href="#"><span class="label label-pill label-primary"><i class="fa fa-download"></i></span></a></td>
-                                        <td><a id ="delete" href="#" data-id = "" data-href="#" data-toggle="modal" data-target="#confirm-delete-fichero"><span class="label label-pill label-danger"><i class="fa fa-trash"></i></span></a></td>
+                                        <td><input class="toggle-one" data = "{{ fichero.idFichero }}" type="checkbox" {% if fichero.publicado == 1 %} checked {% endif %} data-toggle="toggle1" data-size="mini"></td>
+                                        <td><a href="#">{% if ('.pdf' in fichero.nombre) %}<i class="fa fa-file-pdf-o fa-2x" style="color:#dd4b39;" aria-hidden="true"></i>{% elseif('.xlsx' in fichero.nombre or '.xls' in fichero.nombre) %}<i class="fa fa-file-excel-o fa-2x" style="color:darkgreen;" aria-hidden="true"></i>{% else %}{% endif %}</a></td>
+                                        <td><a id ="boton-delete-fichero" href="#" data-id = "{{ fichero.idFichero }}" data-href="#" data-toggle="modal" data-target="#confirm-delete-fichero"><span class="label label-pill label-danger"><i class="fa fa-trash"></i></span></a></td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
@@ -158,7 +158,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id="myModalLabel">Confirmar la eliminación del usuario</h4>
+                            <h4 class="modal-title" id="usuarioLabel">Confirmar la eliminación del usuario</h4>
                         </div>
                         <div class="modal-body">
                             <p>¿Estás seguro de que quieres eliminar este usuario? <b>Si lo haces, no se podrá recuperar.</b></p>
@@ -169,6 +169,27 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                             <a id="delete-usuario" class="btn btn-danger btn-ok">Eliminar selección</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="confirm-delete-fichero" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="ficheroLabel">Confirmar la eliminación del fichero</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>¿Estás seguro de que quieres eliminar este fichero? <b>Si lo haces, no se podrá recuperar.</b></p>
+                            <p>¿Quieres proceder con esta acción?</p>
+                            <p class="debug-url"></p>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <a id="delete-fichero" class="btn btn-danger btn-ok">Eliminar selección</a>
                         </div>
                     </div>
                 </div>
@@ -219,16 +240,54 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap-editable/js/bootstrap-editable.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/inputs-ext/wysihtml5/wysihtml5.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/wysihtml5-0.3.0.js"></script>
     <script src="{{ asset ("js/jquery.dataTables.min.js") }}"></script>
     <script src="{{ asset ("js/dataTables.bootstrap.min.js") }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.js"></script>
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     <script src="{{ asset('js/fileinput.min.js') }}"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script>
-        $(function() {
-            $('#toggle-one').bootstrapToggle();
+        $('#ficherosProveedor tbody').on('click', 'a#boton-delete-fichero', function () {
+            var id = $(this).data('id');
+            console.log(id);
+            $('#boton-delete-fichero').on('show.bs.modal', function(e) {
+                $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+            });
+            $('#delete-fichero').unbind("click").click(function(){
+                $('#deleted-fichero').attr('hidden');
+                $('#deleted-fichero').empty();
+                var path = Routing.generate('fichero_delete',true);
+                $.ajax({
+                    url: path,
+                    data: {id_fichero: id},
+                    type: 'POST',
+                    dataType: "json",
+                    success: function (response) {
+                        if(response.success==true){
+                            $('#status').addClass('hidden');
+                            $('#custom').removeAttr('hidden').addClass('alert alert-success').html("").append('¡Usuario eliminado correctamente!');
+                        }else{
+                            $('#deleted-usuario').removeAttr('hidden').addClass('alert alert-danger').append('¡ERROR! El usuario no se ha borrado!');
+                        }
+                    }
+                });
+                $('[data-id='+id+']').parents('tr').remove();
+                $('#confirm-delete-fichero').modal('hide');
+            });
+        });
+        $('.toggle-one').change(function(e) {
+            e.preventDefault();
+            id_fichero = ($(this).attr("data"));
+            status = ($(this).prop('checked'));
+
+            var path = Routing.generate('fichero_update');
+            var formData = {id_fichero:id_fichero, status: status};
+            $.ajax({
+                method: 'POST',
+                url: path,
+                data: formData
+            }).done(function(msg) {
+                //console.log('wow' + msg);
+            });
         });
         $('#ficherosProveedor').DataTable({
             "ordering": false,
