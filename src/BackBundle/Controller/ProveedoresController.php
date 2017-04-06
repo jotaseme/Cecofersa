@@ -222,7 +222,7 @@ class ProveedoresController extends Controller
 
         $plantilla = new Fichero();
         $plantilla->setIdProveedor($id_proveedor);
-        $plantilla->setNombre($razon.' '.$vigencia);
+        $plantilla->setNombre($razon.' '.$vigencia.'.pdf');
         $plantilla->setIdContenedor(0);
         $plantilla->setIsFolder(0);
         $plantilla->setTipo('Plantilla');
@@ -235,6 +235,7 @@ class ProveedoresController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($plantilla);
         $em->flush();
+        $id_fichero = $plantilla->getIdFichero();
 
         $this->get('knp_snappy.pdf')->generateFromHtml(
             $this->renderView(
@@ -243,28 +244,10 @@ class ProveedoresController extends Controller
                     'proveedor'=>$proveedor
                 )
             ),
-            '../web/ficheroPDF/Plantillas/'.$razon.' '.$vigencia.'.pdf'
+            '../web/ficheroPDF/Plantillas/'.$id_fichero.'.pdf'
         );
 
-        $usuario = new UsuarioProveedor();
-        $form_usuarioProveedor = $this->createForm(UsuarioProveedorType::class, $usuario);
-
-        $array_provincias = ['Álava','Albacete','Alicante','Almería','Asturias','Avila','Badajoz','Barcelona','Burgos','Cáceres',
-            'Cádiz','Cantabria','Castellón','Ciudad Real','Córdoba','La Coruña','Cuenca','Gerona','Granada','Guadalajara',
-            'Guipúzcoa','Huelva','Huesca','Islas Baleares','Jaén','León','Lérida','Lugo','Madrid','Málaga','Murcia','Navarra',
-            'Orense','Palencia','Las Palmas','Pontevedra','La Rioja','Salamanca','Segovia','Sevilla','Soria','Tarragona',
-            'Santa Cruz de Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya','Zamora','Zaragoza','Ceuta',
-            'Melilla','Lisboa','Leiria','Santarém','Setúbal','Beja','Faro','Ávora','Portalegre','Castelo Branco',
-            'Guarda','Coimbra','Aveiro','Viseu','Braganza','Vila Real','Porto','Braga','Viana do Castelo','Horta (Azores)'];
-
-        $form_usuarioProveedor->get('idProveedor')->setData($id_proveedor);
-
-
-
-        return $this->render('Backoffice/Proveedores/detalle_proveedor.html.twig',
-            ['proveedor' => $proveedor,
-                'array_provincias'=>json_encode($array_provincias),
-                'form' => $form_usuarioProveedor->createView()]);
+        return $this->redirectToRoute('detalle_proveedor',array('id_proveedor'=>$id_proveedor));
     }
 
     /**
