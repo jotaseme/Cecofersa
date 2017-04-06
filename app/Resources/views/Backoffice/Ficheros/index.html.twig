@@ -1,0 +1,93 @@
+{% extends 'Backoffice/base.html.twig' %}
+{% block body %}
+    <body class="skin-red-light">
+    <div class="wrapper">
+        {% block header %}
+            {% include 'Backoffice/header.html.twig' %}
+        {% endblock %}
+
+        {% block sidebar %}
+            {% include 'Backoffice/sidebar.html.twig' %}
+        {% endblock %}
+    </div>
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                Administraci&oacute;n de ficheros
+                <small>Preview</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="#">Ficheros</a></li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Listado de ficheros Area Privada Cecofersa</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="col-xs-6 col-md-3">
+                                <div class="small-box bg-red-gradient">
+                                    <div class="inner">
+                                        <h4>Homologados</h4>
+                                        <p>Proveedores</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-android-folder"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-md-3">
+                                <div class="small-box bg-red-gradient">
+                                    <div class="inner">
+                                        <h4>DELCREDIT</h4>
+                                        <p>Proveedores</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-android-folder"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-md-3">
+                                <div class="small-box bg-red-gradient">
+                                    <div class="inner">
+                                        <h4>Servicios diversos</h4>
+                                        <p>Proveedores</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-android-folder"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-md-3">
+                                <div class="small-box bg-red-gradient">
+                                    <div class="inner">
+                                        <h4>Sin acuerdo comercial</h4>
+                                        <p>Proveedores</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-android-folder"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="{{ path('ficheros_migracion') }}">ENLACE</a>
+        </section>
+    </div>
+    </body>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

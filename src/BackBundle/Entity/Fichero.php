@@ -26,7 +26,7 @@ class Fichero
      *
      * @ORM\Column(name="IS_FOLDER", type="boolean", nullable=false)
      */
-    private $isFolder;
+    private $isFolder = '0';
 
     /**
      * @var integer
@@ -61,21 +61,21 @@ class Fichero
      *
      * @ORM\Column(name="TIPO_PERMISO", type="string", length=1, nullable=false)
      */
-    private $tipoPermiso;
+    private $tipoPermiso = '';
 
     /**
      * @var string
      *
      * @ORM\Column(name="NOMBRE", type="string", length=255, nullable=false)
      */
-    private $nombre;
+    private $nombre = '';
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="FECHA_CREACION", type="date", nullable=false)
      */
-    private $fechaCreacion;
+    private $fechaCreacion = '0000-00-00';
 
     /**
      * @var \DateTime
@@ -90,6 +90,20 @@ class Fichero
      * @ORM\Column(name="ACC_DENEGADO", type="text", length=65535, nullable=true)
      */
     private $accDenegado;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TIPO", type="string", length=45, nullable=true)
+     */
+    private $tipo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ID_PROVEEDOR", type="integer", nullable=true)
+     */
+    private $idProveedor;
 
 
 
@@ -341,5 +355,53 @@ class Fichero
     public function getAccDenegado()
     {
         return $this->accDenegado;
+    }
+
+    /**
+     * Set tipo
+     *
+     * @param string $tipo
+     *
+     * @return Fichero
+     */
+    public function setTipo($tipo)
+    {
+        $this->tipo = $tipo;
+
+        return $this;
+    }
+
+    /**
+     * Get tipo
+     *
+     * @return string
+     */
+    public function getTipo()
+    {
+        return $this->tipo;
+    }
+
+    /**
+     * Set idProveedor
+     *
+     * @param integer $idProveedor
+     *
+     * @return Fichero
+     */
+    public function setIdProveedor($idProveedor)
+    {
+        $this->idProveedor = $idProveedor;
+
+        return $this;
+    }
+
+    /**
+     * Get idProveedor
+     *
+     * @return integer
+     */
+    public function getIdProveedor()
+    {
+        return $this->idProveedor;
     }
 }
