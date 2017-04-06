@@ -439,12 +439,39 @@ class ProveedoresController extends Controller
      */
     public function updateAnexoFromPDFAction(Request $request,$id_proveedor){
 
+        $proveedor = $this->getDoctrine()
+            ->getRepository('BackBundle:Proveedores')
+            ->find($id_proveedor);
+
+        $razon = utf8_decode($proveedor->getProveedor());
+        $razon = str_replace(",", "", $razon);
+        $razon = str_replace(".", "", $razon);
+        $vigencia = $proveedor->getVigencia();
+
         $file = $request->files;
         $file = $file->get('anexos')[0];
 
+        $anexo = new Fichero();
+        $anexo->setIdProveedor($id_proveedor);
+        $anexo->setNombre('Anexo '.$razon.' '.$vigencia.'.pdf');
+        $anexo->setIdContenedor(0);
+        $anexo->setIsFolder(0);
+        $anexo->setTipo('Anexo');
+        $anexo->setPublicado(0);
+        $anexo->setActivo(1);
+        $anexo->setPath('/FICHEROS ASOCIADOS CECOFERSA/ACUERDOS CON PROVEEDORES (PLANTILLAS)/PLANTILLAS '.$vigencia);
+        $anexo->setPermisos(0);
+        $anexo->setFechaCreacion(new \DateTime('now'));
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($anexo);
+        $em->flush();
+        $id_fichero = $anexo->getIdFichero();
+
+
         if(!empty($file) && $file != null) {
-            $file_name =  "$id_proveedor-anexo.pdf";
-            $file->move('ficheroPDF/Proveedores/',$file_name);
+            $file_name =  "$id_fichero.pdf";
+            $file->move('ficheroPDF/Proveedores/Anexos/',$file_name);
             echo json_encode(['msg'=>'¡Success!']);
         }else{
             echo json_encode(['msg'=>'¡Ha ocurrido un error!']);
