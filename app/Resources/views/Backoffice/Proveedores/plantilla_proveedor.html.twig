@@ -42,8 +42,8 @@
                 <div id="detalle-proveedor-derecha" class="col-xs-12 col-lg-5">
                     <div class="box box-default">
                         <div class="box-header with-border">
-                            <a href="{{ path('PDFplantilla', { 'id_proveedor': proveedor.idProveedor }) }}"><button type="button" class="btn btn-primary">Descargar PDF Plantilla Completa (para firmar)</button></a>
-                            <a href="{{ path('PDFficha',  { 'id_proveedor': proveedor.idProveedor }) }}"><button type="button" class="btn btn-primary">Subir Plantilla al Servidor (para Asociados)</button></a>
+                            <a href="{{ path('PDFplantilla', { 'id_proveedor': proveedor.idProveedor }) }}"><button type="button" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> Descargar PDF Plantilla Completa (para firmar)</button></a>
+                            <a href="{{ path('PDFficha',  { 'id_proveedor': proveedor.idProveedor }) }}"><button type="button" class="btn btn-success"><i class="fa fa-upload" aria-hidden="true"></i> Subir Plantilla al Servidor (para Asociados)</button></a>
                         </div>
                     </div>
                 </div>
