@@ -6805,4 +6805,23 @@ button.close {
 #proveedores_filter .input-sm, #asociados_filter .input-sm{
   height: 20px;
 }
+
+#detalle-proveedor-derecha .box-header {
+  text-align: center;
+}
+
+#campos-fuera-plantilla {
+  padding: 0 20px;
+}
+
+#campos-fuera-plantilla p{
+  margin: 0 0 2px;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: Calibri;
+  color: black;
+}
+
+
+
 /*# sourceMappingURL=bootstrap.css.map */

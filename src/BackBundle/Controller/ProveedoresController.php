@@ -8,7 +8,7 @@ use BackBundle\Entity\Usuario;
 use BackBundle\Entity\UsuarioAsociado;
 use BackBundle\Entity\UsuarioProveedor;
 use BackBundle\Form\DireccionesAsociadosType;
-use BackBundle\Form\UsuarioAsociadoType;
+use BackBundle\Form\UsuarioProveedorType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -86,6 +86,7 @@ class ProveedoresController extends Controller
         return new Response();
     }
 
+
     /**
      * @Route("/Admin/proveedores/{id_proveedor}", name="detalle_proveedor")
      */
@@ -95,6 +96,9 @@ class ProveedoresController extends Controller
             ->getRepository('BackBundle:Proveedores')
             ->find($id_proveedor);
 
+        $usuario = new UsuarioProveedor();
+        $form_usuarioProveedor = $this->createForm(UsuarioProveedorType::class, $usuario);
+
         $array_provincias = ['Álava','Albacete','Alicante','Almería','Asturias','Avila','Badajoz','Barcelona','Burgos','Cáceres',
             'Cádiz','Cantabria','Castellón','Ciudad Real','Córdoba','La Coruña','Cuenca','Gerona','Granada','Guadalajara',
             'Guipúzcoa','Huelva','Huesca','Islas Baleares','Jaén','León','Lérida','Lugo','Madrid','Málaga','Murcia','Navarra',
@@ -103,11 +107,74 @@ class ProveedoresController extends Controller
             'Melilla','Lisboa','Leiria','Santarém','Setúbal','Beja','Faro','Ávora','Portalegre','Castelo Branco',
             'Guarda','Coimbra','Aveiro','Viseu','Braganza','Vila Real','Porto','Braga','Viana do Castelo','Horta (Azores)'];
 
+        $form_usuarioProveedor->get('idProveedor')->setData($id_proveedor);
+
         return $this->render('Backoffice/Proveedores/detalle_proveedor.html.twig',
-            ['proveedor' => $proveedor, 'array_provincias'=>json_encode($array_provincias)]);
+            ['proveedor' => $proveedor,
+                'array_provincias'=>json_encode($array_provincias),
+                'form' => $form_usuarioProveedor->createView()]);
+    }
+
+    /**
+     * @Route("/Admin/upload_image_proveedor",options = { "expose" = true }, name="upload_image_proveedor")
+     * @Method({"POST"})
+     */
+    public function uploadImageAsociado(Request $request)
+    {
+        $id_proveedor = $request->query->get('id');
+        $asociado = $this->getDoctrine()
+            ->getRepository('BackBundle:Proveedores')
+            ->find($id_proveedor);
+        if($asociado!=null){
+            $file = $request->files;
+            $file = $file->get('kartik-input-705')[0];
+            $ext = $file->guessExtension();
+            if(!empty($file) && $file != null) {
+                $file_name = $id_proveedor.'.'.'jpg';
+                $file->move('img/Back/logos/proveedores',$file_name);
+                $asociado->setLogotipo(1);
+                $this->getDoctrine()->getManager()->persist($asociado);
+                $this->getDoctrine()->getManager()->flush();
+            }
+            echo json_encode(['msg'=>'¡Success!']);
+
+        }else{
+            echo json_encode(['msg'=>'¡Ha ocurrido un erro!']);
+        }
+        return new Response();
+    }
+
+
+
+    /**
+     * @Route("/Admin/proveedores/{id_proveedor}/plantilla", name="plantilla_proveedor")
+     */
+    public function detallePlantillaAction($id_proveedor)
+    {
+        $proveedor = $this->getDoctrine()
+            ->getRepository('BackBundle:Proveedores')
+            ->find($id_proveedor);
+
+        $usuario = new UsuarioProveedor();
+        $form_usuarioProveedor = $this->createForm(UsuarioProveedorType::class, $usuario);
+
+        $array_provincias = ['Álava','Albacete','Alicante','Almería','Asturias','Avila','Badajoz','Barcelona','Burgos','Cáceres',
+            'Cádiz','Cantabria','Castellón','Ciudad Real','Córdoba','La Coruña','Cuenca','Gerona','Granada','Guadalajara',
+            'Guipúzcoa','Huelva','Huesca','Islas Baleares','Jaén','León','Lérida','Lugo','Madrid','Málaga','Murcia','Navarra',
+            'Orense','Palencia','Las Palmas','Pontevedra','La Rioja','Salamanca','Segovia','Sevilla','Soria','Tarragona',
+            'Santa Cruz de Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya','Zamora','Zaragoza','Ceuta',
+            'Melilla','Lisboa','Leiria','Santarém','Setúbal','Beja','Faro','Ávora','Portalegre','Castelo Branco',
+            'Guarda','Coimbra','Aveiro','Viseu','Braganza','Vila Real','Porto','Braga','Viana do Castelo','Horta (Azores)'];
+
+        $form_usuarioProveedor->get('idProveedor')->setData($id_proveedor);
+
+        return $this->render('Backoffice/Proveedores/plantilla_proveedor.html.twig',
+            ['proveedor' => $proveedor,
+             'array_provincias'=>json_encode($array_provincias),
+             'form' => $form_usuarioProveedor->createView()]);
     }
     /**
-     * @Route("/Admin/proveedores/{id_proveedor}/plantilla", name="PDFplantilla")
+     * @Route("/Admin/proveedores/{id_proveedor}/plantillaPDF", name="PDFplantilla")
      */
     public function plantillaToPDFAction($id_proveedor)
     {
@@ -309,6 +376,18 @@ class ProveedoresController extends Controller
                 $expocecofersa = $request->get('value');
                 $proveedor->setExpocecofersa($expocecofersa);
                 $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'gestor-proveedor'){
+                $gestor = $request->get('value');
+                $proveedor->setGestor($gestor);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'fechabaja-proveedor'){
+                $fechaBaja = (new \DateTime($request->get('value')));
+                $proveedor->setFechaBaja($fechaBaja);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
+            }elseif($request->get('name') == 'nombrecomercial-proveedor'){
+                $comercial = $request->get('value');
+                $proveedor->setNombreComercial($comercial);
+                $proveedor->setFechaEdicion(new \DateTime('now'));
             }else{
                 $response = array("status" => "error", "msg"=>"¡Ha ocurrido un error!");
                 return new Response(json_encode($response));
@@ -323,6 +402,28 @@ class ProveedoresController extends Controller
             return new Response(json_encode($response));
         }
     }
+
+    /**
+     * @Route("/Admin/proveedores/{id_proveedor}/updateAnexoPDF", name="update_anexo_pdf",
+     *     options = { "expose" = true })
+     * @Method({"POST"})
+     */
+    public function updateAnexoFromPDFAction(Request $request,$id_proveedor){
+
+        $file = $request->files;
+        $file = $file->get('anexos')[0];
+
+        if(!empty($file) && $file != null) {
+            $file_name =  "$id_proveedor-anexo.pdf";
+            $file->move('ficheroPDF/Proveedores/',$file_name);
+            echo json_encode(['msg'=>'¡Success!']);
+        }else{
+            echo json_encode(['msg'=>'¡Ha ocurrido un error!']);
+        }
+        return new Response();
+    }
+
+
     ############# LEER CSV usuarioProveedor ##################
 
 //    public function leerProveedoresAction(){
