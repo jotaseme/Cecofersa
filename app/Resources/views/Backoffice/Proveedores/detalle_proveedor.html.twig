@@ -80,6 +80,41 @@
                 <div class="col-xs-6">
                     <div class="box box-default">
                         <div class="box-header with-border">
+                            <h3 class="box-title">LISTADO DE FICHEROS DE {{ proveedor.proveedor|upper }}</h3>
+                        </div>
+                        <div class="box-body">
+                            <table id="ficherosProveedor" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nombre</th>
+                                    <th>Tipo</th>
+                                    <th>Fecha creación</th>
+                                    <th>Fecha caducidad</th>
+                                    <th>Publicar</th>
+                                    <th>Descargar</th>
+                                    <th>Eliminar</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for fichero in ficheros %}
+                                    <tr {% if ("now"|date('d/m/Y') > fichero.fechaCaducidad|date('d/m/Y')) %} style="background-color: darkgrey;" {% endif %}>
+                                        <td>{{ fichero.idFichero }}</td>
+                                        <td>{{ fichero.nombre }}</td>
+                                        <td>{{ fichero.tipo }}</td>
+                                        <td>{{ fichero.fechaCreacion|date('d/m/Y') }}</td>
+                                        <td>{% if(fichero.fechaCaducidad is not null) %}{{ fichero.fechaCaducidad|date('d/m/Y') }}{% endif %}</td>
+                                        <td><input type="checkbox" checked data-toggle="toggle"></td>
+                                        <td><a href="#"><span class="label label-pill label-primary"><i class="fa fa-download"></i></span></a></td>
+                                        <td><a id ="delete" href="#" data-id = "" data-href="#" data-toggle="modal" data-target="#confirm-delete-fichero"><span class="label label-pill label-danger"><i class="fa fa-trash"></i></span></a></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="box box-default">
+                        <div class="box-header with-border">
                             <h3 class="box-title">LISTADO DE USUARIOS DE {{ proveedor.proveedor|upper }}</h3>
                         </div>
                         <div class="box-body">
@@ -191,7 +226,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.js"></script>
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     <script src="{{ asset('js/fileinput.min.js') }}"></script>
+    <script>
+        $(function() {
+            $('#toggle-one').bootstrapToggle();
+        });
+        $('#ficherosProveedor').DataTable({
+            "ordering": false,
+            "pageLength": 20,
+            "lengthChange": false,
+            "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
 
+            }
+        });
+
+    </script>
     <script>
         var $input = $("#input-705");
         var path = Routing.generate('upload_image_proveedor', { id: {{ proveedor.idProveedor  }}});

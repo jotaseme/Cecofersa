@@ -107,11 +107,19 @@ class ProveedoresController extends Controller
             'Melilla','Lisboa','Leiria','Santarém','Setúbal','Beja','Faro','Ávora','Portalegre','Castelo Branco',
             'Guarda','Coimbra','Aveiro','Viseu','Braganza','Vila Real','Porto','Braga','Viana do Castelo','Horta (Azores)'];
 
+        $ficheros_proveedor = $this->getDoctrine()
+            ->getRepository('BackBundle:Fichero')
+            ->findBy(
+                array('idProveedor'=>$id_proveedor),
+                array('idFichero'=>'DESC')
+            );
+
         $form_usuarioProveedor->get('idProveedor')->setData($id_proveedor);
 
         return $this->render('Backoffice/Proveedores/detalle_proveedor.html.twig',
             ['proveedor' => $proveedor,
                 'array_provincias'=>json_encode($array_provincias),
+                'ficheros'=>$ficheros_proveedor,
                 'form' => $form_usuarioProveedor->createView()]);
     }
 

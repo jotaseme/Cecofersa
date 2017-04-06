@@ -32,19 +32,24 @@ class FicherosController extends Controller
                   AND YEAR(f.fechaCreacion) > 2000";*/
         $dql = "SELECT f
                   FROM BackBundle:Fichero f
-                  WHERE f.path LIKE '%/TARIFAS PROVEEDORES HOMOLOGADOS 2016/%'
+                  WHERE f.path LIKE '%/DESCARGA DE TARIFAS PROVEEDORES HOMOLOGADOS/%'
                   AND YEAR(f.fechaCreacion) > 2000";
         $ficheros = $em->createQuery($dql)->getResult();
 
         foreach($ficheros as $fichero){
-            $nombre_fichero = strstr($fichero->getNombre(), ' ', true).'%';
+            if ( preg_match('/\bMODELO\b/i',$fichero->getPath()))
+                $tipo = 'Tarifa MODELO CECOFERSA';
+            else
+                $tipo = 'Tarifa MODELO ORIGINAL';
+            $nombre_fichero = strstr($fichero->getNombre(), ' Tarifa', true).'%';
+
             $dql = "SELECT p.idProveedor, p.proveedor
                   FROM BackBundle:Proveedores p
                   WHERE p.proveedor LIKE '$nombre_fichero'";
             $id = $em->createQuery($dql)->getResult();
             if(sizeof($id)==1){
                 $fichero->setIdProveedor($id[0]['idProveedor']);
-                $fichero->setTipo("Plantilla");
+                $fichero->setTipo($tipo);
                 $em->persist($fichero);
             }elseif(sizeof($id)>1){
                 $nombre_new = strstr($fichero->getNombre(), ' ', true);
@@ -56,7 +61,7 @@ class FicherosController extends Controller
                 $id = $em->createQuery($dql)->getResult();
                 if(sizeof($id)==1){
                     $fichero->setIdProveedor($id[0]['idProveedor']);
-                    $fichero->setTipo("Plantilla");
+                    $fichero->setTipo($tipo);
                     $em->persist($fichero);
                 }else{
                     var_dump("ERROR 1");
